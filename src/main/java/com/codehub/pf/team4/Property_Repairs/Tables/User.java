@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "User", uniqueConstraints = {@UniqueConstraint(columnNames = {"afm"})})
+@Table(name = "Users", uniqueConstraints = {@UniqueConstraint(columnNames = {"afm"})})
 @Data
 public class User {
 
@@ -36,13 +36,13 @@ public class User {
     private  String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "property_type")
-    private HouseType propertyType;
+    @Column(name = "house_type")
+    private HouseType houseType;
 
     @Column( name= "email")
     private String email;
 
-    @OneToMany(mappedBy = "repair", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "users", targetEntity = Repair.class)
     private List<Repair> repairs;
 
 }

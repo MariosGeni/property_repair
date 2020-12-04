@@ -3,15 +3,16 @@ package com.codehub.pf.team4.Property_Repairs.Tables;
 import com.codehub.pf.team4.Property_Repairs.enums.HouseType;
 import com.codehub.pf.team4.Property_Repairs.enums.RepairType;
 import com.codehub.pf.team4.Property_Repairs.enums.State;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "Users")
+@Table(name = "Repair")
 @Data
+@Entity
 public class Repair {
     private static final int MAX_NAME_LENGTH = 50;
 
@@ -37,11 +38,11 @@ public class Repair {
     @Column(name = "address")
     private String address;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JsonIgnore
+    private User users;
 
     @Column(name = "description")
     private String description;
-
 }

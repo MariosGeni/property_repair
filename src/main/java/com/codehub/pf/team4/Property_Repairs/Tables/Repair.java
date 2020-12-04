@@ -44,6 +44,4 @@ public class Repair {
     @Column(name = "description")
     private String description;
 
-    public Repair() {
-    }
 }

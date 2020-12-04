@@ -6,7 +6,7 @@ INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, pas
 INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456784, 'John', 'Smith', 'Kapou', 0000000, 'someone@somecompany.com', '123654', 'DETACHED');
 INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456783, 'John', 'Smith', 'Kapou', 0000000, 'someone@somecompany.com', '654123', 'DETACHED');
 
-INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (getDate(), 'WAITING', 'PAINTING', 13, 'asdasd', 1, 'a6s5d1a6s5d1a65sd');
+INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (getDate(), 'WAITING', 'PAINTING', 13, 'Κλεμανσώ 25', 1, 'a6s5d1a6s5d1a65sd');
 INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (getDate(), 'ONGOING', 'INSULATION', 15, 'asdasdasd', 2, '123456789');
 INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (getDate(), 'DONE', 'FRAMES', 25, 'asdasdasd', 3, 'asdasdasdasd');
 INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (getDate(), 'WAITING', 'PLUMBING', 3000000000, 'asdasd', 1, 'asdasd');

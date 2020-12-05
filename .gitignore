@@ -1,4 +1,1 @@
 *.properties
-*
-!src
-!src/*

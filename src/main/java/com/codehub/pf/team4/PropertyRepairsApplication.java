@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.Property_Repairs;
+package com.codehub.pf.team4;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

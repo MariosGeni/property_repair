@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.Property_Repairs;
+package com.codehub.pf.team4;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

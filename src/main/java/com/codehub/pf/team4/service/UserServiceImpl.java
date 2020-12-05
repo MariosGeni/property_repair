@@ -1,12 +1,10 @@
-package com.codehub.pf.team4.Property_Repairs.service;
+package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.Property_Repairs.Tables.Repair;
-import com.codehub.pf.team4.Property_Repairs.Tables.User;
-import com.codehub.pf.team4.Property_Repairs.repository.UserRepository;
+import com.codehub.pf.team4.Tables.User;
+import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

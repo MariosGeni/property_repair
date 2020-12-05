@@ -1,13 +1,10 @@
-package com.codehub.pf.team4.Property_Repairs.Tables;
+package com.codehub.pf.team4.Tables;
 
-import com.codehub.pf.team4.Property_Repairs.enums.HouseType;
-import com.codehub.pf.team4.Property_Repairs.enums.RepairType;
-import com.codehub.pf.team4.Property_Repairs.enums.State;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.codehub.pf.team4.enums.RepairType;
+import com.codehub.pf.team4.enums.State;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Table(name = "Repair")

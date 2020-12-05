@@ -1,6 +1,6 @@
-package com.codehub.pf.team4.Property_Repairs.repository;
+package com.codehub.pf.team4.repository;
 
-import com.codehub.pf.team4.Property_Repairs.Tables.Repair;
+import com.codehub.pf.team4.Tables.Repair;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

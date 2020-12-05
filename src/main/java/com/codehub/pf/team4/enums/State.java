@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.Property_Repairs.enums;
+package com.codehub.pf.team4.enums;
 
 public enum State {
 

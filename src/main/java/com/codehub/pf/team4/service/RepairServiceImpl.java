@@ -1,7 +1,7 @@
-package com.codehub.pf.team4.Property_Repairs.service;
+package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.Property_Repairs.Tables.Repair;
-import com.codehub.pf.team4.Property_Repairs.repository.RepairRepository;
+import com.codehub.pf.team4.Tables.Repair;
+import com.codehub.pf.team4.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

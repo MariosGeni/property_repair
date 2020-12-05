@@ -1,5 +1,5 @@
-package com.codehub.pf.team4.Property_Repairs.Tables;
-import com.codehub.pf.team4.Property_Repairs.enums.HouseType;
+package com.codehub.pf.team4.Tables;
+import com.codehub.pf.team4.enums.HouseType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 

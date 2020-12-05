@@ -18,32 +18,32 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "afm", length = 9)
+    @Column(name = "afm", length = 9, nullable = false)
     private Integer afm;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private  String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private  String lastName;
 
-    @Column(name = "address")
+    @Column(name = "address", nullable = false)
     private  String address;
 
-    @Column(name = "phone_number", length=10)
+    @Column(name = "phone_number", length=10, nullable = false)
     private  Integer phoneNumber;
 
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private  String password;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "house_type")
+    @Column(name = "house_type", nullable = false)
     private HouseType houseType;
 
-    @Column( name= "email")
+    @Column( name= "email", nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "user", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Repair> repairs;
 

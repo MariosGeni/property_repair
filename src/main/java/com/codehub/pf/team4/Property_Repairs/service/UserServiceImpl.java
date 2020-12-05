@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.Property_Repairs.service;
 
+import com.codehub.pf.team4.Property_Repairs.Tables.Repair;
 import com.codehub.pf.team4.Property_Repairs.Tables.User;
 import com.codehub.pf.team4.Property_Repairs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,10 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteById(Long id) {
+        if (id == null) {
+            System.out.println("id not found");
+            return;
+        }
         userRepository.deleteById(id);
     }
 

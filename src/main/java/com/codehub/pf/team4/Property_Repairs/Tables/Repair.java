@@ -35,13 +35,12 @@ public class Repair {
     @Column(name = "cost")
     private Long cost;
 
-    @Column(name = "address")
+    @Column(name = "address", columnDefinition = "NVARCHAR(255)")
     private String address;
 
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
-    @JsonIgnore
-    private User users;
+    @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
+    private User user;
 
     @Column(name = "description")
     private String description;

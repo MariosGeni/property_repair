@@ -1,6 +1,6 @@
 package com.codehub.pf.team4.controller;
 
-import com.codehub.pf.team4.Tables.Repair;
+import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

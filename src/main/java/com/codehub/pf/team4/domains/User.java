@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.Tables;
+package com.codehub.pf.team4.domains;
 import com.codehub.pf.team4.enums.HouseType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -16,7 +16,7 @@ public class User {
     @Id
     @Column(name = "user_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private java.lang.Long id;
+    private Long id;
 
     @Column(name = "afm", length = 9, nullable = false)
     private Integer afm;

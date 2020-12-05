@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.Tables;
+package com.codehub.pf.team4.domains;
 
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
@@ -16,7 +16,7 @@ public class Repair {
     @Id
     @Column(name = "repair_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private java.lang.Long id;
+    private Long id;
 
     @Column(name = "date")
     private Timestamp date;

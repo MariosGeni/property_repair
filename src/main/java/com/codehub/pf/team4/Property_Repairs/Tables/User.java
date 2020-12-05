@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.Property_Repairs.Tables;
 import com.codehub.pf.team4.Property_Repairs.enums.HouseType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -42,7 +43,8 @@ public class User {
     @Column( name= "email")
     private String email;
 
-    @OneToMany(mappedBy = "users", targetEntity = Repair.class)
+    @OneToMany(mappedBy = "user", targetEntity = Repair.class)
+    @JsonIgnore
     private List<Repair> repairs;
 
 }

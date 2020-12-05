@@ -7,10 +7,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface RepairRepository extends JpaRepository<Repair, Long> {
+public interface RepairRepository extends JpaRepository<Repair, java.lang.Long> {
 
     @Query(value = "SELECT r.* FROM repair r JOIN users u ON r.user_id = u.user_id WHERE u.afm = (:afm)", nativeQuery = true)
     List<Repair> findAllByAfm(@Param("afm") Integer afm);

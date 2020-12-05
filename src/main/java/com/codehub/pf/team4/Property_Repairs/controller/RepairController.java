@@ -1,7 +1,9 @@
 package com.codehub.pf.team4.Property_Repairs.controller;
 
 import com.codehub.pf.team4.Property_Repairs.Tables.Repair;
+import com.codehub.pf.team4.Property_Repairs.Tables.User;
 import com.codehub.pf.team4.Property_Repairs.repository.RepairRepository;
+import com.codehub.pf.team4.Property_Repairs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,9 @@ public class RepairController {
     @Autowired
     private RepairRepository repairRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("hello")
     public String hello(Model model) {
         model.addAttribute("username", "Niazi");
@@ -27,6 +32,6 @@ public class RepairController {
     @GetMapping("repair")
     @ResponseBody
     public List<Repair> getRepairs() {
-        return repairRepository.findAll();
+        return repairRepository.findAllByAfm(123456789);
     }
 }

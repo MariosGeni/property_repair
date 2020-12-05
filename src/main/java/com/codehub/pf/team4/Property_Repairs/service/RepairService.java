@@ -15,7 +15,7 @@ public interface RepairService {
 
     Optional<Repair> updateRepair(Repair toBeUpdatedRepair);
 
-    void deleteRepair(Repair repair);
+    void deleteRepairById(Long repairId);
 
     List<Repair> getRepairByUserAfm(Integer afm);
 

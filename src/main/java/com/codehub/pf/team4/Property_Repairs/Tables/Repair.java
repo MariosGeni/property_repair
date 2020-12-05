@@ -19,7 +19,7 @@ public class Repair {
     @Id
     @Column(name = "repair_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private java.lang.Long id;
 
     @Column(name = "date")
     private Timestamp date;
@@ -33,7 +33,7 @@ public class Repair {
     private RepairType repairType;
 
     @Column(name = "cost")
-    private Long cost;
+    private java.lang.Long cost;
 
     @Column(name = "address", columnDefinition = "NVARCHAR(255)")
     private String address;

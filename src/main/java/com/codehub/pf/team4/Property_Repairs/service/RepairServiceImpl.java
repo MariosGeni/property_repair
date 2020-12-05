@@ -20,7 +20,7 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Optional<Repair> getRepairById(Long id) {
+    public Optional<Repair> getRepairById(java.lang.Long id) {
         return repairRepository.findById(id);
     }
 
@@ -39,13 +39,12 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public void deleteRepair(Repair repair) {
-        Long repairId = repair.getId();
-        if( repairId == null || getRepairById(repairId).isEmpty()){
+    public void deleteRepairById(Long repairId) {
+        if(repairId == null || getRepairById(repairId).isEmpty()){
             System.out.println("User not found");
             return;
         }
-        repairRepository.delete(repair);
+        repairRepository.deleteById(repairId);
     }
 
     @Override

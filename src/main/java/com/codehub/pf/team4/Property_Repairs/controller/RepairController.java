@@ -1,7 +1,6 @@
 package com.codehub.pf.team4.Property_Repairs.controller;
 
 import com.codehub.pf.team4.Property_Repairs.Tables.Repair;
-import com.codehub.pf.team4.Property_Repairs.Tables.User;
 import com.codehub.pf.team4.Property_Repairs.repository.RepairRepository;
 import com.codehub.pf.team4.Property_Repairs.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

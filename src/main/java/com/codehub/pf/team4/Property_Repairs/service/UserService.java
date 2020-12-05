@@ -7,6 +7,9 @@ import java.util.Optional;
 
 public interface UserService {
 
+    // get all users
+    List<User> getAllUsers();
+
     // find user by id
     Optional<User> findUserById(Long id);
 

@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<Repair> getRepairsByUserEmail(String email) {
+        return userRepository.findRepairsByUserEmail(email);
+    }
+
+    @Override
     public User addUser(User user) {
         return userRepository.save(user);
     }
@@ -44,7 +49,7 @@ public class UserServiceImpl implements UserService{
     public void deleteById(Long id) {
         // if id is empty or user paired with this id doesn't exist
         if (id == null || findUserById(id).isEmpty()) {
-            System.out.println("id not found"); // display a simple message
+            System.out.println("Id is null or user not found"); // display a simple message
             return;
         }
         userRepository.deleteById(id);

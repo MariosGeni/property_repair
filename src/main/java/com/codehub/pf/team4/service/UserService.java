@@ -26,7 +26,12 @@ public interface UserService {
     // delete user by id
     void deleteById(Long id);
 
+    // given a user id, find all repairs for that user
     List<Repair> getRepairsByUserId(Long id);
 
+    // given an afm number, get all repairs related with the user
     List<Repair> getRepairsByUserAfm(Integer afm);
+
+    // given an email, get all repairs related with the user
+    List<Repair> getRepairsByUserEmail(String email);
 }

@@ -31,6 +31,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<Repair> getRepairsByUserAfm(Integer afm) {
+        return userRepository.findRepairsByAfm(afm);
+    }
+
+    @Override
     public User addUser(User user) {
         return userRepository.save(user);
     }

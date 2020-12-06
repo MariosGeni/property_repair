@@ -28,4 +28,5 @@ public interface UserService {
 
     List<Repair> getRepairsByUserId(Long id);
 
+    List<Repair> getRepairsByUserAfm(Integer afm);
 }

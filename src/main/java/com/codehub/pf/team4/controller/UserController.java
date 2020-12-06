@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/")
 public class UserController {
 
     @Autowired
@@ -22,9 +21,11 @@ public class UserController {
     @Autowired
     private RepairService repairService;
 
-    @GetMapping("home")
+    @GetMapping("/home")
     @ResponseBody
-    public List<Repair> getHome() {
-        return repairService.getAllRepairs();
+    public List<Repair> getUserHome() {
+        return userService.getRepairsByUserId(1L);
     }
+
+
 }

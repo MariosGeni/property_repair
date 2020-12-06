@@ -22,16 +22,16 @@ public class User {
     private Integer afm;
 
     @Column(name = "first_name", nullable = false)
-    private String firstName;
+    private  String firstName;
 
     @Column(name = "last_name", nullable = false)
     private  String lastName;
 
     @Column(name = "address", nullable = false)
-    private String address;
+    private  String address;
 
     @Column(name = "phone_number", length=10, nullable = false)
-    private Long phoneNumber;
+    private  Long phoneNumber;
 
     @Column(name = "password", nullable = false)
     private  String password;

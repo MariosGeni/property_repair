@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.controller;
 
-
 import com.codehub.pf.team4.Tables.Repair;
 import com.codehub.pf.team4.Tables.User;
 import com.codehub.pf.team4.service.RepairService;
@@ -14,8 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin/")
-public class AdminController {
+@RequestMapping("/")
+public class UserController {
+
     @Autowired
     private UserService userService;
 
@@ -25,18 +25,19 @@ public class AdminController {
     @GetMapping("home")
     @ResponseBody
     public List<Repair> getAdminHome() {
-        return repairService.getAllRepairs();
-    }
+            return repairService.getAllRepairs();
+        }
 
     @GetMapping("users")
     @ResponseBody
     public List<User> getUsers() {
-        return userService.getAllUsers();
-    }
+            return userService.getAllUsers();
+        }
 
     @GetMapping("repairs")
     @ResponseBody
     public List<Repair> getRepairs() {
-        return repairService.getAllRepairs();
-    }
+            return repairService.getAllRepairs();
+        }
+
 }

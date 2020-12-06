@@ -36,8 +36,9 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void deleteById(Long id) {
-        if (id == null) {
-            System.out.println("id not found");
+        // if id is empty or user paired with this id doesn't exist
+        if (id == null || findUserById(id).isEmpty()) {
+            System.out.println("id not found"); // display a simple message
             return;
         }
         userRepository.deleteById(id);

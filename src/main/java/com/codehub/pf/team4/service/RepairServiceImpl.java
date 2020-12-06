@@ -77,8 +77,8 @@ public class RepairServiceImpl implements RepairService {
         // If its not happening this day bb!
         if(!dateNow.equals(dateTheDate)) return false;
 
-        /* System.out.println("dateTheDate: \"" + dateTheDate + "\" | dateNow: \"" + dateNow + "\" | timeTheDate: \"" + timeTheDate +
-                    "\" | timeStart: \"" + timeStart + "\" | timeEnd: \"" + timeEnd + "\"");*/
+        System.out.println("dateTheDate: \"" + dateTheDate + "\" | dateNow: \"" + dateNow + "\" | timeTheDate: \"" + timeTheDate +
+                    "\" | timeStart: \"" + timeStart + "\" | timeEnd: \"" + timeEnd + "\"");
 
         // if the time is between the working hours
         return timeStart.compareTo(timeTheDate) < 0 && timeEnd.compareTo(timeTheDate) > 0;

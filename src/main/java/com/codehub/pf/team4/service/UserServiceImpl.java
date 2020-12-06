@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.service;
 
+import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,11 @@ public class UserServiceImpl implements UserService{
             return;
         }
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Repair> getRepairsByUserId(Long id) {
+        return userRepository.findRepairsByUserId(id);
     }
 
     @Override

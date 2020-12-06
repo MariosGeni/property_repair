@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.service;
 
+import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
 
 import java.util.List;
@@ -24,5 +25,7 @@ public interface UserService {
 
     // delete user by id
     void deleteById(Long id);
+
+    List<Repair> getRepairsByUserId(Long id);
 
 }

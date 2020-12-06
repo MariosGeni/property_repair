@@ -31,7 +31,7 @@ public class User {
     private  String address;
 
     @Column(name = "phone_number", length=10, nullable = false)
-    private  Integer phoneNumber;
+    private  Long phoneNumber;
 
     @Column(name = "password", nullable = false)
     private  String password;

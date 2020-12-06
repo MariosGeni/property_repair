@@ -19,5 +19,5 @@ public interface RepairService {
 
     List<Repair> getRepairByUserAfm(Integer afm);
 
-
+    List<Repair> getOngoingRepairsOfTheDay();
 }

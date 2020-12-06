@@ -1,6 +1,6 @@
 package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.Tables.User;
+import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

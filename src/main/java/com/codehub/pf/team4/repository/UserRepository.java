@@ -1,6 +1,6 @@
 package com.codehub.pf.team4.repository;
 
-import com.codehub.pf.team4.Tables.User;
+import com.codehub.pf.team4.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

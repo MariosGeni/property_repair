@@ -1,3 +1,5 @@
+ALTER TABLE Repair ALTER COLUMN address VARCHAR(255) COLLATE Latin1_General_100_CI_AI_SC_UTF8;
+
 INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456789, 'John', 'Smith', 'Kapou', 00000001, 'someone@somecompany.com', '123456789', 'DETACHED');
 INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456788, 'John', 'Smith', 'Kapou', 0000000, 'someone1@somecompany.com', '123456789', 'MAISONETTE');
 INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456787, 'John', 'Smith', 'Kapou', 0000000, 'someone2@somecompany.com', '123456', 'APARTMENT_BUILDING');

@@ -1,6 +1,6 @@
 package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.Tables.Repair;
+import com.codehub.pf.team4.domains.Repair;
 
 import java.util.List;
 import java.util.Optional;

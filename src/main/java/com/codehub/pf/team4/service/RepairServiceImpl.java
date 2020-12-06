@@ -59,11 +59,6 @@ public class RepairServiceImpl implements RepairService {
         repairRepository.deleteById(repairId);
     }
 
-    @Override
-    public List<Repair> getRepairByUserAfm(Integer afm) {
-        return repairRepository.findAllByAfm(afm);
-    }
-
     private boolean isToday(Timestamp theDate, Timestamp now) {
         // DATABASE DATE and TIME to String variables and check them
         String dateTheDate = theDate.toString().substring(0, 10);

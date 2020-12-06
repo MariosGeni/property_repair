@@ -9,8 +9,4 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface RepairRepository extends JpaRepository<Repair, java.lang.Long> {
-
-    @Query(value = "SELECT r.* FROM repair r JOIN users u ON r.user_id = u.user_id WHERE u.afm = (:afm)", nativeQuery = true)
-    List<Repair> findAllByAfm(@Param("afm") Integer afm);
-}
+public interface RepairRepository extends JpaRepository<Repair, java.lang.Long> {}

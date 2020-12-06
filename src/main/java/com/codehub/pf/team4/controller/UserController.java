@@ -1,7 +1,7 @@
 package com.codehub.pf.team4.controller;
 
-import com.codehub.pf.team4.Tables.Repair;
-import com.codehub.pf.team4.Tables.User;
+import com.codehub.pf.team4.domains.Repair;
+import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,20 +24,7 @@ public class UserController {
 
     @GetMapping("home")
     @ResponseBody
-    public List<Repair> getAdminHome() {
-            return repairService.getAllRepairs();
-        }
-
-    @GetMapping("users")
-    @ResponseBody
-    public List<User> getUsers() {
-            return userService.getAllUsers();
-        }
-
-    @GetMapping("repairs")
-    @ResponseBody
-    public List<Repair> getRepairs() {
-            return repairService.getAllRepairs();
-        }
-
+    public List<Repair> getHome() {
+        return repairService.getAllRepairs();
+    }
 }

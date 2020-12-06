@@ -24,8 +24,9 @@ public class AdminController {
 
     @GetMapping(value = "")
     @ResponseBody
-    public String getAdminHome() {
-        return "admin-home-view";
+    public List<Repair> getAdminHome() {
+        return repairService.getOngoingRepairsOfTheDay();
+        // return "admin-home-view";
     }
 
     @GetMapping(value = "/owners")

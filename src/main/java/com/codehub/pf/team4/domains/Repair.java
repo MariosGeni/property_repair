@@ -30,7 +30,7 @@ public class Repair {
     private RepairType repairType;
 
     @Column(name = "cost")
-    private java.lang.Long cost;
+    private Long cost;
 
     @Column(name = "address", columnDefinition = "NVARCHAR(255)")
     private String address;

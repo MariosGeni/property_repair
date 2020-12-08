@@ -4,6 +4,7 @@ import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
+import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,26 +42,6 @@ public class RepairController {
     @GetMapping("repairsOfTheDay")
     @ResponseBody
     public List<Repair> getRepairsOfTheDay() throws Exception {
-        return repairRepository.findByDateIsBetweenAndStateEquals(start(), end(), State.ONGOING);
-    }
-
-    private Timestamp start() throws Exception{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String today = theDay() + " 09:00:00";
-        return getFinalTime(sdf, today);
-    }
-
-    private Timestamp end() throws Exception{
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String today = theDay() + " 23:59:59";
-        return  getFinalTime(sdf, today);
-    }
-
-    private String theDay() {
-        return new Timestamp(new Date().getTime()).toString().substring(0, 10);
-    }
-
-    private Timestamp getFinalTime(SimpleDateFormat sdf, String today) throws Exception {
-        return new Timestamp(sdf.parse(today).getTime());
+        return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getEndOfDay(), DateProvider.getEndOfDay(), State.ONGOING);
     }
 }

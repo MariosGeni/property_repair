@@ -38,6 +38,18 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
+    public List<Repair> getRepairsByDate(String wholeDate) {
+        String[] arrOfDates = wholeDate.split("/", 2);
+        Timestamp tsBeginDate = Timestamp.valueOf( arrOfDates[0] );
+        if (arrOfDates.length > 1) {
+            Timestamp tsEndDate = Timestamp.valueOf(arrOfDates[1]);
+        }
+        List<Repair> repairs = getAllRepairs();
+        /*TODO*/
+        return null;
+    }
+
+    @Override
     public Optional<Repair> postRepair(Repair newRepair) {
         return Optional.of(repairRepository.save(newRepair));
     }

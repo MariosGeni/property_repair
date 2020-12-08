@@ -16,45 +16,85 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
     @Autowired
     UserService userService;
 
     @Autowired
     RepairService repairService;
 
-    @GetMapping(value = "")
-    @ResponseBody
-    public List<Repair> getAdminHome() {
-        return repairService.getOngoingRepairsOfTheDay();
-        // return "admin-home-view";
+    // *************************************************** //
+    // ======================== OWNERS ================== //
+    // *************************************************** //
+
+    @GetMapping(value = {"", "home"})
+    public String getAdminHome(Model model) {
+        model.addAttribute("activeRepairs", repairService.getOngoingRepairsOfTheDay());
+        return "admin-home-view";
     }
 
     @GetMapping(value = "/owners")
-    @ResponseBody
-    public String getAdminOwnersPage() {
+    public String getAdminOwnersPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
+                                     @RequestParam(value = "email", defaultValue = "") String email) {
         // --- owners showcase here --- //
+        model.addAttribute("owners", userService.getAllUsers());
         return "admin-owners-view";
+    }
+
+    @PostMapping("/owners")
+    public String postAdminOwner(@RequestBody User owner, Model model) {
+        // --- create code here --- //
+        User newOwner = userService.addUser(owner);
+        model.addAttribute("owner", newOwner);
+        model.addAttribute("isPresent", newOwner != null);
+
+        return "admin-search-owners-view";
     }
 
     @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString
-    @ResponseBody
-    public String getAdminSearchOwnerPage(@RequestParam(value = "afm", defaultValue = "") String afm,
-                                          @RequestParam(value = "email", defaultValue = "") String email) {
+    public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm, @RequestParam(value = "email", defaultValue = "") String email) {
         // --- search code here --- //
-        return "admin-owners-view";
+        Optional<User> owner = Optional.empty();
+        if(!afm.equals("")) {
+            owner = userService.findUserByAfm(afm);
+            model.addAttribute("owner", owner);
+            owner = userService.findUserByEmail(email);
+        }
+
+        model.addAttribute("owner", owner);
+        model.addAttribute("isPresent", owner.isPresent());
+        return "admin-search-owners-view";
     }
 
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
-    @ResponseBody
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<User> theOwner = userService.findUserById(id);
 
-        theOwner.ifPresent(owner -> { // if owner not null add to model
-            model.addAttribute("owner", owner);
-        });
+        model.addAttribute("owner", theOwner.orElse(null));
+        model.addAttribute("isPresent", theOwner.isPresent());
 
-        return "edit-owners-view";
+        return "admin-edit-owners-view";
     }
+
+    @RequestMapping(value = "/owners/edit/{id}", method = RequestMethod.PUT) // Edit owner by its id
+    public String putAdminEditOwnersPage(@RequestBody User owner, Model model) {
+        Optional<User> theOwner = userService.updateUser(owner);
+
+        model.addAttribute("owner", theOwner.orElse(null));
+        model.addAttribute("isPresent", theOwner.isPresent());
+
+        return "admin-search-owners-view";
+    }
+
+    @RequestMapping("owners/{id}")
+    public String deleteAdminOwner(@PathVariable("id") Long id) {
+        userService.deleteById(id);
+        return "admin-owners-view";
+    }
+
+    // *************************************************** //
+    // ======================== REPAIRS ================== //
+    // *************************************************** //
 
     @GetMapping(value = "/repairs")
     @ResponseBody

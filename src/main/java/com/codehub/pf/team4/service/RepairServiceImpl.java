@@ -29,8 +29,9 @@ public class RepairServiceImpl implements RepairService {
         return repairRepository.findById(id);
     }
 
-    public List<Repair> getOngoingRepairsOfTheDay() throws Exception{
-        return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getEndOfDay(), DateProvider.getEndOfDay(), State.ONGOING);
+    @Override
+    public List<Repair> getOngoingRepairsOfTheDay() throws Exception {
+        return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getStartOfDay(), DateProvider.getEndOfDay(), State.ONGOING);
         /* return repairRepository.findAll().stream()
                 .filter(repair -> isToday(repair.getDate(), now))
                 .filter(repair -> repair.getState() == State.ONGOING)

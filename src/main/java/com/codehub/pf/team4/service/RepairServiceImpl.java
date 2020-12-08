@@ -12,6 +12,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 
 @Service
 public class RepairServiceImpl implements RepairService {
@@ -40,14 +43,21 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<Repair> getRepairsByDate(String wholeDate) {
-        String[] arrOfDates = wholeDate.split("/", 2);
-        Timestamp tsBeginDate = Timestamp.valueOf( arrOfDates[0] );
-        if (arrOfDates.length > 1) {
-            Timestamp tsEndDate = Timestamp.valueOf(arrOfDates[1]);
+        // if the date value is null
+        if (wholeDate.equals("")) { return null; }
+        String[] arrayOfDates = wholeDate.split("/", 2);
+        // timestamp for first-begin date
+        Timestamp tsBeginDate = Timestamp.valueOf(arrayOfDates[0].substring(0, 10));
+
+        if (arrayOfDates.length > 1) {
+            // timestamp for second-end date
+            Timestamp tsEndDate = Timestamp.valueOf(arrayOfDates[1].substring(0, 10));
+            List<Repair> repairs = repairRepository.findByDateIsBetweenAndStateEquals(tsBeginDate, tsEndDate, State.ONGOING);
+            return repairs;
         }
-        List<Repair> repairs = getAllRepairs();
-        /*TODO*/
-        return null;
+
+        List<Repair> repairs = repairRepository.findByDateIsBetweenAndStateEquals(tsBeginDate, tsBeginDate, State.ONGOING);
+        return repairs;
     }
 
     @Override

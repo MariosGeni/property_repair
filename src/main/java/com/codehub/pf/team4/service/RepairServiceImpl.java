@@ -44,7 +44,7 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public Optional<Repair> updateRepair(Repair toBeUpdatedRepair) {
         Long repairId = toBeUpdatedRepair.getId();
-        if( repairId == null || getRepairById(repairId).isEmpty()){
+        if (repairId == null || getRepairById(repairId).isEmpty()) {
             return Optional.empty();
         }
         return Optional.of(repairRepository.save(toBeUpdatedRepair));
@@ -52,16 +52,11 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public void deleteRepairById(Long repairId) {
-        if(repairId == null || getRepairById(repairId).isEmpty()){
+        if (repairId == null || getRepairById(repairId).isEmpty()) {
             System.out.println("User not found");
             return;
         }
         repairRepository.deleteById(repairId);
-    }
-
-    @Override
-    public List<Repair> getRepairByUserAfm(Integer afm) {
-        return repairRepository.findAllByAfm(afm);
     }
 
     private boolean isToday(Timestamp theDate, Timestamp now) {
@@ -75,9 +70,9 @@ public class RepairServiceImpl implements RepairService {
         String timeEnd = "20:00:00";
 
         // If its not happening this day bb!
-        if(!dateNow.equals(dateTheDate)) return false;
+        if (!dateNow.equals(dateTheDate)) return false;
 
-        /* System.out.println("dateTheDate: \"" + dateTheDate + "\" | dateNow: \"" + dateNow + "\" | timeTheDate: \"" + timeTheDate +
+        /*System.out.println("dateTheDate: \"" + dateTheDate + "\" | dateNow: \"" + dateNow + "\" | timeTheDate: \"" + timeTheDate +
                     "\" | timeStart: \"" + timeStart + "\" | timeEnd: \"" + timeEnd + "\"");*/
 
         // if the time is between the working hours

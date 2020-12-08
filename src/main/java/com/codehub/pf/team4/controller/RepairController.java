@@ -31,6 +31,6 @@ public class RepairController {
     @GetMapping("repair")
     @ResponseBody
     public List<Repair> getRepairs() {
-        return repairRepository.findAllByAfm(123456789);
+        return userRepository.findRepairsByAfm(123456789);
     }
 }

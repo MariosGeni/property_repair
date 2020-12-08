@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.service;
 
+import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,16 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<Repair> getRepairsByUserAfm(Integer afm) {
+        return userRepository.findRepairsByAfm(afm);
+    }
+
+    @Override
+    public List<Repair> getRepairsByUserEmail(String email) {
+        return userRepository.findRepairsByUserEmail(email);
+    }
+
+    @Override
     public User addUser(User user) {
         return userRepository.save(user);
     }
@@ -38,10 +49,15 @@ public class UserServiceImpl implements UserService{
     public void deleteById(Long id) {
         // if id is empty or user paired with this id doesn't exist
         if (id == null || findUserById(id).isEmpty()) {
-            System.out.println("id not found"); // display a simple message
+            System.out.println("Id is null or user not found"); // display a simple message
             return;
         }
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Repair> getRepairsByUserId(Long id) {
+        return userRepository.findRepairsByUserId(id);
     }
 
     @Override

@@ -17,7 +17,5 @@ public interface RepairService {
 
     void deleteRepairById(Long repairId);
 
-    List<Repair> getRepairByUserAfm(Integer afm);
-
     List<Repair> getOngoingRepairsOfTheDay();
 }

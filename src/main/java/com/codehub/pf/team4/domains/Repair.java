@@ -2,6 +2,7 @@ package com.codehub.pf.team4.domains;
 
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -35,6 +36,7 @@ public class Repair {
     @Column(name = "address", columnDefinition = "NVARCHAR(255)")
     private String address;
 
+    @JsonIgnore
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
     private User user;

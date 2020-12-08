@@ -43,7 +43,7 @@ public class AdminController {
         // --- search code here --- //
         Optional<User> owner = Optional.empty();
         if(!afm.equals("")) {
-            owner = model.addAttribute(userService.findUserByAfm(afm));
+            owner = userService.findUserByAfm(afm);
             model.addAttribute("owner", owner);
             owner = userService.findUserByEmail(email);
         }

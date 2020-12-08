@@ -27,6 +27,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public Optional<User> updateUser(User toBeUpdatedUser) {
+        Long userId = toBeUpdatedUser.getId();
+        if (userId == null || findUserById(userId).isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(userRepository.save(toBeUpdatedUser));
+    }
+
+    @Override
     public Optional<User> findUserByEmail(String email) {
         return userRepository.findByEmail(email);
     }

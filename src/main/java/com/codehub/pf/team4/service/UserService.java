@@ -23,6 +23,9 @@ public interface UserService {
     // add user
     User addUser(User user);
 
+    // update user
+    Optional<User> updateUser(User user);
+
     // delete user by id
     void deleteById(Long id);
 

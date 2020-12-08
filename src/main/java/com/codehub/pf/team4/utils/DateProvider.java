@@ -24,9 +24,4 @@ public abstract class DateProvider {
     private static Timestamp getFinalTime(SimpleDateFormat sdf, String today) throws Exception {
         return new Timestamp(SDF.parse(today).getTime());
     }
-
-    private static Timestamp getSDF(Timestamp sdf, String today) throws Exception {
-        return new Timestamp(SDF.parse(today).getTime());
-    }
-
 }

@@ -14,6 +14,9 @@ import java.util.Optional;
 @RequestMapping("/admin")
 public class OwnerController {
 
+    private final String OWNER = "owner";
+    private final String IS_PRESENT = "isPresent";
+
     @Autowired
     UserService userService;
 
@@ -36,8 +39,8 @@ public class OwnerController {
     public String postAdminOwner(@RequestBody User owner, Model model) {
         // --- create code here --- //
         User newOwner = userService.addUser(owner);
-        model.addAttribute("owner", newOwner);
-        model.addAttribute("isPresent", newOwner != null);
+        model.addAttribute(OWNER, newOwner);
+        model.addAttribute(IS_PRESENT, newOwner != null);
 
         return "admin-search-owners-view";
     }
@@ -46,14 +49,12 @@ public class OwnerController {
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm, @RequestParam(value = "email", defaultValue = "") String email) {
         // --- search code here --- //
         Optional<User> owner = Optional.empty();
-        if(!afm.equals("")) {
-            owner = userService.findUserByAfm(afm);
-            model.addAttribute("owner", owner);
-            owner = userService.findUserByEmail(email);
-        }
 
-        model.addAttribute("owner", owner);
-        model.addAttribute("isPresent", owner.isPresent());
+        if(!afm.equals("")) owner = userService.findUserByAfm(afm);
+         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
+
+        model.addAttribute(OWNER, owner);
+        model.addAttribute(IS_PRESENT, owner.isPresent());
         return "admin-search-owners-view";
     }
 
@@ -61,8 +62,8 @@ public class OwnerController {
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<User> theOwner = userService.findUserById(id);
 
-        model.addAttribute("owner", theOwner.orElse(null));
-        model.addAttribute("isPresent", theOwner.isPresent());
+        model.addAttribute(OWNER, theOwner.orElse(null));
+        model.addAttribute(IS_PRESENT, theOwner.isPresent());
 
         return "admin-edit-owners-view";
     }
@@ -71,8 +72,8 @@ public class OwnerController {
     public String putAdminEditOwnersPage(@RequestBody User owner, Model model) {
         Optional<User> theOwner = userService.updateUser(owner);
 
-        model.addAttribute("owner", theOwner.orElse(null));
-        model.addAttribute("isPresent", theOwner.isPresent());
+        model.addAttribute(OWNER, theOwner.orElse(null));
+        model.addAttribute(IS_PRESENT, theOwner.isPresent());
 
         return "admin-search-owners-view";
     }

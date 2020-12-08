@@ -9,13 +9,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
 public class RepairController {
+
+    private final String REPAIR = "repair";
+    private final String REPAIRS = "repair";
+    private final String IS_PRESENT = "isPresent";
 
     @Autowired
     UserService userService;
@@ -27,70 +31,62 @@ public class RepairController {
     // ======================== REPAIRS ================== //
     // *************************************************** //
 
-    @GetMapping
-    @ResponseBody
-    public List<Repair> getRepairs() {
-        return userService.getRepairsByUserAfm(123456789);
-    }
-
-    @GetMapping("repairs")
-    @ResponseBody
-    public List<Repair> getAllRepairs() {
-        return repairService.getAllRepairs();
-    }
-
-    @GetMapping(value = "/repairs")
-    public String getAdminRepairsPage() {
+    @GetMapping(value = "repairs")
+    public String getAdminRepairsPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
+                                      @RequestParam(value = "date", defaultValue = "") String date) {
         // --- repairs showcase here --- //
+        model.addAttribute(REPAIRS, repairService.getAllRepairs());
         return "admin-repairs-view";
     }
 
-    @GetMapping(value = "/repairs/search") // Search 'repairs/user' by 'date' queryString
-    public String getAdminSearchRepairPage(@RequestParam(value = "date", defaultValue = "") String date) {
+    @GetMapping(value = "repairs/search") // Search 'repairs/user' by 'date' queryString
+    public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
+                                           @RequestParam(value = "date", defaultValue = "") String date) {
         // --- search code here --- //
-        return "search-repair-view";
+        List<Repair> repairs = new ArrayList();
+
+        if(!afm.equals("")) repairs = userService.getRepairsByUserAfm(afm);
+        else if(!date.equals(""))  repairs = repairService.getRepairsByDate(date);
+
+        model.addAttribute(REPAIRS, repairs);
+        model.addAttribute(IS_PRESENT, repairs.size() > 0);
+        return "admin-search-repairs-view";
     }
 
-    @GetMapping(value = "/repairs/edit/{id}") // Edit repair by its id
+    @GetMapping(value = "repairs/edit/{id}") // Edit repair by its id
+    public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
+        Optional<Repair> theRepair = repairService.getRepairById(id);
+
+        model.addAttribute(REPAIR, theRepair.orElse(null));
+        model.addAttribute(IS_PRESENT, theRepair.isPresent());
+
+        return "admin-edit-repairs-view";
+    }
+
+    @RequestMapping(value = "repairs/edit/{id}", method = RequestMethod.PUT) // Edit repair by its id
     public String putRepairEditOwnersPage(@RequestBody Repair repair, Model model) {
         Optional<Repair> theRepair = repairService.updateRepair(repair);
 
-        model.addAttribute("repair", theRepair.orElse(null));
-        model.addAttribute("isPresent", theRepair.isPresent());
+        model.addAttribute(REPAIRS, theRepair.orElse(null));
+        model.addAttribute(IS_PRESENT, theRepair.isPresent());
 
-        return "repair-search-owners-view";
+        return "admin-search-repairs-view";
     }
 
-
-    @GetMapping(value = "/repairs/edit/{id}") // Edit repair by its id
-    public String getRepairsEditRepairsPage(@PathVariable("id") Long id, Model model) {
-        Optional<Repair> theRepair = repairService.getRepairById(id);
-
-        theRepair.ifPresent(repair -> { // if repair not null add to model
-            model.addAttribute("repair", repair);
-        });
-
-        return "edit-repair-view";
-    }
-
-    @PostMapping("/repairs/add")
+    @PostMapping("repairs")
     public String postRepair(@RequestBody Repair repair, Model model) {
         // --- create code here --- //
         Optional<Repair> newRepair = repairService.postRepair(repair);
 
-        model.addAttribute("repair", newRepair);
-        // if repair exists add to model
-        newRepair.ifPresent(m_repair -> {
-            model.addAttribute("repairIfPresent", m_repair);
-        });
+        model.addAttribute(REPAIR, newRepair.orElse(null));
+        model.addAttribute(IS_PRESENT, newRepair.isPresent());
 
-        return "add-repairs-view";
+        return "admin-search-repairs-view";
     }
 
-    @RequestMapping("/repairs/delete/{id}")
+    @RequestMapping("/repairs/{id}", method = RequestMethod.DELETE)
     public String deleteRepair(@PathVariable("id") Long id) {
         repairService.deleteRepairById(id);
-        return "delete-repair-view";
+        return "admin-repair-view";
     }
-
 }

@@ -24,7 +24,7 @@ public class AdminController {
     // *************************************************** //
 
     @GetMapping(value = {"", "home"})
-    public String getAdminHome(Model model) {
+    public String getAdminHome(Model model) throws Exception{
         model.addAttribute("activeRepairs", repairService.getOngoingRepairsOfTheDay());
         return "admin-home-view";
     }

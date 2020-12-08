@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<User> findUserByAfm(String afm) {
-        int intAfm = Integer.parseInt(afm);
+        Integer intAfm = Integer.parseInt(afm);
         return userRepository.findByAfm(intAfm);
     }
 
@@ -41,8 +41,9 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Repair> getRepairsByUserAfm(Integer afm) {
-        return userRepository.findRepairsByAfm(afm);
+    public List<Repair> getRepairsByUserAfm(String afm) {
+        Integer intAfm = Integer.parseInt(afm);
+        return userRepository.findRepairsByAfm(intAfm);
     }
 
     @Override

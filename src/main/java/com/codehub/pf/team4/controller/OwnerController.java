@@ -46,7 +46,8 @@ public class OwnerController {
     }
 
     @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString
-    public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm, @RequestParam(value = "email", defaultValue = "") String email) {
+    public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
+                                          @RequestParam(value = "email", defaultValue = "") String email) {
         // --- search code here --- //
         Optional<User> owner = Optional.empty();
 

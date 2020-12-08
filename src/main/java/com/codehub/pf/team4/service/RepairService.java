@@ -17,5 +17,5 @@ public interface RepairService {
 
     void deleteRepairById(Long repairId);
 
-    List<Repair> getOngoingRepairsOfTheDay();
+    List<Repair> getOngoingRepairsOfTheDay() throws Exception;
 }

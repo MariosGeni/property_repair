@@ -84,7 +84,7 @@ public class RepairController {
         return "admin-search-repairs-view";
     }
 
-    @RequestMapping("/repairs/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "repairs/{id}", method = RequestMethod.DELETE)
     public String deleteRepair(@PathVariable("id") Long id) {
         repairService.deleteRepairById(id);
         return "admin-repair-view";

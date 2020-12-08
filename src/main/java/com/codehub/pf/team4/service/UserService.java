@@ -33,7 +33,7 @@ public interface UserService {
     List<Repair> getRepairsByUserId(Long id);
 
     // given an afm number, get all repairs related with the user
-    List<Repair> getRepairsByUserAfm(Integer afm);
+    List<Repair> getRepairsByUserAfm(String afm);
 
     // given an email, get all repairs related with the user
     List<Repair> getRepairsByUserEmail(String email);

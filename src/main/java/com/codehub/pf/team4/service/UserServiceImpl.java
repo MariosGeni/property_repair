@@ -21,8 +21,18 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> findUserByAfm(Integer afm) {
-        return userRepository.findByAfm(afm);
+    public Optional<User> findUserByAfm(String afm) {
+        int intAfm = Integer.parseInt(afm);
+        return userRepository.findByAfm(intAfm);
+    }
+
+    @Override
+    public Optional<User> updateUser(User toBeUpdatedUser) {
+        Long userId = toBeUpdatedUser.getId();
+        if (userId == null || findUserById(userId).isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(userRepository.save(toBeUpdatedUser));
     }
 
     @Override

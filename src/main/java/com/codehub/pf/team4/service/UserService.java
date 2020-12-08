@@ -15,13 +15,16 @@ public interface UserService {
     Optional<User> findUserById(Long id);
 
     // find user by afm
-    Optional<User> findUserByAfm(Integer afm);
+    Optional<User> findUserByAfm(String afm);
 
     // find user by email
     Optional<User> findUserByEmail(String email);
 
     // add user
     User addUser(User user);
+
+    // update user
+    Optional<User> updateUser(User user);
 
     // delete user by id
     void deleteById(Long id);

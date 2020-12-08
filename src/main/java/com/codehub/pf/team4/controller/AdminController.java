@@ -16,31 +16,40 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
+
     @Autowired
     UserService userService;
 
     @Autowired
     RepairService repairService;
 
-    @GetMapping(value = "")
-    @ResponseBody
-    public List<Repair> getAdminHome() {
-        return repairService.getOngoingRepairsOfTheDay();
-        // return "admin-home-view";
+    @GetMapping(value = {"", "home"})
+    public String getAdminHome(Model model) {
+        model.addAttribute("activeRepairs", repairService.getOngoingRepairsOfTheDay());
+        return "admin-home-view";
     }
 
     @GetMapping(value = "/owners")
-    @ResponseBody
-    public String getAdminOwnersPage() {
+    public String getAdminOwnersPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
+                                     @RequestParam(value = "email", defaultValue = "") String email) {
         // --- owners showcase here --- //
+        model.addAttribute("owners", userService.getAllUsers());
         return "admin-owners-view";
     }
 
     @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString
-    @ResponseBody
-    public String getAdminSearchOwnerPage(@RequestParam(value = "afm", defaultValue = "") String afm,
+    public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
         // --- search code here --- //
+        Optional<User> owner = Optional.empty();
+        if(!afm.equals("")) {
+            owner = model.addAttribute(userService.findUserByAfm(afm));
+            model.addAttribute("owner", owner);
+            owner = userService.findUserByEmail(email);
+        }
+
+        model.addAttribute("owner", owner);
+        model.addAttribute("isPresent", owner.isPresent());
         return "admin-owners-view";
     }
 

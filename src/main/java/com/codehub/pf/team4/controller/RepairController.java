@@ -16,21 +16,4 @@ import java.util.List;
 @RequestMapping("/")
 public class RepairController {
 
-    @Autowired
-    private RepairRepository repairRepository;
-
-    @Autowired
-    private UserRepository userRepository;
-
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("username", "Niazi");
-        return "hello";
-    }
-
-    @GetMapping("repair")
-    @ResponseBody
-    public List<Repair> getRepairs() {
-        return userRepository.findRepairsByAfm(123456789);
-    }
 }

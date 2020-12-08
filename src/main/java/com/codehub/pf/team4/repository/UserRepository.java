@@ -16,10 +16,12 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findByAfm(Integer afm);
     Optional<User> findByEmail(String email);
 
-   @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.afm = (:afm)")
+    @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.afm = (:afm)")
     List<Repair> findRepairsByAfm(@Param("afm") Integer afm);
 
     @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.id = (:id)")
     List<Repair> findRepairsByUserId(@Param("id") Long id);
 
+    @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.email = (:email)")
+    List<Repair> findRepairsByUserEmail(@Param("email") String email);
 }

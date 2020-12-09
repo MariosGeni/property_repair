@@ -14,7 +14,7 @@ public abstract class DateProvider {
 
     public static Timestamp getEndOfDay() throws Exception{
         String today = theDay() + " 23:59:59";
-        return  getFinalTime(SDF, today);
+        return getFinalTime(SDF, today);
     }
 
     private static String theDay() {

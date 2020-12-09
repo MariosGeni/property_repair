@@ -18,7 +18,7 @@ import java.util.Optional;
 public class RepairController {
 
     private final String REPAIR = "repair";
-    private final String REPAIRS = "repair";
+    private final String REPAIRS = "repairs";
     private final String IS_PRESENT = "isPresent";
 
     @Autowired

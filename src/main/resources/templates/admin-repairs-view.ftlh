@@ -1,41 +1,42 @@
 <html lang="en">
     <head>
         <#include "partials/html-header-partial.ftlh">
-        <title>Admin - Home</title>
+        <title>Admin - Repairs</title>
     </head>
     <body>
-        <a href="/admin/owners">Owners</a>
-        <a href="/admin/repairs">Repairs</a>
+        <!-- header here -->
 
+        <!-- content here -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Today's Repairs</h1>
+                    <h1>Repairs</h1>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12">
-                    <#if activeRepairs?has_content && activeRepairs?is_sequence>
+                    <#if repairs?has_content && repairs?is_sequence>
                         <table class="table table-dark table-striped">
                             <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>Date</th>
                                     <th>Address</th>
+                                    <th>Type</th>
                                     <th>State</th>
-                                    <th>User ID</th>
+                                    <th>Owner</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                            <#list activeRepairs as repair>
+                            <#list repairs as repair>
                                 <tr>
-                                    <td>${repair_index + 1}</td>
+                                    <td>${repair.id}</td>
                                     <td>${repair.date}</td>
                                     <td>${repair.address}</td>
+                                    <td>${repair.repairType}</td>
                                     <td>${repair.state}</td>
-                                    <td>${repair.user.id}</td>
+                                    <td>${repair.user.firstName}, ${repair.user.lastName}</td>
                                 </tr>
                             </#list>
                             </tbody>
@@ -44,5 +45,7 @@
                 </div>
             </div>
         </div>
+
+        <!-- footer here -->
     </body>
 </html>

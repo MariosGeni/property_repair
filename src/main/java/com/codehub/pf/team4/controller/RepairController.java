@@ -18,7 +18,7 @@ import java.util.Optional;
 public class RepairController {
 
     private final String REPAIR = "repair";
-    private final String REPAIRS = "repair";
+    private final String REPAIRS = "repairs";
     private final String IS_PRESENT = "isPresent";
 
     @Autowired
@@ -32,11 +32,17 @@ public class RepairController {
     // *************************************************** //
 
     @GetMapping(value = "repairs")
-    public String getAdminRepairsPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
-                                      @RequestParam(value = "date", defaultValue = "") String date) {
+    public String getAdminRepairsPage(Model model) {
         // --- repairs showcase here --- //
         model.addAttribute(REPAIRS, repairService.getAllRepairs());
         return "admin-repairs-view";
+    }
+
+    @GetMapping(value = "repairs/{id}")
+    public String getAdminRepairPage(Model model, @PathVariable("id") Long id) {
+        // --- repairs showcase here --- //
+        model.addAttribute(REPAIR, repairService.getRepairById(id));
+        return "admin-repair-view";
     }
 
     @GetMapping(value = "repairs/search") // Search 'repairs/user' by 'date' queryString
@@ -63,30 +69,30 @@ public class RepairController {
         return "admin-edit-repairs-view";
     }
 
-    @RequestMapping(value = "repairs/edit/{id}", method = RequestMethod.PUT) // Edit repair by its id
-    public String putRepairEditOwnersPage(@RequestBody Repair repair, Model model) {
-        Optional<Repair> theRepair = repairService.updateRepair(repair);
 
-        model.addAttribute(REPAIRS, theRepair.orElse(null));
-        model.addAttribute(IS_PRESENT, theRepair.isPresent());
-
-        return "admin-search-repairs-view";
-    }
 
     @PostMapping("repairs")
     public String postRepair(@RequestBody Repair repair, Model model) {
         // --- create code here --- //
         Optional<Repair> newRepair = repairService.postRepair(repair);
 
-        model.addAttribute(REPAIR, newRepair.orElse(null));
-        model.addAttribute(IS_PRESENT, newRepair.isPresent());
+        if(newRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
 
-        return "admin-search-repairs-view";
+        return "redirect:/admin/repairs/" + newRepair.get().getId();
     }
 
-    @RequestMapping(value = "repairs/{id}", method = RequestMethod.DELETE)
+    @PutMapping(value = "repairs/{id}") // Edit repair by its id
+    public String putRepairEditOwnersPage(@RequestBody Repair repair, Model model) {
+        Optional<Repair> theRepair = repairService.updateRepair(repair);
+
+        if(theRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
+
+        return "redirect:/admin/repairs/" + theRepair.get().getId();
+    }
+
+    @DeleteMapping(value = "repairs/{id}")
     public String deleteRepair(@PathVariable("id") Long id) {
         repairService.deleteRepairById(id);
-        return "admin-repair-view";
+        return "redirect:/admin/repairs";
     }
 }

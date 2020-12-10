@@ -1,3 +1,4 @@
+<#import "partials/repair-partial.ftlh" as repairComponent />
 <html lang="en">
     <head>
         <#include "partials/html-header-partial.ftlh">
@@ -41,6 +42,20 @@
                             </tbody>
                         </table>
                     </#if>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12" style="overflow: auto">
+                    <@repairComponent.repairList repairs=activeRepairs />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <@repairComponent.repairSingle repair=activeRepairs[0] />
                 </div>
             </div>
         </div>

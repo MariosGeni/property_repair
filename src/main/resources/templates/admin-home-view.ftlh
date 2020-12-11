@@ -16,46 +16,16 @@
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" style="overflow-x: auto;">
                     <#if activeRepairs?has_content && activeRepairs?is_sequence>
-                        <table class="table table-dark table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Date</th>
-                                    <th>Address</th>
-                                    <th>State</th>
-                                    <th>User ID</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                            <#list activeRepairs as repair>
-                                <tr>
-                                    <td>${repair_index + 1}</td>
-                                    <td>${repair.date}</td>
-                                    <td>${repair.address}</td>
-                                    <td>${repair.state}</td>
-                                    <td>${repair.user.id}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
+                        <@repairComponent.repairList activeRepairs/>
                     </#if>
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12" style="overflow: auto">
-                    <@repairComponent.repairList repairs=activeRepairs />
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-12">
-                    <@repairComponent.repairSingle repair=activeRepairs[0] />
+                    <@repairComponent.repairSingle activeRepairs[0] />
                 </div>
             </div>
         </div>

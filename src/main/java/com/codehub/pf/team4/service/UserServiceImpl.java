@@ -4,8 +4,8 @@ import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.mappers.RepairMapper;
 import com.codehub.pf.team4.mappers.UserMapper;
-import com.codehub.pf.team4.model.RepairModel;
-import com.codehub.pf.team4.model.UserModel;
+import com.codehub.pf.team4.models.RepairModel;
+import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService{
     public List<UserModel> getAllUsers() {
         return userRepository.findAll()
                 .stream()
-                .map(repair -> UserMapper.mapToUserModel(new User()))
+                .map(user -> UserMapper.mapToUserModel(user))
                 .collect(Collectors.toList());
     }
 }

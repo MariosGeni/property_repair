@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.model;
+package com.codehub.pf.team4.models;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -45,4 +45,18 @@ public class User {
     @JsonIgnore
     private List<Repair> repairs;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", afm=" + afm +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", password='" + password + '\'' +
+                ", houseType=" + houseType +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

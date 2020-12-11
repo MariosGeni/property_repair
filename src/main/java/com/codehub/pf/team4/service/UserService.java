@@ -1,8 +1,8 @@
 package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.forms.UserForm;
-import com.codehub.pf.team4.model.RepairModel;
-import com.codehub.pf.team4.model.UserModel;
+import com.codehub.pf.team4.models.RepairModel;
+import com.codehub.pf.team4.models.UserModel;
 
 import java.util.List;
 import java.util.Optional;

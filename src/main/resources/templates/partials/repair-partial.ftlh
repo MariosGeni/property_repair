@@ -1,5 +1,4 @@
 <#macro repairList repairs>
-    <h3>Repairs List (macro call repairList)</h3>
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -7,18 +6,24 @@
                 <th>Date</th>
                 <th>Address</th>
                 <th>State</th>
-                <th>User ID</th>
+                <th>Repair Type</th>
+                <th>Cost</th>
+                <th>Owner</th>
+                <th>Description</th>
             </tr>
         </thead>
 
         <tbody>
         <#list repairs as repair>
             <tr>
-                <td>${repair_index + 1}</td>
+                <td>${repair.id}</td>
                 <td>${repair.date}</td>
                 <td>${repair.address}</td>
                 <td>${repair.state}</td>
-                <td>${repair.user.id}</td>
+                <td>${repair.repairType}</td>
+                <td>${repair.cost} &euro;</td>
+                <td>${repair.user}</td>
+                <td>${repair.description}</td>
             </tr>
         </#list>
         </tbody>
@@ -26,28 +31,35 @@
 </#macro>
 
 <#macro repairSingle repair>
-    <h3>Repair Single (macro call repairSingle)</h3>
     <table class="table table-dark table-striped">
         <tbody>
-            <tr>
-                <td class="font-weight-bold">ID</td>
-                <td>${repair.id}</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Date</td>
-                <td>${repair.date}</td>
-            </tr>
-            <tr>
-                <td class="font-weight-bold">Address</td>
-                <td>${repair.address}</td>
-            </tr>
+        <tr>
+            <td class="font-weight-bold">#</td>
+            <td>${repair.id}</td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">Date</td>
+            <td>${repair.date}</td>
+        </tr>
             <tr>
                 <td class="font-weight-bold">State</td>
                 <td>${repair.state}</td>
             </tr>
             <tr>
-                <td class="font-weight-bold">User ID</td>
-                <td>${repair.user.id}</td>
+                <td class="font-weight-bold">Repair Type</td>
+                <td>${repair.repairType}</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Cost</td>
+                <td>${repair.cost} &euro;</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Owner</td>
+                <td>${repair.user}</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Description</td>
+                <td>${repair.description}</td>
             </tr>
         </tbody>
     </table>

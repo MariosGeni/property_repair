@@ -1,7 +1,7 @@
 package com.codehub.pf.team4.mappers;
 
 import com.codehub.pf.team4.domains.User;
-import com.codehub.pf.team4.model.UserModel;
+import com.codehub.pf.team4.models.UserModel;
 
 public abstract class UserMapper {
 
@@ -12,8 +12,10 @@ public abstract class UserMapper {
         userModel.setLastName(user.getLastName());
         userModel.setEmail(user.getEmail());
         userModel.setId(user.getId());
+        userModel.setAfm(user.getAfm());
         userModel.setAddress(user.getAddress());
         userModel.setPhoneNumber(user.getPhoneNumber());
+
         return userModel;
     }
 }

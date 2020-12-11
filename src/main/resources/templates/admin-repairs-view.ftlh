@@ -1,3 +1,4 @@
+<#import "partials/repair-partial.ftlh" as repairComponent>
 <html lang="en">
     <head>
         <#include "partials/html-header-partial.ftlh">
@@ -15,32 +16,9 @@
             </div>
 
             <div class="row">
-                <div class="col-12">
+                <div class="col-12" style="overflow-x: auto;">
                     <#if repairs?has_content && repairs?is_sequence>
-                        <table class="table table-dark table-striped">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Date</th>
-                                    <th>Address</th>
-                                    <th>Type</th>
-                                    <th>State</th>
-                                    <th>Owner</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <#list repairs as repair>
-                                <tr>
-                                    <td>${repair.id}</td>
-                                    <td>${repair.date}</td>
-                                    <td>${repair.address}</td>
-                                    <td>${repair.repairType}</td>
-                                    <td>${repair.state}</td>
-                                    <td>${repair.user.firstName}, ${repair.user.lastName}</td>
-                                </tr>
-                            </#list>
-                            </tbody>
-                        </table>
+                        <@repairComponent.repairList repairs />
                     </#if>
                 </div>
             </div>

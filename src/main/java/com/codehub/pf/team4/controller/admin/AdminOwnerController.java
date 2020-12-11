@@ -2,7 +2,7 @@ package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
-import com.codehub.pf.team4.model.UserModel;
+import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.validators.UserValidator;
@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,7 +21,6 @@ public class AdminOwnerController {
 
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
-    private final String IS_PRESENT = "isPresent";
     private final String USER_FORM = "userForm";
 
     @Autowired
@@ -46,14 +44,15 @@ public class AdminOwnerController {
     @GetMapping(value = "/owners")
     public String getAdminOwnersPage(Model model) {
         // --- owners showcase here --- //
-        model.addAttribute(OWNERS, userService.getAllUsers());
+        List<UserModel> owners = userService.getAllUsers();
+        model.addAttribute(OWNERS, owners);
         return "admin-owners-view";
     }
 
     @GetMapping(value = "/owners/{id}")
     public String getAdminOwnerPage(@PathVariable("id") Long id, Model model) {
         // --- owners showcase here --- //
-        model.addAttribute("owners", userService.findUserById(id));
+        model.addAttribute(OWNERS, userService.findUserById(id));
         return "admin-owner-view";
     }
 
@@ -66,8 +65,7 @@ public class AdminOwnerController {
         if(!afm.equals("")) owner = userService.findUserByAfm(afm);
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
 
-        model.addAttribute(OWNER, owner);
-        model.addAttribute(IS_PRESENT, owner.isPresent());
+        model.addAttribute(OWNER, owner.orElse(null));
         return "admin-search-owners-view";
     }
 

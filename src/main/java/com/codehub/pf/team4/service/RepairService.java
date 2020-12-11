@@ -1,7 +1,7 @@
 package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.forms.RepairForm;
-import com.codehub.pf.team4.model.RepairModel;
+import com.codehub.pf.team4.models.RepairModel;
 
 import java.util.List;
 import java.util.Optional;

@@ -2,7 +2,7 @@ package com.codehub.pf.team4.utils.validators;
 
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
-import com.codehub.pf.team4.model.UserModel;
+import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

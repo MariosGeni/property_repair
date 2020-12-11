@@ -1,9 +1,8 @@
 package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.Repair;
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.RepairForm;
-import com.codehub.pf.team4.model.RepairModel;
+import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.validators.RepairValidator;

@@ -3,8 +3,8 @@ package com.codehub.pf.team4.utils.validators;
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
-import com.codehub.pf.team4.model.RepairModel;
-import com.codehub.pf.team4.model.UserModel;
+import com.codehub.pf.team4.models.RepairModel;
+import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,6 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import java.util.Arrays;
-import java.util.EnumSet;
 import java.util.Optional;
 
 @Component

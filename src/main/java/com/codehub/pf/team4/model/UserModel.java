@@ -14,7 +14,6 @@ public class UserModel {
     private Long phoneNumber;
     private String email;
 
-
     public UserModel(Long id, String email, Integer afm) {
         this.id = id;
         this.email = email;

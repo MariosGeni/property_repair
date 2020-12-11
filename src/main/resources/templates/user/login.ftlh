@@ -9,7 +9,6 @@
       </head>
 
       <body>
-
           <section class="container-fluid bg">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">

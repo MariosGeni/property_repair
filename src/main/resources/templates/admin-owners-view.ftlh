@@ -34,12 +34,12 @@
                             <#list owners as owner>
                                 <tr>
                                     <td>${owner.id}</td>
-                                    <td>${owner.afm?String}?c</td>
+                                    <td>${owner.afm?c}</td>
                                     <td>${owner.firstName}</td>
                                     <td>${owner.lastName}</td>
                                     <td>${owner.email}</td>
                                     <td>${owner.address}</td>
-                                    <td>${owner.phoneNumber}?c</td>
+                                    <td>${owner.phoneNumber?c}</td>
                                     <td>${owner.houseType}</td>
                                 </tr>
                             </#list>

@@ -2,6 +2,10 @@ package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.form.UserForm;
+import com.codehub.pf.team4.mapper.UserFormToUserMapper;
+import com.codehub.pf.team4.mapper.UserToUserModelMapper;
+import com.codehub.pf.team4.model.UserModel;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +18,12 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private UserFormToUserMapper userMapper;
+
+    @Autowired
+    private UserToUserModelMapper userModelMapper;
 
     @Override
     public Optional<User> findUserById(Long id) {
@@ -49,6 +59,13 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<Repair> getRepairsByUserEmail(String email) {
         return userRepository.findRepairsByUserEmail(email);
+    }
+
+    @Override
+    public UserModel createUser(UserForm userForm) {
+        User user = userMapper.map(userForm);
+        User newUser = userRepository.save(user);
+        return userModelMapper.map(newUser);
     }
 
     @Override

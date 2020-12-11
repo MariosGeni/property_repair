@@ -2,6 +2,8 @@ package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.form.UserForm;
+import com.codehub.pf.team4.model.UserModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,4 +39,6 @@ public interface UserService {
 
     // given an email, get all repairs related with the user
     List<Repair> getRepairsByUserEmail(String email);
+
+    UserModel createUser(UserForm userForm);
 }

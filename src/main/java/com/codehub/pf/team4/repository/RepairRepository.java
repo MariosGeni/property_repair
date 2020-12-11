@@ -12,4 +12,5 @@ import java.util.List;
 public interface RepairRepository extends JpaRepository<Repair, java.lang.Long> {
     //@Query("SELECT r FROM Repair r WHERE (r.date BETWEEN :start AND :end) AND state = :state")/// Tha mas ferei ta repairs ths hmeras
     List<Repair> findByDateIsBetweenAndStateEquals(Timestamp start, Timestamp end, State state);
+    List<Repair> findByDateIsBetween(Timestamp start, Timestamp end);
 }

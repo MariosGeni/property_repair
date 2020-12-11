@@ -52,11 +52,11 @@ public class RepairServiceImpl implements RepairService {
         if (arrayOfDates.length > 1) {
             // timestamp for second-end date
             Timestamp tsEndDate = Timestamp.valueOf(arrayOfDates[1].substring(0, 10));
-            List<Repair> repairs = repairRepository.findByDateIsBetweenAndStateEquals(tsBeginDate, tsEndDate, State.ONGOING);
+            List<Repair> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsEndDate);
             return repairs;
         }
 
-        List<Repair> repairs = repairRepository.findByDateIsBetweenAndStateEquals(tsBeginDate, tsBeginDate, State.ONGOING);
+        List<Repair> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsBeginDate);
         return repairs;
     }
 

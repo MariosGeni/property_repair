@@ -77,7 +77,7 @@ public class AdminOwnerController {
 
         model.addAttribute(OWNER, theOwner.orElse(null));
 
-        return "admin-edit-owners-view";
+        return "pages/admin-edit-owners-view";
     }
 
     @PostMapping("/owners")

@@ -28,7 +28,7 @@ public interface UserService {
     Optional<UserModel> updateUser(UserForm user);
 
     // delete user by id
-    void deleteById(Long id);
+    boolean deleteById(Long id);
 
     // given a user id, find all repairs for that user
     List<RepairModel> getRepairsByUserId(Long id);

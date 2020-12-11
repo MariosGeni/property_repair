@@ -41,4 +41,18 @@ public class Repair {
 
     @Column(name = "description")
     private String description;
+
+    @Override
+    public String toString() {
+        return "Repair{" +
+                "id=" + id +
+                ", date =" + date +
+                ", state ='" + state + '\'' +
+                ", repair_type ='" + repairType + '\'' +
+                ", cost ='" + cost + '\'' +
+                ", address =" + address +
+                ", user ='" + user + '\'' +
+                ", description =" + description +
+                '}';
+    }
 }

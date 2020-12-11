@@ -70,18 +70,19 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteById(Long id) {
+    public boolean deleteById(Long id) {
         // if id is empty or user paired with this id doesn't exist
         if (id == null || findUserById(id).isEmpty()) {
             System.out.println("Id is null or user not found"); // display a simple message
-            return;
+            return false; // deletion unsuccessful
         }
+
         userRepository.deleteById(id);
+        return true;
     }
 
     @Override
     public List<RepairModel> getRepairsByUserId(Long id) {
-        //return userRepository.findRepairsByUserId(id);
         return userRepository.findRepairsByUserId(id)
                 .stream()
                 .map(repair -> RepairMapper.mapToRepairModel(repair))

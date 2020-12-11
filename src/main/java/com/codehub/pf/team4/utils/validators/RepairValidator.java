@@ -8,6 +8,7 @@ import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
@@ -15,6 +16,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.Optional;
 
+@Component
 public class RepairValidator implements Validator {
 
     @Autowired

@@ -2,6 +2,9 @@ package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.enums.State;
+import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.mappers.RepairMapper;
+import com.codehub.pf.team4.model.RepairModel;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +26,24 @@ public class RepairServiceImpl implements RepairService {
     private RepairRepository repairRepository;
 
     @Override
-    public List<Repair> getAllRepairs() {
-        return repairRepository.findAll();
+    public List<RepairModel> getAllRepairs() {
+        return repairRepository.findAll()
+                .stream()
+                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Repair> getRepairById(java.lang.Long id) {
-        return repairRepository.findById(id);
+    public Optional<RepairModel> getRepairById(Long id) {
+        return Optional.of(RepairMapper.mapToRepairModel(repairRepository.findById(id).orElse(null)));
     }
 
     @Override
-    public List<Repair> getOngoingRepairsOfTheDay() throws Exception {
-        return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getStartOfDay(), DateProvider.getEndOfDay(), State.ONGOING);
+    public List<RepairModel> getOngoingRepairsOfTheDay() throws Exception {
+        return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getStartOfDay(), DateProvider.getEndOfDay(), State.ONGOING)
+                .stream()
+                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
         /* return repairRepository.findAll().stream()
                 .filter(repair -> isToday(repair.getDate(), now))
                 .filter(repair -> repair.getState() == State.ONGOING)
@@ -42,7 +51,7 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public List<Repair> getRepairsByDate(String wholeDate) {
+    public List<RepairModel> getRepairsByDate(String wholeDate) {
         // if the date value is null
         if (wholeDate.equals("")) { return null; }
         String[] arrayOfDates = wholeDate.split("/", 2);
@@ -53,33 +62,43 @@ public class RepairServiceImpl implements RepairService {
             // timestamp for second-end date
             Timestamp tsEndDate = Timestamp.valueOf(arrayOfDates[1].substring(0, 10));
             List<Repair> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsEndDate);
-            return repairs;
+
+            return repairs
+                    .stream()
+                    .map(repair -> RepairMapper.mapToRepairModel(repair))
+                    .collect(Collectors.toList());
         }
 
-        List<Repair> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsBeginDate);
+        List<RepairModel> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsBeginDate)
+                .stream()
+                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
         return repairs;
     }
 
     @Override
-    public Optional<Repair> postRepair(Repair newRepair) {
-        return Optional.of(repairRepository.save(newRepair));
+    public Optional<RepairModel> postRepair(RepairForm newRepair) {
+        return Optional.of(RepairMapper.mapToRepairModel(repairRepository.save(new Repair())));
     }
 
     @Override
-    public Optional<Repair> updateRepair(Repair toBeUpdatedRepair) {
-        Long repairId = toBeUpdatedRepair.getId();
+    public Optional<RepairModel> updateRepair(RepairForm toBeUpdatedRepair) {
+        /*Long repairId = toBeUpdatedRepair.getId();
         if (repairId == null || getRepairById(repairId).isEmpty()) {
             return Optional.empty();
-        }
-        return Optional.of(repairRepository.save(toBeUpdatedRepair));
+        }*/
+        return Optional.of(RepairMapper.mapToRepairModel(repairRepository.save(new Repair())));
     }
 
     @Override
-    public void deleteRepairById(Long repairId) {
+    public boolean deleteRepairById(Long repairId) {
         if (repairId == null || getRepairById(repairId).isEmpty()) {
             System.out.println("User not found");
-            return;
+            return false;
         }
+
         repairRepository.deleteById(repairId);
+        return true;
     }
+
 }

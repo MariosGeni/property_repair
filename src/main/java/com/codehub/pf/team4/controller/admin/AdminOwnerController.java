@@ -1,6 +1,8 @@
 package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.forms.UserForm;
+import com.codehub.pf.team4.model.UserModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -46,7 +50,7 @@ public class AdminOwnerController {
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
         // --- search code here --- //
-        Optional<User> owner = Optional.empty();
+        List<UserModel> owner = new ArrayList<>();
 
         if(!afm.equals("")) owner = userService.findUserByAfm(afm);
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
@@ -58,7 +62,7 @@ public class AdminOwnerController {
 
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
-        Optional<User> theOwner = userService.findUserById(id);
+        Optional<UserModel> theOwner = userService.findUserById(id);
 
         if(theOwner.isEmpty()) return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
 
@@ -70,13 +74,13 @@ public class AdminOwnerController {
     @PostMapping("/owners")
     public String postAdminOwner(@RequestBody User owner, Model model) {
         // --- create code here --- //
-        User newOwner = userService.addUser(owner);
+        Optional <UserModel> newOwner = userService.addUser(new UserForm());
         return "redirect:/admin/owners/" + newOwner.getId(); // redirect to created owner
     }
 
     @PutMapping("/owners/{id}") // Edit owner by its id
     public String putAdminEditOwnersPage(@RequestBody User owner, Model model) {
-        Optional<User> theOwner = userService.updateUser(owner);
+        Optional<UserModel> theOwner = userService.updateUser(new UserForm());
 
         if(theOwner.isEmpty()) return "redirect:/admin/owners"; //redirect to owners if owner not found
 

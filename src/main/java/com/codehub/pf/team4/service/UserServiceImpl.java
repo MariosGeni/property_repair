@@ -2,12 +2,18 @@ package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.forms.UserForm;
+import com.codehub.pf.team4.mappers.RepairMapper;
+import com.codehub.pf.team4.mappers.UserMapper;
+import com.codehub.pf.team4.model.RepairModel;
+import com.codehub.pf.team4.model.UserModel;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -15,45 +21,53 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
+
     @Override
-    public Optional<User> findUserById(Long id) {
-        return userRepository.findById(id);
+    public Optional<UserModel> findUserById(Long id) {
+        return Optional.of(UserMapper.mapToUserModel(userRepository.findById(id).orElse(null)));
     }
 
     @Override
-    public Optional<User> findUserByAfm(String afm) {
+    public Optional<UserModel> findUserByAfm(String afm) {
         Integer intAfm = Integer.parseInt(afm);
-        return userRepository.findByAfm(intAfm);
+        return Optional.of(UserMapper.mapToUserModel(userRepository.findByAfm(intAfm).orElse(null)));
     }
 
     @Override
-    public Optional<User> updateUser(User toBeUpdatedUser) {
+    public Optional<UserModel> updateUser(User toBeUpdatedUser) {
         Long userId = toBeUpdatedUser.getId();
         if (userId == null || findUserById(userId).isEmpty()) {
             return Optional.empty();
         }
-        return Optional.of(userRepository.save(toBeUpdatedUser));
+        return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
+
     }
 
     @Override
-    public Optional<User> findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public Optional<UserModel> findUserByEmail(String email) {
+        return Optional.of(UserMapper.mapToUserModel(userRepository.findByEmail(email).orElse(null)));
     }
 
     @Override
-    public List<Repair> getRepairsByUserAfm(String afm) {
+    public List<RepairModel> getRepairsByUserAfm(String afm) {
         Integer intAfm = Integer.parseInt(afm);
-        return userRepository.findRepairsByAfm(intAfm);
+        return userRepository.findRepairsByAfm(intAfm)
+                .stream()
+                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<Repair> getRepairsByUserEmail(String email) {
-        return userRepository.findRepairsByUserEmail(email);
+    public List<RepairModel> getRepairsByUserEmail(String email) {
+        return userRepository.findRepairsByUserEmail(email)
+                .stream()
+                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
     }
 
     @Override
-    public User addUser(User user) {
-        return userRepository.save(user);
+    public Optional<UserModel> addUser(UserForm user) {
+        return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
     }
 
     @Override
@@ -67,12 +81,20 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public List<Repair> getRepairsByUserId(Long id) {
-        return userRepository.findRepairsByUserId(id);
+    public List<RepairModel> getRepairsByUserId(Long id) {
+        //return userRepository.findRepairsByUserId(id);
+        return userRepository.findRepairsByUserId(id)
+                .stream()
+                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .collect(Collectors.toList());
     }
 
+
     @Override
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserModel> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(repair -> UserMapper.mapToUserModel(new User()))
+                .collect(Collectors.toList());
     }
 }

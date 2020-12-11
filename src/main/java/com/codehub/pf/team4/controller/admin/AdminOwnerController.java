@@ -3,9 +3,11 @@ package com.codehub.pf.team4.controller.admin;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
+import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -17,12 +19,21 @@ public class AdminOwnerController {
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
     private final String IS_PRESENT = "isPresent";
+    private final String USER_FORM = "userForm";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    RepairService repairService;
+    private RepairService repairService;
+
+    @Autowired
+    private UserValidator userValidator;
+
+    @InitBinder(USER_FORM)
+    protected void initBinder(final WebDataBinder binder) {
+        binder.addValidators(userValidator);
+    }
 
     // *************************************************** //
     // ======================== OWNERS ================== //

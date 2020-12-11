@@ -1,7 +1,9 @@
-package com.codehub.pf.team4.controller;
+package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.model.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
-public class RepairController {
+public class AdminRepairController {
 
     private final String REPAIR = "repair";
     private final String REPAIRS = "repairs";
@@ -49,7 +51,7 @@ public class RepairController {
     public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                            @RequestParam(value = "date", defaultValue = "") String date) {
         // --- search code here --- //
-        List<Repair> repairs = new ArrayList();
+        List<RepairModel> repairs = new ArrayList();
 
         if(!afm.equals("")) repairs = userService.getRepairsByUserAfm(afm);
         else if(!date.equals(""))  repairs = repairService.getRepairsByDate(date);
@@ -61,7 +63,7 @@ public class RepairController {
 
     @GetMapping(value = "repairs/edit/{id}") // Edit repair by its id
     public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
-        Optional<Repair> theRepair = repairService.getRepairById(id);
+        Optional<RepairModel> theRepair = repairService.getRepairById(id);
 
         model.addAttribute(REPAIR, theRepair.orElse(null));
         model.addAttribute(IS_PRESENT, theRepair.isPresent());
@@ -74,7 +76,7 @@ public class RepairController {
     @PostMapping("repairs")
     public String postRepair(@RequestBody Repair repair, Model model) {
         // --- create code here --- //
-        Optional<Repair> newRepair = repairService.postRepair(repair);
+        Optional<RepairModel> newRepair = repairService.postRepair(new RepairForm());
 
         if(newRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
 

@@ -27,10 +27,19 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
         // Here we add our custom validation logic
-        Optional<User> usersWithGivenEmail = userService.findUserByEmail(userForm.getEmail());
-        if (!usersWithGivenEmail.isEmpty()) {
+        Optional<User> userWithGivenEmail = userService.findUserByEmail(userForm.getEmail());
+        if (!userWithGivenEmail.isEmpty()) {
             errors.rejectValue("email", "User with this email already exists");
         }
+
+        // Updated user does exist?
+        if(!userForm.getId().isEmpty()) {
+            Optional<User> userWithThisId = userService.findUserById(Long.parseLong(userForm.getId()));
+            if (userWithThisId.isEmpty()) {
+                errors.rejectValue("email", "User with this email already exists");
+            }
+        }
+
 
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())
                 .filter(type -> type.toString().equalsIgnoreCase(userForm.getHouseType()))

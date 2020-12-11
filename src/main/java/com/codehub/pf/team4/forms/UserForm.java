@@ -13,8 +13,6 @@ public class UserForm {
     private static final String AFM_PATTERN = "^[0-9]*$";
     private static final String PHONE_NUMBER_PATTERN = "^[0-9]*$";
 
-    private String id;
-
     @Pattern(regexp = EMAIL_PATTERN, message = "Email pattern doesn't match")
     @NotEmpty(message = "Email can't be empty")
     private String email;
@@ -34,7 +32,8 @@ public class UserForm {
     @NotEmpty(message = "Phone Number can't be empty")
     private String phoneNUmber;
 
-    //validate in our vlidator
+    //Validation on UserValidator
+    private String id;
     private String houseType;
 
     private String address;

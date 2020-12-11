@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.controller;
+package com.codehub.pf.team4.controller.user;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;

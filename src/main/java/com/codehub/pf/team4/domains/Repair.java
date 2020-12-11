@@ -12,8 +12,6 @@ import java.sql.Timestamp;
 @Data
 @Entity
 public class Repair {
-    private static final int MAX_NAME_LENGTH = 50;
-
     @Id
     @Column(name = "repair_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

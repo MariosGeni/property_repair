@@ -11,8 +11,6 @@ import java.util.List;
 @Data
 public class User {
 
-    private static final int MAX_NAME_LENGTH = 50;
-
     @Id
     @Column(name = "user_id", nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)

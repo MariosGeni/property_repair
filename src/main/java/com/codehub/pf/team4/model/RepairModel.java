@@ -19,6 +19,6 @@ public class RepairModel {
     private RepairType repairType;
     private Long cost;
     private String address;
-    private User user;
+    private String user;
     private String description;
 }

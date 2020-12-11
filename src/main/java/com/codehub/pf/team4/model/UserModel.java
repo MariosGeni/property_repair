@@ -17,7 +17,6 @@ public class UserModel {
     private String password;
     private HouseType houseType;
 
-
     public UserModel(Long id, String email, Integer afm) {
         this.id = id;
         this.email = email;

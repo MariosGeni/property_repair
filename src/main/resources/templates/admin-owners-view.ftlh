@@ -34,7 +34,7 @@
                             <#list owners as owner>
                                 <tr>
                                     <td>${owner.id}</td>
-                                    <td>${owner.afm}</td>
+                                    <td>${owner.afm?c}</td>
                                     <td>${owner.firstName}</td>
                                     <td>${owner.lastName}</td>
                                     <td>${owner.email}</td>

@@ -39,7 +39,7 @@
                                     <td>${owner.lastName}</td>
                                     <td>${owner.email}</td>
                                     <td>${owner.address}</td>
-                                    <td>${owner.phoneNumber}</td>
+                                    <td>${owner.phoneNumber?c}</td>
                                     <td>${owner.houseType}</td>
                                 </tr>
                             </#list>

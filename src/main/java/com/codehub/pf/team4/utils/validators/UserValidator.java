@@ -1,8 +1,8 @@
 package com.codehub.pf.team4.utils.validators;
 
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
+import com.codehub.pf.team4.model.UserModel;
 import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -27,14 +27,14 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
         // Here we add our custom validation logic
-        Optional<User> userWithGivenEmail = userService.findUserByEmail(userForm.getEmail());
+        Optional<UserModel> userWithGivenEmail = userService.findUserByEmail(userForm.getEmail());
         if (!userWithGivenEmail.isEmpty()) {
             errors.rejectValue("email", "User with this email already exists");
         }
 
         // Updated user does exist?
         if(!userForm.getId().isEmpty()) {
-            Optional<User> userWithThisId = userService.findUserById(Long.parseLong(userForm.getId()));
+            Optional<UserModel> userWithThisId = userService.findUserById(Long.parseLong(userForm.getId()));
             if (userWithThisId.isEmpty()) {
                 errors.rejectValue("email", "User with this email already exists");
             }

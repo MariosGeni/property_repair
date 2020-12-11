@@ -97,7 +97,7 @@ public class AdminRepairController {
 
     @PutMapping(value = "repairs/{id}") // Edit repair by its id
     public String putRepairEditOwnersPage(@RequestBody Repair repair, Model model) {
-        Optional<Repair> theRepair = repairService.updateRepair(repair);
+        Optional<RepairModel> theRepair = repairService.updateRepair(new RepairForm());
 
         if(theRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
 

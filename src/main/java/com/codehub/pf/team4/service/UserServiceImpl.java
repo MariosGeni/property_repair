@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.mappers.RepairMapper;
@@ -34,11 +33,11 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<UserModel> updateUser(User toBeUpdatedUser) {
-        Long userId = toBeUpdatedUser.getId();
+    public Optional<UserModel> updateUser(UserForm toBeUpdatedUser) {
+        /*Long userId = toBeUpdatedUser.getId();
         if (userId == null || findUserById(userId).isEmpty()) {
             return Optional.empty();
-        }
+        }*/
         return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
 
     }

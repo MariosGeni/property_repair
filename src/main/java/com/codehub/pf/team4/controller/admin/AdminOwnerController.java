@@ -61,7 +61,7 @@ public class AdminOwnerController {
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
         // --- search code here --- //
-        List<UserModel> owner = new ArrayList<>();
+        Optional<UserModel> owner = Optional.empty();
 
         if(!afm.equals("")) owner = userService.findUserByAfm(afm);
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
@@ -85,8 +85,8 @@ public class AdminOwnerController {
     @PostMapping("/owners")
     public String postAdminOwner(@RequestBody User owner, Model model) {
         // --- create code here --- //
-        Optional <UserModel> newOwner = userService.addUser(new UserForm());
-        return "redirect:/admin/owners/" + newOwner.getId(); // redirect to created owner
+        Optional<UserModel> newOwner = userService.addUser(new UserForm());
+        return "redirect:/admin/owners/" + newOwner.get().getId(); // redirect to created owner
     }
 
     @PutMapping("/owners/{id}") // Edit owner by its id

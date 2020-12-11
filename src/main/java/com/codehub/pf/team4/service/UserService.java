@@ -1,7 +1,5 @@
 package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.domains.Repair;
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.model.RepairModel;
 import com.codehub.pf.team4.model.UserModel;

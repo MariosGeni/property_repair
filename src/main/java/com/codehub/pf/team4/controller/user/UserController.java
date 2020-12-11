@@ -23,9 +23,4 @@ public class UserController {
     @Autowired
     private RepairService repairService;
 
-    @GetMapping({"", "home"})
-    @ResponseBody
-    public List<Repair> getUserHome() {
-        return userService.getRepairsByUserId(1L);
-    }
 }

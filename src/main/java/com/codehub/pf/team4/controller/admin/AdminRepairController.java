@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.controller;
+package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
-public class RepairController {
+public class AdminRepairController {
 
     private final String REPAIR = "repair";
     private final String REPAIRS = "repairs";

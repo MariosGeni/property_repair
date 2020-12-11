@@ -6,9 +6,11 @@ import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.model.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
+import com.codehub.pf.team4.utils.validators.RepairValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -22,12 +24,22 @@ public class AdminRepairController {
     private final String REPAIR = "repair";
     private final String REPAIRS = "repairs";
     private final String IS_PRESENT = "isPresent";
+    private final String REPAIR_FORM = "repairForm";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    RepairService repairService;
+    private RepairService repairService;
+
+    @Autowired
+    private RepairValidator repairValidator;
+
+    @InitBinder(REPAIR_FORM)
+    protected void initBinder(final WebDataBinder binder) {
+        binder.addValidators(repairValidator);
+    }
+
 
     // *************************************************** //
     // ======================== REPAIRS ================== //

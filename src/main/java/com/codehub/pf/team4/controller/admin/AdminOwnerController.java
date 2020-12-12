@@ -82,6 +82,19 @@ public class AdminOwnerController {
         return "pages/admin-create-owners-view";
     }
 
+    @PostMapping(value = "/owner/create")
+    public String createBooks(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
+                              BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            //have some error handling here, perhaps add extra error messages to the model
+            model.addAttribute(ERROR_MESSAGE, "an error occurred");
+            return "pages/admin-create-owners-view";
+        }
+        userService.addUser(userForm);
+        return "redirect:/owners";
+    }
+
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<UserModel> theOwner = userService.findUserById(id);

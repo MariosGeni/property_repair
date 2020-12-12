@@ -43,9 +43,9 @@ public class UserServiceImpl implements UserService{
         if (userId == null || findUserById(userId).isEmpty()) {
             return Optional.empty();
         }*/
-        User UpdateUser = userFormMapper.mapToUser(toBeUpdatedUser);
+      //  User UpdateUser = userFormMapper.mapToUser(toBeUpdatedUser);
 
-        return Optional.of(UserMapper.mapToUserModel(userRepository.save(UpdateUser)));
+        return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
 
     }
 

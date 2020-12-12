@@ -70,7 +70,7 @@ public class AdminOwnerController {
 
         if(!afm.equals("")) owner = userService.findUserByAfm(afm);
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
-        System.out.println("I work");
+        System.out.println("I work = LIE");
         model.addAttribute(OWNER, owner.orElse(null));
         return "pages/admin-search-owners-view";
     }
@@ -79,7 +79,7 @@ public class AdminOwnerController {
     public String ownerCreation(Model model){
         model.addAttribute(USER_FORM, new UserForm());
         model.addAttribute(USER_CATEGORIES, HouseType.values());
-        return "pages/create";
+        return "pages/admin-create-owners-view";
     }
 
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
@@ -89,6 +89,7 @@ public class AdminOwnerController {
         if(theOwner.isEmpty()) return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
 
         model.addAttribute(OWNER, theOwner.orElse(null));
+        model.addAttribute(USER_CATEGORIES, HouseType.values());
 
         return "pages/admin-edit-owners-view";
     }

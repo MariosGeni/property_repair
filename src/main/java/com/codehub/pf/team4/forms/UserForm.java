@@ -37,8 +37,8 @@ public class UserForm {
     private String houseType;
 
     private String address;
-    private  String firstName;
-    private  String lastName;
+    private String firstName;
+    private String lastName;
 
 
 }

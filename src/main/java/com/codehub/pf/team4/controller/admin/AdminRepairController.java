@@ -54,8 +54,8 @@ public class AdminRepairController {
     @GetMapping(value = "repairs/{id}")
     public String getAdminRepairPage(Model model, @PathVariable("id") Long id) {
         // --- repairs showcase here --- //
-        model.addAttribute(REPAIR, repairService.getRepairById(id));
-        return "admin-repair-view";
+        model.addAttribute(REPAIR, repairService.getRepairById(id).get());
+        return "pages/admin-repair-view";
     }
 
     @GetMapping(value = "repairs/search") // Search 'repairs/user' by 'date' queryString

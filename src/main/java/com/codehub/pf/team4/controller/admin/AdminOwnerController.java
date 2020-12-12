@@ -58,8 +58,8 @@ public class AdminOwnerController {
     @GetMapping(value = "/owners/{id}")
     public String getAdminOwnerPage(@PathVariable("id") Long id, Model model) {
         // --- owners showcase here --- //
-        model.addAttribute(OWNERS, userService.findUserById(id));
-        return "admin-owner-view";
+        model.addAttribute(OWNER, userService.findUserById(id).get());
+        return "pages/admin-owner-view";
     }
 
     @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString

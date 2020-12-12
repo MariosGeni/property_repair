@@ -30,7 +30,7 @@ public class UserForm {
     @Pattern(regexp = PHONE_NUMBER_PATTERN, message  = "Phone Number pattern doesn't match")
     @Size(min = 10, max = 10, message = "Phone Number length must be 10")
     @NotEmpty(message = "Phone Number can't be empty")
-    private String phoneNUmber;
+    private String phoneNumber;
 
     //Validation on UserValidator
     private String id;

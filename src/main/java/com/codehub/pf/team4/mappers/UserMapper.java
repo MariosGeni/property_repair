@@ -1,6 +1,7 @@
 package com.codehub.pf.team4.mappers;
 
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
 
 import java.util.List;

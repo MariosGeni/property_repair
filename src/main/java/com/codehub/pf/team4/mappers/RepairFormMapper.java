@@ -6,9 +6,11 @@ import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.utils.DateProvider;
+import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
 
+@Component
 public class RepairFormMapper {
 
     public static Repair mapToRepair(RepairForm repairForm) throws Exception{

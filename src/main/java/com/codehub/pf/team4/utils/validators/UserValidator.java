@@ -26,18 +26,22 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
-        // Here we add our custom validation logic
-        Optional<UserModel> userWithGivenEmail = userService.findUserByEmail(userForm.getEmail());
-        if (!userWithGivenEmail.isEmpty()) {
+        if(userForm.getId() == null) userForm.setId(""); // to avoid nullpointer
+
+        // check if user with same email or afm exist and id == null so its CREATE OPERATION
+        if (doesExist("email", userForm.getEmail()) && userForm.getId().isEmpty()) {
             errors.rejectValue("email", "User with this email already exists");
         }
 
-        // Updated user does exist?
-        if(!userForm.getId().isEmpty()) {
-            Optional<UserModel> userWithThisId = userService.findUserById(Long.parseLong(userForm.getId()));
-            if (userWithThisId.isEmpty()) {
-                errors.rejectValue("email", "User with this email already exists");
-            }
+        if(userForm.getAfm().isBlank()) {
+            errors.reject("afk", "afm cant be empty");
+        } else if(doesExist("afm", userForm.getAfm()) && userForm.getId() == null) {
+            errors.rejectValue("afm", "User with this afm already exists");
+        }
+
+        // UPDATE RELATED > Check if user exists before update
+        if (doesExist("id", userForm.getId())) {
+            errors.rejectValue("email", "User with this email already exists");
         }
 
 
@@ -46,5 +50,24 @@ public class UserValidator implements Validator {
                 .findFirst();
 
         if(houseType.isEmpty()) errors.reject("houseType", "House Type doesn't match!");
+    }
+
+    private boolean doesExist(String field, String value) {
+
+        if(field.equalsIgnoreCase("email")) {
+            return userService.findUserByEmail(value).isPresent();
+        }
+
+        if (field.equalsIgnoreCase("afm")) {
+            return userService.findUserByAfm(value).isPresent();
+        }
+
+        if (field.equalsIgnoreCase("id")) {
+            if(!value.isEmpty()) {
+                return userService.findUserById(Long.parseLong(value)).isPresent();
+            }
+        }
+
+        return false;
     }
 }

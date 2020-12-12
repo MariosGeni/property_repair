@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.service;
 
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.mappers.RepairMapper;
 import com.codehub.pf.team4.mappers.UserFormMapper;
@@ -22,34 +21,34 @@ public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
 
 
-    @Autowired
-    private UserFormMapper userFormMapper;
-
+    @Override
+    public List<UserModel> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(UserMapper::mapToUserModel)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public Optional<UserModel> findUserById(Long id) {
-        return Optional.of(UserMapper.mapToUserModel(userRepository.findById(id).orElse(null)));
+        return UserMapper.mapToUserModelOptional(userRepository.findById(id).orElse(null));
     }
 
     @Override
     public Optional<UserModel> findUserByAfm(String afm) {
         Integer intAfm = Integer.parseInt(afm);
-        return Optional.of(UserMapper.mapToUserModel(userRepository.findByAfm(intAfm).orElse(null)));
+        return UserMapper.mapToUserModelOptional(userRepository.findByAfm(intAfm).orElse(null));
     }
 
     @Override
     public Optional<UserModel> updateUser(UserForm toBeUpdatedUser) {
-        /*Long userId = toBeUpdatedUser.getId();
-        if (userId == null || findUserById(userId).isEmpty()) {
-            return Optional.empty();
-        }*/
-        return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
+        return UserMapper.mapToUserModelOptional(userRepository.save(UserFormMapper.mapToUser(toBeUpdatedUser)));
 
     }
 
     @Override
     public Optional<UserModel> findUserByEmail(String email) {
-        return Optional.of(UserMapper.mapToUserModel(userRepository.findByEmail(email).orElse(null)));
+        return UserMapper.mapToUserModelOptional(userRepository.findByEmail(email).orElse(null));
     }
 
     @Override
@@ -69,18 +68,9 @@ public class UserServiceImpl implements UserService{
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public UserModel createOwner(UserForm userForm) {
-//        User user = UserFormMapper.mapToUser(userForm);
-//        User newUser = userRepository.save(user);
-//        return UserMapper.mapToUserModel(newUser);
-//    }
-
     @Override
-    public Optional<UserModel> addUser(UserForm user) {
-        System.out.println(user);
-        return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
-
+    public Optional<UserModel> addUser(UserForm newUser) {
+        return UserMapper.mapToUserModelOptional(userRepository.save(UserFormMapper.mapToUser(newUser)));
     }
 
     @Override
@@ -99,16 +89,7 @@ public class UserServiceImpl implements UserService{
     public List<RepairModel> getRepairsByUserId(Long id) {
         return userRepository.findRepairsByUserId(id)
                 .stream()
-                .map(repair -> RepairMapper.mapToRepairModel(repair))
-                .collect(Collectors.toList());
-    }
-
-
-    @Override
-    public List<UserModel> getAllUsers() {
-        return userRepository.findAll()
-                .stream()
-                .map(user -> UserMapper.mapToUserModel(user))
+                .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
     }
 }

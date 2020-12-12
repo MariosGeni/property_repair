@@ -1,7 +1,7 @@
-<#import "partials/repair-partial.ftlh" as repairComponent />
+<#import "../partials/repair-partial.ftlh" as repairComponent />
 <html lang="en">
     <head>
-        <#include "partials/html-header-partial.ftlh">
+        <#include "../partials/html-header-partial.ftlh">
         <title>Admin - Home</title>
     </head>
     <body>

@@ -52,7 +52,7 @@ public class AdminOwnerController {
         // --- owners showcase here --- //
         List<UserModel> owners = userService.getAllUsers();
         model.addAttribute(OWNERS, owners);
-        return "admin-owners-view";
+        return "pages/admin-owners-view";
     }
 
     @GetMapping(value = "/owners/{id}")
@@ -72,7 +72,7 @@ public class AdminOwnerController {
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
 
         model.addAttribute(OWNER, owner.orElse(null));
-        return "admin-search-owners-view";
+        return "pages/admin-search-owners-view";
     }
 
     @GetMapping(value = "/owner/create")

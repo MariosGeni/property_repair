@@ -25,6 +25,6 @@ public class AdminController {
         List<RepairModel> activeRepairs = repairService.getOngoingRepairsOfTheDay();
         System.out.println("ACTIVE REPAIRS :    " + activeRepairs);
         model.addAttribute("activeRepairs", activeRepairs);
-        return "admin-home-view";
+        return "pages/admin-home-view";
     }
 }

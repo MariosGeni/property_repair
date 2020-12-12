@@ -48,7 +48,7 @@ public class AdminRepairController {
     public String getAdminRepairsPage(Model model) {
         // --- repairs showcase here --- //
         model.addAttribute(REPAIRS, repairService.getAllRepairs());
-        return "admin-repairs-view";
+        return "pages/admin-repairs-view";
     }
 
     @GetMapping(value = "repairs/{id}")
@@ -77,7 +77,7 @@ public class AdminRepairController {
         model.addAttribute(REPAIR, theRepair.orElse(null));
         model.addAttribute(IS_PRESENT, theRepair.isPresent());
 
-        return "admin-edit-repairs-view";
+        return "pages/admin-edit-repairs-view";
     }
 
 

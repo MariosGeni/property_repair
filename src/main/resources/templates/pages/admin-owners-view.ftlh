@@ -1,7 +1,7 @@
-<#import "partials/owner-partial.ftlh" as ownerComponent>
+<#import "../partials/owner-partial.ftlh" as ownerComponent>
 <html lang="en">
     <head>
-        <#include "partials/html-header-partial.ftlh">
+        <#include "../partials/html-header-partial.ftlh">
         <title>Admin - Owners</title>
     </head>
     <body>

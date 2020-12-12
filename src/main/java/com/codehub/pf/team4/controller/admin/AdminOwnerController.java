@@ -52,7 +52,7 @@ public class AdminOwnerController {
         // --- owners showcase here --- //
         List<UserModel> owners = userService.getAllUsers();
         model.addAttribute(OWNERS, owners);
-        return "admin-owners-view";
+        return "pages/admin-owners-view";
     }
 
     @GetMapping(value = "/owners/{id}")

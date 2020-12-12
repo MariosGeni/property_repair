@@ -34,4 +34,12 @@ public class UserModel {
         this.password = password;
         this.houseType = houseType;
     }
+
+    public HouseType getHouseType() {
+        return houseType;
+    }
+
+    public void setCategory(HouseType category) {
+        this.houseType = houseType;
+    }
 }

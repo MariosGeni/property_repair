@@ -3,6 +3,7 @@ package com.codehub.pf.team4.service;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.mappers.RepairMapper;
+import com.codehub.pf.team4.mappers.UserFormMapper;
 import com.codehub.pf.team4.mappers.UserMapper;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.models.UserModel;
@@ -19,6 +20,10 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
+
+
+    @Autowired
+    private UserFormMapper userFormMapper;
 
 
     @Override
@@ -64,9 +69,18 @@ public class UserServiceImpl implements UserService{
                 .collect(Collectors.toList());
     }
 
+//    @Override
+//    public UserModel createOwner(UserForm userForm) {
+//        User user = UserFormMapper.mapToUser(userForm);
+//        User newUser = userRepository.save(user);
+//        return UserMapper.mapToUserModel(newUser);
+//    }
+
     @Override
     public Optional<UserModel> addUser(UserForm user) {
+        System.out.println(user);
         return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
+
     }
 
     @Override

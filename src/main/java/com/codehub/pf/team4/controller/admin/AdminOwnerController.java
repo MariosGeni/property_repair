@@ -1,6 +1,7 @@
 package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
@@ -9,11 +10,15 @@ import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+
+import static com.codehub.pf.team4.utils.GlobalAttributes.ERROR_MESSAGE;
 
 @Controller
 @RequestMapping("/admin")
@@ -22,6 +27,7 @@ public class AdminOwnerController {
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
     private final String USER_FORM = "userForm";
+    private final String USER_CATEGORIES = "userCategories";
 
     @Autowired
     private UserService userService;
@@ -101,4 +107,22 @@ public class AdminOwnerController {
         userService.deleteById(id);
         return "redirect:/admin/owners";
     }
+    @GetMapping(value = "/owner/create")
+    public String ownerCreation(Model model){
+        model.addAttribute(USER_FORM, new UserForm());
+        model.addAttribute(USER_CATEGORIES, HouseType.values());
+        return "pages/create";
+    }
+
+    @PostMapping(value = "/owner/create")
+    public String createOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
+                              BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            model.addAttribute(ERROR_MESSAGE, "Oops an error occured");
+            return "/owner/create";
+        }
+        userService.addUser(userForm);
+        return "redirect:/owners";
+    }
+
 }

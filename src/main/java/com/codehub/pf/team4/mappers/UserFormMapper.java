@@ -3,7 +3,9 @@ package com.codehub.pf.team4.mappers;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserFormMapper {
 
     public static User mapToUser(UserForm userForm){

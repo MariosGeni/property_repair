@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.model;
 
+import com.codehub.pf.team4.enums.HouseType;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,8 @@ public class UserModel {
     private String address;
     private Long phoneNumber;
     private String email;
+    private String password;
+    private HouseType houseType;
 
     public UserModel(Long id, String email, Integer afm) {
         this.id = id;
@@ -20,7 +23,7 @@ public class UserModel {
         this.afm = afm;
     }
 
-    public UserModel(Long id, Integer afm, String firstName, String lastName, String address, Long phoneNumber, String email) {
+    public UserModel(Long id, Integer afm, String firstName, String lastName, String address, Long phoneNumber, String email, String password, HouseType houseType) {
         this.id = id;
         this.afm = afm;
         this.email = email;
@@ -28,5 +31,7 @@ public class UserModel {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
+        this.password = password;
+        this.houseType = houseType;
     }
 }

@@ -99,7 +99,7 @@ public class OwnerController {
     public String ownerCreation(Model model){
         model.addAttribute(OWNERS_FORM, new UserForm());
         model.addAttribute(OWNERS_CATEGORIES, HouseType.values());
-        return "/admin/owners";
+        return "";
     }
 
     @PostMapping(value = "/owner/create")

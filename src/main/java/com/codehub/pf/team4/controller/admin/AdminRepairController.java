@@ -63,13 +63,11 @@ public class AdminRepairController {
                                            @RequestParam(value = "date", defaultValue = "") String date) {
         // --- search code here --- //
         List<RepairModel> repairs = new ArrayList();
-
         if(!afm.equals("")) repairs = userService.getRepairsByUserAfm(afm);
         else if(!date.equals(""))  repairs = repairService.getRepairsByDate(date);
 
         model.addAttribute(REPAIRS, repairs);
-        model.addAttribute(IS_PRESENT, repairs.size() > 0);
-        return "admin-search-repairs-view";
+        return "pages/admin-search-repairs-view";
     }
 
     @GetMapping(value = "repairs/edit/{id}") // Edit repair by its id

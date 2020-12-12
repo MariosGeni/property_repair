@@ -3,7 +3,7 @@
 
     <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-            <a class="nav-link" href="/"><span data-feather="log-out"></span> Logout</a>
+            <a  style="font-size: 1.05em;" class="nav-link" href="/"><span data-feather="log-out"></span> Logout</a>
         </li>
     </ul>
 </nav>

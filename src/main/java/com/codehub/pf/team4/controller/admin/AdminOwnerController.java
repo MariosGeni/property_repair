@@ -74,7 +74,10 @@ public class AdminOwnerController {
         model.addAttribute(OWNER, owner.orElse(null));
         return "pages/admin-search-owners-view";
     }
-
+    /*
+    * CREATE OWNER
+    *
+    */
     @GetMapping(value = "/owner/create")
     public String ownerCreation(Model model){
         model.addAttribute(USER_FORM, new UserForm());
@@ -83,7 +86,7 @@ public class AdminOwnerController {
     }
 
     @PostMapping(value = "/owner/create")
-    public String createBooks(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
+    public String ownerCreation(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                               BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {

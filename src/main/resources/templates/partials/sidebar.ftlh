@@ -1,29 +1,29 @@
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block bg-dark sidebar">
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="/hello">
+                <a class="nav-link text-white" href="/admin">
                     <span data-feather="home"></span>
                     Home
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link active" href="/books">
+                <a class="nav-link active" href="/admin/owners">
                     <span data-feather="users"></span>
                     Owners
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/searchDate">
+                <a class="nav-link text-white" href="/admin/owners/search">
                     <span data-feather="search"></span>
-                    Search for Owners
+                    Search Owners
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/books/create">
+                <a class="nav-link text-white" href="/admin/owner/create">
                     <span data-feather="plus-circle"></span>
                     Create Owner
                 </a>
@@ -34,7 +34,7 @@
         </h6>
         <ul class="nav flex-column mb-2">
             <li class="nav-item">
-                <a class="nav-link" href="/">
+                <a class="nav-link text-white" href="/">
                     <span data-feather="log-out"></span>
                     Logout
                 </a>

@@ -70,7 +70,7 @@ public class AdminOwnerController {
 
         if(!afm.equals("")) owner = userService.findUserByAfm(afm);
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
-
+        System.out.println("I work");
         model.addAttribute(OWNER, owner.orElse(null));
         return "pages/admin-search-owners-view";
     }

@@ -1,6 +1,7 @@
 package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
@@ -22,6 +23,7 @@ public class AdminOwnerController {
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
     private final String USER_FORM = "userForm";
+    private final String OWNER_CATEGORY = "Categories";
 
     @Autowired
     private UserService userService;
@@ -76,7 +78,7 @@ public class AdminOwnerController {
         if(theOwner.isEmpty()) return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
 
         model.addAttribute(OWNER, theOwner.orElse(null));
-
+        model.addAttribute(OWNER_CATEGORY, HouseType.values());
         return "pages/admin-edit-owners-view";
     }
 

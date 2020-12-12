@@ -6,6 +6,13 @@
     <input type="hidden" name="id" value="${owner.id}">
 
     <div class="mb-3">
+        <label for="user-afm">User A.F.M</label>
+        <div class="input-group">
+            <input type="text" class="form-control" id="user-afm" name="userAfm" value="${owner.afm?c}">
+        </div>
+    </div>
+
+    <div class="mb-3">
         <label for="user-first-name">User First Name</label>
         <div class="input-group">
             <input type="text" class="form-control" id="user-first-name" name="userFirstName" value="${owner.firstName}">
@@ -30,6 +37,19 @@
         <label for="author-phone-number">User phone number</label>
         <div class="input-group">
             <input type="text" class="form-control" id="user-phone-number" name="userPhoneNumber" value="${owner.phoneNumber?c}">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="category">Category</label>
+        <div class="input-group">
+            <select class="custom-select d-block w-100" id="category" name="category">
+                <#if Categories??>
+                    <#list Categories as category>
+                        <option value="${category}">${category}</option>
+                    </#list>
+                </#if>
+            </select>
         </div>
     </div>
 

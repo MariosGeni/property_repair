@@ -75,6 +75,13 @@ public class AdminOwnerController {
         return "admin-search-owners-view";
     }
 
+    @GetMapping(value = "/owner/create")
+    public String ownerCreation(Model model){
+        model.addAttribute(USER_FORM, new UserForm());
+        model.addAttribute(USER_CATEGORIES, HouseType.values());
+        return "pages/create";
+    }
+
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<UserModel> theOwner = userService.findUserById(id);
@@ -87,10 +94,14 @@ public class AdminOwnerController {
     }
 
     @PostMapping("/owners")
-    public String postAdminOwner(@RequestBody User owner, Model model) {
-        // --- create code here --- //
-        Optional<UserModel> newOwner = userService.addUser(new UserForm());
-        return "redirect:/admin/owners/" + newOwner.get().getId(); // redirect to created owner
+    public String postAdminOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
+                                 BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(ERROR_MESSAGE, "Oops an error occured");
+            return "/owner/create";
+        }
+        userService.addUser(userForm);
+        return "redirect:/owners";
     }
 
     @PutMapping("/owners/{id}") // Edit owner by its id
@@ -107,22 +118,4 @@ public class AdminOwnerController {
         userService.deleteById(id);
         return "redirect:/admin/owners";
     }
-    @GetMapping(value = "/owner/create")
-    public String ownerCreation(Model model){
-        model.addAttribute(USER_FORM, new UserForm());
-        model.addAttribute(USER_CATEGORIES, HouseType.values());
-        return "pages/create";
-    }
-
-    @PostMapping(value = "/owner/create")
-    public String createOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
-                              BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            model.addAttribute(ERROR_MESSAGE, "Oops an error occured");
-            return "/owner/create";
-        }
-        userService.addUser(userForm);
-        return "redirect:/owners";
-    }
-
 }

@@ -3,6 +3,10 @@ package com.codehub.pf.team4.mappers;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.models.UserModel;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
 public abstract class UserMapper {
 
     public static UserModel mapToUserModel(User user) {
@@ -17,5 +21,15 @@ public abstract class UserMapper {
         userModel.setPhoneNumber(user.getPhoneNumber());
 
         return userModel;
+    }
+
+    public List<UserModel> mapToUserModelList(List<User> users){
+        return users.stream()
+                .map(UserMapper::mapToUserModel)
+                .collect(Collectors.toList());
+    }
+
+    public Optional<UserModel> mapToRepairModelOptional(User user) {
+        return Optional.of(mapToUserModel(user));
     }
 }

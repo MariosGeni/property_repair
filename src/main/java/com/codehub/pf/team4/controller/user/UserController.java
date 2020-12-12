@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.controller;
+package com.codehub.pf.team4.controller.user;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
@@ -23,9 +23,4 @@ public class UserController {
     @Autowired
     private RepairService repairService;
 
-    @GetMapping({"", "home"})
-    @ResponseBody
-    public List<Repair> getUserHome() {
-        return userService.getRepairsByUserId(1L);
-    }
 }

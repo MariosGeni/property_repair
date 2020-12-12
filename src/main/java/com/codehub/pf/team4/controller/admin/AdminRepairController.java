@@ -1,14 +1,15 @@
-package com.codehub.pf.team4.controller;
+package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.Repair;
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.RepairForm;
-import com.codehub.pf.team4.model.RepairModel;
+import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
+import com.codehub.pf.team4.utils.validators.RepairValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -17,17 +18,27 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
-public class RepairController {
+public class AdminRepairController {
 
     private final String REPAIR = "repair";
     private final String REPAIRS = "repairs";
     private final String IS_PRESENT = "isPresent";
+    private final String REPAIR_FORM = "repairForm";
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @Autowired
-    RepairService repairService;
+    private RepairService repairService;
+
+    @Autowired
+    private RepairValidator repairValidator;
+
+    @InitBinder(REPAIR_FORM)
+    protected void initBinder(final WebDataBinder binder) {
+        binder.addValidators(repairValidator);
+    }
+
 
     // *************************************************** //
     // ======================== REPAIRS ================== //
@@ -85,7 +96,7 @@ public class RepairController {
 
     @PutMapping(value = "repairs/{id}") // Edit repair by its id
     public String putRepairEditOwnersPage(@RequestBody Repair repair, Model model) {
-        Optional<Repair> theRepair = repairService.updateRepair(repair);
+        Optional<RepairModel> theRepair = repairService.updateRepair(new RepairForm());
 
         if(theRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
 

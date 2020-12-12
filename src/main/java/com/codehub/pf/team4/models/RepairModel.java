@@ -1,6 +1,5 @@
-package com.codehub.pf.team4.model;
+package com.codehub.pf.team4.models;
 
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import java.sql.Timestamp;

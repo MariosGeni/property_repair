@@ -1,52 +1,35 @@
 <#import "/spring.ftl" as spring />
 
-<h4 class="mb-3">Edit Book</h4>
-<form action="/admin/owners/edit/" method="post">
+<h4 class="mb-3">Edit Owner Details</h4>
+<form action="/admin/repairs/edit/" method="post">
 
-    <input type="hidden" name="id" value="${user.id}">
+    <input type="hidden" name="id" value="${owner.id}">
 
     <div class="mb-3">
-        <label for="title">Title</label>
+        <label for="user-first-name">User First Name</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="title" name="title" value="${user.id}">
+            <input type="text" class="form-control" id="user-first-name" name="userFirstName" value="${owner.firstName}">
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="category">Category</label>
+        <label for="user-last-name">User Last Name</label>
         <div class="input-group">
-            <select class="custom-select d-block w-100" id="category" name="category">
-                <#if booksCategories??>
-                    <#list  as category>
-                        <option value="${category}"<#if book.category == category> selected</#if>>${category}</option>
-                    </#list>
-                </#if>
-            </select>
+            <input type="text" class="form-control" id="user-last-name" name="userLastName"  value="${owner.lastName}">
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="author-first-name">Author First Name</label>
+        <label for="user-address">User address</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="author-first-name" name="authorFirstName" value="${book.authorFirstName}">
+            <input type="text" class="form-control" id="user-address" name="userAddress" value="${owner.address}">
         </div>
     </div>
 
     <div class="mb-3">
-        <label for="title">Author Last Name</label>
+        <label for="author-phone-number">User phone number</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="author-last-name" name="authorLastName"  value="${book.authorLastName}">
-        </div>
-    </div>
-
-
-    <div class="mb-3">
-        <label for="datepicker">Date</label>
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"><span data-feather="calendar"></span></span>
-            </div>
-            <input type="text" class="form-control" id="datepicker" name="publicationDate" value="${book.publicationDate}">
+            <input type="text" class="form-control" id="user-phone-number" name="userPhoneNumber" value="${owner.phoneNumber?c}">
         </div>
     </div>
 

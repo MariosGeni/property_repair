@@ -1,4 +1,4 @@
-package com.codehub.pf.team4.model;
+package com.codehub.pf.team4.models;
 
 import com.codehub.pf.team4.enums.HouseType;
 import lombok.Data;

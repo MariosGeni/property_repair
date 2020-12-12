@@ -1,12 +1,13 @@
 package com.codehub.pf.team4.mappers;
 
 import com.codehub.pf.team4.domains.Repair;
-import com.codehub.pf.team4.model.RepairModel;
+import com.codehub.pf.team4.models.RepairModel;
 
 public abstract class RepairMapper {
 
     public static RepairModel mapToRepairModel(Repair repair) {
         if (repair == null) { return null; }
+
         RepairModel repairModel = new RepairModel();
         repairModel.setId(repair.getId());
         repairModel.setDate(repair.getDate());

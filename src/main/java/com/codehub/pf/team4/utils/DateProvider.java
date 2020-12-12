@@ -22,6 +22,10 @@ public abstract class DateProvider {
         return new Timestamp(SDF_NO_TIME.parse(date.toString()).getTime());
     }
 
+    public static Timestamp getDate(String date) throws Exception{
+        return new Timestamp(SDF_NO_TIME.parse(date).getTime());
+    }
+
     public static boolean isToday(Timestamp date) {
         return SDF_NO_TIME.format(date.getTime()).equals(theDayString());
     }

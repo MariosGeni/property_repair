@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -26,7 +27,7 @@ public class RepairServiceImpl implements RepairService {
     public List<RepairModel> getAllRepairs() {
         return repairRepository.findAll()
                 .stream()
-                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
     }
 
@@ -48,29 +49,21 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public List<RepairModel> getRepairsByDate(String wholeDate) {
-        // if the date value is null
-        if (wholeDate.equals("")) { return null; }
-        String[] arrayOfDates = wholeDate.split("/", 2);
+    public List<RepairModel> getRepairsByDate(String date) {
+        //String[] arrayOfDates = date.split("/", 2);
         // timestamp for first-begin date
-        Timestamp tsBeginDate = Timestamp.valueOf(arrayOfDates[0].substring(0, 10));
-
-        if (arrayOfDates.length > 1) {
-            // timestamp for second-end date
-            Timestamp tsEndDate = Timestamp.valueOf(arrayOfDates[1].substring(0, 10));
-            List<Repair> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsEndDate);
-
-            return repairs
-                    .stream()
-                    .map(repair -> RepairMapper.mapToRepairModel(repair))
-                    .collect(Collectors.toList());
+        Timestamp searchDate = null;
+        try {
+            searchDate = DateProvider.getDate(date);
+        } catch(Exception e) {
+            System.out.println("\n\n\t\tWrong format!\n");
+            return new ArrayList();
         }
-
-        List<RepairModel> repairs = repairRepository.findByDateIsBetween(tsBeginDate, tsBeginDate)
+        System.out.println(searchDate);
+        return repairRepository.findByDateLike(searchDate)
                 .stream()
                 .map(repair -> RepairMapper.mapToRepairModel(repair))
                 .collect(Collectors.toList());
-        return repairs;
     }
 
     @Override

@@ -84,7 +84,7 @@ public class AdminOwnerController {
     public String getAdminCreateOwnerPage(Model model){
         model.addAttribute(USER_FORM, new UserForm());
         model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
-        return "pages/create";
+        return "pages/admin-create-owners-view";
     }
 
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
@@ -107,7 +107,7 @@ public class AdminOwnerController {
             return "pages/create";
         }
         Optional<UserModel> newUser = userService.addUser(userForm);
-        if(newUser.isEmpty()) return "pages/create";
+        if(newUser.isEmpty()) return "pages/admin-create-owners-view";
         return "redirect:/admin/owners/" + newUser.get().getId();
     }
 
@@ -120,7 +120,7 @@ public class AdminOwnerController {
         }
 
         Optional<UserModel> theOwner = userService.updateUser(userForm);
-        if(theOwner.isEmpty()) return "pages/admin-edit-owner-view";
+        if(theOwner.isEmpty()) return "pages/admin-edit-owners-view";
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
     }
 

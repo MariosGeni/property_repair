@@ -1,7 +1,7 @@
 <#import "/spring.ftl" as spring />
 
 <h4 class="mb-3">Add Owner Details</h4>
-<form action="/admin/owner/create" method="get">
+<form action="/admin/owners/create" method="post">
 
     <div class="mb-3">
         <label for="user-afm">User A.F.M</label>

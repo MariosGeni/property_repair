@@ -104,7 +104,7 @@ public class AdminOwnerController {
         if (bindingResult.hasErrors()) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
-            return "pages/create";
+            return "pages/admin-create-owners-view";
         }
         Optional<UserModel> newUser = userService.addUser(userForm);
         if(newUser.isEmpty()) return "pages/admin-create-owners-view";
@@ -116,7 +116,7 @@ public class AdminOwnerController {
                                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during update");
-            return "pages/admin-edit-users-view";
+            return "pages/admin-edit-owners-view";
         }
 
         Optional<UserModel> theOwner = userService.updateUser(userForm);

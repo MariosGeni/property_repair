@@ -122,7 +122,7 @@ public class AdminOwnerController {
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
     }
 
-    @PostMapping("owners/{id}")
+    @PostMapping("owners/delete/{id}")
     public String deleteAdminOwner(@PathVariable("id") Long id) {
         System.out.println(userService.deleteById(id));
         return "redirect:/admin/owners";

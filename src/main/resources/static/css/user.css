@@ -1,0 +1,45 @@
+.navbar-brand {
+    width: 150px;
+}
+
+#fonts{
+    font: 40px Arial, sans-serif;
+
+}
+
+#images{
+    width: 318px;
+    height: 250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+
+}
+.checked {
+    color: orange;
+}
+#footer-text{
+    color: #F9F9F9;
+}
+
+#current{
+    font-weight: bold;
+}
+
+#h4{
+    color: #F9F9F9;
+    margin: auto;
+    text-align: center;
+}
+
+#card{
+    background-color: #2b2b2b;
+    margin-left: auto;
+    margin-right: auto
+}
+
+
+p{
+    color: #F9F9F9;
+    text-align: center;
+}

@@ -1,12 +1,21 @@
 package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.Repair;
+import com.codehub.pf.team4.enums.State;
+import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.mappers.RepairFormMapper;
+import com.codehub.pf.team4.mappers.RepairMapper;
+import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.repository.RepairRepository;
+import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+
 
 @Service
 public class RepairServiceImpl implements RepairService {
@@ -15,40 +24,60 @@ public class RepairServiceImpl implements RepairService {
     private RepairRepository repairRepository;
 
     @Override
-    public List<Repair> getAllRepairs() {
-        return repairRepository.findAll();
+    public List<RepairModel> getAllRepairs() {
+        return repairRepository.findAll()
+                .stream()
+                .map(RepairMapper::mapToRepairModel)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Repair> getRepairById(java.lang.Long id) {
-        return repairRepository.findById(id);
+    public Optional<RepairModel> getRepairById(Long id) {
+        return RepairMapper.mapToRepairModelOptional(repairRepository.findById(id).orElse(null));
     }
 
     @Override
-    public Optional<Repair> postRepair(Repair newRepair) {
-        return Optional.of(repairRepository.save(newRepair));
+    public List<RepairModel> getOngoingRepairsOfTheDay() throws Exception {
+        return repairRepository.findByDateAndState(DateProvider.getToday(), State.ONGOING)
+                .stream()
+                .map(RepairMapper::mapToRepairModel)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public Optional<Repair> updateRepair(Repair toBeUpdatedRepair) {
-        Long repairId = toBeUpdatedRepair.getId();
-        if( repairId == null || getRepairById(repairId).isEmpty()){
+    public List<RepairModel> getRepairsByDate(String date) {
+        LocalDate localDate = LocalDate.parse(date, DateProvider.getFormat());
+        System.out.println(localDate);
+        return repairRepository.findByDate(localDate)
+                .stream()
+                .map(RepairMapper::mapToRepairModel)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<RepairModel> addRepair(RepairForm newRepair) throws Exception {
+        return RepairMapper.mapToRepairModelOptional(repairRepository.save(RepairFormMapper.mapToRepair(newRepair)));
+    }
+
+    @Override
+    public Optional<RepairModel> updateRepair(RepairForm toBeUpdatedRepair) {
+        try {
+            Repair theRepair = RepairFormMapper.mapToRepair(toBeUpdatedRepair);
+            return RepairMapper.mapToRepairModelOptional(repairRepository.save(theRepair));
+        } catch (Exception e) {
             return Optional.empty();
         }
-        return Optional.of(repairRepository.save(toBeUpdatedRepair));
     }
 
     @Override
-    public void deleteRepairById(Long repairId) {
-        if(repairId == null || getRepairById(repairId).isEmpty()){
+    public boolean deleteRepairById(Long repairId) {
+        if (repairId == null || getRepairById(repairId).isEmpty()) {
             System.out.println("User not found");
-            return;
+            return false;
         }
+
         repairRepository.deleteById(repairId);
+        return true;
     }
 
-    @Override
-    public List<Repair> getRepairByUserAfm(Integer afm) {
-        return repairRepository.findAllByAfm(afm);
-    }
 }

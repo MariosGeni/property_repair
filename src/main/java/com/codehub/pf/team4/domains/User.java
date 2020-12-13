@@ -7,11 +7,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "Users", uniqueConstraints = {@UniqueConstraint(columnNames = {"afm","email"})})
+@Table(name = "Users", uniqueConstraints = {@UniqueConstraint(columnNames = "afm"), @UniqueConstraint(columnNames = "email")})
 @Data
 public class User {
-
-    private static final int MAX_NAME_LENGTH = 50;
 
     @Id
     @Column(name = "user_id", nullable = false)
@@ -31,7 +29,7 @@ public class User {
     private  String address;
 
     @Column(name = "phone_number", length=10, nullable = false)
-    private  Integer phoneNumber;
+    private  Long phoneNumber;
 
     @Column(name = "password", nullable = false)
     private  String password;
@@ -47,4 +45,18 @@ public class User {
     @JsonIgnore
     private List<Repair> repairs;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", afm=" + afm +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address='" + address + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", password='" + password + '\'' +
+                ", houseType=" + houseType +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

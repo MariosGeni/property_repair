@@ -1,3 +1,27 @@
+html, body{
+    //background-color:#202020;
+    //background-color: #3c3f41;
+    //background-color: #36393f;
+    background-color: #2f3136;
+
+    color: white;
+}
+
+.fixes-test{
+    padding:4px;
+    background-color:#3c3f41;
+    font-size: 1.5em;
+}
+
 .hello-title{
-    color: darkgreen;
+    //color: white;
+    font-size: 2em;
+}
+
+.container-fluid {
+    min-height: 90vh;
+}
+
+.sidebar{
+    min-height: 90vh!important;
 }

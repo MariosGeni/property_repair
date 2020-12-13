@@ -1,8 +1,10 @@
-package com.codehub.pf.team4.controller;
+package com.codehub.pf.team4.controller.user;
 
 import com.codehub.pf.team4.domains.Repair;
-import com.codehub.pf.team4.repository.RepairRepository;
+import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.repository.UserRepository;
+import com.codehub.pf.team4.service.RepairService;
+import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,23 +16,17 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/")
-public class RepairController {
+public class UserController {
 
     @Autowired
-    private RepairRepository repairRepository;
+    private UserService userService;
 
     @Autowired
-    private UserRepository userRepository;
+    private RepairService repairService;
 
-    @GetMapping("hello")
-    public String hello(Model model) {
-        model.addAttribute("username", "Niazi");
-        return "hello";
-    }
-
-    @GetMapping("repair")
-    @ResponseBody
-    public List<Repair> getRepairs() {
-        return repairRepository.findAllByAfm(123456789);
+    @GetMapping({"", "/"})
+    public String getHomePage(Model model) {
+        model.addAttribute("repairs", userService.getRepairsByUserId(1L));
+        return "pages/home";
     }
 }

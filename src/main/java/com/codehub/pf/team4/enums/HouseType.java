@@ -2,7 +2,7 @@ package com.codehub.pf.team4.enums;
 
 public enum HouseType {
 
-    DETACHED("Μονοκατοικία"),
+    DETACHED_HOUSE("Μονοκατοικία"),
     MAISONETTE("Μεζονέτα"),
     APARTMENT_BUILDING("Πολυκατοικία");
 

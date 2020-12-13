@@ -6,6 +6,7 @@
     </head>
     <body>
     <!-- header here -->
+    <#include "../partials/navbar.ftlh">
 
     <!-- content here -->
     <div class="container">

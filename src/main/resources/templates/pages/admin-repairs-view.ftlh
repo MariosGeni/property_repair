@@ -1,7 +1,5 @@
 <#import "../partials/repair-partial.ftlh" as repairComponent />
-<html lang="en">
-    <head>
-        <#include "../partials/html-header-partial.ftlh">
+<#include "../partials/top-design.ftlh">
         <title>Admin - Repairs</title>
     </head>
     <body>
@@ -25,8 +23,7 @@
             </div>
         </div>
 
-        <!-- footer here -->
         <#include "../partials/endContainerWithSidebar.ftlh">
-        <#include "../partials/scripts.ftlh">
+        <!-- footer here -->
     </body>
 </html>

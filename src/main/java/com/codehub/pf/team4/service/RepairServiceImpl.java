@@ -11,8 +11,7 @@ import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -39,7 +38,7 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<RepairModel> getOngoingRepairsOfTheDay() throws Exception {
-        return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getStartOfDay(), DateProvider.getEndOfDay(), State.ONGOING)
+        return repairRepository.findByDateAndState(DateProvider.getToday(), State.ONGOING)
                 .stream()
                 .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
@@ -47,15 +46,9 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<RepairModel> getRepairsByDate(String date) {
-        Timestamp searchDate = null;
-        try {
-            searchDate = DateProvider.getDate(date);
-        } catch(Exception e) {
-            System.out.println("\n\n\t\tWrong format!\n");
-            return new ArrayList();
-        }
-        System.out.println(searchDate);
-        return repairRepository.findByDateLike(searchDate)
+        LocalDate localDate = LocalDate.parse(date, DateProvider.getFormat());
+        System.out.println(localDate);
+        return repairRepository.findByDate(localDate)
                 .stream()
                 .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());

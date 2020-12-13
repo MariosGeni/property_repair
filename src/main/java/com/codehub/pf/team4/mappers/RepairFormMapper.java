@@ -9,6 +9,8 @@ import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class RepairFormMapper {
@@ -17,7 +19,7 @@ public class RepairFormMapper {
         if(repairForm == null) return null;
 
         Repair repair = new Repair();
-        repair.setDate(new Timestamp(DateProvider.SDF.parse(repairForm.getDate()).getTime()));
+        repair.setDate(LocalDate.parse(repairForm.getDate(), DateProvider.getFormat()));
         repair.setAddress(repairForm.getAddress());
         repair.setAddress(repairForm.getAddress());
         repair.setRepairType(RepairType.valueOf(repairForm.getRepairType()));

@@ -7,7 +7,7 @@
     <body>
         <!-- header here -->
         <#include "../partials/beginContainerWithSidebar.ftlh">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <h1>Owners</h1>

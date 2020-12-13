@@ -140,7 +140,7 @@ public class AdminRepairController {
         return "redirect:/admin/repairs/" + theRepair.get().getId();
     }
 
-    @PostMapping(value = "repairs/delte/{id}")
+    @PostMapping(value = "repairs/delete/{id}")
     public String deleteRepair(@PathVariable("id") Long id, Model model) {
         if(!repairService.deleteRepairById(id)) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");

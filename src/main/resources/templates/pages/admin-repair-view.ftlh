@@ -1,5 +1,4 @@
-<#import "../partials/repair-partial.ftlh" as ownerComponent />
-<#include "../partials/navbar.ftlh">
+<#import "../partials/repair-partial.ftlh" as repairComponent />
 <html lang="en">
     <head>
         <#include "../partials/head.ftlh"/>
@@ -7,6 +6,7 @@
     </head>
     <#include "../partials/beginContainerWithSidebar.ftlh">
     <body>
+    <#include "../partials/navbar.ftlh">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

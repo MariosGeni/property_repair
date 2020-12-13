@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col">
                     <h1>Create Owner</h1>
-                    <#if errorMessage??><h3 style="color: #dc3545">${errorMessage!""}</h3></h3></#if>
+                    <#if errorMessage??><h3 style="color: #dc3545">${errorMessage!""}</h3></#if>
                 </div>
             </div>
             <div class="wor">

@@ -127,7 +127,7 @@ public class AdminRepairController {
         return "redirect:/admin/owners/" + newRepair.get().getId();
     }
 
-    @PutMapping(value = "repairs/{id}") // Edit repair by its id
+    @PostMapping(value = "repairs/edit/{id}") // Edit repair by its id
     public String putRepairEditOwnersPage(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
                                           BindingResult bindingResult, @PathVariable Long id) {
         if(bindingResult.hasErrors()) {
@@ -140,7 +140,7 @@ public class AdminRepairController {
         return "redirect:/admin/repairs/" + theRepair.get().getId();
     }
 
-    @DeleteMapping(value = "repairs/{id}")
+    @PostMapping(value = "repairs/{id}")
     public String deleteRepair(@PathVariable("id") Long id) {
         repairService.deleteRepairById(id);
         return "redirect:/admin/repairs";

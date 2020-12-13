@@ -4,7 +4,7 @@
         <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
-                    <li class="nav-item btn-outline-info">
+                    <li class="nav-item btn-outline-info ">
                         <a class="nav-link text-white" href="/admin">
                             <span data-feather="home"></span>
                             Home

@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.service;
 
+import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.mappers.RepairMapper;
 import com.codehub.pf.team4.mappers.UserFormMapper;
@@ -75,12 +76,13 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean deleteById(Long id) {
         // if id is empty or user paired with this id doesn't exist
-        if (id == null || findUserById(id).isEmpty()) {
+        Optional<User> asd = userRepository.findById(id);
+        if (id == null || asd.isEmpty() ) {
             System.out.println("Id is null or user not found"); // display a simple message
             return false; // deletion unsuccessful
         }
 
-        userRepository.deleteById(id);
+        userRepository.delete(asd.get());
         return true;
     }
 

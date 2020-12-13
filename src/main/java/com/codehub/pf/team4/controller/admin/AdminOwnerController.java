@@ -109,7 +109,7 @@ public class AdminOwnerController {
         return "redirect:/admin/owners/" + newUser.get().getId();
     }
 
-    @PutMapping("/owners/{id}") // Edit owner by its id
+    @PostMapping("/owners/edit/{id}") // Edit owner by its id
     public String putAdminEditOwnersPage(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                          BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
@@ -122,9 +122,9 @@ public class AdminOwnerController {
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
     }
 
-    @DeleteMapping("owners/{id}")
+    @PostMapping("owners/{id}")
     public String deleteAdminOwner(@PathVariable("id") Long id) {
-        userService.deleteById(id);
+        System.out.println(userService.deleteById(id));
         return "redirect:/admin/owners";
     }
 }

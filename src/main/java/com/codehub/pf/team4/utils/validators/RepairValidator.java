@@ -32,7 +32,7 @@ public class RepairValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         RepairForm repairForm = (RepairForm) target;
-        if(repairForm.getId() == null) repairForm.setId(""); // avoid null poninter
+        if(repairForm.getId() == null) repairForm.setId(""); // avoid null pointer
         if(repairForm.getUserId() == null) repairForm.setUserId("-1"); // avoid null pointer
 
         // Here we add our custom validation logic

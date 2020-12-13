@@ -7,9 +7,11 @@ import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import java.util.Arrays;
+import java.util.*;
 import java.util.Optional;
 
 @Component
@@ -26,7 +28,7 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
-        if(userForm.getId() == null) userForm.setId(""); // to avoid nullpointer
+        if(userForm.getId() == null) userForm.setId(""); // to avoid null pointer
 
         // check if user with same email or afm exist and id == null so its CREATE OPERATION
         if (doesExist("email", userForm.getEmail()) && userForm.getId().isEmpty()) {
@@ -37,6 +39,8 @@ public class UserValidator implements Validator {
             errors.reject("afk", "afm cant be empty");
         } else if(doesExist("afm", userForm.getAfm()) && userForm.getId() == null) {
             errors.rejectValue("afm", "User with this afm already exists");
+        }else if(isNumeric(userForm.getPassword())) {
+            errors.rejectValue("afm", "AFM should only contain numbers");
         }
 
         // UPDATE RELATED > Check if user exists before update
@@ -44,6 +48,10 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "User with this email already exists");
         }
 
+        // check if password is empty
+        if(userForm.getPassword().isBlank()) {
+            errors.reject("password", "password cant be empty");
+        }
 
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())
                 .filter(type -> type.toString().equalsIgnoreCase(userForm.getHouseType()))
@@ -70,4 +78,10 @@ public class UserValidator implements Validator {
 
         return false;
     }
+
+    // simple function to check if string is numeric or not
+    public boolean isNumeric(String toBeChecked) {
+        return toBeChecked.chars().allMatch(Character::isDigit);
+    }
+
 }

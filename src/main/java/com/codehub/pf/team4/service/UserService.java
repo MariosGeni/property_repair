@@ -39,5 +39,4 @@ public interface UserService {
     // given an email, get all repairs related with the user
     List<RepairModel> getRepairsByUserEmail(String email);
 
-
 }

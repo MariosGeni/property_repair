@@ -43,7 +43,6 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<UserModel> updateUser(UserForm toBeUpdatedUser) {
         return UserMapper.mapToUserModelOptional(userRepository.save(UserFormMapper.mapToUser(toBeUpdatedUser)));
-
     }
 
     @Override

@@ -6,9 +6,6 @@
     <!-- header here -->
     <#include "../partials/navbar.ftlh">
     <#include "../partials/beginContainerWithSidebar.ftlh">
-        <a href="/admin/owners">Owners</a>
-        <a href="/admin/repairs">Repairs</a>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">

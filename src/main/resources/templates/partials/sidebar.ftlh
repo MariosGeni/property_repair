@@ -23,7 +23,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link text-white" href="/admin/owner/create">
+                <a class="nav-link text-white" href="/admin/owners/create">
                     <span data-feather="plus-circle"></span>
                     Create Owner
                 </a>

@@ -6,8 +6,7 @@
     </head>
     <body>
         <!-- header here -->
-
-        <!-- content here -->
+        <#include "../partials/beginContainerWithSidebar.ftlh">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -16,20 +15,18 @@
             </div>
 
             <div class="row">
-                <div class="col-12" style="overflow: auto;">
+                <div class="col" style="overflow: auto;">
                     <#if owners?has_content && owners?is_sequence>
                         <@ownerComponent.ownerList owners />
                     </#if>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <@ownerComponent.ownerSingle owners[0] />
-                </div>
-            </div>
         </div>
+        <#include "../partials/endContainerWithSidebar.ftlh">
 
         <!-- footer here -->
+
+            <#-- scrips -->
+            <#include "../partials/scripts.ftlh">
     </body>
 </html>

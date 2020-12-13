@@ -62,7 +62,7 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Optional<RepairModel> postRepair(RepairForm newRepair) {
+    public Optional<RepairModel> postRepair(RepairForm newRepair){
         return RepairMapper.mapToRepairModelOptional(repairRepository.save(new Repair()));
     }
 

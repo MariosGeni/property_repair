@@ -17,3 +17,7 @@ html, body{
     //color: white;
     font-size: 2em;
 }
+
+.container-fluid {
+    min-height: 90vh;
+}

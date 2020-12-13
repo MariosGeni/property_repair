@@ -1,8 +1,7 @@
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="/js/lib/jquery/jquery-3_5_1.js"></script>
+<script src="/js/bootstrap/bootstrap.min.js"></script>
 <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<scrip src="/js/main.js"></scrip>
 <script>
     feather.replace();
 </script>
-<script src="/js/main.js"></script>

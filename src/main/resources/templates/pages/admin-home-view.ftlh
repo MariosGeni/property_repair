@@ -22,12 +22,6 @@
                     </#if>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-12">
-                    <@repairComponent.repairSingle activeRepairs[0] />
-                </div>
-            </div>
         </div>
     </body>
 </html>

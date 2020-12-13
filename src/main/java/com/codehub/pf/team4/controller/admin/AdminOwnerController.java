@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.controller.admin;
 
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
@@ -14,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -40,10 +38,10 @@ public class AdminOwnerController {
     @Autowired
     private UserValidator userValidator;
 
-    @InitBinder(USER_FORM)
+    /*@InitBinder(USER_FORM)
     protected void initBinder(final WebDataBinder binder) {
         binder.addValidators(userValidator);
-    }
+    }*/
 
     // *************************************************** //
     // ======================== OWNERS ================== //

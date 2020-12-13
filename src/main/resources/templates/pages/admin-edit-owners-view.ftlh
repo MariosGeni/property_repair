@@ -14,7 +14,7 @@
 <div class="container-fluid">
     <div class="row">
 
-        <#include "../partials/sidebar.ftlh">
+        <#include "../partials/beginContainerWithSidebar.ftlh">
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="row">

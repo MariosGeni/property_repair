@@ -10,10 +10,13 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h1>Repairs</h1>
+                    <#if repairs?has_content>
+                        <h1>Repairs</h1>
+                    <#else>
+                        <h3>There are no Repairs</h3>
+                    </#if>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-12" style="overflow-x: auto;">
                     <#if repairs?has_content && repairs?is_sequence>

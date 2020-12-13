@@ -9,7 +9,11 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <#if owners?has_content>
                     <h1>Owners</h1>
+                    <#else>
+                    <h3>There are no Owners</h3>
+                    </#if>
                 </div>
             </div>
 

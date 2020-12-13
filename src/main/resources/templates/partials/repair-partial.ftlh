@@ -26,7 +26,7 @@
                 <td>${repair.address}</td>
                 <td>${repair.state}</td>
                 <td>${repair.repairType}</td>
-                <td>${repair.cost} &euro;</td>
+                <td>${repair.cost?c} &euro;</td>
                 <td>${repair.user}</td>
                 <td>${repair.description}</td>
                 <td>
@@ -66,7 +66,7 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">Cost</td>
-                <td>${repair.cost} &euro;</td>
+                <td>${repair.cost?c} &euro;</td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Owner</td>

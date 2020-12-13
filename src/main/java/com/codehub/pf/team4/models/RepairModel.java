@@ -2,7 +2,7 @@ package com.codehub.pf.team4.models;
 
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class RepairModel {
     private Long id;
-    private Timestamp date;
+    private LocalDate date;
     private State state;
     private RepairType repairType;
     private Long cost;

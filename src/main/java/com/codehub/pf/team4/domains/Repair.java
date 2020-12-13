@@ -4,9 +4,10 @@ import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 @Table(name = "Repair")
 @Data
@@ -18,7 +19,8 @@ public class Repair {
     private Long id;
 
     @Column(name = "date")
-    private Timestamp date;
+    @DateTimeFormat
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "state")
@@ -51,8 +53,8 @@ public class Repair {
                 ", repair_type ='" + repairType + '\'' +
                 ", cost ='" + cost + '\'' +
                 ", address =" + address +
-                ", user ='" + user + '\'' +
                 ", description =" + description +
+                ", userId =" + user.getId() +
                 '}';
     }
 }

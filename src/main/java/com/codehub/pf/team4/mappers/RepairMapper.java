@@ -27,13 +27,13 @@ public abstract class RepairMapper {
         return repairModel;
     }
 
-    public List<RepairModel> mapToRepairModelList(List<Repair> repairs){
+    public static List<RepairModel> mapToRepairModelList(List<Repair> repairs){
         return repairs.stream()
                 .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
     }
 
-    public Optional<RepairModel> mapToRepairModelOptional(Repair repair) {
+    public static Optional<RepairModel> mapToRepairModelOptional(Repair repair) {
         return Optional.of(mapToRepairModel(repair));
     }
 }

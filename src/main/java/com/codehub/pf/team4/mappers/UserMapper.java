@@ -4,6 +4,7 @@ import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,13 +25,15 @@ public abstract class UserMapper {
         return userModel;
     }
 
-    public List<UserModel> mapToUserModelList(List<User> users){
+    public static List<UserModel> mapToUserModelList(List<User> users){
+        if(users.isEmpty()) return new ArrayList();
         return users.stream()
                 .map(UserMapper::mapToUserModel)
                 .collect(Collectors.toList());
     }
 
-    public Optional<UserModel> mapToRepairModelOptional(User user) {
+    public static Optional<UserModel> mapToUserModelOptional(User user) {
+        if(user == null) return Optional.empty();
         return Optional.of(mapToUserModel(user));
     }
 }

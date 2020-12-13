@@ -32,8 +32,11 @@ public class RepairValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         RepairForm repairForm = (RepairForm) target;
+        if(repairForm.getId() == null) repairForm.setId(""); // avoid null poninter
+        if(repairForm.getUserId() == null) repairForm.setUserId("-1"); // avoid null pointer
+
         // Here we add our custom validation logic
-        // Updated repair does exist?
+        // UPDATE OPERATION does repair with this id exist?
         if(!repairForm.getId().isEmpty()) {
             Optional<RepairModel> repairWithGivenEmail = repairService.getRepairById(Long.parseLong(repairForm.getId()));
             if (repairWithGivenEmail.isEmpty()) {

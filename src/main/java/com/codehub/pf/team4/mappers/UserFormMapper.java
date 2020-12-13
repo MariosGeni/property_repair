@@ -20,10 +20,15 @@ public class UserFormMapper {
         user.setPhoneNumber(Long.parseLong(userForm.getPhoneNumber()));
         user.setHouseType(HouseType.valueOf(userForm.getHouseType()));
 
-        if(!userForm.getId().isEmpty()) {
-            user.setId(Long.parseLong(userForm.getId()));
-        } else {
-            user.setPassword(userForm.getPassword());
+        if(userForm.getId() != null) {
+            if(!userForm.getId().isEmpty()) {
+                user.setId(Long.parseLong(userForm.getId()));
+            }
+        }
+        if(userForm.getPassword() != null) {
+            if(!userForm.getPassword().isEmpty()) {
+                user.setPassword(userForm.getPassword());
+            }
         }
 
         return user;

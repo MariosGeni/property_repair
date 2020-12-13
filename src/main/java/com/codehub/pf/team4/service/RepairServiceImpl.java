@@ -3,6 +3,7 @@ package com.codehub.pf.team4.service;
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.mappers.RepairFormMapper;
 import com.codehub.pf.team4.mappers.RepairMapper;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.repository.RepairRepository;
@@ -33,25 +34,19 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public Optional<RepairModel> getRepairById(Long id) {
-        return Optional.of(RepairMapper.mapToRepairModel(repairRepository.findById(id).orElse(null)));
+        return RepairMapper.mapToRepairModelOptional(repairRepository.findById(id).orElse(null));
     }
 
     @Override
     public List<RepairModel> getOngoingRepairsOfTheDay() throws Exception {
         return repairRepository.findByDateIsBetweenAndStateEquals(DateProvider.getStartOfDay(), DateProvider.getEndOfDay(), State.ONGOING)
                 .stream()
-                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
-        /* return repairRepository.findAll().stream()
-                .filter(repair -> isToday(repair.getDate(), now))
-                .filter(repair -> repair.getState() == State.ONGOING)
-                .collect(Collectors.toList()); */
     }
 
     @Override
     public List<RepairModel> getRepairsByDate(String date) {
-        //String[] arrayOfDates = date.split("/", 2);
-        // timestamp for first-begin date
         Timestamp searchDate = null;
         try {
             searchDate = DateProvider.getDate(date);
@@ -62,22 +57,23 @@ public class RepairServiceImpl implements RepairService {
         System.out.println(searchDate);
         return repairRepository.findByDateLike(searchDate)
                 .stream()
-                .map(repair -> RepairMapper.mapToRepairModel(repair))
+                .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
     }
 
     @Override
     public Optional<RepairModel> postRepair(RepairForm newRepair) {
-        return Optional.of(RepairMapper.mapToRepairModel(repairRepository.save(new Repair())));
+        return RepairMapper.mapToRepairModelOptional(repairRepository.save(new Repair()));
     }
 
     @Override
     public Optional<RepairModel> updateRepair(RepairForm toBeUpdatedRepair) {
-        /*Long repairId = toBeUpdatedRepair.getId();
-        if (repairId == null || getRepairById(repairId).isEmpty()) {
+        try {
+            Repair theRepair = RepairFormMapper.mapToRepair(toBeUpdatedRepair);
+            return RepairMapper.mapToRepairModelOptional(repairRepository.save(theRepair));
+        } catch (Exception e) {
             return Optional.empty();
-        }*/
-        return Optional.of(RepairMapper.mapToRepairModel(repairRepository.save(new Repair())));
+        }
     }
 
     @Override

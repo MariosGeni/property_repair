@@ -6,6 +6,7 @@ import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
+import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -27,7 +29,7 @@ public class AdminOwnerController {
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
     private final String USER_FORM = "userForm";
-    private final String USER_CATEGORIES = "userCategories";
+    private final String USER_HOUSE_TYPE = "HOUSE_TYPE";
 
     @Autowired
     private UserService userService;
@@ -44,7 +46,7 @@ public class AdminOwnerController {
     }
 
     // *************************************************** //
-    // ======================= OWNERS ==================== //
+    // ======================== OWNERS ================== //
     // *************************************************** //
 
     @GetMapping(value = "/owners")
@@ -58,7 +60,10 @@ public class AdminOwnerController {
     @GetMapping(value = "/owners/{id}")
     public String getAdminOwnerPage(@PathVariable("id") Long id, Model model) {
         // --- owners showcase here --- //
-        model.addAttribute(OWNER, userService.findUserById(id).get());
+        Optional<UserModel> theUser = userService.findUserById(id);
+
+        if(theUser.isEmpty()) return "redirect:/admin/owners";
+        model.addAttribute(OWNER, theUser.get());
         return "pages/admin-owner-view";
     }
 
@@ -70,32 +75,16 @@ public class AdminOwnerController {
 
         if(!afm.equals("")) owner = userService.findUserByAfm(afm);
         else if(!email.equals(""))  owner = userService.findUserByEmail(email);
-        System.out.println("I work = LIE");
+        System.out.println("I work");
         model.addAttribute(OWNER, owner.orElse(null));
         return "pages/admin-search-owners-view";
     }
 
-    /*
-    * CREATE OWNER
-    */
-    @GetMapping(value = "/owner/create")
-    public String booksDynamic(Model model){
+    @GetMapping(value = "/owners/create")
+    public String getAdminCreateOwnerPage(Model model){
         model.addAttribute(USER_FORM, new UserForm());
-        model.addAttribute(USER_CATEGORIES, HouseType.values());
+        model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
         return "pages/admin-create-owners-view";
-    }
-
-    @PostMapping(value = "/owner/create")
-    public String ownerCreation(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
-                              BindingResult bindingResult) {
-
-        if (bindingResult.hasErrors()) {
-            //have some error handling here, perhaps add extra error messages to the model
-            model.addAttribute(ERROR_MESSAGE, "an error occurred");
-            return "pages/admin-create-owners-view";
-        }
-        userService.createOwner(userForm);
-        return "redirect:/owners";
     }
 
     @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
@@ -105,28 +94,33 @@ public class AdminOwnerController {
         if(theOwner.isEmpty()) return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
 
         model.addAttribute(OWNER, theOwner.orElse(null));
-        model.addAttribute(USER_CATEGORIES, HouseType.values());
 
         return "pages/admin-edit-owners-view";
     }
 
-    @PostMapping("/owners")
+    @PostMapping("/owners/create")
     public String postAdminOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute(ERROR_MESSAGE, "Oops an error occured");
-            return "/owner/create";
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
+            model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
+            return "pages/admin-create-owners-view";
         }
-        userService.addUser(userForm);
-        return "redirect:/owners";
+        Optional<UserModel> newUser = userService.addUser(userForm);
+        if(newUser.isEmpty()) return "pages/admin-create-owners-view";
+        return "redirect:/admin/owners/" + newUser.get().getId();
     }
 
     @PutMapping("/owners/{id}") // Edit owner by its id
-    public String putAdminEditOwnersPage(@RequestBody User owner, Model model) {
-        Optional<UserModel> theOwner = userService.updateUser(new UserForm());
+    public String putAdminEditOwnersPage(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
+                                         BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during update");
+            return "pages/admin-edit-owners-view";
+        }
 
-        if(theOwner.isEmpty()) return "redirect:/admin/owners"; //redirect to owners if owner not found
-
+        Optional<UserModel> theOwner = userService.updateUser(userForm);
+        if(theOwner.isEmpty()) return "pages/admin-edit-owners-view";
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
     }
 

@@ -2,16 +2,20 @@ package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
+import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.RepairValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -54,7 +58,10 @@ public class AdminRepairController {
     @GetMapping(value = "repairs/{id}")
     public String getAdminRepairPage(Model model, @PathVariable("id") Long id) {
         // --- repairs showcase here --- //
-        model.addAttribute(REPAIR, repairService.getRepairById(id).get());
+        Optional<RepairModel> theRepair = repairService.getRepairById(id);
+        if(theRepair.isEmpty()) return "redirect:/admin/repairs";
+
+        model.addAttribute(REPAIR, theRepair.get());
         return "pages/admin-repair-view";
     }
 
@@ -74,6 +81,8 @@ public class AdminRepairController {
     public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
         Optional<RepairModel> theRepair = repairService.getRepairById(id);
 
+        if(theRepair.isEmpty()) return "redirect:/admin/repairs";
+
         model.addAttribute(REPAIR, theRepair.orElse(null));
         model.addAttribute(IS_PRESENT, theRepair.isPresent());
 
@@ -81,21 +90,28 @@ public class AdminRepairController {
     }
 
     @PostMapping("repairs")
-    public String postRepair(@RequestBody Repair repair, Model model) {
-        // --- create code here --- //
-        Optional<RepairModel> newRepair = repairService.postRepair(new RepairForm());
+    public String postRepair(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+                             BindingResult bindingResult) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
+            return "pages/admin-edit-repairs-view";
+        }
 
-        if(newRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
-
+        Optional<RepairModel> newRepair = repairService.updateRepair(repairForm);
+        if(newRepair.isEmpty()) return "pages/admin-edit-repairs-view";
         return "redirect:/admin/repairs/" + newRepair.get().getId();
     }
 
     @PutMapping(value = "repairs/{id}") // Edit repair by its id
-    public String putRepairEditOwnersPage(@RequestBody Repair repair, Model model) {
-        Optional<RepairModel> theRepair = repairService.updateRepair(new RepairForm());
+    public String putRepairEditOwnersPage(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+                                          BindingResult bindingResult, @PathVariable Long id) {
+        if(bindingResult.hasErrors()) {
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during update");
+            return "pages/admin-edit-repairs-view";
+        }
 
-        if(theRepair.isEmpty()) return "redirect:/admin/repairs"; // if repairs not found redirect to repairs
-
+        Optional<RepairModel> theRepair = repairService.updateRepair(repairForm);
+        if(theRepair.isEmpty()) return "pages/admin-edit-repairs-view";
         return "redirect:/admin/repairs/" + theRepair.get().getId();
     }
 

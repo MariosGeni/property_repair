@@ -1,6 +1,8 @@
 package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.domains.Repair;
+import com.codehub.pf.team4.enums.RepairType;
+import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.RepairModel;
@@ -28,6 +30,8 @@ public class AdminRepairController {
     private final String REPAIRS = "repairs";
     private final String IS_PRESENT = "isPresent";
     private final String REPAIR_FORM = "repairForm";
+    private final String STATE = "state";
+    private final String REPAIR_TYPE = "repairType";
 
     @Autowired
     private UserService userService;
@@ -76,6 +80,13 @@ public class AdminRepairController {
         model.addAttribute(REPAIRS, repairs);
         return "pages/admin-search-repairs-view";
     }
+    @GetMapping(value = "/repairs/create")
+    public String getAdminCreateRepairsPage(Model model){
+        model.addAttribute(REPAIR_FORM, new RepairForm());
+        model.addAttribute(REPAIR_TYPE, RepairType.values());
+        model.addAttribute(STATE, State.values());
+        return "pages/admin-create-repairs-view";
+    }
 
     @GetMapping(value = "repairs/edit/{id}") // Edit repair by its id
     public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
@@ -100,6 +111,20 @@ public class AdminRepairController {
         Optional<RepairModel> newRepair = repairService.updateRepair(repairForm);
         if(newRepair.isEmpty()) return "pages/admin-edit-repairs-view";
         return "redirect:/admin/repairs/" + newRepair.get().getId();
+    }
+    @PostMapping("/repairs/create")
+    public String postAdminOwner(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+                                 BindingResult bindingResult) throws Exception{
+        if (bindingResult.hasErrors()) {
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
+            model.addAttribute(REPAIR_TYPE, RepairType.values());
+            model.addAttribute(STATE, State.values());
+
+            return "pages/admin-create-repairs-view";
+        }
+        Optional<RepairModel> newRepair = repairService.addRepair(repairForm);
+        if(newRepair.isEmpty()) return "pages/admin-create-owners-view";
+        return "redirect:/admin/owners/" + newRepair.get().getId();
     }
 
     @PutMapping(value = "repairs/{id}") // Edit repair by its id

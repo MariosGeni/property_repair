@@ -12,7 +12,7 @@ public interface RepairService {
 
     Optional<RepairModel> getRepairById(Long id);
 
-    Optional<RepairModel> postRepair(RepairForm newRepair);
+    Optional<RepairModel> addRepair(RepairForm repair) throws Exception;
 
     Optional<RepairModel> updateRepair(RepairForm toBeUpdatedRepair);
 

@@ -1,10 +1,11 @@
+<#ftl output_format="HTML" strip_whitespace=true>
 <#import "/spring.ftl" as spring />
 
 <div class="container">
 
     <div class="row">
         <div class="col">
-            <h1>Edit Owner Details</h1>
+            <h1>Create Owner</h1>
             <#if errorMessage??>
                 <h3 style="color: #dc3545">${errorMessage!""}</h3>
             </#if>
@@ -13,14 +14,11 @@
 
     <div class="row">
         <div class="col-12">
-
-            <input type="hidden" name="id" value="${owner.id}">
-
-            <form id="editForm" name="editForm" action="/admin/owners/edit/" method="get">
+            <form id="userForm" name="userForm" action="/admin/owners/edit/" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <@spring.bind "userForm.email"/>
-                    <input type="email" class="form-control" id="email" name="email" value="${owner.email}">
+                    <input type="email" class="form-control" id="email" name="email">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -33,7 +31,7 @@
                 <div class="form-group">
                     <label for="afm">Afm</label>
                     <@spring.bind "userForm.afm"/>
-                    <input type="text" class="form-control" id="afm" name="afm" value="${owner.afm?c}">
+                    <input type="text" class="form-control" id="afm" name="afm">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -46,7 +44,7 @@
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <@spring.bind "userForm.firstName"/>
-                    <input type="text" class="form-control" id="first_name" name="firstName" value="${owner.firstName}">
+                    <input type="text" class="form-control" id="first_name" name="firstName">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -60,7 +58,7 @@
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
                     <@spring.bind "userForm.lastName"/>
-                    <input type="text" class="form-control" id="last_name" name="lastName" value="${owner.lastName}">
+                    <input type="text" class="form-control" id="last_name" name="lastName">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -76,7 +74,7 @@
                         <div class="form-group">
                             <@spring.bind "userForm.address"/>
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" value="${owner.address}">
+                            <input type="text" class="form-control" id="address" name="address">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
@@ -91,7 +89,7 @@
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
                             <@spring.bind "userForm.phoneNumber"/>
-                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${owner.phoneNumber}">
+                            <input type="text" class="form-control" id="phone_number" name="phoneNumber">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
@@ -107,7 +105,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" name="password" value="${owner.password}">
+                    <input type="password" class="form-control" id="password" name="password">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -130,14 +128,14 @@
                         </#if>
                     </select>
                     <#if spring.status.error??>
-                        <#if userCategories??>
-                            <#list userCategories as category>
-                                <option value="${category}">${category}</option>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
                             </#list>
-                        </#if>
+                        </ul>
                     </#if>
                 </div>
-                <button class="btn btn-primary btn-lg mt-4" type="submit">Update</button>
+                <button class="btn btn-primary btn-lg mt-4" type="submit">Create</button>
             </form>
         </div>
     </div>

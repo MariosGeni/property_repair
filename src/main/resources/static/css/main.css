@@ -21,3 +21,7 @@ html, body{
 .container-fluid {
     min-height: 90vh;
 }
+
+.sidebar{
+    min-height: 90vh!important;
+}

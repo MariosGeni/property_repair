@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
     <#include "../partials/head.ftlh">
+    <#include "../partials/navbar.ftlh">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <title>Search</title>
 </head>
 
 <body>
 
-<#include "../partials/navbar.ftlh">
 
 <div class="container-fluid">
     <div class="row">
@@ -28,6 +28,6 @@
 
 <#include "../partials/scripts.ftlh">
 <#include "../partials/script-datepicker.ftlh">
-
+<#include "../partials/endContainerWithSidebar.ftlh">
 </body>
 </html>

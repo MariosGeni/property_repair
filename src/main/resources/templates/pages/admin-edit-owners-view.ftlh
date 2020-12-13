@@ -25,7 +25,7 @@
         </main>
     </div>
 </div>
-
+<#include "../partials/endContainerWithSidebar.ftlh">
 <#include "../partials/scripts.ftlh">
 
 </body>

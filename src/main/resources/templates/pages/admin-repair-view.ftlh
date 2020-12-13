@@ -1,11 +1,12 @@
 <#import "../partials/repair-partial.ftlh" as repairComponent />
+<#include "../partials/navbar.ftlh">
 <html lang="en">
     <head>
         <#include "../partials/head.ftlh"/>
         <title>Admin - Repair ${repair.id}</title>
     </head>
     <body>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <#if repair?has_content>
@@ -14,5 +15,7 @@
             </div>
         </div>
     </div>
+
+    <#include "../partials/endContainerWithSidebar.ftlh">
     </body>
 </html>

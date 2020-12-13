@@ -1,16 +1,14 @@
 <#import "/spring.ftl" as spring />
 <#import "../partials/owner-partial.ftlh" as ownerComponent />
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <#include "../partials/head.ftlh">
+<#include "../partials/top-design.ftlh">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <title>Edit Book</title>
 </head>
 
 <body>
-
+<!-- header here -->
 <#include "../partials/navbar.ftlh">
+<#include "../partials/beginContainerWithSidebar.ftlh">
 
 <div class="container-fluid">
     <div class="row">
@@ -27,8 +25,6 @@
     </div>
 </div>
 <#include "../partials/endContainerWithSidebar.ftlh">
-<#include "../partials/scripts.ftlh">
-
 </body>
 </html>
 

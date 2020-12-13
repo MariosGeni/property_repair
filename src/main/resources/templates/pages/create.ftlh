@@ -6,6 +6,8 @@
         <title>Admin - Create Owner</title>
     </head>
     <body>
+    <!-- header here -->
+    <#include "../partials/navbar.ftlh">
         <div class="container">
             <div class="row">
                 <div class="col">

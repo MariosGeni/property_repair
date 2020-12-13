@@ -1,11 +1,11 @@
 <#import "../partials/owner-partial.ftlh" as ownerComponent />
-<html lang="en">
-    <head>
-        <#include "../partials/html-header-partial.ftlh">
-        <#include "../partials/navbar.ftlh">
+<#include "../partials/top-design.ftlh">
         <title>Admin - Home</title>
     </head>
     <body>
+    <!-- header here -->
+    <#include "../partials/navbar.ftlh">
+    <#include "../partials/beginContainerWithSidebar.ftlh">
         <a href="/admin/owners">Owners</a>
         <a href="/admin/repairs">Repairs</a>
 
@@ -25,6 +25,5 @@
             </div>
         </div>
         <#include "../partials/endContainerWithSidebar.ftlh">
-        <#include "../partials/scripts.ftlh">
     </body>
 </html>

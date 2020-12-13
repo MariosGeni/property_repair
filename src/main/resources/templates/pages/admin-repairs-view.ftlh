@@ -1,12 +1,10 @@
-<#import "../partials/repair-partial.ftlh" as ownerComponent />
-<#include "../partials/navbar.ftlh">
-<html lang="en">
-    <head>
-        <#include "../partials/html-header-partial.ftlh">
+<#import "../partials/repair-partial.ftlh" as repairComponent />
+<#include "../partials/top-design.ftlh">
         <title>Admin - Repairs</title>
     </head>
     <body>
         <!-- header here -->
+        <#include "../partials/navbar.ftlh">
         <#include "../partials/beginContainerWithSidebar.ftlh">
         <!-- content here -->
         <div class="container-fluid">
@@ -26,7 +24,6 @@
         </div>
 
         <#include "../partials/endContainerWithSidebar.ftlh">
-        <#include "../partials/scripts.ftlh">
         <!-- footer here -->
     </body>
 </html>

@@ -1,14 +1,11 @@
 <#import "../partials/owner-partial.ftlh" as ownerComponent />
-
-<#include "../partials/navbar.ftlh">
-<html lang="en">
-<#include "../partials/beginContainerWithSidebar.ftlh">
-<#include "../partials/scripts.ftlh">
-    <head>
-        <#include "../partials/head.ftlh"/>
+<#include "../partials/top-design.ftlh">
         <title>Admin - Owner ${owner.id}</title>
     </head>
     <body>
+    <!-- header here -->
+    <#include "../partials/navbar.ftlh">
+    <#include "../partials/beginContainerWithSidebar.ftlh">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -19,6 +16,5 @@
         </div>
     </div>
     <#include "../partials/endContainerWithSidebar.ftlh">
-    <#include "../partials/scripts.ftlh">
     </body>
 </html>

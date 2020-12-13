@@ -1,12 +1,10 @@
 <#import "../partials/owner-partial.ftlh" as ownerComponent>
-<html lang="en">
-    <head>
-        <#include "../partials/html-header-partial.ftlh">
-        <#include "../partials/navbar.ftlh">
+<#include "../partials/top-design.ftlh">
         <title>Admin - Owners</title>
     </head>
     <body>
         <!-- header here -->
+        <#include "../partials/navbar.ftlh">
         <#include "../partials/beginContainerWithSidebar.ftlh">
         <div class="container-fluid">
             <div class="row">

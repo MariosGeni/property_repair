@@ -44,7 +44,7 @@ public class AdminOwnerController {
     }
 
     // *************************************************** //
-    // ======================== OWNERS ================== //
+    // ======================= OWNERS ==================== //
     // *************************************************** //
 
     @GetMapping(value = "/owners")
@@ -74,12 +74,12 @@ public class AdminOwnerController {
         model.addAttribute(OWNER, owner.orElse(null));
         return "pages/admin-search-owners-view";
     }
+
     /*
     * CREATE OWNER
-    *
     */
     @GetMapping(value = "/owner/create")
-    public String ownerCreation(Model model){
+    public String booksDynamic(Model model){
         model.addAttribute(USER_FORM, new UserForm());
         model.addAttribute(USER_CATEGORIES, HouseType.values());
         return "pages/admin-create-owners-view";
@@ -94,7 +94,7 @@ public class AdminOwnerController {
             model.addAttribute(ERROR_MESSAGE, "an error occurred");
             return "pages/admin-create-owners-view";
         }
-        userService.addUser(userForm);
+        userService.createOwner(userForm);
         return "redirect:/owners";
     }
 

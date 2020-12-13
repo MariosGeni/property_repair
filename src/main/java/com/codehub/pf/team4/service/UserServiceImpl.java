@@ -71,18 +71,17 @@ public class UserServiceImpl implements UserService{
                 .collect(Collectors.toList());
     }
 
-//    @Override
-//    public UserModel createOwner(UserForm userForm) {
-//        User user = UserFormMapper.mapToUser(userForm);
-//        User newUser = userRepository.save(user);
-//        return UserMapper.mapToUserModel(newUser);
-//    }
+    @Override
+    public UserModel createOwner(UserForm userForm) {
+        User user = UserFormMapper.mapToUser(userForm);
+        User newUser = userRepository.save(user);
+        return UserMapper.mapToUserModel(newUser);
+    }
 
     @Override
     public Optional<UserModel> addUser(UserForm user) {
         System.out.println(user);
         return Optional.of(UserMapper.mapToUserModel(userRepository.save(new User())));
-
     }
 
     @Override

@@ -41,7 +41,7 @@ public class AdminRepairController {
 
 
     // *************************************************** //
-    // ======================== REPAIRS ================== //
+    // ======================= REPAIRS =================== //
     // *************************************************** //
 
     @GetMapping(value = "repairs")
@@ -79,8 +79,6 @@ public class AdminRepairController {
 
         return "pages/admin-edit-repairs-view";
     }
-
-
 
     @PostMapping("repairs")
     public String postRepair(@RequestBody Repair repair, Model model) {

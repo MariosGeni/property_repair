@@ -15,7 +15,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon1">@</span>
         </div>
-        <label for="email">  </label>
+        <label for="email"></label>
         <!-- <div> -->
             <input type="email" class="form-control" name="email" id="email" placeholder="email" aria-describedby="basic-addon1">
         <!-- </div> -->

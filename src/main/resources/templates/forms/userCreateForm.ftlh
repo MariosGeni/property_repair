@@ -1,40 +1,41 @@
 <#import "/spring.ftl" as spring />
 
-<h4 class="mb-3">Add Owner Details</h4>
-<form id="createForm" action="/admin/owner/create" method="post">
+<h4 class="mb-3">Edit Owner Details</h4>
+<form action="/admin/owner/create" method="post">
+
 
     <div class="mb-3">
         <label for="user-afm">User A.F.M</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user-afm" name="userAfm">
+            <input type="text" class="form-control" id="user-afm" name="userAfm" value="">
         </div>
     </div>
 
     <div class="mb-3">
         <label for="user-first-name">User First Name</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user-first-name" name="userFirstName" >
+            <input type="text" class="form-control" id="user-first-name" name="userFirstName" value="">
         </div>
     </div>
 
     <div class="mb-3">
         <label for="user-last-name">User Last Name</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user-last-name" name="userLastName">
+            <input type="text" class="form-control" id="user-last-name" name="userLastName"  value="">
         </div>
     </div>
 
     <div class="mb-3">
         <label for="user-address">User address</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user-address" name="userAddress" >
+            <input type="text" class="form-control" id="user-address" name="userAddress" value="">
         </div>
     </div>
 
     <div class="mb-3">
         <label for="author-phone-number">User phone number</label>
         <div class="input-group">
-            <input type="text" class="form-control" id="user-phone-number" name="userPhoneNumber">
+            <input type="text" class="form-control" id="user-phone-number" name="userPhoneNumber" value="">
         </div>
     </div>
 
@@ -51,5 +52,5 @@
         </div>
     </div>
 
-    <button class="btn btn-primary btn-lg mt-4" type="submit">Create</button>
+    <button class="btn btn-primary btn-lg mt-4" type="submit">create</button>
 </form>

@@ -20,7 +20,7 @@
                             <label for="email">Email</label>
                             <@spring.bind "userForm.email"/>
                             <input type="email" class="form-control" id="email" name="email">
-                            <#if spring.status.error??>
+                            <#if spring.status.error>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
                                         <li style="color: #dc3545">${error}</li>
@@ -33,11 +33,12 @@
                             <label for="afm">Afm</label>
                             <@spring.bind "userForm.afm"/>
                             <input type="text" class="form-control" id="afm" name="afm">
-                            <#if spring.status.error??>
+                            <#if spring.status.error>
                                 <ul>
-                                    <#list spring.status.errorMessages as error>
+                                    <li>${spring.status.errorMessages}</li>
+                                    <#--<#list spring.status.errorMessages as error>
                                         <li style="color: #dc3545">${error}</li>
-                                    </#list>
+                                    </#list>-->
                                 </ul>
                             </#if>
                         </div>

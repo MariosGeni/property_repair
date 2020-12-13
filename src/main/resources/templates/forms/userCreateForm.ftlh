@@ -14,7 +14,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <@spring.bind "userForm.email"/>
-                    <input type="email" class="form-control" id="email" name="email">
+                    <input type="email" class="form-control" id="email" name="email" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -27,7 +27,7 @@
                 <div class="form-group">
                     <label for="afm">Afm</label>
                     <@spring.bind "userForm.afm"/>
-                    <input type="text" class="form-control" id="afm" name="afm">
+                    <input type="text" class="form-control" id="afm" name="afm" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -40,7 +40,7 @@
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <@spring.bind "userForm.firstName"/>
-                    <input type="text" class="form-control" id="first_name" name="firstName">
+                    <input type="text" class="form-control" id="first_name" name="firstName" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -54,7 +54,7 @@
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
                     <@spring.bind "userForm.lastName"/>
-                    <input type="text" class="form-control" id="last_name" name="lastName">
+                    <input type="text" class="form-control" id="last_name" name="lastName" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <@spring.bind "userForm.address"/>
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="address">
+                            <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
@@ -85,7 +85,7 @@
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
                             <@spring.bind "userForm.phoneNumber"/>
-                            <input type="text" class="form-control" id="phone_number" name="phoneNumber">
+                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${spring.status.value!""}">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
@@ -119,7 +119,14 @@
                         <option>Select a type</option>
                         <#if HOUSE_TYPE??>
                             <#list HOUSE_TYPE as type>
-                                <option value="${type}">${type}</option>
+                                <option value="${type}"
+                                        <#if spring.status.value??>
+                                            <#if  type == spring.status.value>
+                                                selected
+                                            </#if>
+                                        </#if>
+
+                                >${type}</option>
                             </#list>
                         </#if>
                     </select>

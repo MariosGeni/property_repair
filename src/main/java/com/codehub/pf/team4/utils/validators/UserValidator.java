@@ -50,7 +50,7 @@ public class UserValidator implements Validator {
 
         // check if password is empty
         if(userForm.getPassword().isBlank()) {
-            errors.reject("password", "password cant be empty");
+            errors.rejectValue("password", "password cant be empty");
         }
 
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())

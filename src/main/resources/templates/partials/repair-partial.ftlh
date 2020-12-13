@@ -10,13 +10,18 @@
                 <th>Cost</th>
                 <th>Owner</th>
                 <th>Description</th>
+                <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
 
         <tbody>
         <#list repairs as repair>
             <tr>
-                <td>${repair.id}</td>
+                <td>
+                    <a href="/admin/repairs/${repair.id}">${repair.id}
+                    </a>
+                </td>
                 <td>${repair.date}</td>
                 <td>${repair.address}</td>
                 <td>${repair.state}</td>
@@ -24,6 +29,16 @@
                 <td>${repair.cost} &euro;</td>
                 <td>${repair.user}</td>
                 <td>${repair.description}</td>
+                <td>
+                    <a href="/admin/repairs/edit/${repair.id}">
+                        <span data-feather="tool"></span>
+                    </a>
+                </td>
+                <td>
+                    <a href="/admin/repairs/delete/${repair.id}">
+                        <span data-feather="x"></span>
+                    </a>
+                </td>
             </tr>
         </#list>
         </tbody>
@@ -61,6 +76,22 @@
                 <td class="font-weight-bold">Description</td>
                 <td>${repair.description}</td>
             </tr>
+        </tbody>
+    </table>
+    <table style="width: 100%">
+        <tr>
+            <td>
+                <form action="/admin/repairs/edit/${repair.id}">
+                    <input type="submit" class="btn-primary btn-block btn-lg" value="Edit"></input>
+                </form>
+            </td>
+
+            <td>
+                <form action="/admin/repairs/delete/${repair.id}" method="post">
+                    <input type="submit" class="btn-danger btn-block btn-lg" value="Delete"></input>
+                </form>
+            </td>
+        </tr>
         </tbody>
     </table>
 </#macro>

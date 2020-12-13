@@ -7,6 +7,7 @@ import com.codehub.pf.team4.mappers.UserFormMapper;
 import com.codehub.pf.team4.mappers.UserMapper;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.models.UserModel;
+import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private RepairRepository repairRepository;
 
     @Override
     public List<UserModel> getAllUsers() {
@@ -76,13 +79,14 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean deleteById(Long id) {
         // if id is empty or user paired with this id doesn't exist
-        Optional<User> asd = userRepository.findById(id);
-        if (id == null || asd.isEmpty() ) {
-            System.out.println("Id is null or user not found"); // display a simple message
+        Optional<User> toDeleteUser = userRepository.findById(id);
+        if (id == null || toDeleteUser.isEmpty() ) {
             return false; // deletion unsuccessful
         }
 
-        userRepository.delete(asd.get());
+        repairRepository.deleteAll(toDeleteUser.get().getRepairs());
+
+        userRepository.deleteById(id);
         return true;
     }
 

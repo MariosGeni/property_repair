@@ -122,9 +122,11 @@ public class AdminOwnerController {
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
     }
 
-    @PostMapping("owners/{id}")
-    public String deleteAdminOwner(@PathVariable("id") Long id) {
-        System.out.println(userService.deleteById(id));
+    @PostMapping("owners/delete/{id}")
+    public String deleteAdminOwner(@PathVariable("id") Long id, Model model) {
+        if(userService.deleteById(id)) {
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
+        }
         return "redirect:/admin/owners";
     }
 }

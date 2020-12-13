@@ -1,4 +1,4 @@
-<#import "../partials/owner-partial.ftlh" as ownerComponent />
+<#import "../partials/repair-partial.ftlh" as repairComponent />
 <#include "../partials/navbar.ftlh">
 <html lang="en">
     <head>

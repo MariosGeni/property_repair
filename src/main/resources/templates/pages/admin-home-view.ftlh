@@ -1,5 +1,4 @@
-<#import "../partials/owner-partial.ftlh" as ownerComponent />
-<#import "../partials/owner-partial.ftlh" as ownerComponent />
+<#import "../partials/repair-partial.ftlh" as repairComponent />
 <html lang="en">
     <head>
         <#include "../partials/html-header-partial.ftlh">
@@ -7,9 +6,6 @@
         <title>Admin - Home</title>
     </head>
     <body>
-        <a href="/admin/owners">Owners</a>
-        <a href="/admin/repairs">Repairs</a>
-
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">

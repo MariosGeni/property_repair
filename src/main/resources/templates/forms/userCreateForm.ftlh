@@ -2,15 +2,19 @@
 <#import "/spring.ftl" as spring />
 
 <div class="container">
+
     <div class="row">
         <div class="col">
             <h1>Create Owner</h1>
-            <#if errorMessage??><h3 style="color: #dc3545">${errorMessage!""}</h3></h3></#if>
+            <#if errorMessage??>
+                <h3 style="color: #dc3545">${errorMessage!""}</h3>
+            </#if>
         </div>
     </div>
-    <div class="wor">
+
+    <div class="row">
         <div class="col-12">
-            <form id="createForm" name="userForm" action="/admin/owners/create" method="post">
+            <form id="userForm" name="userForm" action="/admin/owners/create" method="post">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <@spring.bind "userForm.email"/>

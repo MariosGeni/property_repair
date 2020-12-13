@@ -1,57 +1,144 @@
 <#import "/spring.ftl" as spring />
 
-<h4 class="mb-3">Edit Owner Details</h4>
-<form action="/admin/owners/edit/" method="get">
+<div class="container">
 
-    <input type="hidden" name="id" value="${owner.id}">
-
-    <div class="mb-3">
-        <label for="user-afm">User A.F.M</label>
-        <div class="input-group">
-            <input type="text" class="form-control" id="user-afm" name="userAfm" value="${owner.afm?c}">
+    <div class="row">
+        <div class="col">
+            <h1>Edit Owner Details</h1>
+            <#if errorMessage??>
+                <h3 style="color: #dc3545">${errorMessage!""}</h3>
+            </#if>
         </div>
     </div>
 
-    <div class="mb-3">
-        <label for="user-first-name">User First Name</label>
-        <div class="input-group">
-            <input type="text" class="form-control" id="user-first-name" name="userFirstName" value="${owner.firstName}">
+    <div class="row">
+        <div class="col-12">
+
+            <input type="hidden" name="id" value="${owner.id}">
+
+            <form id="editForm" name="editForm" action="/admin/owners/edit/" method="get">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <@spring.bind "userForm.email"/>
+                    <input type="email" class="form-control" id="email" name="email" value="${owner.email}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
+
+                <div class="form-group">
+                    <label for="afm">Afm</label>
+                    <@spring.bind "userForm.afm"/>
+                    <input type="text" class="form-control" id="afm" name="afm" value="${owner.afm?c}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
+
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <@spring.bind "userForm.firstName"/>
+                    <input type="text" class="form-control" id="first_name" name="firstName" value="${owner.firstName}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <@spring.bind "userForm.lastName"/>
+                    <input type="text" class="form-control" id="last_name" name="lastName" value="${owner.lastName}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
+
+
+                <div class="form-row">
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <@spring.bind "userForm.address"/>
+                            <label for="address">Address</label>
+                            <input type="text" class="form-control" id="address" name="address" value="${owner.address}">
+                            <#if spring.status.error??>
+                                <ul>
+                                    <#list spring.status.errorMessages as error>
+                                        <li style="color: #dc3545">${error}</li>
+                                    </#list>
+                                </ul>
+                            </#if>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number</label>
+                            <@spring.bind "userForm.phoneNumber"/>
+                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${owner.phoneNumber}">
+                            <#if spring.status.error??>
+                                <ul>
+                                    <#list spring.status.errorMessages as error>
+                                        <li style="color: #dc3545">${error}</li>
+                                    </#list>
+                                </ul>
+                            </#if>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <@spring.bind "userForm.password"/>
+                    <input type="password" class="form-control" id="password" name="password" value="${owner.password}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="house_type">House Type</label>
+                    <@spring.bind "userForm.houseType"/>
+                    <select id="house_type" name="houseType" class="custom-select d-block w-100">
+                        <option>Select a type</option>
+                        <#if HOUSE_TYPE??>
+                            <#list HOUSE_TYPE as type>
+                                <option value="${type}">${type}</option>
+                            </#list>
+                        </#if>
+                    </select>
+                    <#if spring.status.error??>
+                        <#if userCategories??>
+                            <#list userCategories as category>
+                                <option value="${category}">${category}</option>
+                            </#list>
+                        </#if>
+                    </#if>
+                </div>
+                <button class="btn btn-primary btn-lg mt-4" type="submit">Update</button>
+            </form>
         </div>
     </div>
-
-    <div class="mb-3">
-        <label for="user-last-name">User Last Name</label>
-        <div class="input-group">
-            <input type="text" class="form-control" id="user-last-name" name="userLastName"  value="${owner.lastName}">
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="user-address">User address</label>
-        <div class="input-group">
-            <input type="text" class="form-control" id="user-address" name="userAddress" value="${owner.address}">
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="author-phone-number">User phone number</label>
-        <div class="input-group">
-            <input type="text" class="form-control" id="user-phone-number" name="userPhoneNumber" value="${owner.phoneNumber?c}">
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="category">Category</label>
-        <div class="input-group">
-            <select class="custom-select d-block w-100" id="category" name="category">
-                <#if userCategories??>
-                    <#list userCategories as category>
-                        <option value="${category}">${category}</option>
-                    </#list>
-                </#if>
-            </select>
-        </div>
-    </div>
-
-    <button class="btn btn-primary btn-lg mt-4" type="submit">Update</button>
-</form>
+</div>

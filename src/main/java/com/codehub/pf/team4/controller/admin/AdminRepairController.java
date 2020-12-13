@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.controller.admin;
 
-import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
@@ -30,8 +29,8 @@ public class AdminRepairController {
     private final String REPAIRS = "repairs";
     private final String IS_PRESENT = "isPresent";
     private final String REPAIR_FORM = "repairForm";
-    private final String STATE = "state";
-    private final String REPAIR_TYPE = "repairType";
+    private final String STATE = "STATE";
+    private final String REPAIR_TYPE = "REPAIR_TYPE";
 
     @Autowired
     private UserService userService;
@@ -100,11 +99,13 @@ public class AdminRepairController {
         return "pages/admin-edit-repairs-view";
     }
 
-    @PostMapping("repairs")
+    @PostMapping("repairs/create")
     public String postRepair(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
                              BindingResult bindingResult) {
         if(bindingResult.hasErrors()) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
+            model.addAttribute(REPAIR_TYPE, RepairType.values());
+            model.addAttribute(STATE, State.values());
             return "pages/admin-edit-repairs-view";
         }
 

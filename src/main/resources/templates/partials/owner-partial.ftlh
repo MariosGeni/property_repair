@@ -32,7 +32,7 @@
                     </a>
                 </td>
                 <td>
-                    <a href="/admin/delete/owners/${owner.id}">
+                    <a href="/admin/owners/delete${owner.id}">
                         <span data-feather="x"></span>
                     </a>
                 </td>
@@ -78,13 +78,13 @@
         <tr>
             <td>
             <form action="/admin/owners/edit/${owner.id}">
-            <input type="submit" class="btn-primary btn-block btn-lg" value="Edit"></input>
+                <input type="submit" class="btn-primary btn-block btn-lg" value="Edit"></input>
             </form>
             </td>
 
             <td>
-            <form action="/admin/owners/${owner.id}" method="post">
-            <input type="submit" class="btn-danger btn-block btn-lg" value="Delete"></input>
+            <form action="/admin/owners/delete/${owner.id}" method="post">
+                <input type="submit" class="btn-danger btn-block btn-lg" value="Delete"></input>
             </form>
             </td>
         </tr>

@@ -123,10 +123,8 @@ public class AdminOwnerController {
     }
 
     @PostMapping("owners/delete/{id}")
-    public String deleteAdminOwner(@PathVariable("id") Long id, Model model) {
-        if(userService.deleteById(id)) {
-            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
-        }
+    public String deleteAdminOwner(@PathVariable("id") Long id) {
+        System.out.println(userService.deleteById(id));
         return "redirect:/admin/owners";
     }
 }

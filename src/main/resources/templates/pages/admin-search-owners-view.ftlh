@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring />
+<#import "../partials/owner-partial.ftlh" as ownerComponent />
 <!DOCTYPE html>
 <html lang="en">
 <head>

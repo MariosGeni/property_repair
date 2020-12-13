@@ -1,6 +1,9 @@
 <#import "../partials/owner-partial.ftlh" as ownerComponent />
+
 <#include "../partials/navbar.ftlh">
 <html lang="en">
+<#include "../partials/endContainerWithSidebar.ftlh">
+<#include "../partials/scripts.ftlh">
     <head>
         <#include "../partials/head.ftlh"/>
         <title>Admin - Owner ${owner.id}</title>

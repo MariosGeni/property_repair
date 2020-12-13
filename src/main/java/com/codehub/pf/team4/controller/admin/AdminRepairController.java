@@ -99,22 +99,22 @@ public class AdminRepairController {
         return "pages/admin-edit-repairs-view";
     }
 
-    @PostMapping("repairs/create")
-    public String postRepair(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
-                             BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
-            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
-            model.addAttribute(REPAIR_TYPE, RepairType.values());
-            model.addAttribute(STATE, State.values());
-            return "pages/admin-edit-repairs-view";
-        }
-
-        Optional<RepairModel> newRepair = repairService.updateRepair(repairForm);
-        if(newRepair.isEmpty()) return "pages/admin-edit-repairs-view";
-        return "redirect:/admin/repairs/" + newRepair.get().getId();
-    }
+//    @PostMapping("repairs/create")
+//    public String postRepair(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+//                             BindingResult bindingResult) {
+//        if(bindingResult.hasErrors()) {
+//            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
+//            model.addAttribute(REPAIR_TYPE, RepairType.values());
+//            model.addAttribute(STATE, State.values());
+//            return "pages/admin-edit-repairs-view";
+//        }
+//
+//        Optional<RepairModel> newRepair = repairService.updateRepair(repairForm);
+//        if(newRepair.isEmpty()) return "pages/admin-edit-repairs-view";
+//        return "redirect:/admin/repairs/" + newRepair.get().getId();
+//    }
     @PostMapping("/repairs/create")
-    public String postAdminOwner(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+    public String postAdminCreateRepair(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
                                  BindingResult bindingResult) throws Exception{
         if (bindingResult.hasErrors()) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");

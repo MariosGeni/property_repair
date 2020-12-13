@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col">
-            <h1>Create Owner</h1>
+            <h1>Create Repair</h1>
             <#if errorMessage??>
                 <h3 style="color: #dc3545">${errorMessage!""}</h3>
             </#if>
@@ -16,11 +16,11 @@
 
     <div class="row">
         <div class="col-12">
-            <form id="userForm" name="userForm" action="/admin/owners/create" method="post">
+            <form id="repairForm" name="repairForm" action="/admin/repairs/create" method="post">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <@spring.bind "userForm.email"/>
-                    <input type="email" class="form-control" id="email" name="email" value="${spring.status.value!""}">
+                    <label for="address">Address</label>
+                    <@spring.bind "repairForm.address"/>
+                    <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -31,9 +31,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="afm">Afm</label>
-                    <@spring.bind "userForm.afm"/>
-                    <input type="text" class="form-control" id="afm" name="afm" value="${spring.status.value!""}">
+                    <label for="description">Description</label>
+                    <@spring.bind "repairForm.description"/>
+                    <input type="text" class="form-control" id="description" name="description" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -44,9 +44,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="first_name">First Name</label>
-                    <@spring.bind "userForm.firstName"/>
-                    <input type="text" class="form-control" id="first_name" name="firstName" value="${spring.status.value!""}">
+                    <label for="user_id">User ID</label>
+                    <@spring.bind "repairForm.userId"/>
+                    <input type="text" class="form-control" id="user_id" name="userId" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -56,11 +56,10 @@
                     </#if>
                 </div>
 
-
                 <div class="form-group">
-                    <label for="last_name">Last Name</label>
-                    <@spring.bind "userForm.lastName"/>
-                    <input type="text" class="form-control" id="last_name" name="lastName" value="${spring.status.value!""}">
+                    <label for="date">Date</label>
+                    <@spring.bind "repairForm.date"/>
+                    <input type="date" class="form-control" id="date" name="date">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -70,61 +69,41 @@
                     </#if>
                 </div>
 
-
-                <div class="form-row">
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <@spring.bind "userForm.address"/>
-                            <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
-                            <#if spring.status.error??>
-                                <ul>
-                                    <#list spring.status.errorMessages as error>
-                                        <li style="color: #dc3545">${error}</li>
-                                    </#list>
-                                </ul>
-                            </#if>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-6">
-                        <div class="form-group">
-                            <label for="phone_number">Phone Number</label>
-                            <@spring.bind "userForm.phoneNumber"/>
-                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${spring.status.value!""}">
-                            <#if spring.status.error??>
-                                <ul>
-                                    <#list spring.status.errorMessages as error>
-                                        <li style="color: #dc3545">${error}</li>
-                                    </#list>
-                                </ul>
-                            </#if>
-                        </div>
-                    </div>
-                </div>
-
-
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" name="password">
-                    <#if spring.status.error??>
-                        <ul>
-                            <#list spring.status.errorMessages as error>
-                                <li style="color: #dc3545">${error}</li>
-                            </#list>
-                        </ul>
-                    </#if>
-                </div>
-
-
-                <div class="form-group">
-                    <label for="house_type">House Type</label>
-                    <@spring.bind "userForm.houseType"/>
-                    <select id="house_type" name="houseType" class="custom-select d-block w-100">
+                    <label for="repair_type">Repair Type</label>
+                    <@spring.bind "repairForm.repairType"/>
+                    <select id="repair_type" name="repairType" class="custom-select d-block w-100">
                         <option>Select a type</option>
-                        <#if HOUSE_TYPE??>
-                            <#list HOUSE_TYPE as type>
+                        <#if REPAIR_TYPE??>
+                            <#list REPAIR_TYPE as type>
+                                <option value="${type}"
+                                        <#if spring.status.value??>
+                                            <#if  type == spring.status.value>
+                                                selected
+                                            </#if>
+                                        </#if>
+
+                                >${type}</option>
+                            </#list>
+                        </#if>
+                    </select>
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <@spring.bind "repairForm.state"/>
+                    <select id="state" name="state" class="custom-select d-block w-100">
+                        <option>Select a type</option>
+                        <#if STATE??>
+                            <#list STATE as type>
                                 <option value="${type}"
                                         <#if spring.status.value??>
                                             <#if  type == spring.status.value>

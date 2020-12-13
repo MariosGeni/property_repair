@@ -1,7 +1,7 @@
+<#import "../partials/owner-partial.ftlh" as ownerComponent>
+    <h1 class="">Search for an Owner</h1>
 
-    <h2 class="">Search for a User</h2>
-
-<form action="/owners/search" name="searchForm" method="POST">
+<form action="/admin/owners/search" name="searchForm">
 
     <div class="form-group">
         <label>Search by</label>
@@ -24,3 +24,4 @@
     <button class="btn btn-primary btn-lg mt-4" type="submit">Search</button>
 
 </form>
+<#if owner??> <@ownerComponent.ownerSingle owner /> </#if>

@@ -14,3 +14,4 @@
         Obobomastoras.com All Rights Reserved
     </div>
 </footer>
+<#include "../partials/scripts.ftlh">

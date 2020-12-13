@@ -1,5 +1,4 @@
 <#import "../partials/owner-partial.ftlh" as ownerComponent />
-<#import "../partials/owner-partial.ftlh" as ownerComponent />
 <html lang="en">
     <head>
         <#include "../partials/html-header-partial.ftlh">

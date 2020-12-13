@@ -2,7 +2,7 @@
 
 <#include "../partials/navbar.ftlh">
 <html lang="en">
-<#include "../partials/endContainerWithSidebar.ftlh">
+<#include "../partials/beginContainerWithSidebar.ftlh">
 <#include "../partials/scripts.ftlh">
     <head>
         <#include "../partials/head.ftlh"/>

@@ -1,5 +1,5 @@
 <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-<div style="display: inline-block">
+<div style="//display: inline-block">
     <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">
             <img src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
     </a>

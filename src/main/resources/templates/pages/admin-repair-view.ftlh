@@ -1,11 +1,11 @@
-
-<#import "../partials/owner-partial.ftlh" as ownerComponent />
+<#import "../partials/repair-partial.ftlh" as ownerComponent />
 <#include "../partials/navbar.ftlh">
 <html lang="en">
     <head>
         <#include "../partials/head.ftlh"/>
         <title>Admin - Repair ${repair.id}</title>
     </head>
+    <#include "../partials/beginContainerWithSidebar.ftlh">
     <body>
     <div class="container-fluid">
         <div class="row">

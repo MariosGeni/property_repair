@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
     <a href="/" style="background-color:#343a40">
         <img class="site-logo" src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
     </a>

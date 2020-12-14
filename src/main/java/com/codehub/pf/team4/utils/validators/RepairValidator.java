@@ -44,10 +44,10 @@ public class RepairValidator implements Validator {
         try {
             Optional<UserModel> userWithGivenRepairUserId = userService.findUserById(Long.parseLong(repairForm.getUserId()));
             if (userWithGivenRepairUserId.isEmpty()) {
-                errors.reject("userId", "Owner with this id doesnt exist");
+                errors.rejectValue("userId", "owner.id.not.exists");
             }
         } catch(Exception e) {
-            errors.reject("userId", "Owner with this id doesnt exist");
+            errors.rejectValue("userId", "owner.id.not.exists");
         }
 
         Optional<State> state = Arrays.stream(State.values())
@@ -58,7 +58,7 @@ public class RepairValidator implements Validator {
                 .filter(type -> type.toString().equalsIgnoreCase(repairForm.getRepairType()))
                 .findFirst();
 
-        if(state.isEmpty()) errors.reject("state", "State doesn't match!");
-        if(repairType.isEmpty()) errors.reject("houseType", "House Type doesn't match!");
+        if(state.isEmpty()) errors.rejectValue("state", "state.not.match");
+        if(repairType.isEmpty()) errors.rejectValue("houseType", "house.not.match");
     }
 }

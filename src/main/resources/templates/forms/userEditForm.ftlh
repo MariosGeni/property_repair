@@ -131,7 +131,6 @@
                                                 selected
                                             </#if>
                                         </#if>
-
                                 >${type}</option>
                             </#list>
                         </#if>

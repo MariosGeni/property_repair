@@ -22,7 +22,6 @@
         </main>
     </div>
 </div>
-<#include "../partials/script-datepicker.ftlh">
 <#include "../partials/endContainerWithSidebar.ftlh">
 </body>
 </html>

@@ -17,6 +17,7 @@
     <div class="row">
         <div class="col-12">
             <form id="userForm" name="userForm" action="/admin/owners/edit/" method="post">
+                <input type="hidden" id="id" name="id" value="${owner.id}">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <@spring.bind path="userForm.email"/>

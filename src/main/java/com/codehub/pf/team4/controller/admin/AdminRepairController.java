@@ -114,8 +114,8 @@ public class AdminRepairController {
             return "pages/admin-create-repairs-view";
         }
         Optional<RepairModel> newRepair = repairService.addRepair(repairForm);
-        if(newRepair.isEmpty()) return "pages/admin-create-owners-view";
-        return "redirect:/admin/owners/" + newRepair.get().getId();
+        if(newRepair.isEmpty()) return "pages/admin-create-repairs-view";
+        return "redirect:/admin/repairs/" + newRepair.get().getId();
     }
 
     @PostMapping(value = "repairs/edit/{id}") // Edit repair by its id

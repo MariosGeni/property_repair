@@ -59,6 +59,6 @@ public class RepairValidator implements Validator {
                 .findFirst();
 
         if(state.isEmpty()) errors.rejectValue("state", "state.not.match");
-        if(repairType.isEmpty()) errors.rejectValue("houseType", "house.not.match");
+        if(repairType.isEmpty()) errors.rejectValue("repairType", "repairType.not.match");
     }
 }

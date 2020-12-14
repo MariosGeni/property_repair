@@ -32,7 +32,7 @@
                     </a>
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-link" data-toggle="modal" data-target="#modal"
+                    <button class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter"
                             data-id="${owner.id}">
                         <span data-feather="x"></span>
                     </button>

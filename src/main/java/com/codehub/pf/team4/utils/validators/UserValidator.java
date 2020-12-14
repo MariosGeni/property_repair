@@ -38,9 +38,13 @@ public class UserValidator implements Validator {
             errors.rejectValue("email", "email.exists");
         }
 
-        if (doesExist("afm", userForm.getAfm()) && userForm.getId().isBlank()) {
-            errors.rejectValue("afm", "afm.exists");
-        }
+       try {
+           if (doesExist("afm", userForm.getAfm()) && userForm.getId().isBlank()) {
+               errors.rejectValue("afm", "afm.exists");
+           }
+       } catch(Exception e){
+
+       }
 
         // UPDATE RELATED > Check if user exists before update
         if (doesExist("id", userForm.getId())) {
@@ -51,7 +55,7 @@ public class UserValidator implements Validator {
                 .filter(type -> type.toString().equalsIgnoreCase(userForm.getHouseType()))
                 .findFirst();
 
-        if(houseType.isEmpty()) errors.reject("houseType", "houseType.not.match");
+        if(houseType.isEmpty()) errors.rejectValue("houseType", "houseType.not.match");
     }
 
     private boolean doesExist(String field, String value) {

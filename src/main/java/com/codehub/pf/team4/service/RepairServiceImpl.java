@@ -51,7 +51,6 @@ public class RepairServiceImpl implements RepairService {
     @Override
     public List<RepairModel> getRepairsByDate(String date) {
         LocalDate localDate = DateProvider.getLocalDate(date);
-        System.out.println(localDate);
         return repairRepository.findByDate(localDate)
                 .stream()
                 .map(RepairMapper::mapToRepairModel)

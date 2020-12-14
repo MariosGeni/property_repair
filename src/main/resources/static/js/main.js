@@ -1,27 +1,45 @@
 $(function() { // <-- is short for $(document).ready(function() {});
-    $("#search-user-select").on("change", function(e) { toggleUserSearch(e); }); // same thing as doing directly from the element
+    $("#search-user-select").on("change", function(){ toggleUserSearch();} ); // same thing as doing directly from the element
     // its better to call in js so you can see all events at once without having to go in the html and check for events
+    $("#search-repair-select").on("change", function(){ toggleRepairSearch();} );
 });
 
 //jQuery - its good to make use of jQuery because we implemented it.
-function toggleUserSearch(e) {
+function toggleUserSearch() {
     var selectedValue = $("#search-user-select").children("option:selected").val();
-    let $afmDiv = $("#afm-div");
+    let $afmDivUser = $("#afm-div");
     let $emailDiv = $("#email-div");
 
     // toggle visibility
     // can be written in less lines but kept it readable
     if(selectedValue === "afm") {
-        console.log("asdasdasd");
         $emailDiv.addClass("display-none");
-        $afmDiv.removeClass("display-none");
+        $afmDivUser.removeClass("display-none");
     }
 
     if (selectedValue === "email") {
-        $afmDiv.addClass("display-none");
+        $afmDivUser.addClass("display-none");
         $emailDiv.removeClass("display-none");
     }
 }
+function toggleRepairSearch() {
+    var selectedValue = $("#search-repair-select").children("option:selected").val();
+    let $afmDivRepair = $("#afm-div");
+    let $dateDiv = $("#date-div");
+
+    // toggle visibility
+    // can be written in less lines but kept it readable
+    if(selectedValue === "afm") {
+        $dateDiv.addClass("display-none");
+        $afmDivRepair.removeClass("display-none");
+    }
+
+    if (selectedValue === "date") {
+        $afmDivRepair.addClass("display-none");
+        $dateDiv.removeClass("display-none");
+    }
+}
+
 
 // vanilla js
 /*function toggleUserSearch() {

@@ -16,7 +16,7 @@
             <form id="repairForm" name="repairForm" action="/admin/repairs/create" method="post">
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <@spring.bind "repairCreateForm.address"/>
+                    <@spring.bind "repairForm.address"/>
                     <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
@@ -29,7 +29,7 @@
 
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <@spring.bind "repairCreateForm.description"/>
+                    <@spring.bind "repairForm.description"/>
                     <input type="text" class="form-control" id="description" name="description" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
@@ -42,7 +42,7 @@
 
                 <div class="form-group">
                     <label for="user_id">User ID</label>
-                    <@spring.bind "repairCreateForm.userId"/>
+                    <@spring.bind "repairForm.userId"/>
                     <input type="text" class="form-control" id="user_id" name="userId" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>

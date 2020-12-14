@@ -15,7 +15,7 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class RepairFormMapper {
 
-    public static Repair mapToRepair(RepairForm repairForm) throws Exception{
+    public static Repair mapToRepair(RepairForm repairForm) throws Exception {
         if(repairForm == null) return null;
 
         Repair repair = new Repair();
@@ -33,11 +33,10 @@ public class RepairFormMapper {
             repair.setId(Long.parseLong(repairForm.getId()));
         }
 
-
         return repair;
     }
 
-    public static RepairForm mapToRepairForm(Repair repair) throws Exception{
+    public static RepairForm mapToRepairForm(Repair repair) throws Exception {
         if(repair == null) return null;
 
         RepairForm repairForm = new RepairForm();

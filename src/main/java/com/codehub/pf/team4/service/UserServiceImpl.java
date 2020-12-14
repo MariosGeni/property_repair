@@ -17,7 +17,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
@@ -36,6 +36,10 @@ public class UserServiceImpl implements UserService{
     @Override
     public Optional<UserModel> findUserById(Long id) {
         return UserMapper.mapToUserModelOptional(userRepository.findById(id).orElse(null));
+    }
+
+    public Optional<UserForm> findUserByIdAsUserForm(Long id) {
+        return Optional.ofNullable(UserFormMapper.mapToUserForm(userRepository.findById(id).orElse(null)));
     }
 
     @Override
@@ -97,4 +101,19 @@ public class UserServiceImpl implements UserService{
                 .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
     }
+
+    // find user by id
+//   public Optional<UserModel> updateUserModel (UserModel userModel) {
+//       User originalUser = userRepository.findById(userModel.getId()).get();
+//       originalUser.setId(userModel.getId());
+//       originalUser.setAfm(userModel.getAfm());
+//       originalUser.setAddress(userModel.getAddress());
+//       originalUser.setFirstName(userModel.getFirstName());
+//       originalUser.setLastName(userModel.getLastName());
+//       originalUser.setEmail(userModel.getEmail());
+//       originalUser.setHouseType(userModel.getHouseType());
+//       User newUser = userRepository.save(originalUser);
+//       return Optional.ofNullable(UserMapper.mapToUserModel(newUser));
+//    }
+
 }

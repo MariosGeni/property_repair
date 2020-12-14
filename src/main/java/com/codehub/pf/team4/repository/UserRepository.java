@@ -16,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findById(Long id);
     Optional<User> findByAfm(Integer afm);
     Optional<User> findByEmail(String email);
-
+//    User save(User user);
     @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.afm = (:afm)")
     List<Repair> findRepairsByAfm(@Param("afm") Integer afm);
 

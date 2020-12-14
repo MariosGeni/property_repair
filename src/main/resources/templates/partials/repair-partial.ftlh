@@ -35,7 +35,7 @@
                     </a>
                 </td>
                 <td class="text-center">
-                    <button class="btn btn-link" data-toggle="modal" data-target="#modal"
+                    <button class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter"
                             data-id="${repair.id}">
                         <span data-feather="x"></span>
                     </button>
@@ -89,7 +89,7 @@
             </td>
             <td>
                 <form>
-                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#modal" data-id="${repair.id}" value="Delete"></input>
+                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#exampleModalCenter" data-id="${repair.id}" value="Delete"></input>
                 </form>
             </td>
         </tr>

@@ -34,10 +34,12 @@
                         <span data-feather="tool"></span>
                     </a>
                 </td>
-                <td>
-                    <a href="/admin/repairs/delete/${repair.id}">
+                <td class="text-center">
+                    <button class="btn btn-link" data-toggle="modal" data-target="#modal"
+                            data-id="${repair.id}">
                         <span data-feather="x"></span>
-                    </a>
+                    </button>
+                    <#include "delete-repair-modal.ftlh">
                 </td>
             </tr>
         </#list>
@@ -85,13 +87,13 @@
                     <input type="submit" class="btn-primary btn-block btn-lg" value="Edit"></input>
                 </form>
             </td>
-
             <td>
-                <form action="/admin/repairs/delete/${repair.id}" method="post">
-                    <input type="submit" class="btn-danger btn-block btn-lg" value="Delete"></input>
+                <form>
+                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#modal" data-id="${repair.id}" value="Delete"></input>
                 </form>
             </td>
         </tr>
         </tbody>
     </table>
+    <#include "../partials/delete-repair-modal.ftlh">
 </#macro>

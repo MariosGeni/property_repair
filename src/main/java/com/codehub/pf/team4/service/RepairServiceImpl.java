@@ -7,6 +7,7 @@ import com.codehub.pf.team4.mappers.RepairFormMapper;
 import com.codehub.pf.team4.mappers.RepairMapper;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.repository.RepairRepository;
+import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class RepairServiceImpl implements RepairService {
 
     @Autowired
     private RepairRepository repairRepository;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public List<RepairModel> getAllRepairs() {
@@ -46,7 +50,7 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public List<RepairModel> getRepairsByDate(String date) {
-        LocalDate localDate = LocalDate.parse(date, DateProvider.getFormat());
+        LocalDate localDate = DateProvider.getLocalDate(date);
         System.out.println(localDate);
         return repairRepository.findByDate(localDate)
                 .stream()
@@ -56,7 +60,9 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public Optional<RepairModel> addRepair(RepairForm newRepair) throws Exception {
-        return RepairMapper.mapToRepairModelOptional(repairRepository.save(RepairFormMapper.mapToRepair(newRepair)));
+        Repair repair = RepairFormMapper.mapToRepair(newRepair);
+        repair.setUser(userRepository.findById(repair.getUser().getId()).get());
+        return RepairMapper.mapToRepairModelOptional(repairRepository.save(repair));
     }
 
     @Override

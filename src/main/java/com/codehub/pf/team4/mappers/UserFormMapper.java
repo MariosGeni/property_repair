@@ -33,4 +33,20 @@ public class UserFormMapper {
 
         return user;
     }
+
+    public static UserForm mapToUserForm(User user){
+        if(user == null) return null;
+
+        UserForm userForm = new UserForm();
+        userForm.setAfm(user.getAfm().toString());
+        userForm.setEmail(user.getEmail());
+        userForm.setFirstName(user.getFirstName());
+        userForm.setLastName(user.getLastName());
+        userForm.setAddress(user.getAddress());
+        userForm.setPhoneNumber(user.getPhoneNumber().toString());
+        userForm.setHouseType(user.getHouseType().toString());
+        userForm.setId(user.getId().toString());
+
+        return userForm;
+    }
 }

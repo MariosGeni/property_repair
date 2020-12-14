@@ -11,6 +11,10 @@ public abstract class DateProvider {
         return DateTimeFormatter.ofPattern("yyyy-MM-dd");
     }
 
+    public static LocalDate getLocalDate(String date) {
+        return LocalDate.parse(date, getFormat());
+    }
+
     public static LocalDate getToday() {
         return LocalDate.now();
     }

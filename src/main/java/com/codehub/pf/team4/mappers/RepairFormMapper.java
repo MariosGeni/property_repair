@@ -19,7 +19,7 @@ public class RepairFormMapper {
         if(repairForm == null) return null;
 
         Repair repair = new Repair();
-        repair.setDate(LocalDate.parse(repairForm.getDate(), DateProvider.getFormat()));
+        repair.setDate(DateProvider.getLocalDate(repairForm.getDate()));
         repair.setAddress(repairForm.getAddress());
         repair.setAddress(repairForm.getAddress());
         repair.setRepairType(RepairType.valueOf(repairForm.getRepairType()));
@@ -35,5 +35,22 @@ public class RepairFormMapper {
 
 
         return repair;
+    }
+
+    public static RepairForm mapToRepairForm(Repair repair) throws Exception{
+        if(repair == null) return null;
+
+        RepairForm repairForm = new RepairForm();
+        repairForm.setDate(repair.getDate().format(DateProvider.getFormat()));
+        repairForm.setAddress(repair.getAddress());
+        repairForm.setAddress(repair.getAddress());
+        repairForm.setRepairType(repair.getRepairType().toString());
+        repairForm.setState(repair.getState().toString());
+        repairForm.setCost(repair.getCost().toString());
+        repairForm.setDescription(repairForm.getDescription());
+        repairForm.setUserId((repair.getUser().getId().toString()));
+        repairForm.setId(repair.getId().toString());
+
+        return repairForm;
     }
 }

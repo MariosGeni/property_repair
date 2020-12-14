@@ -5,20 +5,21 @@ $(function() { // <-- is short for $(document).ready(function() {});
 
 //jQuery - its good to make use of jQuery because we implemented it.
 function toggleUserSearch(e) {
-    var $target = $(e.target);
+    var selectedValue = $("#search-user-select").children("option:selected").val();
     let $afmDiv = $("#afm-div");
     let $emailDiv = $("#email-div");
 
     // toggle visibility
     // can be written in less lines but kept it readable
-    if ($target.attr("value") == "email") {
-        $afmDiv.css({ display: "none" });
-        $emailDiv.css({ display: "block" });
+    if(selectedValue === "afm") {
+        console.log("asdasdasd");
+        $emailDiv.addClass("display-none");
+        $afmDiv.removeClass("display-none");
     }
 
-    if($target.attr("value") == "afm") {
-        $emailDiv.css({ display: "none" });
-        $afmDiv.css({ display: "block" });
+    if (selectedValue === "email") {
+        $afmDiv.addClass("display-none");
+        $emailDiv.removeClass("display-none");
     }
 }
 

@@ -23,14 +23,14 @@
         </div>
     </div>
 
-    <div id="afm-div">
-        <div class="input-group mb-0 mt-3" style="display:none;">
+    <div id="afm-div" class="display-none">
+        <div class="input-group mb-0 mt-3" >
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">ΑΦΜ</span>
             </div>
             <label for="afm"></label>
             <!-- <div> -->
-            <input type="text" class="form-control" name="afm" id="afm" placeholder="αφμ" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" name="afm" id="afm" placeholder="afm" aria-describedby="basic-addon1">
             <!-- </div> -->
         </div>
     </div>

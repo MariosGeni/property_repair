@@ -71,8 +71,8 @@ public class AdminOwnerController {
         // --- search code here --- //
         Optional<UserModel> owner = Optional.empty();
 
-        if(!afm.equals("")) owner = userService.findUserByAfm(afm);
-        else if(!email.equals(""))  owner = userService.findUserByEmail(email);
+        if (!afm.equals("")) owner = userService.findUserByAfm(afm);
+        else if (!email.equals(""))  owner = userService.findUserByEmail(email);
         System.out.println("I work");
         model.addAttribute(OWNER, owner.orElse(null));
         return "pages/admin-search-owners-view";
@@ -89,8 +89,11 @@ public class AdminOwnerController {
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<UserModel> theOwner = userService.findUserById(id);
 
-        if(theOwner.isEmpty()) return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
+        if(theOwner.isEmpty())
+            return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
 
+        model.addAttribute(USER_FORM, new UserForm());
+        model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
         model.addAttribute(OWNER, theOwner.orElse(null));
 
         return "pages/admin-edit-owners-view";
@@ -105,8 +108,11 @@ public class AdminOwnerController {
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
             return "pages/admin-create-owners-view";
         }
+
         Optional<UserModel> newUser = userService.addUser(userForm);
-        if(newUser.isEmpty()) return "pages/admin-create-owners-view";
+        if (newUser.isEmpty())
+            return "pages/admin-create-owners-view";
+
         return "redirect:/admin/owners/" + newUser.get().getId();
     }
 

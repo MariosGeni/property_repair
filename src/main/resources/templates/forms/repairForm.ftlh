@@ -1,8 +1,5 @@
 <#ftl output_format="HTML" strip_whitespace=true>
 <#import "/spring.ftl" as spring />
-<script src="static/js/lib/jquery/owner_validator.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
 <div class="container-fluid">
 
     <div class="row">

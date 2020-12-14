@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid container-fluid-sidebar">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
             <div class="sidebar-sticky">

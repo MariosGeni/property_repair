@@ -1,12 +1,25 @@
-<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-
-    <a class="col-sm-3 col-md-2 mr-0" href="/" style="background-color:#343a40">
-            <img src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a href="/" style="background-color:#343a40">
+            <img class="site-logo" src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
     </a>
 
-    <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-            <a  style="font-size: 1.05em;" class="nav-link" href="/"><span data-feather="log-out"></span> Logout</a>
-        </li>
-    </ul>
+    <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto px-3">
+            <li class="nav-item text-nowrap">
+                <a href="/" class="nav-link">Owner Home</a>
+            </li>
+            <li class="nav-item text-nowrap">
+                <a href="/admin" class="nav-link">Admin Home</a>
+            </li>
+        </ul>
+        <form class="form-inline my-lg-0 mr-2" action="/" type="get">
+            <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
+                <span data-feather="log-out"></span> Logout
+            </button>
+        </form>
+    </div>
 </nav>

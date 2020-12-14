@@ -19,9 +19,10 @@ html, body{
 }
 
 .container-fluid {
-    min-height: 90vh;
+    min-height: 80vh;
 }
 
 .sidebar{
+    padding-top: 6rem;
     min-height: 90vh!important;
 }

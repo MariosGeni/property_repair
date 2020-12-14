@@ -14,6 +14,7 @@ import org.springframework.validation.Validator;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Component
 public class RepairValidator implements Validator {
@@ -32,21 +33,29 @@ public class RepairValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         RepairForm repairForm = (RepairForm) target;
-        if(repairForm.getId() == null) repairForm.setId(""); // avoid null pointer
-        if(repairForm.getUserId() == null) repairForm.setUserId("-1"); // avoid null pointer
+        Pattern pattern = Pattern.compile("^[0-9]+$");
+
+        if(repairForm.getId() == null) repairForm.setId(""); // avoid null pointer exception
+        if(repairForm.getUserId() == null) repairForm.setUserId(""); // avoid null pointer exception
 
         // Here we add our custom validation logic
         // UPDATE OPERATION does repair with this id exist?
-        if(!repairForm.getId().isEmpty()) {
-            Optional<RepairModel> repairWithGivenEmail = repairService.getRepairById(Long.parseLong(repairForm.getId()));
-            if (repairWithGivenEmail.isEmpty()) {
-                errors.rejectValue("id", "Repair with this id doesnt exist");
+        try {
+            Optional<RepairModel> repairWithGivenId = repairService.getRepairById(Long.parseLong(repairForm.getId()));
+            if (repairWithGivenId.isEmpty()) {
+                errors.reject("id", "Repair with this id doesnt exist");
             }
+        } catch(Exception e) {
+            errors.reject("id", "Repair id pattern doesnt match");
         }
 
-        Optional<UserModel> theUser = userService.findUserById(Long.parseLong(repairForm.getId()));
-        if (theUser.isEmpty()) {
-            errors.rejectValue("userId", "User with this id doesnt exist");
+        try {
+            Optional<UserModel> userWithGivenRepairUserId = userService.findUserById(Long.parseLong(repairForm.getUserId()));
+            if (userWithGivenRepairUserId.isEmpty()) {
+                errors.reject("userId", "Owner with this id doesnt exist");
+            }
+        } catch(Exception e) {
+            errors.reject("userId", "Owner with this id doesnt exist");
         }
 
         Optional<State> state = Arrays.stream(State.values())

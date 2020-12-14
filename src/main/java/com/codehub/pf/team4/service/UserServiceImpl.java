@@ -103,17 +103,10 @@ public class UserServiceImpl implements UserService {
     }
 
     // find user by id
-//   public Optional<UserModel> updateUserModel (UserModel userModel) {
-//       User originalUser = userRepository.findById(userModel.getId()).get();
-//       originalUser.setId(userModel.getId());
-//       originalUser.setAfm(userModel.getAfm());
-//       originalUser.setAddress(userModel.getAddress());
-//       originalUser.setFirstName(userModel.getFirstName());
-//       originalUser.setLastName(userModel.getLastName());
-//       originalUser.setEmail(userModel.getEmail());
-//       originalUser.setHouseType(userModel.getHouseType());
-//       User newUser = userRepository.save(originalUser);
-//       return Optional.ofNullable(UserMapper.mapToUserModel(newUser));
-//    }
+   public Optional<UserModel> updateUserModel (UserModel userModel) {
+       User originalUser = userRepository.findById(userModel.getId()).get();
+       User newUser = userRepository.save(originalUser);
+       return Optional.ofNullable(UserMapper.mapToUserModel(newUser));
+    }
 
 }

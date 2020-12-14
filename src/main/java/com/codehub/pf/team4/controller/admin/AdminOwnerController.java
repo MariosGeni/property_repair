@@ -2,6 +2,7 @@ package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
+import com.codehub.pf.team4.mappers.UserFormMapper;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+
+import static com.codehub.pf.team4.utils.GlobalAttributes.ERROR_MESSAGE;
 
 @Controller
 @RequestMapping("/admin")
@@ -117,9 +120,10 @@ public class AdminOwnerController {
         return "redirect:/admin/owners/" + newUser.get().getId();
     }
 
-    @PostMapping("/owners/edit/{id}") // Edit owner by its id
+
+/*    @PostMapping("/owners/edit/{id}") // Edit owner by its id
     public String putAdminEditOwnersPage(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
-                                         BindingResult bindingResult, @PathVariable("id") Long id) {
+                                         BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute(USER_FORM, userForm);
@@ -131,6 +135,14 @@ public class AdminOwnerController {
         Optional<UserModel> theOwner = userService.updateUser(userForm);
         if (theOwner.isEmpty()) return "pages/admin-edit-owners-view";
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
+    }*/
+
+    @PostMapping("/owners/edit/") // Edit owner by its id
+    public String postAdminEditOwnersPage(UserForm form) {
+        Optional<UserModel> theOwner = userService.updateUser(form);
+        if (theOwner.isEmpty())
+            return "pages/admin-edit-owners-view";
+        return "redirect:/admin/owners/" ; // redirect to updated owner
     }
 
     @PostMapping("owners/delete/{id}")

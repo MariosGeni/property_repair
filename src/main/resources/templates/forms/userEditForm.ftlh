@@ -17,6 +17,7 @@
     <div class="row">
         <div class="col-12">
             <form id="userForm" name="userForm" action="/admin/owners/edit/" method="post">
+                <@spring.bind path="userForm.id"/>
                 <input type="hidden" id="id" name="id" value="${owner.id}">
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -108,7 +109,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" name="password" value="${owner.password!""}">
+                    <input type="password" class="form-control" id="password" name="password" value="${owner.password}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

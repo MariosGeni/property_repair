@@ -43,7 +43,6 @@ public class RepairFormMapper {
         RepairForm repairForm = new RepairForm();
         repairForm.setDate(repair.getDate().format(DateProvider.getFormat()));
         repairForm.setAddress(repair.getAddress());
-        repairForm.setAddress(repair.getAddress());
         repairForm.setRepairType(repair.getRepairType().toString());
         repairForm.setState(repair.getState().toString());
         repairForm.setCost(repair.getCost().toString());

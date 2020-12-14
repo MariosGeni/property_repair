@@ -43,6 +43,15 @@ public class UserForm {
 
     //Validation on UserValidator
     private String id;
+
+    public String getHouseType() {
+        return houseType;
+    }
+
+    public void setHouseType(String houseType) {
+        this.houseType = houseType;
+    }
+
     private String houseType;
 
     private String address;

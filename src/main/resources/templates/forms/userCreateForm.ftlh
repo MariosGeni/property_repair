@@ -31,6 +31,7 @@
                     <label for="afm">Afm</label>
                     <@spring.bind "userForm.afm"/>
                     <input type="text" class="form-control" id="afm" name="afm" value="${spring.status.value!""}">
+
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -117,7 +118,6 @@
 
                 <div class="form-group">
                     <label for="house_type">House Type</label>
-                    <#assign houseTypeErrors = []>
                     <@spring.bind "userForm.houseType"/>
                     <select id="house_type" name="houseType" class="custom-select d-block w-100">
                         <option>Select a type</option>

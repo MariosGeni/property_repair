@@ -28,33 +28,30 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
-        if(userForm.getId() == null) userForm.setId(""); // to avoid null pointer
-        if(userForm.getPassword() == null) userForm.setPassword("");
+
+        // to avoid null pointer
+        if (userForm.getId() == null) userForm.setId("");
+        if (userForm.getPassword() == null) userForm.setPassword("");
 
         // check if user with same email or afm exist and id == null so its CREATE OPERATION
         if (doesExist("email", userForm.getEmail()) && userForm.getId().isEmpty()) {
-            errors.rejectValue("email", "User with this email already exists");
+            errors.rejectValue("email", "email.exists");
         }
 
-        if(userForm.getAfm().isBlank()) {
-            errors.reject("afk", "afm cant be empty");
-        } else if(doesExist("afm", userForm.getAfm()) && userForm.getId() == null) {
-            errors.rejectValue("afm", "User with this afm already exists");
-        }else if(isNumeric(userForm.getPassword())) {
-            errors.reject("afm", "AFM should only contain numbers");
+        if (doesExist("afm", userForm.getAfm()) && userForm.getId().isBlank()) {
+            errors.rejectValue("afm", "afm.exists");
         }
 
         // UPDATE RELATED > Check if user exists before update
         if (doesExist("id", userForm.getId())) {
-            errors.reject("email", "User with this email already exists");
+            errors.rejectValue("email", "email.exists");
         }
-
 
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())
                 .filter(type -> type.toString().equalsIgnoreCase(userForm.getHouseType()))
                 .findFirst();
 
-        if(houseType.isEmpty()) errors.reject("houseType", "House Type doesn't match!");
+        if(houseType.isEmpty()) errors.reject("houseType", "houseType.not.match");
     }
 
     private boolean doesExist(String field, String value) {

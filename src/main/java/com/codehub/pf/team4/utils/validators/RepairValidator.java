@@ -33,21 +33,13 @@ public class RepairValidator implements Validator {
     @Override
     public void validate(Object target, Errors errors) {
         RepairForm repairForm = (RepairForm) target;
-        Pattern pattern = Pattern.compile("^[0-9]+$");
 
         if(repairForm.getId() == null) repairForm.setId(""); // avoid null pointer exception
         if(repairForm.getUserId() == null) repairForm.setUserId(""); // avoid null pointer exception
 
         // Here we add our custom validation logic
         // UPDATE OPERATION does repair with this id exist?
-        try {
-            Optional<RepairModel> repairWithGivenId = repairService.getRepairById(Long.parseLong(repairForm.getId()));
-            if (repairWithGivenId.isEmpty()) {
-                errors.reject("id", "Repair with this id doesnt exist");
-            }
-        } catch(Exception e) {
-            errors.reject("id", "Repair id pattern doesnt match");
-        }
+
 
         try {
             Optional<UserModel> userWithGivenRepairUserId = userService.findUserById(Long.parseLong(repairForm.getUserId()));

@@ -105,6 +105,7 @@ public class AdminOwnerController {
     public String postAdminOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+//            System.out.println(bindingResult.getModel());
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());

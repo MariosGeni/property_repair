@@ -91,9 +91,13 @@ public class AdminRepairController {
     public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
         Optional<RepairModel> theRepair = repairService.getRepairById(id);
 
-        if(theRepair.isEmpty()) return "redirect:/admin/repairs";
+        if (theRepair.isEmpty())
+            return "redirect:/admin/repairs";
 
+        model.addAttribute(REPAIR_FORM, new RepairForm());
         model.addAttribute(REPAIR, theRepair.orElse(null));
+        model.addAttribute(REPAIR_TYPE, RepairType.values());
+        model.addAttribute(STATE, State.values());
         model.addAttribute(IS_PRESENT, theRepair.isPresent());
 
         return "pages/admin-edit-repairs-view";

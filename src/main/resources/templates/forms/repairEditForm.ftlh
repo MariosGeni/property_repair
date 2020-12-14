@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col">
-            <h1>Create Repair</h1>
+            <h1>Edit Repair</h1>
             <#if errorMessage??>
                 <h3 style="color: #dc3545">${errorMessage!""}</h3>
             </#if>
@@ -16,11 +16,11 @@
 
     <div class="row">
         <div class="col-12">
-            <form id="repairForm" name="repairForm" action="/admin/repairs/create" method="post">
+            <form id="repairForm" name="repairForm" action="/admin/repairs/edit/" method="post">
                 <div class="form-group">
                     <label for="address">Address</label>
                     <@spring.bind "repairForm.address"/>
-                    <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="address" name="address" value="${repair.address!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -33,7 +33,7 @@
                 <div class="form-group">
                     <label for="description">Description</label>
                     <@spring.bind "repairForm.description"/>
-                    <input type="text" class="form-control" id="description" name="description" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="description" name="description" value="${repair.description!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <label for="user_id">User ID</label>
                     <@spring.bind "repairForm.userId"/>
-                    <input type="text" class="form-control" id="user_id" name="userId" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="user_id" name="userId" value="${repair.userId!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -59,7 +59,7 @@
                 <div class="form-group">
                     <label for="date">Date</label>
                     <@spring.bind "repairForm.date"/>
-                    <input type="date" class="form-control" id="date" name="date">
+                    <input type="date" class="form-control" id="date" name="date" value="${repair.date!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -73,12 +73,12 @@
                     <label for="repair_type">Repair Type</label>
                     <@spring.bind "repairForm.repairType"/>
                     <select id="repair_type" name="repairType" class="custom-select d-block w-100">
-                        <option>Select a type</option>
+                        <option>Select repair type</option>
                         <#if REPAIR_TYPE??>
                             <#list REPAIR_TYPE as type>
                                 <option value="${type}"
-                                        <#if spring.status.value??>
-                                            <#if  type == spring.status.value>
+                                        <#if repair.repairType??>
+                                            <#if type == repair.repairType>
                                                 selected
                                             </#if>
                                         </#if>
@@ -101,12 +101,12 @@
                     <label for="state">State</label>
                     <@spring.bind "repairForm.state"/>
                     <select id="state" name="state" class="custom-select d-block w-100">
-                        <option>Select a type</option>
+                        <option>Select repair state</option>
                         <#if STATE??>
                             <#list STATE as type>
                                 <option value="${type}"
-                                        <#if spring.status.value??>
-                                            <#if type == spring.status.value>
+                                        <#if repair.state??>
+                                            <#if type == repair.state>
                                                 selected
                                             </#if>
                                         </#if>
@@ -123,7 +123,7 @@
                         </ul>
                     </#if>
                 </div>
-                <button class="btn btn-primary btn-lg mt-4" type="submit">Create</button>
+                <button class="btn btn-primary btn-lg mt-4" type="submit">Update</button>
             </form>
         </div>
     </div>

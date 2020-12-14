@@ -12,7 +12,7 @@ public enum HouseType {
         this.houseType = houseType;
     }
 
-    public java.lang.String getHouseType() {
+    public String getHouseType() {
         return houseType;
     }
 }

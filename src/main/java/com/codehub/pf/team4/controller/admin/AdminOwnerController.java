@@ -123,7 +123,7 @@ public class AdminOwnerController {
         }
 
         Optional<UserModel> theOwner = userService.updateUser(userForm);
-        if(theOwner.isEmpty()) return "pages/admin-edit-owners-view";
+        if (theOwner.isEmpty()) return "pages/admin-edit-owners-view";
         return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
     }
 

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -37,10 +38,10 @@ public class AdminOwnerController {
     @Autowired
     private UserValidator userValidator;
 
-    /*@InitBinder(USER_FORM)
+    @InitBinder(USER_FORM)
     protected void initBinder(final WebDataBinder binder) {
         binder.addValidators(userValidator);
-    }*/
+    }
 
     // *************************************************** //
     // ======================== OWNERS ================== //
@@ -99,6 +100,7 @@ public class AdminOwnerController {
     public String postAdminOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
             return "pages/admin-create-owners-view";

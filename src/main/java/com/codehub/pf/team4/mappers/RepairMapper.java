@@ -34,6 +34,7 @@ public abstract class RepairMapper {
     }
 
     public static Optional<RepairModel> mapToRepairModelOptional(Repair repair) {
+        if(repair == null) return Optional.empty();
         return Optional.of(mapToRepairModel(repair));
     }
 }

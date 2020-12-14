@@ -29,6 +29,7 @@ public class UserValidator implements Validator {
     public void validate(Object target, Errors errors) {
         UserForm userForm = (UserForm) target;
         if(userForm.getId() == null) userForm.setId(""); // to avoid null pointer
+        if(userForm.getPassword() == null) userForm.setPassword("");
 
         // check if user with same email or afm exist and id == null so its CREATE OPERATION
         if (doesExist("email", userForm.getEmail()) && userForm.getId().isEmpty()) {
@@ -40,18 +41,14 @@ public class UserValidator implements Validator {
         } else if(doesExist("afm", userForm.getAfm()) && userForm.getId() == null) {
             errors.rejectValue("afm", "User with this afm already exists");
         }else if(isNumeric(userForm.getPassword())) {
-            errors.rejectValue("afm", "AFM should only contain numbers");
+            errors.reject("afm", "AFM should only contain numbers");
         }
 
         // UPDATE RELATED > Check if user exists before update
         if (doesExist("id", userForm.getId())) {
-            errors.rejectValue("email", "User with this email already exists");
+            errors.reject("email", "User with this email already exists");
         }
 
-        // check if password is empty
-        if(userForm.getPassword().isBlank()) {
-            errors.rejectValue("password", "password cant be empty");
-        }
 
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())
                 .filter(type -> type.toString().equalsIgnoreCase(userForm.getHouseType()))

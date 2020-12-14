@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -24,4 +25,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.email = (:email)")
     List<Repair> findRepairsByUserEmail(@Param("email") String email);
+
+    @Query(value = "SELECT u.user_id AS \"id\", CONCAT(u.first_name, ' ', u.last_name) AS \"name\"\n" +
+            "FROM users u\n" +
+            "WHERE CONCAT(u.first_name, u.last_name) LIKE CONCAT('%', :value, '%');", nativeQuery = true)
+    List<Map<String, Object>> findUserByFieldValue(String value);
 }

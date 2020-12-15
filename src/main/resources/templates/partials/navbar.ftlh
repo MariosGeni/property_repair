@@ -16,10 +16,10 @@
                 <a href="/admin" class="nav-link">Admin Home</a>
             </li>
         </ul>
-        <form class="form-inline my-lg-0 mr-2" action="/login" type="get">
-            <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
+        <a href="/login">
+                    <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
                 <span data-feather="log-out"></span> Logout
             </button>
-        </form>
+        </a>
     </div>
 </nav>

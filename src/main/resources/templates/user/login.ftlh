@@ -10,7 +10,7 @@
           <section class="container-fluid ">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form class="form-login">
+                    <form class="form-login" action="/admin" >
                         <div class="mb-4 mt-2 form-group">
                           <label for="exampleInputEmail1" class="form-label">Email address</label>
                           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -20,9 +20,12 @@
                           <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
                         <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in</button>
-                      </form>
-                </section>
+                        </form>
+                        <a class="back-btn" href="/">
+                           <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Back to Guest</button>
+                        </a>
 
+                </section>
             </section>
           </section>
 

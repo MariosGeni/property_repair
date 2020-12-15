@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
         User originalUser = userRepository.findById(toBeUpdatedUser.getId()).orElse(null);
         // get the original user and replace his password with the given user if no password is provided for update
         if(originalUser == null) return Optional.empty(); // if user not found something went wrong in the validation
-        if(toBeUpdatedUser.getPassword() == null) toBeUpdatedUser.setPassword(originalUser.getPassword());;
+        if(toBeUpdatedUser.getPassword() == null) toBeUpdatedUser.setPassword(originalUser.getPassword());
         if(toBeUpdatedUser.equals(originalUser)) return UserMapper.mapToUserModelOptional(toBeUpdatedUser); // if no changed were made dont update
 
         return UserMapper.mapToUserModelOptional(userRepository.save(toBeUpdatedUser));

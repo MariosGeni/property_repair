@@ -6,7 +6,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-
+    overflow-x: hidden;
 }
 
 
@@ -14,17 +14,8 @@
     position:absolute;
     top:20vh;
     background: orange;
-    padding: 30px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow:0px 0px 10px 0px black;
-
-}
-.btn-primary {
-    background-color: rgb(0, 104, 0); 
-    border-color: rgb(0, 51, 0);
-   
-   
-}
-.btn-primary:hover{
-    background-color:rgb(0, 51, 0);
+    margin: auto;
 }

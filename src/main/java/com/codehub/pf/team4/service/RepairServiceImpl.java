@@ -3,8 +3,10 @@ package com.codehub.pf.team4.service;
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.mappers.RepairFormMapper;
 import com.codehub.pf.team4.mappers.RepairMapper;
+import com.codehub.pf.team4.mappers.UserFormMapper;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
@@ -40,6 +42,14 @@ public class RepairServiceImpl implements RepairService {
         return RepairMapper.mapToRepairModelOptional(repairRepository.findById(id).orElse(null));
     }
 
+    public Optional<RepairForm> findRepairByIdAsRepairForm(Long id){
+        try {
+            RepairForm repairForm = RepairFormMapper.mapToRepairForm(repairRepository.findById(id).orElse(null));
+            return Optional.ofNullable(repairForm);
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
     @Override
     public List<RepairModel> getOngoingRepairsOfTheDay() throws Exception {
         return repairRepository.findByDateAndState(DateProvider.getToday(), State.ONGOING)

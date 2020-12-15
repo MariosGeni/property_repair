@@ -27,11 +27,11 @@
                 <td>${owner.address}</td>
                 <td>${owner.phoneNumber?c}</td>
                 <td>
-                    <a href="/admin/owners/edit/${owner.id}">
+                    <a a class="btn btn-link" href="/admin/owners/edit/${owner.id}">
                         <span data-feather="tool"></span>
                     </a>
                 </td>
-                <td class="text-center">
+                <td>
                     <button class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter"
                             data-id="${owner.id}">
                         <span data-feather="x"></span>

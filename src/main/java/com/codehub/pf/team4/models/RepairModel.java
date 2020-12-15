@@ -19,5 +19,6 @@ public class RepairModel {
     private Long cost;
     private String address;
     private String user;
+    private Long userId;
     private String description;
 }

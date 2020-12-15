@@ -12,20 +12,9 @@
 <div>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:#EE9600">
         <img src="OBOBOMASTORAS.png" class="navbar-brand" alt="logo" ></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active" id="fonts">
-                    <a  class="nav-link" id="current">Home<span class="sr-only"></span></a>
-                </li>
-                <li class="nav-item active" id="fonts">
-                    <a  class="nav-link" href="my_repair.html">My repair<span class="sr-only"></span></a>
-                </li>
-            </ul>
-            <button type="button" class="btn btn-danger">Log out</button>
-        </div>
+        <form class="guest-form" id="guestForm" name="guestForm" action="/" method="post">
+            <button type="submit" class="btn btn-danger">Log out</button>
+            </form>
     </nav>
 </div>
 </thead>

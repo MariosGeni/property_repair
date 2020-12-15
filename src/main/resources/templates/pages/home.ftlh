@@ -6,7 +6,16 @@
     </head>
     <body>
     <!-- header here -->
-    <#include "../partials/navbar.ftlh">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
+        <a href="/" style="background-color:#343a40">
+            <img class="site-logo" src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
+        </a>
+            <form class="form-inline my-lg-0 mr-2" action="/" type="get">
+                <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
+                    <span data-feather="log-out"></span> Logout
+                </button>
+            </form>
+    </nav>
 
     <!-- content here -->
     <div class="container">

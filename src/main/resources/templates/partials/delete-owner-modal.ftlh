@@ -2,13 +2,13 @@
     <div class="modal-dialog" style="top:5rem" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Delete Confirmation</h5>
+                <h5 class="modal-title text-black-50" id="exampleModalLongTitle">Delete Confirmation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p style="color:grey">Are you sure you want to delete it?</p>
+                <p class="pl-4" style="color:grey">Are you sure you want to delete it?</p>
             </div>
             <div class="modal-footer">
                 <form action="/admin/owners/delete/${owner.id}" method="post">

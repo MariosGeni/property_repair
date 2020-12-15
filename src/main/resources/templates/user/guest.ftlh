@@ -11,43 +11,43 @@
 <thead>
 <div>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:#EE9600">
-        <img src="images/OBOBOMASTORAS.png" class="navbar-brand" alt="logo">
+        <img src="/images/OBOBOMASTORAS.png" class="navbar-brand" alt="logo">
         <form class="guest-form" id="guestForm"  name="guestForm" action="" method="post">
             <button type="submit" style="margin-right: auto" class="btn btn-lg btn-dark">Sign-in</button>
             </form>
     </nav>
 </div>
 </thead>
-<br />
-<br />
-<br />
-<br />
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 <tbody>
 
 <div id="card" style="width: 45%;">
-    <img class="card-img-top" src="/static/images/why_us.png" alt="Card image cap" id="images">
+    <img class="card-img-top" src="/images/why_us.png" alt="Card image cap" id="images">
     <div class="card-body">
         <h4 id="h4" class="card-title">Why us</h4>
         <br />
-        <p>Why are in the buissness for 25 years, we use eco-friendly materials and the most important? We see our customers satisfied
+        <p>We are in the business for 25 years, we use eco-friendly materials and the most important? We see satisfaction in our customers' faces
         </p>
     </div>
 </div>
 </div>
-<br /><br />
+<br/><br/>
 <div class="col-sm">
     <div id="card" style="width: 45%;">
-        <img class="card-img-top" src="/static/images/low_price.png" alt="Card image cap" id="images">
+        <img class="card-img-top" src="/images/low_price.png" alt="Card image cap" id="images">
         <div class="card-body">
             <h4 id="h4" class="card-title">Low cost</h4>
             <br />
-            <p>We use a premium materials with low cost, we fix your home and your wallet</p>
+            <p>We use premium materials with low cost, we fix your home and we do not drain your wallet</p>
         </div>
     </div>
 </div>
-<br /><br />
+<br/><br/>
 
 
 </tbody>

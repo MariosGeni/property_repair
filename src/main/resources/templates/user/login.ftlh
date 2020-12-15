@@ -22,9 +22,10 @@
                         <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in</button>
                         </form>
                         <a class="back-btn" href="/">
-                           <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Back to Guest</button>
+                           <button  type="submit" class="btn btn-link  bg-dark text-white feather mt-5 mb-4">
+                           <span data-feather="arrow-left"></span>
+                          </button>
                         </a>
-
                 </section>
             </section>
           </section>

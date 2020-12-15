@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="user_id">User ID</label>
                     <@spring.bind "repairForm.userId"/>
-                    <input type="text" class="form-control" id="user_id" name="userId" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="userId" name="userId" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

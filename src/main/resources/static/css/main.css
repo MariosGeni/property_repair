@@ -42,7 +42,9 @@ html, body{
 .trash-style:hover {
     color: #c61919 !important;
 }
-
+.error{
+    color:red;
+}
 /*.fade-in:hover {*/
 /*    animation-name: fadeInOpacity;*/
 /*    animation-iteration-count: 1;*/

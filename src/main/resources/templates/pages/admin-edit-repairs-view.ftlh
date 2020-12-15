@@ -21,6 +21,8 @@
     </div>
 </div>
 <#include "../partials/endContainerWithSidebar.ftlh">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="/js/lib/jquery/repair_validator.js"></script>
 </body>
 </html>
 

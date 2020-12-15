@@ -44,7 +44,7 @@
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <@spring.bind "userForm.firstName"/>
-                    <input type="text" class="form-control" id="first_name" name="firstName" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="firstName" name="firstName" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -58,7 +58,7 @@
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
                     <@spring.bind "userForm.lastName"/>
-                    <input type="text" class="form-control" id="last_name" name="lastName" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="lastName" name="lastName" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -89,7 +89,7 @@
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
                             <@spring.bind "userForm.phoneNumber"/>
-                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${spring.status.value!""}">
+                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="${spring.status.value!""}">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>

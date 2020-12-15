@@ -1,51 +1,54 @@
+<#assign page = springMacroRequestContext.requestUri>
+
 <div class="container-fluid container-fluid-sidebar">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item btn-outline-info ">
-                        <a class="nav-link text-white" href="/admin">
+
+                        <a class="nav-link text-white <#if page == '/admin'>bg-info active</#if> " href="/admin">
                             <span data-feather="home"></span>
                             Home
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-primary">
+                    <li class="nav-item btn-outline-primary  <#if page == '/admin/owners'>bg-primary active</#if>">
                         <a class="nav-link text-white" href="/admin/owners">
                             <span data-feather="users"></span>
                             Owners
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-primary">
+                    <li class="nav-item btn-outline-primary  <#if page == '/admin/repairs'>bg-primary active</#if>">
                         <a class="nav-link text-white" href="/admin/repairs">
                             <span data-feather="truck"></span>
                             Repairs
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-success">
+                    <li class="nav-item btn-outline-success  <#if page == '/admin/owners/search'>bg-success active</#if>">
                         <a class="nav-link text-white" href="/admin/owners/search">
                             <span data-feather="search"></span>
                             Search Owners
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-success">
+                    <li class="nav-item btn-outline-success  <#if page == '/admin/repairs/search'>bg-success active</#if>">
                         <a class="nav-link text-white" href="/admin/repairs/search">
                             <span data-feather="search"></span>
                             Search Repairs
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-warning">
+                    <li class="nav-item btn-outline-warning  <#if page == '/admin/owners/create'>bg-warning active</#if>">
                         <a class="nav-link text-white" href="/admin/owners/create">
                             <span data-feather="plus-circle"></span>
                             Create Owner
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-warning">
+                    <li class="nav-item btn-outline-warning <#if page == '/admin/repairs/create'> bg-warning active</#if>" >
                         <a class="nav-link text-white" href="/admin/repairs/create">
                             <span data-feather="plus-circle"></span>
                             Create Repair

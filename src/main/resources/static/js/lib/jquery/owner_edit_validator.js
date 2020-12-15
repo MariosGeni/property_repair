@@ -34,12 +34,6 @@ jQuery(function ($) {
                 minlength: 10,
                 maxlength: 10
             },
-            password:{
-                required: true,
-                minlength: 8,
-                maxlength: 25,
-                pattern: "^(?=.*[A-Z])(?=.*[!@#$&*\\-._+])(?=.*[0-9])(?=.*[a-z]).{8,25}$"
-            },
             houseType:{
                 "valueNotEquals": "Select a type"
             }
@@ -74,11 +68,6 @@ jQuery(function ($) {
                 digits: "",
                 minlength: "Only 10 characters",
                 maxlength: "Only 10 characters"
-            },
-            password: {
-                required: "Please enter your password",
-                minlength: "Between 5-25 characters",
-                maxlength: "Between 5-25 characters",
             },
             houseType:{
                 "valueNotEquals": "Please select one of the above"

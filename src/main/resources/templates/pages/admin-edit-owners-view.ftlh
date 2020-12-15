@@ -21,9 +21,9 @@
     </div>
 </div>
 <#include "../partials/endContainerWithSidebar.ftlh">
-<script src="static/js/lib/jquery/owner_validator.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+<script src="/js/lib/jquery/owner_edit_validator.js"></script>
 </body>
 </html>
 

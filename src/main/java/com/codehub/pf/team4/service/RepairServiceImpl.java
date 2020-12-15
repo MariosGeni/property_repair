@@ -58,7 +58,15 @@ public class RepairServiceImpl implements RepairService {
     }
 
     @Override
-    public Optional<RepairModel> addRepair(RepairForm newRepair) throws Exception {
+    public Optional<RepairForm> getRepairByIdAsForm(Long id) {
+        Repair theRepair = repairRepository.findById(id).orElse(null);
+
+        if(theRepair == null) return Optional.empty();
+        return Optional.of(RepairFormMapper.mapToRepairForm(theRepair));
+    }
+
+    @Override
+    public Optional<RepairModel> addRepair(RepairForm newRepair) {
         Repair repair = RepairFormMapper.mapToRepair(newRepair);
         repair.setUser(userRepository.findById(repair.getUser().getId()).get());
         return RepairMapper.mapToRepairModelOptional(repairRepository.save(repair));
@@ -66,12 +74,15 @@ public class RepairServiceImpl implements RepairService {
 
     @Override
     public Optional<RepairModel> updateRepair(RepairForm toBeUpdatedRepair) {
-        try {
-            Repair theRepair = RepairFormMapper.mapToRepair(toBeUpdatedRepair);
-            return RepairMapper.mapToRepairModelOptional(repairRepository.save(theRepair));
-        } catch (Exception e) {
-            return Optional.empty();
+        Repair toBeUpdateRepair = RepairFormMapper.mapToRepair(toBeUpdatedRepair);
+        Repair originalRepair = repairRepository.findById(toBeUpdateRepair.getId()).get();
+        if(toBeUpdateRepair.equals(originalRepair)) {
+            // if no changes made dont update
+            return RepairMapper.mapToRepairModelOptional(toBeUpdateRepair);
         }
+
+        toBeUpdateRepair.setUser(originalRepair.getUser());
+        return RepairMapper.mapToRepairModelOptional(repairRepository.save(toBeUpdateRepair));
     }
 
     @Override

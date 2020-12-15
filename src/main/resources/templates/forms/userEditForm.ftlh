@@ -1,10 +1,6 @@
 <#ftl output_format="HTML" strip_whitespace=true>
 <#import "/spring.ftl" as spring />
-<script src="static/js/lib/jquery/owner_validator.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
-
 <div class="container-fluid">
-
     <div class="row">
         <div class="col">
             <h1>Edit Owner</h1>
@@ -16,12 +12,12 @@
 
     <div class="row">
         <div class="col-12">
-            <form id="userForm" name="userForm" action="/admin/owners/edit/" method="post">
-                <input type="hidden" id="id" name="id" value="${owner.id}">
+            <form id="userForm" name="userForm" action="/admin/owners/edit/${userForm.id}" method="post">
+                <input type="hidden" id="userId" name="id" value="${userForm.id}">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <@spring.bind path="userForm.email"/>
-                    <input type="email" class="form-control" id="email" name="email" value="${owner.email!""}">
+                    <input type="email" class="form-control" id="email" name="email" value="${userForm.email!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -34,7 +30,7 @@
                 <div class="form-group">
                     <label for="afm">Afm</label>
                     <@spring.bind "userForm.afm"/>
-                    <input type="text" class="form-control" id="afm" name="afm" value="${owner.afm?c!""}">
+                    <input type="text" class="form-control" id="afm" name="afm" value="${userForm.afm!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -47,7 +43,7 @@
                 <div class="form-group">
                     <label for="first_name">First Name</label>
                     <@spring.bind "userForm.firstName"/>
-                    <input type="text" class="form-control" id="first_name" name="firstName" value="${owner.firstName!""}">
+                    <input type="text" class="form-control" id="first_name" name="firstName" value="${userForm.firstName!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -61,7 +57,7 @@
                 <div class="form-group">
                     <label for="last_name">Last Name</label>
                     <@spring.bind "userForm.lastName"/>
-                    <input type="text" class="form-control" id="last_name" name="lastName" value="${owner.lastName!""}">
+                    <input type="text" class="form-control" id="last_name" name="lastName" value="${userForm.lastName!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -77,7 +73,7 @@
                         <div class="form-group">
                             <@spring.bind "userForm.address"/>
                             <label for="address">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" value="${owner.address!""}">
+                            <input type="text" class="form-control" id="address" name="address" value="${userForm.address!""}">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
@@ -92,7 +88,7 @@
                         <div class="form-group">
                             <label for="phone_number">Phone Number</label>
                             <@spring.bind "userForm.phoneNumber"/>
-                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${owner.phoneNumber?c!""}">
+                            <input type="text" class="form-control" id="phone_number" name="phoneNumber" value="${userForm.phoneNumber!""}">
                             <#if spring.status.error??>
                                 <ul>
                                     <#list spring.status.errorMessages as error>
@@ -108,7 +104,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" name="password" value="${owner.password!""}">
+                    <input type="password" class="form-control" id="password" name="password" value="${userForm.password!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -127,8 +123,8 @@
                         <#if HOUSE_TYPE??>
                             <#list HOUSE_TYPE as type>
                                 <option value="${type}"
-                                        <#if owner.houseType??>
-                                            <#if owner.houseType == type>
+                                        <#if userForm.houseType??>
+                                            <#if userForm.houseType == type>
                                                 selected
                                             </#if>
                                         </#if>

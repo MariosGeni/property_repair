@@ -16,11 +16,13 @@
 
     <div class="row">
         <div class="col-12">
-            <form id="repairForm" name="repairForm" action="/admin/repairs/edit/" method="post">
+            <form id="repairForm" name="repairForm" action="/admin/repairs/edit/${repairForm.id}" method="post">
+                <input type="hidden" id="repairId" name="id" value="${repairForm.id}"/>
+                <input type="hidden" id="userId" name="userId" value="${repairForm.userId}"/>
                 <div class="form-group">
                     <label for="address">Address</label>
                     <@spring.bind "repairForm.address"/>
-                    <input type="text" class="form-control" id="address" name="address" value="${repair.address!""}">
+                    <input type="text" class="form-control" id="address" name="address" value="${repairForm.address!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -33,7 +35,7 @@
                 <div class="form-group">
                     <label for="description">Description</label>
                     <@spring.bind "repairForm.description"/>
-                    <input type="text" class="form-control" id="description" name="description" value="${repair.description!""}">
+                    <input type="text" class="form-control" id="description" name="description" value="${repairForm.description!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -44,9 +46,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="user_id">User ID</label>
-                    <@spring.bind "repairForm.userId"/>
-                    <input type="text" class="form-control" id="user_id" name="userId" value="${repair.userId!""}">
+                    <label for="cost">Cost</label>
+                    <@spring.bind "repairForm.cost"/>
+                    <input type="text" class="form-control" id="cost" name="cost" value="${repairForm.cost!spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -59,7 +61,7 @@
                 <div class="form-group">
                     <label for="date">Date</label>
                     <@spring.bind "repairForm.date"/>
-                    <input type="date" class="form-control" id="date" name="date" value="${repair.date!""}">
+                    <input type="date" class="form-control" id="date" name="date" value="${repairForm.date!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -77,8 +79,8 @@
                         <#if REPAIR_TYPE??>
                             <#list REPAIR_TYPE as type>
                                 <option value="${type}"
-                                        <#if repair.repairType??>
-                                            <#if type == repair.repairType>
+                                        <#if repairForm.repairType??>
+                                            <#if type == repairForm.repairType>
                                                 selected
                                             </#if>
                                         </#if>
@@ -105,8 +107,8 @@
                         <#if STATE??>
                             <#list STATE as type>
                                 <option value="${type}"
-                                        <#if repair.state??>
-                                            <#if type == repair.state>
+                                        <#if repairForm.state??>
+                                            <#if type == repairForm.state>
                                                 selected
                                             </#if>
                                         </#if>

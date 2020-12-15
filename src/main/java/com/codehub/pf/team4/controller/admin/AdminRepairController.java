@@ -89,13 +89,10 @@ public class AdminRepairController {
 
     @GetMapping(value = "repairs/edit/{id}") // Edit repair by its id
     public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
-        Optional<RepairModel> theRepair = repairService.getRepairById(id);
+        Optional<RepairForm> theRepair = repairService.getRepairByIdAsForm(id);
+        if (theRepair.isEmpty()) return "redirect:/admin/repairs"; // redirect to all repairs if repair with this id not found
 
-        if (theRepair.isEmpty())
-            return "redirect:/admin/repairs";
-
-        model.addAttribute(REPAIR_FORM, new RepairForm());
-        model.addAttribute(REPAIR, theRepair.orElse(null));
+        model.addAttribute(REPAIR_FORM, theRepair.get());
         model.addAttribute(REPAIR_TYPE, RepairType.values());
         model.addAttribute(STATE, State.values());
         model.addAttribute(IS_PRESENT, theRepair.isPresent());

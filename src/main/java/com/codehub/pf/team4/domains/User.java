@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "Users", uniqueConstraints = {@UniqueConstraint(columnNames = "afm"), @UniqueConstraint(columnNames = "email")})
@@ -58,5 +59,13 @@ public class User {
                 ", houseType=" + houseType +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    @Override //  auto created by intelliJ idea
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return getId().equals(user.getId()) && getAfm().equals(user.getAfm()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getAddress(), user.getAddress()) && getPhoneNumber().equals(user.getPhoneNumber()) && getPassword().equals(user.getPassword()) && getHouseType() == user.getHouseType() && getEmail().equals(user.getEmail());
     }
 }

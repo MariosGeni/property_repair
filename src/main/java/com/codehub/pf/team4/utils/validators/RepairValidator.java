@@ -39,15 +39,19 @@ public class RepairValidator implements Validator {
 
         // Here we add our custom validation logic
         // UPDATE OPERATION does repair with this id exist?
-
-
-        try {
+        if(!repairForm.getUserId().isBlank() && UserValidator.isNumeric(repairForm.getId())) {
             Optional<UserModel> userWithGivenRepairUserId = userService.findUserById(Long.parseLong(repairForm.getUserId()));
             if (userWithGivenRepairUserId.isEmpty()) {
                 errors.rejectValue("userId", "owner.id.not.exists");
             }
-        } catch(Exception e) {
-            errors.rejectValue("userId", "owner.id.not.exists");
+        }
+
+        if(!repairForm.getId().isBlank()) {
+            // update repair validation
+            if(UserValidator.isNumeric(repairForm.getId())) {
+                Optional<RepairModel> repairWithGivenId = repairService.getRepairById(Long.parseLong(repairForm.getId()));
+                if(repairWithGivenId.isEmpty()) errors.rejectValue("id", "repair.id.not.exists");
+            }
         }
 
         Optional<State> state = Arrays.stream(State.values())

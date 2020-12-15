@@ -94,7 +94,6 @@ public class AdminOwnerController {
         model.addAttribute(USER_FORM, userForm);
         //model.addAttribute(USER_FORM, userService.updateUserModel(theOwner));
         model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
-        model.addAttribute(OWNER, theOwner.orElse(null));
 
         return "pages/admin-edit-owners-view";
     }
@@ -120,7 +119,6 @@ public class AdminOwnerController {
     @PostMapping("/owners/edit/{id}") // Edit owner by its id
     public String putAdminEditOwnersPage(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                          BindingResult bindingResult, @PathVariable("id") Long id) {
-
         if (bindingResult.hasErrors()) {
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");

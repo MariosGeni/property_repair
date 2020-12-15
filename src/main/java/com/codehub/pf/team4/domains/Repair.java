@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Table(name = "Repair")
 @Data
@@ -56,5 +57,13 @@ public class Repair {
                 ", description =" + description +
                 ", userId =" + user.getId() +
                 '}';
+    }
+
+    @Override // auto generated from intelliJ idea
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Repair repair = (Repair) o;
+        return getId().equals(repair.getId()) && getDate().equals(repair.getDate()) && getState() == repair.getState() && getRepairType() == repair.getRepairType() && getCost().equals(repair.getCost()) && Objects.equals(getAddress(), repair.getAddress()) && Objects.equals(getDescription(), repair.getDescription());
     }
 }

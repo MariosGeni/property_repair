@@ -22,4 +22,5 @@ public interface RepairService {
 
     List<RepairModel> getRepairsByDate(String wholeDate);
 
+    Optional<RepairForm> getRepairByIdAsForm(Long id);
 }

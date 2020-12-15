@@ -31,17 +31,13 @@ public class UserForm {
     @NotEmpty(message = "Afm can't be empty")
     private String afm;
 
-    @Pattern(regexp = PASSWORD_PATTERN, message = "Password pattern doesn't match")
-    @Size(min = PASSWORD_MIN_SIZE, message = "Password length can't be less than 8")
-    @NotEmpty(message = "Password can't be empty")
-    private String password;
-
     @Pattern(regexp = PHONE_NUMBER_PATTERN, message  = "Phone Number pattern doesn't match")
     @Size(min = PHONE_NUMBER_MIN_SIZE, max = PHONE_NUMBER_MAX_SIZE, message = "Phone Number length must be 10")
     @NotEmpty(message = "Phone Number can't be empty")
     private String phoneNumber;
 
     //Validation on UserValidator
+    private String password;
     private String id;
     private String houseType;
 

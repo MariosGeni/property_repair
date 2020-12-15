@@ -49,8 +49,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<UserModel> updateUser(UserForm toBeUpdatedUser) {
-        return UserMapper.mapToUserModelOptional(userRepository.save(UserFormMapper.mapToUser(toBeUpdatedUser)));
+    public Optional<UserModel> updateUser(UserForm toBeUpdatedUserForm) {
+        User toBeUpdatedUser = UserFormMapper.mapToUser(toBeUpdatedUserForm);
+        User originalUser = userRepository.findById(toBeUpdatedUser.getId()).orElse(null);
+        // get the original user and replace his password with the given user if no password is provided for update
+        if(originalUser == null) return Optional.empty(); // if user not found something went wrong in the validation
+        if(toBeUpdatedUser.equals(originalUser)) return UserMapper.mapToUserModelOptional(toBeUpdatedUser); // if no changed were made dont update
+
+        toBeUpdatedUser.setPassword(originalUser.getPassword());
+        return UserMapper.mapToUserModelOptional(userRepository.save(toBeUpdatedUser));
     }
 
     @Override
@@ -101,19 +108,4 @@ public class UserServiceImpl implements UserService {
                 .map(RepairMapper::mapToRepairModel)
                 .collect(Collectors.toList());
     }
-
-    // find user by id
-//   public Optional<UserModel> updateUserModel (UserModel userModel) {
-//       User originalUser = userRepository.findById(userModel.getId()).get();
-//       originalUser.setId(userModel.getId());
-//       originalUser.setAfm(userModel.getAfm());
-//       originalUser.setAddress(userModel.getAddress());
-//       originalUser.setFirstName(userModel.getFirstName());
-//       originalUser.setLastName(userModel.getLastName());
-//       originalUser.setEmail(userModel.getEmail());
-//       originalUser.setHouseType(userModel.getHouseType());
-//       User newUser = userRepository.save(originalUser);
-//       return Optional.ofNullable(UserMapper.mapToUserModel(newUser));
-//    }
-
 }

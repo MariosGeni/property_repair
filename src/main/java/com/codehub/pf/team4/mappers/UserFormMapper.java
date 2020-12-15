@@ -25,8 +25,9 @@ public class UserFormMapper {
                 user.setId(Long.parseLong(userForm.getId()));
             }
         }
+
         if(userForm.getPassword() != null) {
-            if(!userForm.getPassword().isEmpty()) {
+            if(!userForm.getPassword().isBlank()) {
                 user.setPassword(userForm.getPassword());
             }
         }

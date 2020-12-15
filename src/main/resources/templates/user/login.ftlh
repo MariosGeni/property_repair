@@ -1,16 +1,16 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <#include "../partials/head.ftlh" />
         <link rel="stylesheet" type="text/css" href="/css/login.css">
+
       </head>
 
       <body class="bg">
           <section class="container-fluid ">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form class="form-login">
+                    <form class="form-login" action="/admin" >
                         <div class="mb-4 mt-2 form-group">
                           <label for="exampleInputEmail1" class="form-label">Email address</label>
                           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -19,13 +19,18 @@
                           <label for="exampleInputPassword1" class="form-label">Password</label>
                           <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in</button>
-                      </form>
+                        <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in as Admin</button>
+                        <a class="back-button " href="/">
+                           <span data-feather="arrow-left-circle" style="width: 35px; height: 35px; stroke-width: 1.4px"></span>
+                        </a>
+                        <a style="text-decoration: none" href="/user">
+                            <button  type="button" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in as User</button>
+                        </a>
+                        </form>
                 </section>
-
             </section>
           </section>
-
+          <#include "../partials/scripts.ftlh">
       </body>
 
 

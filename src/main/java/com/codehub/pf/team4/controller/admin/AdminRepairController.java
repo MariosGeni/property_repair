@@ -3,7 +3,6 @@ package com.codehub.pf.team4.controller.admin;
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
-import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
@@ -20,6 +19,7 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/admin")
@@ -71,12 +71,26 @@ public class AdminRepairController {
     @GetMapping(value = "repairs/search") // Search 'repairs/user' by 'date' queryString
     public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                            @RequestParam(value = "date", defaultValue = "") String date) {
-        // --- search code here --- //
+
+        if (afm.isBlank() && date.isBlank()) {
+            model.addAttribute(GlobalAttributes.IS_EMPTY,false);
+            return "pages/admin-search-repairs-view";
+        }
+
         List<RepairModel> repairs = new ArrayList();
-        if(!afm.equals("")) repairs = userService.getRepairsByUserAfm(afm);
-        else if(!date.equals(""))  repairs = repairService.getRepairsByDate(date);
+        // --- search code here --- //
+        if (!afm.equals("")) {
+            Pattern pattern = Pattern.compile("^[0-9]{9}$");
+            if(pattern.matcher(afm).matches())  repairs = userService.getRepairsByUserAfm(afm);
+        } else if(!date.equals("")) {
+
+            Pattern pattern = Pattern.compile ("^[0-9]{4}\\-[01][0-9]\\-[0-3][0-9]$");
+            if(pattern.matcher(date).matches()) repairs = repairService.getRepairsByDate(date);
+        }
 
         model.addAttribute(REPAIRS, repairs);
+        model.addAttribute(GlobalAttributes.IS_EMPTY, repairs.isEmpty());
+
         return "pages/admin-search-repairs-view";
     }
     @GetMapping(value = "/repairs/create")

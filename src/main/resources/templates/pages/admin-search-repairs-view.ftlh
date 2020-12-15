@@ -17,11 +17,16 @@
         </div>
               <div class="row">
                 <div class="col-12">
-
                     <#if repairs?has_content && repairs?is_sequence>
-                        <@repairComponent.repairList repairs/>
+                        <#if repairs?size==1>
+                            <@repairComponent.repairSingle repairs[0]/>
+                        <#else>
+                            <@repairComponent.repairList repairs/>
+                        </#if>
                     </#if>
-
+                    <#if isEmpty?? && isEmpty>
+                        <h3>No repair(s) found</h3>
+                    </#if>
                 </div>
             </div>
         </div>

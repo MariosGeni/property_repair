@@ -14,3 +14,4 @@ INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, descript
 INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (SYSDATETIME(), 'WAITING', 'PLUMBING', 300, 'Korai 47', 4, 'Bathroom');
 INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES (SYSDATETIME(), 'ONGOING', 'ELECTRICAL_WORK', 150, 'Venizelou 78', 5, 'Electric Sockets');
 INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES ('2020-11-11', 'DONE', 'ELECTRICAL_WORK', 1000, 'Kavalas 43', 6, 'New sockets & switches for the whole house');
+INSERT INTO Repair ("date", state, repair_type, cost, address, user_id, description) VALUES ('2020-11-11', 'DONE', 'ELECTRICAL_WORK', 1000, 'Kavalas 43', 6, 'New sockets & switches for the whole house');

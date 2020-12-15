@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/admin")
@@ -66,13 +67,24 @@ public class AdminOwnerController {
     @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
+
+        if (afm.isBlank() && email.isBlank()) {
+            model.addAttribute(GlobalAttributes.IS_EMPTY,false);
+            return "pages/admin-search-owners-view";
+        }
+
         // --- search code here --- //
         Optional<UserModel> owner = Optional.empty();
 
-        if (!afm.equals("")) owner = userService.findUserByAfm(afm);
+        if (!afm.equals("")) {
+            Pattern  pattern = Pattern.compile("^[0-9]{9}$");
+            if(pattern.matcher(afm).matches())  owner = userService.findUserByAfm(afm);
+        }
+
         else if (!email.equals(""))  owner = userService.findUserByEmail(email);
-        System.out.println("I work");
         model.addAttribute(OWNER, owner.orElse(null));
+        model.addAttribute(GlobalAttributes.IS_EMPTY, owner.isEmpty());
+
         return "pages/admin-search-owners-view";
     }
 

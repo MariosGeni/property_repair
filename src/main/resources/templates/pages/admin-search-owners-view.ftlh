@@ -14,6 +14,9 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <#include "../forms/userSearchForm.ftlh">
+                    <#if isEmpty?? && isEmpty>
+                        <h3>No owner found</h3>
+                    </#if>
                 </div>
             </div>
         </main>

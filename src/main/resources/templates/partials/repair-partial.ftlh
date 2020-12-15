@@ -35,9 +35,9 @@
                     </a>
                 </td>
                 <td>
-                    <button class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter"
+                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#exampleModalCenter"
                             data-id="${repair.id}">
-                        <span data-feather="x"></span>
+                        <span  data-feather="trash-2"></span>
                     </button>
                     <#include "delete-repair-modal.ftlh">
                 </td>

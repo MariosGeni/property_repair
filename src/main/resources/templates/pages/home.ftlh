@@ -32,6 +32,7 @@
                 </#if>
             </div>
         </div>
+    </div>
     <!-- footer here -->
     </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="font.css">
+    <link rel="stylesheet" href="css/user.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
@@ -11,9 +11,9 @@
 <thead>
 <div>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:#EE9600">
-        <img src="OBOBOMASTORAS.png" class="navbar-brand" alt="logo" ></a>
-        <form class="guest-form" id="guestForm" name="guestForm" action="/" method="post">
-            <button type="submit" class="btn btn-danger">Log out</button>
+        <img src="images/OBOBOMASTORAS.png" class="navbar-brand" alt="logo">
+        <form class="guest-form" id="guestForm"  name="guestForm" action="" method="post">
+            <button type="submit" style="margin-right: auto" class="btn btn-lg btn-dark">Sign-in</button>
             </form>
     </nav>
 </div>

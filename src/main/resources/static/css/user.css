@@ -7,17 +7,14 @@
 
 }
 
-#images{
+#images {
     width: 318px;
     height: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto
+}
 
-}
-.checked {
-    color: orange;
-}
 #footer-text{
     color: #F9F9F9;
 }

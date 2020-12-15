@@ -18,9 +18,14 @@ public class LoginController {
 
 
 
-    @PostMapping(value = "")
+    @GetMapping(value = "/admin")
     public String loginConfirmation(){
-            return "pages/admin-home-view";
+            return "redirect:/admin/";
+    }
+
+    @GetMapping(value = "/")
+    public String loginBack(){
+        return "redirect:";
     }
 
 }

@@ -1,10 +1,12 @@
 package com.codehub.pf.team4.controller.admin;
 
+import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.RepairType;
 import com.codehub.pf.team4.enums.State;
 import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.RepairModel;
+import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
@@ -94,7 +96,9 @@ public class AdminRepairController {
         if (theRepair.isEmpty())
             return "redirect:/admin/repairs";
 
-        model.addAttribute(REPAIR_FORM, new RepairForm());
+        //RepairForm repairForm = new RepairForm();
+        RepairForm repairForm = repairService.findRepairByIdAsRepairForm(id).get();
+        model.addAttribute(REPAIR_FORM, repairForm);
         model.addAttribute(REPAIR, theRepair.orElse(null));
         model.addAttribute(REPAIR_TYPE, RepairType.values());
         model.addAttribute(STATE, State.values());
@@ -118,18 +122,28 @@ public class AdminRepairController {
         return "redirect:/admin/repairs/" + newRepair.get().getId();
     }
 
-    @PostMapping(value = "repairs/edit/{id}") // Edit repair by its id
-    public String putRepairEditOwnersPage(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
-                                          BindingResult bindingResult, @PathVariable Long id) {
-        if(bindingResult.hasErrors()) {
-            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during update");
-            return "pages/admin-edit-repairs-view";
-        }
+    @PostMapping("/repairs/edit/") // Edit repair by its id
+    public String postRepairEditRepairsPage(RepairForm repairForm) {
 
         Optional<RepairModel> theRepair = repairService.updateRepair(repairForm);
-        if(theRepair.isEmpty()) return "pages/admin-edit-repairs-view";
-        return "redirect:/admin/repairs/" + theRepair.get().getId();
+        if(theRepair.isEmpty())
+            return "pages/admin-edit-repairs-view";
+
+        return "redirect:/admin/repairs/";
     }
+
+//    @PostMapping(value = "repairs/edit/{id}") // Edit repair by its id
+//    public String putRepairEditOwnersPage(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
+//                                          BindingResult bindingResult, @PathVariable Long id) {
+//        if(bindingResult.hasErrors()) {
+//            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during update");
+//            return "pages/admin-edit-repairs-view";
+//        }
+//
+//        Optional<RepairModel> theRepair = repairService.updateRepair(repairForm);
+//        if(theRepair.isEmpty()) return "pages/admin-edit-repairs-view";
+//        return "redirect:/admin/repairs/" + theRepair.get().getId();
+//    }
 
     @PostMapping(value = "repairs/delete/{id}")
     public String deleteRepair(@PathVariable("id") Long id, Model model) {

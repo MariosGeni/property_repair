@@ -103,10 +103,10 @@ public class UserServiceImpl implements UserService {
     }
 
     // find user by id
-   public Optional<UserModel> updateUserModel (UserModel userModel) {
-       User originalUser = userRepository.findById(userModel.getId()).get();
-       User newUser = userRepository.save(originalUser);
-       return Optional.ofNullable(UserMapper.mapToUserModel(newUser));
-    }
+//   public Optional<UserModel> updateUserModel (UserModel userModel) {
+//       User originalUser = userRepository.findById(userModel.getId()).get();
+//       User newUser = userRepository.save(originalUser);
+//       return Optional.ofNullable(UserMapper.mapToUserModel(newUser));
+//    }
 
 }

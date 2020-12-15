@@ -14,10 +14,12 @@ public interface UserService {
 
     // find user by id
     Optional<UserModel> findUserById(Long id);
-    // find user by id
+
+    // find user by id return a form
     Optional<UserForm> findUserByIdAsUserForm(Long id);
-    // find user by id
-   // Optional<UserModel> updateUserModel(UserForm user);
+
+    // find user by id as a form
+    // Optional<UserModel> updateUserModel(UserForm user);
 
     // find user by afm
     Optional<UserModel> findUserByAfm(String afm);

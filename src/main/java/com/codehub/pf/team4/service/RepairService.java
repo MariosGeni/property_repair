@@ -1,6 +1,7 @@
 package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.forms.RepairForm;
+import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.RepairModel;
 
 import java.util.List;
@@ -11,6 +12,8 @@ public interface RepairService {
     List<RepairModel> getAllRepairs();
 
     Optional<RepairModel> getRepairById(Long id);
+
+    Optional<RepairForm> findRepairByIdAsRepairForm(Long id);
 
     Optional<RepairModel> addRepair(RepairForm repair) throws Exception;
 

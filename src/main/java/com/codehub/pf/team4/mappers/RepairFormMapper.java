@@ -21,12 +21,12 @@ public class RepairFormMapper {
         Repair repair = new Repair();
         repair.setDate(DateProvider.getLocalDate(repairForm.getDate()));
         repair.setAddress(repairForm.getAddress());
-        repair.setAddress(repairForm.getAddress());
         repair.setRepairType(RepairType.valueOf(repairForm.getRepairType()));
         repair.setState(State.valueOf(repairForm.getState()));
         repair.setCost(Long.parseLong(repairForm.getCost()));
         repair.setDescription(repairForm.getDescription());
         repair.setUser((new User()));
+        repairForm.setUserId((repairForm.getUserId()));
 
         repair.getUser().setId(Long.parseLong(repairForm.getUserId()));
 

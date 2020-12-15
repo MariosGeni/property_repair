@@ -30,11 +30,11 @@
                 <td>${repair.user}</td>
                 <td>${repair.description}</td>
                 <td>
-                    <a href="/admin/repairs/edit/${repair.id}">
+                    <a class="btn btn-link" href="/admin/repairs/edit/${repair.id}">
                         <span data-feather="tool"></span>
                     </a>
                 </td>
-                <td class="text-center">
+                <td>
                     <button class="btn btn-link" data-toggle="modal" data-target="#exampleModalCenter"
                             data-id="${repair.id}">
                         <span data-feather="x"></span>

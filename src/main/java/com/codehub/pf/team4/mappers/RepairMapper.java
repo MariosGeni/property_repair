@@ -11,7 +11,6 @@ import java.util.stream.Collectors;
 @Component
 public abstract class RepairMapper {
 
-
     public static RepairModel mapToRepairModel(Repair repair) {
         if (repair == null) { return null; }
 
@@ -22,6 +21,7 @@ public abstract class RepairMapper {
         repairModel.setRepairType(repair.getRepairType());
         repairModel.setCost(repair.getCost());
         repairModel.setAddress(repair.getAddress());
+        repairModel.setUserId(repair.getUser().getId());
         repairModel.setDescription(repair.getDescription());
         repairModel.setUser(repair.getUser().getFirstName() + ", " + repair.getUser().getLastName());
         return repairModel;

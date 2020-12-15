@@ -12,7 +12,7 @@
           <section class="container-fluid bg">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form class="form-login">
+                    <form class="form-login" id="loginForm" name="loginForm" action="/login" method="post">
                         <div class="mb-3">
                           <label for="exampleInputEmail1" class="form-label">Email address</label>
                           <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -26,7 +26,10 @@
                           <label class="form-check-label" for="exampleCheck1">Check me out</label>
                         </div>
                         <button  type="submit" class="btn btn-primary btn-block">Sign in</button>
-                      </form>
+                    </form>
+                    <form id="back" name="back" action="/">
+                        <button  type="submit" class="btn btn-primary btn-block">Back</button>
+                    </form>
                 </section>
 
             </section>

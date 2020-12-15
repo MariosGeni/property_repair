@@ -20,7 +20,7 @@ public class LoginController {
 
     @GetMapping(value = "/admin")
     public String loginConfirmation(){
-            return "redirect:/admin/";
+            return "redirect:/admin";
     }
 
     @GetMapping(value = "/")

@@ -1,9 +1,9 @@
 <html>
     <head>
         <title>Login</title>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <#include "../partials/head.ftlh" />
         <link rel="stylesheet" type="text/css" href="/css/login.css">
+
       </head>
 
       <body class="bg">
@@ -19,17 +19,18 @@
                           <label for="exampleInputPassword1" class="form-label">Password</label>
                           <input type="password" class="form-control" id="exampleInputPassword1">
                         </div>
-                        <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in</button>
-                        </form>
-                        <a class="back-btn" href="/">
-                           <button  type="submit" class="btn btn-link  bg-dark text-white feather mt-5 mb-4">
-                           <span data-feather="arrow-left"></span>
-                          </button>
+                        <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in as Admin</button>
+                        <a class="back-button " href="/">
+                           <span data-feather="arrow-left-circle" style="width: 35px; height: 35px; stroke-width: 1.4px"></span>
                         </a>
+                        <a style="text-decoration: none" href="/user">
+                            <button  type="button" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in as User</button>
+                        </a>
+                        </form>
                 </section>
             </section>
           </section>
-
+          <#include "../partials/scripts.ftlh">
       </body>
 
 

@@ -32,9 +32,9 @@
                     </a>
                 </td>
                 <td>
-                    <button class="btn btn-link fade-in" data-toggle="modal" data-target="#exampleModalCenter"
+                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#exampleModalCenter"
                             data-id="${owner.id}">
-                        <span data-feather="trash-2"></span>
+                        <span  data-feather="trash-2"></span>
                     </button>
                     <#include "../partials/delete-owner-modal.ftlh">
                 </td>

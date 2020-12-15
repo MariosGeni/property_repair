@@ -50,14 +50,14 @@
 <#macro repairSingle repair>
     <table class="table table-dark table-striped">
         <tbody>
-        <tr>
-            <td class="font-weight-bold">#</td>
-            <td>${repair.id}</td>
-        </tr>
-        <tr>
-            <td class="font-weight-bold">Date</td>
-            <td>${repair.date}</td>
-        </tr>
+            <tr>
+                <td class="font-weight-bold">#</td>
+                <td>${repair.id}</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">Address</td>
+                <td>${repair.address}</td>
+            </tr>
             <tr>
                 <td class="font-weight-bold">State</td>
                 <td>${repair.state}</td>

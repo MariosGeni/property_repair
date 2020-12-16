@@ -25,16 +25,17 @@ public class PropertyRepairsApplication {
 
             Random rand = new Random();
 
-            for (int i = 0; i < 50; i++) {
+            for (long i = 0; i < 50; i++) {
 
                 Faker faker = new Faker();
 
                 User user1 = new User();
+                user1.setId(10L+i);
                 user1.setFirstName(faker.name().firstName());
                 user1.setLastName(faker.name().lastName());
                 user1.setAddress(faker.address().streetAddress());
                 user1.setAfm(rand.nextInt(1000000000));
-                user1.setEmail("test" + rand.nextInt(60) + "@gmail.com");
+                user1.setEmail(faker.shakespeare().toString() + rand.nextInt(100) + "@gmail.com");
                 user1.setPassword(String.valueOf(rand.nextInt(100000000)));
                 user1.setHouseType(HouseType.MAISONETTE);
                 user1.setPhoneNumber(Long.valueOf(rand.nextInt(10000000)));

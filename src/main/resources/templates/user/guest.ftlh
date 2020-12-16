@@ -8,52 +8,63 @@
 </head>
 
 <body style="background-color:#2b2b2b;">
-<thead>
+
+
+
+<#-- Head of the Body -->
+
 <div>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:#EE9600">
         <img src="/images/OBOBOMASTORAS.png" class="navbar-brand" alt="logo">
-        <form class="guest-form" id="guestForm"  name="guestForm" action="" method="post">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto"></ul>
+
+        <form class="form-inline" id="guestForm"  name="guestForm" action="" method="post">
             <button type="submit" style="margin-right: auto" class="btn btn-lg btn-dark">Sign-in</button>
         </form>
+        </div>
     </nav>
 </div>
-</thead>
-<br/>
-<br/>
-<br/>
-<br/>
+
+<#-- Head of the Body -->
 
 
-<tbody>
 
-<div id="card" style="width: 45%;">
-    <img class="card-img-top" src="/images/why_us.png" alt="Card image cap" id="images">
-    <div class="card-body">
-        <h4 id="h4" class="card-title">Why us</h4>
-        <br />
-        <p>We are in the business for 25 years, we use eco-friendly materials and the most important? We see satisfaction in our customers' faces
-        </p>
+<#-- Main Body -->
+
+<div class="container mt-lg-5">
+    <div class="row">
+        <div class="col">
+            <div id="card"  >
+                <img class="card-img-top" src="/images/why_us.png" alt="Card image cap" id="images">
+                <div class="card-body">
+                    <h4 id="h4" class="card-title">Why us</h4>
+                        <p class="card-text">We are in the business for 25 years, we use eco-friendly materials and the most important? We see satisfaction in our customers' faces</p>
+                </div>
+            </div>
+
     </div>
-</div>
-</div>
-<br/><br/>
-<div class="col-sm">
-    <div id="card" style="width: 45%;">
-        <img class="card-img-top" src="/images/low_price.png" alt="Card image cap" id="images">
-        <div class="card-body">
-            <h4 id="h4" class="card-title">Low cost</h4>
-            <br />
-            <p>We use premium materials with low cost, we fix your home and we do not drain your wallet</p>
+
+        <div class="col">
+        <div id="card" >
+            <img class="card-img-top" src="/images/low_price.png" alt="Card image cap" id="images">
+            <div class="card-body">
+                <h4 id="h4" class="card-title">Low cost</h4>
+                <p class="card-text" style="text-align: center">We use premium materials with low cost, we fix your home and we do not drain your wallet</p>
+            </div>
+        </div>
         </div>
     </div>
 </div>
-<br/><br/>
+
+<#-- Main Body -->
 
 
-</tbody>
+<#-- Footer -->
 
-
-<tfoot>
 <footer class="footer">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -61,12 +72,12 @@
             </div>
         </div>
     </div>
-    <div id="footer-text" class="footer-copyright text-center py-3">© 2020 Copyright:
+    <div id="footer-text" class="footer-copyright text-center py-3">Copyright © 2020:
         Obobomastoras.com All Rights Reserved
     </div>
 </footer>
 
-</tfoot>
+<#-- Footer -->
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

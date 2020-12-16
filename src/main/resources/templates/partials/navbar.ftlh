@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
-    <a href="/" style="background-color:#343a40">
+    <a href="/admin" style="background-color:#343a40">
         <img class="site-logo" src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
     </a>
 
@@ -10,7 +10,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto px-3">
             <li class="nav-item text-nowrap">
-                <a href="/" class="nav-link">Owner Home</a>
+                <a href="/user" class="nav-link">Owner Home</a>
             </li>
             <li class="nav-item text-nowrap">
                 <a href="/admin" class="nav-link">Admin Home</a>

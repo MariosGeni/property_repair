@@ -1,5 +1,5 @@
 .navbar-brand {
-    width: 150px;
+    width: 175px;
 }
 
 #fonts{
@@ -15,18 +15,21 @@
     margin-right: auto
 }
 
-#footer-text{
+.footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
     color: #F9F9F9;
 }
 
-#current{
-    font-weight: bold;
-}
 
 #h4{
     color: #F9F9F9;
     margin: auto;
     text-align: center;
+    margin-bottom: 20px;
 }
 
 #card{

@@ -1,12 +1,12 @@
 ALTER TABLE Repair ALTER COLUMN address VARCHAR(255) COLLATE Latin1_General_100_CI_AI_SC_UTF8;
 
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456789, 'John', 'Smith', 'Tsimiski 25', 2310444455, 'johnsmith@somecompany.com', '123456789', 'DETACHED_HOUSE');
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (987654321, 'George', 'Papadopoulos', 'Trapezountos 3', 2102102100, 'georgepapadopoulos@somecompany.com', '123456789', 'MAISONETTE');
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (112356794, 'Athanasios', 'Galatis', 'Kavalas 43', 2310231023, 'athanasiosgalatis2@somecompany.com', '123456', 'APARTMENT_BUILDING');
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123457890, 'Marios', 'Genigiorgis', 'Korai 47', 2103456789, 'mariosgenigiorgis@somecompany.com', '123456', 'MAISONETTE');
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123432109, 'Niyazi', 'Haci-Halil', 'Smirnis 2', 2541012345, 'niyazihacihalil@somecompany.com', '123456', 'DETACHED_HOUSE');
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (987643246, 'Dimitra', 'Florou', 'Venizelou 78', 2541023456, 'dimitraflorou5@somecompany.com', '123654', 'APARTMENT_BUILDING');
-INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456700, 'Jonas', 'Kahnwald', 'Skiathou 67', 2310056789, 'johnaskahnwald@somecompany.com', '654123', 'MAISONETTE');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456789, 'John', 'Smith', '25 Tsimiski', 2310444455, 'johnsmith@somecompany.com', '123456789', 'DETACHED_HOUSE');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (987654321, 'George', 'Papadopoulos', '3 Trapezountos', 2102102100, 'georgepapadopoulos@somecompany.com', '123456789', 'MAISONETTE');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (112356794, 'Athanasios', 'Galatis', '43 Kavalas', 2310231023, 'athanasiosgalatis2@somecompany.com', '123456', 'APARTMENT_BUILDING');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123457890, 'Marios', 'Genigiorgis', '47 Korai', 2103456789, 'mariosgenigiorgis@somecompany.com', '123456', 'MAISONETTE');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123432109, 'Niyazi', 'Haci-Halil', '2 Smirnis', 2541012345, 'niyazihacihalil@somecompany.com', '123456', 'DETACHED_HOUSE');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (987643246, 'Dimitra', 'Florou', '78 Venizelou', 2541023456, 'dimitraflorou5@somecompany.com', '123654', 'APARTMENT_BUILDING');
+INSERT INTO Users (afm, first_name, last_name, address, phone_number, email, password, house_type) VALUES (123456700, 'Jonas', 'Kahnwald', '67 Skiathou', 2310056789, 'johnaskahnwald@somecompany.com', '654123', 'MAISONETTE');
 
 
 

@@ -26,16 +26,24 @@ function toggleRepairSearch() {
     var selectedValue = $("#search-repair-select").children("option:selected").val();
     let $afmDivRepair = $("#afm-div");
     let $dateDiv = $("#date-div");
+    let $dateRangeDiv = $("#range-div");
 
     // toggle visibility
     // can be written in less lines but kept it readable
     if(selectedValue === "afm") {
         $dateDiv.addClass("display-none");
+        $dateRangeDiv.addClass("display-none");
         $afmDivRepair.removeClass("display-none");
     }
-
+    if (selectedValue === "date-range"){
+        //alert("I'M IN DATE RANGE");
+        $dateDiv.addClass("display-none");
+        $afmDivRepair.addClass("display-none");
+        $dateRangeDiv.removeClass("display-none");
+    }
     if (selectedValue === "date") {
         $afmDivRepair.addClass("display-none");
+        $dateRangeDiv.addClass("display-none");
         $dateDiv.removeClass("display-none");
     }
 }

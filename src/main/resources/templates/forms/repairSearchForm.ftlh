@@ -10,41 +10,41 @@
         <label>Search by</label>
         <select id="search-repair-select" class="form-control">
             <option value="date" selected> Ημερομηνία </option>
+            <option value="date-range"> Εύρος Ημερομηνιών </option>
             <option value="afm">ΑΦΜ</option>
         </select>
     </div>
 
     <div id="date-div">
-<#-- old code -->
-<#--        <div class="input-group mb-0 mt-3">-->
-<#--            <div class="input-group-prepend">-->
-<#--                <span class="input-group-text"><span data-feather="calendar"></span></span>-->
-<#--            </div>-->
-<#--            <label for="date"></label>-->
-<#--            <input type="date" class="form-control" name="date" id="date" >-->
-<#--        </div>-->
-        <div class="row " style="border:2px blue;">
-            <div class="col-6"><h5>Specific date</h5></div>
-            <div class="col-3"><h5>From date</h5></div>
-            <div class="col-3"><h5>To date</h5></div>
+        <div class="row">
+            <div class="col-12"><h5>Specific date</h5></div>
         </div>
 
         <div class="row">
-            <div class="input-group mb-0 mt-3 col-12 col-lg-6">
+            <div class="input-group mb-0 mt-3 col-12">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><span data-feather="calendar"></span></span>
                 </div>
                 <label for="date"></label>
                 <input type="date" class="form-control" name="date" id="date" >
             </div>
-            <div class="input-group mb-0 mt-3 col-6 col-lg-3">
+        </div>
+    </div>
+
+    <div id="range-div" class="display-none">
+        <div class="row">
+            <div class="col-6"><h5>From date</h5></div>
+            <div class="col-6"><h5>To date</h5></div>
+        </div>
+        <div class="row">
+            <div class="input-group mb-0 mt-3 col-6">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><span data-feather="calendar"></span></span>
                 </div>
                 <label for="date"></label>
                 <input type="date" class="form-control" name="fromDate" id="fromDate" >
             </div>
-            <div class="input-group mb-0 mt-3 col-6 col-lg-3">
+            <div class="input-group mb-0 mt-3 col-6">
                 <div class="input-group-prepend">
                     <span class="input-group-text"><span data-feather="calendar"></span></span>
                 </div>

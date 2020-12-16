@@ -40,19 +40,9 @@ public class UserForm {
     private String password;
     private String id;
 
-    public String getHouseType() {
-        return houseType;
-    }
-
-    public void setHouseType(String houseType) {
-        this.houseType = houseType;
-    }
-
     private String houseType;
 
     private String address;
     private String firstName;
     private String lastName;
-
-
 }

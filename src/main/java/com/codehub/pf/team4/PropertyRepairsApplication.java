@@ -24,18 +24,16 @@ public class PropertyRepairsApplication {
         return (String[] args) -> {
 
             Random rand = new Random();
+            Faker faker = new Faker();
 
             for (long i = 0; i < 50; i++) {
-
-                Faker faker = new Faker();
-
                 User user1 = new User();
-                user1.setId(10L+i);
+                // user1.setId(10L+i);
                 user1.setFirstName(faker.name().firstName());
                 user1.setLastName(faker.name().lastName());
                 user1.setAddress(faker.address().streetAddress());
                 user1.setAfm(rand.nextInt(1000000000));
-                user1.setEmail(faker.shakespeare().toString() + rand.nextInt(100) + "@gmail.com");
+                user1.setEmail(faker.pokemon().name() + rand.nextInt(1000) + "@gmail.com");
                 user1.setPassword(String.valueOf(rand.nextInt(100000000)));
                 user1.setHouseType(HouseType.MAISONETTE);
                 user1.setPhoneNumber(Long.valueOf(rand.nextInt(10000000)));

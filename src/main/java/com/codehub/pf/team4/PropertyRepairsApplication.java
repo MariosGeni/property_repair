@@ -3,6 +3,7 @@ package com.codehub.pf.team4;
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.repository.UserRepository;
+import com.codehub.pf.team4.utils.RandomnessProvider;
 import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -28,15 +29,14 @@ public class PropertyRepairsApplication {
 
             for (long i = 0; i < 50; i++) {
                 User user1 = new User();
-                // user1.setId(10L+i);
                 user1.setFirstName(faker.name().firstName());
                 user1.setLastName(faker.name().lastName());
                 user1.setAddress(faker.address().streetAddress());
-                user1.setAfm(rand.nextInt(1000000000));
-                user1.setEmail(faker.pokemon().name() + rand.nextInt(1000) + "@gmail.com");
-                user1.setPassword(String.valueOf(rand.nextInt(100000000)));
-                user1.setHouseType(HouseType.MAISONETTE);
-                user1.setPhoneNumber(Long.valueOf(rand.nextInt(10000000)));
+                user1.setAfm(RandomnessProvider.getRandomNumber(9));
+                user1.setEmail(faker.pokemon().name() + RandomnessProvider.getRandomNumber(1,5) + "@gmail.com");
+                user1.setPassword(String.valueOf(RandomnessProvider.getRandomNumber(9)));
+                user1.setHouseType(RandomnessProvider.getRandomHouseType());
+                user1.setPhoneNumber(RandomnessProvider.getRandomNumber(10L));
 
                 userRepository.save(user1);
                 userRepository.findAll().forEach(user -> System.out.println(user));

@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/")
 public class GuestController {
 
-
-
     @GetMapping(value = "")
     public String guestPage(){
         return "user/guest";

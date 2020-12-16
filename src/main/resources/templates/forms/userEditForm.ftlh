@@ -104,7 +104,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" name="password" value="${userForm.password!""}">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Change User's Password" value="${userForm.password!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

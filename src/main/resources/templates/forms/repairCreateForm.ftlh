@@ -17,7 +17,7 @@
                 <div class="form-group">
                     <label for="address">Address</label>
                     <@spring.bind "repairForm.address"/>
-                    <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="address" name="address"  placeholder="Kavalas St. 105, Athens" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -30,7 +30,7 @@
                 <div class="form-group">
                     <label for="description">Description</label>
                     <@spring.bind "repairForm.description"/>
-                    <input type="text" class="form-control" id="description" name="description" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="description" name="description" placeholder="Insert description" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="user_id">User ID</label>
                     <@spring.bind "repairForm.userId"/>
-                    <input type="text" class="form-control" id="userId" name="userId" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="userId" name="userId" placeholder="User ID number" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <label for="cost">Cost</label>
                     <@spring.bind "repairForm.cost"/>
-                    <input type="text" class="form-control" id="cost" name="cost" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="cost" name="cost" placeholder="Cost [Euros]" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

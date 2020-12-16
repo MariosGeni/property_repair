@@ -16,8 +16,6 @@ public class LoginController {
         return "user/login";
     }
 
-
-
     @GetMapping(value = "/admin")
     public String loginConfirmation(){
             return "redirect:/admin";

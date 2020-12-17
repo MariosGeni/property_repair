@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Table(name = "Property")
 @Data
@@ -29,6 +30,24 @@ public class Property {
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
     @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
     private User user;
-
     }
 
+    @Override
+    public String toString() {
+        return "Property{" +
+                "id=" + id +
+                ", house_type ='" + houseType + '\'' +
+                ", year_of_construction ='" + yearOfConstruction + '\'' +
+                ", address =" + address +
+                ", userId =" + user.getId() +
+                '}';
+    }
+
+    /* @Override // auto generated from intelliJ idea
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Property property = (Property) o;
+        return
+    }
+*/

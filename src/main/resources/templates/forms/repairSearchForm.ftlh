@@ -6,9 +6,9 @@
 <div class="form-group">
     <label for="search-repair-select">Search by</label>
     <select id="search-repair-select" class="form-control">
-        <option value="date" selected> Ημερομηνία </option>
-        <option value="date-range"> Εύρος Ημερομηνιών </option>
-        <option value="afm">ΑΦΜ</option>
+        <option value="date" selected> Date </option>
+        <option value="date-range"> Range of Dates </option>
+        <option value="afm">AFM</option>
     </select>
 </div>
 <form id="date-form" action="/admin/repairs/search" name="searchForm">
@@ -55,7 +55,7 @@
     <div id="afm-div">
         <div class="input-group mb-0 mt-3" >
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">ΑΦΜ</span>
+                <span class="input-group-text" id="basic-addon1">AFM</span>
             </div>
             <label for="afm"></label>
             <input type="text" class="form-control" name="afm" id="afm" placeholder="afm" aria-describedby="basic-addon1">

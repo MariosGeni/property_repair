@@ -3,11 +3,14 @@ package com.codehub.pf.team4.controller.admin;
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
+import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +21,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/admin")
@@ -47,10 +51,22 @@ public class AdminOwnerController {
     // *************************************************** //
 
     @GetMapping(value = "/owners")
-    public String getAdminOwnersPage(Model model) {
+    public String getAdminOwnersPage(Model model, @RequestParam Optional<Integer> page) {
         // --- owners showcase here --- //
-        List<UserModel> owners = userService.getAllUsers();
-        model.addAttribute(OWNERS, owners);
+//        List<UserModel> owners = userService.getAllUsers();
+//        model.addAttribute(OWNERS, owners);
+
+        // in rel life it makes sense when page starts from ONE, so we send pages starting from 1 from front-end and we
+        // then decrease that page number by 1 because in back-end it starts from ZERO
+        int realPage = 0;
+        if(page.isPresent()) realPage = page.get() > 0? page.get() -1 : 0;
+        Page<UserModel> userModelPaged = userService.findAllAsPage(realPage);
+
+        if(userModelPaged.isEmpty()) return "redirect:/admin/owners"; // if given page doesn't exist
+
+        // Returned model
+        model.addAttribute(OWNERS, userModelPaged);
+
         return "pages/admin-owners-view";
     }
 
@@ -67,7 +83,6 @@ public class AdminOwnerController {
     @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
-
         if (afm.isBlank() && email.isBlank()) {
             model.addAttribute(GlobalAttributes.IS_EMPTY,false);
             return "pages/admin-search-owners-view";
@@ -75,16 +90,14 @@ public class AdminOwnerController {
 
         // --- search code here --- //
         Optional<UserModel> owner = Optional.empty();
-
-        if (!afm.equals("")) {
-            Pattern  pattern = Pattern.compile("^[0-9]{9}$");
-            if(pattern.matcher(afm).matches())  owner = userService.findUserByAfm(afm);
+        if (!afm.isBlank()) {
+            if(UserValidator.isValidAfm(afm))  owner = userService.findUserByAfm(afm);
+        } else if (!email.isBlank())  {
+            if(UserValidator.isValidEmail(email)) owner = userService.findUserByEmail(email);
         }
 
-        else if (!email.equals(""))  owner = userService.findUserByEmail(email);
         model.addAttribute(OWNER, owner.orElse(null));
         model.addAttribute(GlobalAttributes.IS_EMPTY, owner.isEmpty());
-
         return "pages/admin-search-owners-view";
     }
 

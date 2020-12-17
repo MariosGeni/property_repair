@@ -1,4 +1,4 @@
-<#macro repairList repairs>
+<#macro repairList repairs totalPages=0 currentPage=0 totalElements=0 pageSize=0>
     <table class="table table-dark table-striped">
         <thead>
             <tr>
@@ -43,6 +43,18 @@
                 </td>
             </tr>
         </#list>
+            <#if (totalPages > 1)>
+                <tr>
+                     <td colspan="3">
+                        <i>Showing ${(currentPage * pageSize) - (pageSize - 1)} to <#if currentPage  < totalPages>${currentPage * pageSize}<#else>${totalElements}</#if> of ${totalElements}</i>
+                     </td>
+                    <td colspan="7" class="text-right">
+                        <#list 1..totalPages as i>
+                            <a class="page-number-link ml-1 px-3 btn btn-outline-info<#if currentPage == i> active</#if>" href="/admin/repairs?page=${i}" style="color: white;">${i}</a>
+                        </#list>
+                    </td>
+                </tr>
+            </#if>
         </tbody>
     </table>
 </#macro>

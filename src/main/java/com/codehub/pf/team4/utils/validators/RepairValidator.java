@@ -65,4 +65,8 @@ public class RepairValidator implements Validator {
         if(state.isEmpty()) errors.rejectValue("state", "state.not.match");
         if(repairType.isEmpty()) errors.rejectValue("repairType", "repairType.not.match");
     }
+
+    public static boolean isValidDate(String date) {
+        return Pattern.compile("^[0-9]{4}\\-[01][0-9]\\-[0-3][0-9]$").matcher(date).matches();
+    }
 }

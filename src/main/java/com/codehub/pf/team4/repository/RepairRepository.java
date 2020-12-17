@@ -8,9 +8,11 @@ import org.springframework.stereotype.Repository;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, java.lang.Long> {
     List<Repair> findByDateAndState(LocalDate date, State state);
     List<Repair> findByDate(LocalDate searchDate);
+    List<Repair> findByDateIsBetween(LocalDate fromDateLD, LocalDate toDateLD);
 }

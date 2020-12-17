@@ -9,14 +9,11 @@ import javax.validation.constraints.Size;
 @Data
 public class UserForm {
     private static final String EMAIL_PATTERN = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,63}$";
-    private static final String PASSWORD_PATTERN = "^[a-zA-Z0-9@#$%^&!]*$";
     private static final String AFM_PATTERN = "^[0-9]*$";
     private static final String PHONE_NUMBER_PATTERN = "^[0-9]*$";
 
     private static final int EMAIL_MIN_SIZE = 3;
-    private static final int EMAIL_MAX_SIZE = 40;
-    private static final int PASSWORD_MIN_SIZE = 8;
-    private static final int PASSWORD_MAX_SIZE = 50;
+    private static final int EMAIL_MAX_SIZE = 255;
     private static final int AFM_SIZE = 9;
     private static final int PHONE_NUMBER_MIN_SIZE = 10;
     private static final int PHONE_NUMBER_MAX_SIZE = 10;

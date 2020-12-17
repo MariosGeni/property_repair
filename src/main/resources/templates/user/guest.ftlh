@@ -23,7 +23,7 @@
             <ul class="navbar-nav mr-auto"></ul>
 
         <form class="form-inline" id="guestForm"  name="guestForm" action="" method="post">
-            <button type="submit" style="margin-right: auto" class="btn btn-lg btn-dark">
+            <button type="submit" style="margin-right: auto" class="mt-2 btn btn-lg btn-dark">
                 Sign-In
             </button>
         </form>

@@ -1,10 +1,14 @@
 .navbar-brand {
-    width: 175px;
+    width: 170px;
+}
+@media only screen and (min-width: 992px) {
+    .navbar {
+        max-height: 105px;
+    }
 }
 
 #fonts{
     font: 40px Arial, sans-serif;
-
 }
 
 #images {
@@ -14,10 +18,12 @@
     margin-left: auto;
     margin-right: auto
 }
+
 .card-img-top{
     border-radius: 4px!important;
     box-shadow: -5px 5px 20px #151414;
 }
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -33,6 +39,11 @@
     margin: auto;
     text-align: center;
     margin-bottom: 20px;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
 }
 
 #card{
@@ -41,12 +52,11 @@
     margin-right: auto
 }
 
-
 p{
     color: #F9F9F9;
     text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
-
 
 #snow {
     position: fixed;

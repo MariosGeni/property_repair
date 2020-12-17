@@ -52,8 +52,6 @@ public class PropertyRepairsApplication {
     public CommandLineRunner run(RepairRepository repairRepository) throws Exception {
         return (String[] args) -> {
 
-
-
             Faker faker = new Faker();
             long id = 8;
 

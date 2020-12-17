@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.forms;
 
+import com.codehub.pf.team4.enums.Roles;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -42,4 +43,5 @@ public class UserForm {
     private String address;
     private String firstName;
     private String lastName;
+    private Roles roles;
 }

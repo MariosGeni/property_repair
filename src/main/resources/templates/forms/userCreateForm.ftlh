@@ -117,7 +117,7 @@
 
                     <div class="col-12 col-md-6">
                         <label for="password">Confirm Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Confirm password" name="Conmfirm password">
+                        <input type="password" class="form-control" id="confirm_password" placeholder="Confirm password" name="conmfirm_password">
                     </div>
                 </div>
 

@@ -7,7 +7,7 @@
     <body>
     <!-- header here -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
-        <a href="/" style="background-color:#343a40">
+        <a href="/home" style="background-color:#343a40">
             <img class="site-logo" src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,7 +15,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto"></ul>
-            <form class="form-inline my-lg-0 mr-2" action="/" type="get">
+            <form class="form-inline my-lg-0 mr-2" action="/logout" type="get">
                 <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
                     <span data-feather="log-out"></span> Logout
                 </button>

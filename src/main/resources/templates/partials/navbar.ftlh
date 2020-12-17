@@ -16,7 +16,7 @@
                 <a href="/admin" class="nav-link">Admin Home</a>
             </li>
         </ul>
-        <a href="/login">
+        <a href="/logout">
             <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
                 <span data-feather="log-out"></span> Logout
             </button>

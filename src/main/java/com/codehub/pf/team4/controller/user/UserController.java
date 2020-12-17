@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 
     @Autowired
@@ -24,7 +24,7 @@ public class UserController {
     @Autowired
     private RepairService repairService;
 
-    @GetMapping({"", "/"})
+    @GetMapping("home")
     public String getHomePage(Model model) {
         model.addAttribute("repairs", userService.getRepairsByUserId(1L));
         return "pages/home";

@@ -9,4 +9,7 @@ public class GlobalAttributes {
     public static final String IS_EMPTY = "isEmpty";
     public static final int PAGE_CONTENT_SIZE = 10;
     public static final String CURRENT_PAGE = "currentPage";
+
+    public static final String TIMESTAMP_COOKIE_NAME = "TIMESTAMP";
+
 }

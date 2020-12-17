@@ -60,7 +60,7 @@
                 </h6>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item btn-outline-danger">
-                        <a class="nav-link text-white" href="/login">
+                        <a class="nav-link text-white" href="/logout">
                             <span data-feather="log-out"></span>
                             Logout
                         </a>

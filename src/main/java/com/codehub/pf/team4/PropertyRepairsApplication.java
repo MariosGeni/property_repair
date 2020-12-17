@@ -28,7 +28,7 @@ public class PropertyRepairsApplication {
 
             Faker faker = new Faker();
 
-            for (long i = 0; i < 10; i++) {
+            for (long i = 0; i < 50; i++) {
                 User user1 = new User();
                 user1.setFirstName(faker.name().firstName());
                 user1.setLastName(faker.name().lastName());
@@ -48,6 +48,7 @@ public class PropertyRepairsApplication {
 
     @Autowired
     UserRepository userRepository;
+
     @Bean
     public CommandLineRunner run(RepairRepository repairRepository) throws Exception {
         return (String[] args) -> {

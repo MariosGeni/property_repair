@@ -101,11 +101,11 @@
                     </div>
                 </div>
 
-
-                <div class="form-group">
+            <div class="form-row">
+                <div class="form-group col-6">
                     <label for="password">Password</label>
                     <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+                    <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -114,7 +114,11 @@
                         </ul>
                     </#if>
                 </div>
-
+                <div class="form-group col-6">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" class="c_password form-control" id="confirmPassword" placeholder="Confirm password">
+                </div>
+            </div>
 
                 <div class="form-group">
                     <label for="house_type">House Type</label>

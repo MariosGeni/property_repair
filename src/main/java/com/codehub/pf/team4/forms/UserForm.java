@@ -43,5 +43,5 @@ public class UserForm {
     private String address;
     private String firstName;
     private String lastName;
-    private Roles roles;
+    private String roles;
 }

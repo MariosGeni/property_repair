@@ -17,8 +17,21 @@
     <div class="row">
         <div class="col-12">
             <form id="propertyForm" name="propertyForm" action="/admin/properties/edit/${propertyForm.id}" method="post">
-                <input type="hidden" id="propertyId" name="id" value="${propertyForm.id}"/>
-                <input type="hidden" id="userId" name="userId" value="${propertyForm.userId}"/>
+                <input type="hidden" id="id" name="id" value="${propertyForm.id}"/>
+                <input type="hidden" id="propertyID" name="propertyID" value="${propertyForm.propertyID}"/>
+
+                <div class="form-group">
+                    <label for="propertyID">Property ID</label>
+                    <@spring.bind "propertyForm.propertyID"/>
+                    <input type="text" class="form-control" id="propertyID" name="propertyID" value="${propertyForm.propertyID!spring.status.value!""}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                </div>
                 <div class="form-group">
                     <label for="address">Address</label>
                     <@spring.bind "propertyForm.address"/>
@@ -34,7 +47,7 @@
 
                 <div class="form-group">
                     <label for="yearOfConstruction">Year of Construction</label>
-                    <@spring.bind "propertyForm.cost"/>
+                    <@spring.bind "propertyForm.yearOfConstruction"/>
                     <input type="text" class="form-control" id="yearOfConstruction" name="yearOfConstruction" value="${propertyForm.yearOfConstruction!spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>

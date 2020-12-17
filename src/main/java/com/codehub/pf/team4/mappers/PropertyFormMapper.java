@@ -9,27 +9,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class PropertyFormMapper {
 
-    public static Property mapToProperty(PropertyForm propertyForm){
-        if(propertyForm ==  null) return null;
+    public static Property mapToProperty(PropertyForm propertyForm) {
+        if (propertyForm == null) return null;
         Property property = new Property();
+        property.setPropertyID(property.getPropertyID());
         property.setAddress(propertyForm.getAddress());
-    property.setYearOfConstruction(propertyForm.getYearOfConstruction());
+        property.setYearOfConstruction(propertyForm.getYearOfConstruction());
         property.setHouseType(HouseType.valueOf(propertyForm.getHouseType()));
         property.setUser((new User()));
-        propertyForm.setUserId((propertyForm.getUserId()));
 
-    property.getUser().setId(Long.parseLong(propertyForm.getId()));
+        property.getUser().setId(Long.parseLong(propertyForm.getId()));
 
-        if(!propertyForm.getId().isEmpty()) {
+        if (!propertyForm.getId().isEmpty()) {
             property.setId(Long.parseLong(propertyForm.getId()));
         }
         return property;
     }
 
-    public static PropertyForm mapToPropertyForm(Property property){
-        if(property == null) return null;
+    public static PropertyForm mapToPropertyForm(Property property) {
+        if (property == null) return null;
 
         PropertyForm propertyForm = new PropertyForm();
+        propertyForm.setPropertyID(property.getPropertyID().toString());
         propertyForm.setAddress(property.getAddress());
         propertyForm.setYearOfConstruction(propertyForm.getYearOfConstruction());
         propertyForm.setHouseType(property.getHouseType().toString());

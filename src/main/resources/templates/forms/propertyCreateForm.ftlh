@@ -15,9 +15,21 @@
         <div class="col-12">
             <form id="propertyForm" name="propertyForm" action="/admin/properties/create" method="post">
                 <div class="form-group">
+                    <label for="propertyID">Property ID</label>
+                    <@spring.bind "propertyForm.propertyID"/>
+                    <input type="text" class="form-control" id="propertyID" name="propertyID" placeholder="Insert property ID based on E9" value="${spring.status.value!""}">
+                    <#if spring.status.error??>
+                        <ul>
+                            <#list spring.status.errorMessages as error>
+                                <li style="color: #dc3545">${error}</li>
+                            </#list>
+                        </ul>
+                    </#if>
+                    </div>
+                <div class="form-group">
                     <label for="address">Address</label>
                     <@spring.bind "propertyForm.address"/>
-                    <input type="text" class="form-control" id="address" name="address" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="address" placeholder="Kavalas St. 105, Athens" name="address" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -26,10 +38,11 @@
                         </ul>
                     </#if>
                 </div>
+
                 <div class="form-group">
                     <label for="user_id">User ID</label>
                     <@spring.bind "propertyForm.userId"/>
-                    <input type="text" class="form-control" id="user_id" name="userId" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="user_id" placeholder="User ID number" name="userId" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>
@@ -42,7 +55,7 @@
                 <div class="form-group">
                     <label for="yearOfConstruction">Year of construction</label>
                     <@spring.bind "propertyForm.yearOfConstruction"/>
-                    <input type="text" class="form-control" id="yearOfConstruction" name="yearOfConstruction" value="${spring.status.value!""}">
+                    <input type="text" class="form-control" id="yearOfConstruction" name="yearOfConstruction" placeholder="Insert year of construction" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

@@ -64,12 +64,12 @@ public class AdminPropertyController {
     }
 
     @GetMapping(value = "properties/search")
-    public String getAdminSearchPropertyPAge(Model model, @RequestParam(value = "id", defaultValue = "") String id,
+    public String getAdminSearchPropertyPAge(Model model, @RequestParam(value = "propertyId", defaultValue = "") String propertyId,
                                              @RequestParam(value = "afm",defaultValue = "") String afm){
         // --- search code here --- //
         List<PropertyModel> properties = new ArrayList<>();
         if(!afm.equals("")) properties = userService.getPropertiesByUserAfm(afm);
-        else if(!id.equals("")) properties = propertyService.getPropertyById(id);
+        else if(!propertyId.equals("")) properties.add( propertyService.getPropertyByPropertyId(Long.parseLong(propertyId)).get());
 
         model.addAttribute(PROPERTIES,properties);
         return "pages/admin-search-properties-view";

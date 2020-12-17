@@ -22,7 +22,6 @@ public class RepairFormMapper {
         repair.setCost(Long.parseLong(repairForm.getCost()));
         repair.setDescription(repairForm.getDescription());
         repair.setUser((new User()));
-        repairForm.setUserId((repairForm.getUserId()));
 
         repair.getUser().setId(Long.parseLong(repairForm.getUserId()));
 

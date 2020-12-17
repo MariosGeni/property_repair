@@ -9,6 +9,7 @@ import javax.validation.constraints.Pattern;
 public class PropertyForm {
 
     private static final String YEAR_OF_CONSTRUCTION_PATTERN = "^[0-9]*$";
+    private static final String PROPERTY_ID_PATTERN = "^[0-9]*$";
     private static final String ID_PATTERN = "^[0-9]*$";
     private static final String USER_ID_PATTERN = "^[0-9]*$";
 
@@ -20,12 +21,19 @@ public class PropertyForm {
     @Pattern(regexp = ID_PATTERN, message = "Id pattern doesn't match")
     private String id;
 
+    @NotEmpty
+    @Pattern(regexp = PROPERTY_ID_PATTERN, message = "Property ID pattern doesn't match")
+    private String propertyID;
+
+    @NotEmpty
     @Pattern(regexp = USER_ID_PATTERN, message = "User ID pattern doesn't match")
     private String userId;
 
+    @NotEmpty
     private String houseType;
 
     // no validations needed
+    @NotEmpty
     private String address;
 
 }

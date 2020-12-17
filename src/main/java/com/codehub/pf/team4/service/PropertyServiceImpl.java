@@ -28,10 +28,9 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public Optional<PropertyModel> getPropertyById(Long id) {
-        return PropertyMapper.mapToPropertyModelOptional(propertyRepository.findById(id).orElse(null));
+    public Optional<PropertyModel> getPropertyByPropertyId(Long propertyID) {
+        return PropertyMapper.mapToPropertyModelOptional(propertyRepository.findById(propertyID).orElse(null));
     }
-
 
     @Override
     public Optional<PropertyModel> addProperty(PropertyForm newProperty) {
@@ -62,6 +61,11 @@ public class PropertyServiceImpl implements PropertyService {
         return true;
     }
 
+    @Override
+    public Optional<PropertyForm> getPropertyByIdAsForm(Long id) {
+        Optional<Property> property = propertyRepository.findById(id);
+        return Optional.ofNullable(PropertyFormMapper.mapToPropertyForm(property.get()));
+    }
 
 
 }

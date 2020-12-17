@@ -10,13 +10,15 @@ public interface PropertyService {
 
     List<PropertyModel>  getAllProperties();
 
+    Optional<PropertyModel> getPropertyByPropertyId(Long propertyID);
+
     Optional<PropertyModel> getPropertyById(Long id);
 
     Optional<PropertyModel> addProperty(PropertyForm property) throws Exception;
 
     Optional<PropertyModel> updateProperty(PropertyForm toBeUpdatedProperty);
 
-   boolean deletePropertyById(Long propertyId);
+   boolean deletePropertyById(Long id);
 
    Optional<PropertyForm> getPropertyByIdAsForm(Long id);
 }

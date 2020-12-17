@@ -8,7 +8,9 @@ import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.RepairValidator;
+import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -52,9 +54,19 @@ public class AdminRepairController {
     // *************************************************** //
 
     @GetMapping(value = "repairs")
-    public String getAdminRepairsPage(Model model) {
+    public String getAdminRepairsPage(Model model, @RequestParam Optional<Integer> page) {
         // --- repairs showcase here --- //
-        model.addAttribute(REPAIRS, repairService.getAllRepairs());
+        // model.addAttribute(REPAIRS, repairService.getAllRepairs());
+
+        // Using pagination
+        int realPage = 0;
+        if(page.isPresent()) realPage = page.get() > 0? page.get() - 1 : 0;
+        Page<RepairModel> repairModelsPaged = repairService.getAllAsPage(realPage);
+
+        if(repairModelsPaged.isEmpty()) return "redirect:/admin/repairs"; // if given page doesn't exist
+
+        model.addAttribute(REPAIRS, repairModelsPaged);
+
         return "pages/admin-repairs-view";
     }
 
@@ -69,23 +81,26 @@ public class AdminRepairController {
     }
 
     @GetMapping(value = "repairs/search") // Search 'repairs/user' by 'date' queryString
-    public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
-                                           @RequestParam(value = "date", defaultValue = "") String date) {
-
-        if (afm.isBlank() && date.isBlank()) {
+    public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm, //Search by afm variable
+                                                        @RequestParam(value = "date", defaultValue = "") String date, // Search by date variable
+                                                        @RequestParam(value = "fromDate", defaultValue = "") String fromDate, // search by date range variables
+                                                        @RequestParam(value = "toDate", defaultValue = "") String toDate) { //   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        // if no queryString available give the default search page || queryString = @RequestParam
+        if (afm.isBlank() && date.isBlank() && fromDate.isBlank() && toDate.isBlank()) {
             model.addAttribute(GlobalAttributes.IS_EMPTY,false);
             return "pages/admin-search-repairs-view";
         }
 
-        List<RepairModel> repairs = new ArrayList();
         // --- search code here --- //
-        if (!afm.equals("")) {
-            Pattern pattern = Pattern.compile("^[0-9]{9}$");
-            if(pattern.matcher(afm).matches())  repairs = userService.getRepairsByUserAfm(afm);
-        } else if(!date.equals("")) {
-
-            Pattern pattern = Pattern.compile ("^[0-9]{4}\\-[01][0-9]\\-[0-3][0-9]$");
-            if(pattern.matcher(date).matches()) repairs = repairService.getRepairsByDate(date);
+        List<RepairModel> repairs = new ArrayList();
+        if (!afm.isBlank()) {
+            if(UserValidator.isValidAfm(afm))  repairs = userService.getRepairsByUserAfm(afm);
+        } else if(!date.isBlank()) {
+            if(RepairValidator.isValidDate(date)) repairs = repairService.getRepairsByDate(date);
+        } else if (!fromDate.isBlank() && !toDate.isBlank()) {
+            if(RepairValidator.isValidDate(fromDate) && RepairValidator.isValidDate(toDate)) {
+                repairs = repairService.getRepairsByDate(fromDate, toDate);
+            }
         }
 
         model.addAttribute(REPAIRS, repairs);

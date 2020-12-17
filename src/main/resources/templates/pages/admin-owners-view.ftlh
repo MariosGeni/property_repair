@@ -9,6 +9,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <#--<#if owners?has_content>-->
                     <#if owners?has_content>
                     <h1>Owners</h1>
                     <#else>
@@ -18,14 +19,12 @@
             </div>
 
             <div class="row">
-                <div class="col" style="overflow: auto;">
-                    <#if owners?has_content && owners?is_sequence>
-                        <@ownerComponent.ownerList owners />
+                <div class="col" style="overflow-x: auto;">
+                    <#if owners?has_content && owners.getContent()?is_sequence>
+                        <@ownerComponent.ownerList owners.getContent(), owners.totalPages, owners.getNumber() + 1, owners.totalElements, owners.getSize()/>
                     </#if>
                 </div>
             </div>
-        </div>
-        <#include "../partials/endContainerWithSidebar.ftlh">
 
         <!-- footer here -->
 

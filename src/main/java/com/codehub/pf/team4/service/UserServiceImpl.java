@@ -9,7 +9,11 @@ import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
+import com.codehub.pf.team4.utils.GlobalAttributes;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,11 +30,16 @@ public class UserServiceImpl implements UserService {
     private RepairRepository repairRepository;
 
     @Override
-    public List<UserModel> getAllUsers() {
-        return userRepository.findAll()
-                .stream()
-                .map(UserMapper::mapToUserModel)
-                .collect(Collectors.toList());
+    public List<UserModel> getAllUsers() { return UserMapper.mapToUserModelList(userRepository.findAll()); }
+
+    @Override
+    public Page<UserModel> findAllAsPage(int page) {
+       Page<User> usersPaged = userRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
+
+       if(usersPaged.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
+
+        List<UserModel> userModel = UserMapper.mapToUserModelList(usersPaged.getContent());
+        return  new PageImpl(userModel, usersPaged.getPageable(), usersPaged.getTotalElements());
     }
 
     @Override
@@ -68,18 +77,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<RepairModel> getRepairsByUserAfm(String afm) {
         Integer intAfm = Integer.parseInt(afm);
-        return userRepository.findRepairsByAfm(intAfm)
-                .stream()
-                .map(repair -> RepairMapper.mapToRepairModel(repair))
-                .collect(Collectors.toList());
+        return RepairMapper.mapToRepairModelList(userRepository.findRepairsByAfm(intAfm));
     }
 
     @Override
     public List<RepairModel> getRepairsByUserEmail(String email) {
-        return userRepository.findRepairsByUserEmail(email)
-                .stream()
-                .map(repair -> RepairMapper.mapToRepairModel(repair))
-                .collect(Collectors.toList());
+        return RepairMapper.mapToRepairModelList(userRepository.findRepairsByUserEmail(email));
     }
 
     @Override
@@ -103,9 +106,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RepairModel> getRepairsByUserId(Long id) {
-        return userRepository.findRepairsByUserId(id)
-                .stream()
-                .map(RepairMapper::mapToRepairModel)
-                .collect(Collectors.toList());
+        return RepairMapper.mapToRepairModelList(userRepository.findRepairsByUserId(id));
     }
 }

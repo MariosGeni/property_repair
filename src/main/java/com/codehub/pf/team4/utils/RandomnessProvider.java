@@ -2,10 +2,14 @@ package com.codehub.pf.team4.utils;
 
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.RepairType;
+import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.enums.State;
 
 import java.time.LocalDate;
 import java.util.Random;
+
+import static com.codehub.pf.team4.enums.Roles.ADMIN;
+import static com.codehub.pf.team4.enums.Roles.USER;
 
 public abstract class RandomnessProvider {
     // Generates a random int with exactly n digits
@@ -80,9 +84,21 @@ public abstract class RandomnessProvider {
         return value;
     }
 
+    //Provides Cost
     public static Long getCost(){
         long value = getRandomNumberBetween(5,150);
         value *= 10;
         return value;
+    }
+
+    //Provides roles to the users
+    public static Roles getRoles(){
+        int value = getRandomNumberBetween(1,100);
+        if (value <= 79){
+            return USER;
+        }else{
+            return ADMIN;
+        }
+
     }
 }

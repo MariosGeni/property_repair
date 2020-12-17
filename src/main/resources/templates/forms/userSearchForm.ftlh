@@ -4,7 +4,7 @@
     <label for="search-user-select">Search by</label>
     <select id="search-user-select" class="form-control">
         <option value="email" selected>Email</option>
-        <option value="afm">ΑΦΜ</option>
+        <option value="afm">AFM</option>
     </select>
 </div>
 
@@ -26,7 +26,7 @@
     <div id="afm-div">
         <div class="input-group mb-0 mt-3" >
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">ΑΦΜ</span>
+                <span class="input-group-text" id="basic-addon1">AFM</span>
             </div>
             <label for="afm"></label>
             <!-- <div> -->

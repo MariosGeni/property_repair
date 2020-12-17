@@ -1,16 +1,18 @@
 package com.codehub.pf.team4;
 
+import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
-import com.codehub.pf.team4.enums.HouseType;
+import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.utils.RandomnessProvider;
 import com.github.javafaker.Faker;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Random;
+import java.time.LocalDate;
 
 @SpringBootApplication
 public class PropertyRepairsApplication {
@@ -21,12 +23,12 @@ public class PropertyRepairsApplication {
     }
 
     @Bean
-    public CommandLineRunner run(UserRepository userRepository) throws Exception {
+    public CommandLineRunner bun(UserRepository userRepository) throws Exception {
         return (String[] args) -> {
 
             Faker faker = new Faker();
 
-            for (long i = 0; i < 50; i++) {
+            for (long i = 0; i < 10; i++) {
                 User user1 = new User();
                 user1.setFirstName(faker.name().firstName());
                 user1.setLastName(faker.name().lastName());
@@ -39,6 +41,38 @@ public class PropertyRepairsApplication {
 
                 userRepository.save(user1);
                 userRepository.findAll().forEach(user -> System.out.println(user));
+            }
+        };
+
+    }
+
+    @Autowired
+    UserRepository userRepository;
+    @Bean
+    public CommandLineRunner run(RepairRepository repairRepository) throws Exception {
+        return (String[] args) -> {
+
+
+
+            Faker faker = new Faker();
+            long id = 8;
+
+            for (long a = 1 ; a < 18; a++) {
+                for (long i = 0; i < RandomnessProvider.getRandomNumber(1,2); i++) {
+                    Repair repair1 = new Repair();
+                    repair1.setId(id);
+                    repair1.setUser(userRepository.getOne(a));
+                    repair1.setDate(LocalDate.of(2020,RandomnessProvider.getMonthGiver(),RandomnessProvider.getDayGiver()));
+                    repair1.setState(RandomnessProvider.getRandomState());
+                    repair1.setRepairType(RandomnessProvider.getRandomRepairType());
+                    repair1.setCost(RandomnessProvider.getCost());
+                    repair1.setAddress(faker.address().streetAddress());
+                    repair1.setDescription(faker.lorem().sentence());
+
+                    repairRepository.save(repair1);
+                    repairRepository.findAll().forEach(repair -> System.out.println(repair));
+                    id++;
+                }
             }
         };
 

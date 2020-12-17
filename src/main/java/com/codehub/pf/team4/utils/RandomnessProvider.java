@@ -1,7 +1,10 @@
 package com.codehub.pf.team4.utils;
 
 import com.codehub.pf.team4.enums.HouseType;
+import com.codehub.pf.team4.enums.RepairType;
+import com.codehub.pf.team4.enums.State;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public abstract class RandomnessProvider {
@@ -39,4 +42,47 @@ public abstract class RandomnessProvider {
         else return HouseType.MAISONETTE;
     }
 
+    // Get a random state
+    public static State getRandomState() {
+        int minNumber = 0;
+        int maxNumber = 100;
+        int value = getRandomNumberBetween(minNumber, maxNumber);
+        if (value <= 33) return State.WAITING;
+        else if (value <= 66) return State.ONGOING;
+        else return State.DONE;
+    }
+
+    // Get a random repairtype
+    public static RepairType getRandomRepairType() {
+        int minNumber = 0;
+        int maxNumber = 100;
+        int value = getRandomNumberBetween(minNumber, maxNumber);
+        if (value <= 20) return RepairType.PAINTING;
+        else if (value <= 40) return RepairType.INSULATION;
+        else if (value <= 60) return RepairType.FRAMES;
+        else if (value <= 80) return RepairType.PLUMBING;
+        else return RepairType.ELECTRICAL_WORK;
+    }
+
+    //Provides a day
+    public static int getDayGiver(){
+        int minDay = 1;
+        int maxDay = 28;
+        int value = getRandomNumberBetween(minDay,maxDay);
+        return value;
+    }
+
+    //Provides a month
+    public static int getMonthGiver(){
+        int minMonth = 1;
+        int maxMonth = 12;
+        int value = getRandomNumberBetween(minMonth,maxMonth);
+        return value;
+    }
+
+    public static Long getCost(){
+        long value = getRandomNumberBetween(5,150);
+        value *= 10;
+        return value;
+    }
 }

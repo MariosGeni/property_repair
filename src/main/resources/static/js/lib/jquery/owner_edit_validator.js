@@ -10,7 +10,7 @@ jQuery(function ($) {
     }, "Password and confirm password fields do not match");
     $("form[name='userForm']").validate({
         rules: {
-            email:{
+            email: {
                 required: true,
                 email: true
             },
@@ -42,6 +42,9 @@ jQuery(function ($) {
             },
             houseType:{
                 "valueNotEquals": "Select a type"
+            },
+            roles: {
+                "valueNotEquals": "Select a role"
             }
         },
         messages: {
@@ -77,6 +80,9 @@ jQuery(function ($) {
             },
             houseType:{
                 "valueNotEquals": "Please select one of the above"
+            },
+            roles: {
+                "valueNotEquals": "Select one of the above"
             }
         }
     })

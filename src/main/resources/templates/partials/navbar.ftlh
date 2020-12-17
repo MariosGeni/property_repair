@@ -17,7 +17,7 @@
             </li>
         </ul>
         <a href="/login">
-                    <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
+            <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
                 <span data-feather="log-out"></span> Logout
             </button>
         </a>

@@ -24,7 +24,6 @@ public class PropertyRepairsApplication {
     public CommandLineRunner run(UserRepository userRepository) throws Exception {
         return (String[] args) -> {
 
-            Random rand = new Random();
             Faker faker = new Faker();
 
             for (long i = 0; i < 50; i++) {
@@ -33,7 +32,7 @@ public class PropertyRepairsApplication {
                 user1.setLastName(faker.name().lastName());
                 user1.setAddress(faker.address().streetAddress());
                 user1.setAfm(RandomnessProvider.getRandomNumber(9));
-                user1.setEmail(faker.pokemon().name() + RandomnessProvider.getRandomNumber(1,5) + "@gmail.com");
+                user1.setEmail(faker.pokemon().name() + RandomnessProvider.getRandomNumber(2,5) + "@gmail.com");
                 user1.setPassword(String.valueOf(RandomnessProvider.getRandomNumber(9)));
                 user1.setHouseType(RandomnessProvider.getRandomHouseType());
                 user1.setPhoneNumber(RandomnessProvider.getRandomNumber(10L));

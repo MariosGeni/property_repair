@@ -1,4 +1,4 @@
-<#macro repairList repairs totalPages=0 currentPage=0 totalElements=0 pageSize=0 isUser=true>
+<#macro repairList repairs totalPages=0 currentPage=0 totalElements=0 pageSize=0 isUser=false>
     <table class="table table-dark table-striped">
         <thead>
             <tr>

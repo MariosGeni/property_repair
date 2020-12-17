@@ -1,8 +1,10 @@
-<#macro repairList repairs totalPages=0 currentPage=0 totalElements=0 pageSize=0>
+<#macro repairList repairs totalPages=0 currentPage=0 totalElements=0 pageSize=0 isUser=true>
     <table class="table table-dark table-striped">
         <thead>
             <tr>
+                <#if !isUser>
                 <th>#</th>
+                </#if>
                 <th>Date</th>
                 <th>Address</th>
                 <th>State</th>
@@ -10,18 +12,26 @@
                 <th>Cost</th>
                 <th>Owner</th>
                 <th>Description</th>
+                <#if !isUser>
                 <th>Edit</th>
                 <th>Delete</th>
+                </#if>
             </tr>
         </thead>
 
         <tbody>
         <#list repairs as repair>
             <tr>
+
+
+                <#if !isUser>
                 <td>
                     <a href="/admin/repairs/${repair.id}">${repair.id}
                     </a>
                 </td>
+                </#if>
+
+
                 <td>${repair.date}</td>
                 <td>${repair.address}</td>
                 <td>${repair.state}</td>
@@ -29,6 +39,9 @@
                 <td>${repair.cost?c} &euro;</td>
                 <td>${repair.user}</td>
                 <td>${repair.description}</td>
+
+
+                <#if !isUser>
                 <td>
                     <a class="btn btn-link" href="/admin/repairs/edit/${repair.id}">
                         <span data-feather="tool"></span>
@@ -41,6 +54,9 @@
                     </button>
                     <#include "delete-repair-modal.ftlh">
                 </td>
+                </#if>
+
+
             </tr>
         </#list>
             <#if (totalPages > 1)>
@@ -62,10 +78,15 @@
 <#macro repairSingle repair>
     <table class="table table-dark table-striped">
         <tbody>
+
+            <#if !isUser>
             <tr>
                 <td class="font-weight-bold">#</td>
                 <td>${repair.id}</td>
             </tr>
+            </#if>
+
+
             <tr>
                 <td class="font-weight-bold">Address</td>
                 <td>${repair.address}</td>
@@ -92,6 +113,8 @@
             </tr>
         </tbody>
     </table>
+
+    <#if !isUser>
     <table style="width: 100%">
         <tr>
             <td>
@@ -108,4 +131,6 @@
         </tbody>
     </table>
     <#include "../partials/delete-repair-modal.ftlh">
+    </#if>
+
 </#macro>

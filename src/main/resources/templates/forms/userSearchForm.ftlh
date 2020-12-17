@@ -1,16 +1,14 @@
-<#import "../partials/owner-partial.ftlh" as ownerComponent>
 <h1 class="">Search for an Owner</h1>
 
-<form action="/admin/owners/search" name="searchForm">
+<div class="form-group">
+    <label for="search-user-select">Search by</label>
+    <select id="search-user-select" class="form-control">
+        <option value="email" selected>Email</option>
+        <option value="afm">ΑΦΜ</option>
+    </select>
+</div>
 
-    <div class="form-group">
-        <label>Search by</label>
-        <select id="search-user-select" class="form-control">
-            <option value="email" selected>Email</option>
-            <option value="afm">ΑΦΜ</option>
-        </select>
-    </div>
-
+<form id="email-form" action="/admin/owners/search" name="searchForm">
     <div id="email-div">
         <div class="input-group mb-0 mt-3">
             <div class="input-group-prepend">
@@ -22,8 +20,10 @@
             <!-- </div> -->
         </div>
     </div>
-
-    <div id="afm-div" class="display-none">
+    <button class="btn btn-primary btn-lg mt-4" type="submit">Search</button>
+</form>
+<form id="afm-form" action="/admin/owners/search" class="display-none">
+    <div id="afm-div">
         <div class="input-group mb-0 mt-3" >
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">ΑΦΜ</span>
@@ -34,7 +34,5 @@
             <!-- </div> -->
         </div>
     </div>
-
     <button class="btn btn-primary btn-lg mt-4" type="submit">Search</button>
 </form>
-<#if owner??> <@ownerComponent.ownerSingle owner /> </#if>

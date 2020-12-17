@@ -1,4 +1,4 @@
-<#macro ownerList owners>
+<#macro ownerList owners totalPages=0 currentPage=0 totalElements=0 pageSize=0>
     <table class="table table-dark table-striped">
         <thead>
         <tr>
@@ -17,8 +17,7 @@
         <#list owners as owner>
             <tr>
                 <td>
-                    <a href="/admin/owners/${owner.id}">${owner.id}
-                    </a>
+                    <a href="/admin/owners/${owner.id}">${owner.id}</a>
                 </td>
                 <td>${owner.afm?c}</td>
                 <td>${owner.email}</td>
@@ -40,6 +39,18 @@
                 </td>
             </tr>
         </#list>
+            <#if (totalPages > 1)>
+                <tr>
+                    <td colspan="3">
+                        <i>Showing ${(currentPage * pageSize) - (pageSize - 1)} to <#if currentPage  < totalPages>${currentPage * pageSize}<#else>${totalElements}</#if> of ${totalElements}</i>
+                    </td>
+                    <td colspan="6" class="text-right">
+                        <#list 1..totalPages as i>
+                            <a class="page-number-link ml-1 px-3 btn btn-outline-info<#if currentPage == i> active</#if>" href="/admin/owners?page=${i}" style="color: white;">${i}</a>
+                        </#list>
+                    </td>
+                </tr>
+            </#if>
         </tbody>
     </table>
 </#macro>

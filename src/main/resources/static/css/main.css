@@ -18,7 +18,7 @@ html, body{
 }
 
 .container-fluid {
-    min-height: 80vh;
+    min-height: 76vh;
 }
 
 .sidebar{
@@ -42,7 +42,9 @@ html, body{
 .trash-style:hover {
     color: #c61919 !important;
 }
-
+.error{
+    color:red;
+}
 /*.fade-in:hover {*/
 /*    animation-name: fadeInOpacity;*/
 /*    animation-iteration-count: 1;*/

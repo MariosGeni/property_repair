@@ -75,7 +75,7 @@
                     <label for="repair_type">Repair Type</label>
                     <@spring.bind "repairForm.repairType"/>
                     <select id="repair_type" name="repairType" class="custom-select d-block w-100">
-                        <option>Select repair type</option>
+                        <option>Select a type</option>
                         <#if REPAIR_TYPE??>
                             <#list REPAIR_TYPE as type>
                                 <option value="${type}"
@@ -103,7 +103,7 @@
                     <label for="state">State</label>
                     <@spring.bind "repairForm.state"/>
                     <select id="state" name="state" class="custom-select d-block w-100">
-                        <option>Select repair state</option>
+                        <option>Select a type</option>
                         <#if STATE??>
                             <#list STATE as type>
                                 <option value="${type}"

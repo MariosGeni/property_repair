@@ -1,35 +1,49 @@
 .navbar-brand {
-    width: 150px;
+    width: 170px;
+}
+@media only screen and (min-width: 992px) {
+    .navbar {
+        max-height: 105px;
+    }
 }
 
 #fonts{
     font: 40px Arial, sans-serif;
-
 }
 
-#images{
+#images {
     width: 318px;
     height: 250px;
     display: block;
     margin-left: auto;
     margin-right: auto
+}
 
+.card-img-top{
+    border-radius: 4px!important;
+    box-shadow: -5px 5px 20px #151414;
 }
-.checked {
-    color: orange;
-}
-#footer-text{
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
     color: #F9F9F9;
+    background-color: #1c1b1b;
 }
 
-#current{
-    font-weight: bold;
-}
 
 #h4{
     color: #F9F9F9;
     margin: auto;
     text-align: center;
+    margin-bottom: 20px;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
 }
 
 #card{
@@ -38,8 +52,18 @@
     margin-right: auto
 }
 
-
 p{
     color: #F9F9F9;
     text-align: center;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
 }

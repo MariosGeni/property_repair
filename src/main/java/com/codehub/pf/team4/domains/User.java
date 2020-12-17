@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.domains;
 import com.codehub.pf.team4.enums.HouseType;
+import com.codehub.pf.team4.enums.Roles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -42,6 +43,10 @@ public class User {
     @Column( name= "email", nullable = false)
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    @Column (name="roles", nullable = false)
+    private Roles roles;
+
     @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.EAGER)
     @JsonIgnore
     private List<Repair> repairs;
@@ -58,6 +63,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", houseType=" + houseType +
                 ", email='" + email + '\'' +
+                ", roles=' " + roles + '\''+
                 '}';
     }
 

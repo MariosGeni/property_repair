@@ -1,16 +1,16 @@
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog" style="top:5rem" role="document">
     <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">Delete Confirmation</h5>
+        <div class="modal-header border-bottom-0">
+            <h4 class="modal-title text-black-50" id="exampleModalLongTitle">Delete Confirmation</h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
         <div class="modal-body">
-            <p style="color:grey">Are you sure you want to delete it?</p>
+            <h5 style="color:grey" class="pl-4 font-weight-normal">Are you sure you want to delete it?</h5>
         </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-top-0">
                 <form action="/admin/repairs/delete/${repair.id}" method="post">
                     <input type="submit" class="btn-danger btn-block btn-lg" value="Delete" ></input>
                 </form>

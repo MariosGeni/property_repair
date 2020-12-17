@@ -10,6 +10,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
+                    <#--<#if repairs?has_content>-->
                     <#if repairs?has_content>
                         <h1>Repairs</h1>
                     <#else>
@@ -17,14 +18,14 @@
                     </#if>
                 </div>
             </div>
+
             <div class="row">
-                <div class="col-12" style="overflow-x: auto;">
-                    <#if repairs?has_content && repairs?is_sequence>
-                        <@repairComponent.repairList repairs />
+                <div class="col" style="overflow-x: auto;">
+                    <#if repairs?has_content && repairs.getContent()?is_sequence>
+                        <@repairComponent.repairList repairs.getContent(), repairs.getTotalPages(), repairs.getNumber() + 1, repairs.getTotalElements()?number, repairs.getSize()/>
                     </#if>
                 </div>
             </div>
-        </div>
 
         <#include "../partials/endContainerWithSidebar.ftlh">
         <!-- footer here -->

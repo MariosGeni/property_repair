@@ -14,6 +14,8 @@
             <div class="row">
                 <div class="col-md-12 order-md-1">
                     <#include "../forms/userSearchForm.ftlh">
+                    <#if owner??> <@ownerComponent.ownerSingle owner /> </#if>
+                    <#if isEmpty?? && isEmpty> <h3 class="no-result-found-h3">No owner found</h3> </#if>
                 </div>
             </div>
         </main>

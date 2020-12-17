@@ -101,19 +101,24 @@
                 </div>
 
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" name="password" value="${userForm.password!""}">
-                    <#if spring.status.error??>
-                        <ul>
-                            <#list spring.status.errorMessages as error>
-                                <li style="color: #dc3545">${error}</li>
-                            </#list>
-                        </ul>
-                    </#if>
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="password">Password</label>
+                        <@spring.bind "userForm.password"/>
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        <#if spring.status.error??>
+                            <ul>
+                                <#list spring.status.errorMessages as error>
+                                    <li style="color: #dc3545">${error}</li>
+                                </#list>
+                            </ul>
+                        </#if>
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" class="c_password form-control" id="confirmPassword" placeholder="Confirm password">
+                    </div>
                 </div>
-
 
                 <div class="form-group">
                     <label for="house_type">House Type</label>

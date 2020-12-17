@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.forms;
 
+import com.codehub.pf.team4.enums.Roles;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -33,5 +34,6 @@ public class RepairForm {
     // no validations needed
     private String address;
     private String description;
+    private Roles roles;
 
 }

@@ -1,7 +1,22 @@
+
+$.validator.addMethod('c_password', function(value){
+    if(value == $('#password').val()){
+        return true;
+    }
+    return false;
+}, "Password and confirm password fields do not match");
+
 jQuery(function ($) {
     $.validator.addMethod("valueNotEquals", function(value, element, arg){
         return arg !== value;
     }, "Value must not equal arg.");
+
+    $.validator.addMethod('c_password', function(value){
+        if(value == $('#password').val()) {
+            return true;
+        }
+        return false;
+    }, "Password and confirm password fields do not match");
     $("form[name='userForm']").validate({
         rules: {
             email:{

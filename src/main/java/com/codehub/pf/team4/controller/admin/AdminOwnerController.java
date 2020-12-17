@@ -1,6 +1,7 @@
 package com.codehub.pf.team4.controller.admin;
 
 import com.codehub.pf.team4.enums.HouseType;
+import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.repository.UserRepository;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/admin")
 public class AdminOwnerController {
 
+    private static final String ROLES = "ROLES";
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
     private final String USER_FORM = "userForm";
@@ -105,6 +107,7 @@ public class AdminOwnerController {
     public String getAdminCreateOwnerPage(Model model){
         model.addAttribute(USER_FORM, new UserForm());
         model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
+        model.addAttribute(ROLES, Roles.values());
         return "pages/admin-create-owners-view";
     }
 
@@ -119,6 +122,7 @@ public class AdminOwnerController {
         model.addAttribute(USER_FORM, userForm);
         //model.addAttribute(USER_FORM, userService.updateUserModel(theOwner));
         model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
+        model.addAttribute(ROLES, Roles.values());
 
         return "pages/admin-edit-owners-view";
     }

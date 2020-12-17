@@ -22,7 +22,7 @@
             <div class="row">
                 <div class="col" style="overflow-x: auto;">
                     <#if repairs?has_content && repairs.getContent()?is_sequence>
-                        <@repairComponent.repairList repairs.getContent(), repairs.totalPages, repairs.getNumber() + 1, repairs.totalElements, repairs.getSize()/>
+                        <@repairComponent.repairList repairs.getContent(), repairs.getTotalPages(), repairs.getNumber() + 1, repairs.getTotalElements()?number, repairs.getSize()/>
                     </#if>
                 </div>
             </div>

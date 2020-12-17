@@ -22,13 +22,15 @@ public class PropertyRepairsApplication {
 
     }
 
+
+
     @Bean
     public CommandLineRunner bun(UserRepository userRepository) throws Exception {
         return (String[] args) -> {
 
             Faker faker = new Faker();
 
-            for (long i = 0; i < 10; i++) {
+            for (long i = 0; i < 17; i++) {
                 User user1 = new User();
                 user1.setFirstName(faker.name().firstName());
                 user1.setLastName(faker.name().lastName());
@@ -55,7 +57,7 @@ public class PropertyRepairsApplication {
             Faker faker = new Faker();
             long id = 8;
 
-            for (long a = 1 ; a < 18; a++) {
+            for (long a = 1 ; a < 25 ; a++) {
                 for (long i = 0; i < RandomnessProvider.getRandomNumber(1,2); i++) {
                     Repair repair1 = new Repair();
                     repair1.setId(id);

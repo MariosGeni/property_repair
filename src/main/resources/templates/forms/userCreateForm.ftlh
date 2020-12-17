@@ -101,18 +101,24 @@
                     </div>
                 </div>
 
+                <div class="form-row">
+                    <div class="col-12 col-md-6">
+                        <label for="password">Password</label>
+                        <@spring.bind "userForm.password"/>
+                        <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
+                        <#if spring.status.error??>
+                            <ul>
+                                <#list spring.status.errorMessages as error>
+                                    <li style="color: #dc3545">${error}</li>
+                                </#list>
+                            </ul>
+                        </#if>
+                    </div>
 
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <@spring.bind "userForm.password"/>
-                    <input type="password" class="form-control" id="password" placeholder="Choose a password" name="password">
-                    <#if spring.status.error??>
-                        <ul>
-                            <#list spring.status.errorMessages as error>
-                                <li style="color: #dc3545">${error}</li>
-                            </#list>
-                        </ul>
-                    </#if>
+                    <div class="col-12 col-md-6">
+                        <label for="password">Confirm Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Confirm password" name="Conmfirm password">
+                    </div>
                 </div>
 
 

@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col" style="overflow-x: auto;">
                     <#if owners?has_content && owners.getContent()?is_sequence>
-                        <@ownerComponent.ownerList owners.getContent(), owners.totalPages, owners.getNumber() + 1, owners.totalElements, owners.getSize()/>
+                        <@ownerComponent.ownerList owners.getContent(), owners.getTotalPages(), owners.getNumber() + 1, owners.getTotalElements()?number, owners.getSize()/>
                     </#if>
                 </div>
             </div>

@@ -4,25 +4,19 @@ import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
-import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/admin")

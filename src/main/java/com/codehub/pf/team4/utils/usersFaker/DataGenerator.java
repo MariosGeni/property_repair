@@ -72,20 +72,24 @@ public class DataGenerator {
     }
 
     @Bean
-    public CommandLineRunner run2(PropertyRepository propertyRepository) throws Exception{
+    public CommandLineRunner jun(PropertyRepository propertyRepository) throws Exception{
         return (String[] args) -> {
             Faker faker = new Faker();
 
+
+            long id = 8;
             for (long a = 1; a < 25 ; a++){
                 for (long i = 0; i < RandomnessProvider.getRandomNumber(1,2); i++){
                     Property property1 = new Property();
+                    property1.setId(id);
                     property1.setUser(userRepository.getOne(a));
                     property1.setPropertyId(Long.valueOf(RandomnessProvider.getRandomNumber(9)));
                     property1.setAddress(faker.address().streetAddress());
-                    property1.setYearOfConstruction(String.valueOf(RandomnessProvider.getRandomNumber(1952,2020)));
+                    property1.setYearOfConstruction(String.valueOf(RandomnessProvider.getRandomNumberBetween(1951,2020)));
                     property1.setHouseType(RandomnessProvider.getRandomHouseType());
 
                     propertyRepository.save(property1);
+                    id++;
                 }
             }
 

@@ -76,7 +76,7 @@ public class AdminPropertyController {
 
     @GetMapping(value = "/properties/create")
     public String getAdminCreatePropertiesPage(Model model){
-        model.addAttribute(PROPERTY_FORM, new RepairForm());
+        model.addAttribute(PROPERTY_FORM, new PropertyForm());
         model.addAttribute(HOUSE_TYPE, HouseType.values());
         return "pages/admin-create-properties-view";
     }

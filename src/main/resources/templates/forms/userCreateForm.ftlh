@@ -121,35 +121,35 @@
                     </div>
                 </div>
 
-                <div class="form-row">
+<#--                <div class="form-row">-->
 
-                    <div class="col-12 col-md-6">
-                      <label for="house_type">House Type</label>
-                        <@spring.bind "userForm.houseType"/>
-                        <select id="house_type" name="houseType" class="custom-select d-block w-100">
-                            <option>Select a type</option>
-                                <#if HOUSE_TYPE??>
-                                    <#list HOUSE_TYPE as type>
-                                        <option value="${type}"
-                                            <#if spring.status.value??>
-                                                <#if type == spring.status.value>
-                                                    selected
-                                                </#if>
-                                            </#if>
-                                        >${type}</option>
-                                    </#list>
-                                </#if>
-                            </select>
-                        <#if spring.status.error??>
-                            <ul>
-                                <#list spring.status.errorMessages as error>
-                                    <li style="color: #dc3545">${error}</li>
-                                </#list>
-                            </ul>
-                        </#if>
-                    </div>
+<#--                    <div class="col-12 col-md-6">-->
+<#--                      <label for="house_type">House Type</label>-->
+<#--                        <@spring.bind "userForm.houseType"/>-->
+<#--                        <select id="house_type" name="houseType" class="custom-select d-block w-100">-->
+<#--                            <option>Select a type</option>-->
+<#--                                <#if HOUSE_TYPE??>-->
+<#--                                    <#list HOUSE_TYPE as type>-->
+<#--                                        <option value="${type}"-->
+<#--                                            <#if spring.status.value??>-->
+<#--                                                <#if type == spring.status.value>-->
+<#--                                                    selected-->
+<#--                                                </#if>-->
+<#--                                            </#if>-->
+<#--                                        >${type}</option>-->
+<#--                                    </#list>-->
+<#--                                </#if>-->
+<#--                            </select>-->
+<#--                        <#if spring.status.error??>-->
+<#--                            <ul>-->
+<#--                                <#list spring.status.errorMessages as error>-->
+<#--                                    <li style="color: #dc3545">${error}</li>-->
+<#--                                </#list>-->
+<#--                            </ul>-->
+<#--                        </#if>-->
+<#--                    </div>-->
 
-                    <div class="col-12 col-md-6">
+                    <div class="form-group">
                         <label for="role">Role</label>
                         <@spring.bind "userForm.roles"/>
                         <select id="roles" name="roles" class="custom-select d-block w-100">
@@ -173,7 +173,7 @@
                                 </#list>
                             </ul>
                         </#if>
-                    </div>
+<#--                    </div>-->
 
                 </div>
                 <button class="btn btn-primary btn-lg mt-4" type="submit">Create</button>

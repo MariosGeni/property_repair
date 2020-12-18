@@ -41,8 +41,8 @@
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-success  <#if page == '/admin/property/search'>bg-success active</#if>">
-                        <a class="nav-link text-white" href="/admin/property/search">
+                    <li class="nav-item btn-outline-success  <#if page == '/admin/properties/search'>bg-success active</#if>">
+                        <a class="nav-link text-white" href="/admin/properties/search">
                             <span data-feather="search"></span>
                             Search Property
                         </a>
@@ -62,8 +62,8 @@
                         </a>
                     </li>
 
-                    <li class="nav-item btn-outline-warning <#if page == '/admin/property/create'> bg-warning active</#if>" >
-                        <a class="nav-link text-white" href="/admin/property/create">
+                    <li class="nav-item btn-outline-warning <#if page == '/admin/properties/create'> bg-warning active</#if>" >
+                        <a class="nav-link text-white" href="/admin/properties/create">
                             <span data-feather="plus-circle"></span>
                             Create Property
                         </a>

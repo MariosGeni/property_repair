@@ -27,6 +27,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item btn-outline-primary  <#if page == '/admin/properties'>bg-primary active</#if>">
+                        <a class="nav-link text-white" href="/admin/properties">
+                            <span data-feather="users"></span>
+                            Properties
+                        </a>
+                    </li>
+
                     <li class="nav-item btn-outline-success  <#if page == '/admin/owners/search'>bg-success active</#if>">
                         <a class="nav-link text-white" href="/admin/owners/search">
                             <span data-feather="search"></span>

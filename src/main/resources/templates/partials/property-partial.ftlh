@@ -20,13 +20,13 @@
                     <a href="/admin/properties/${property.id}">${property.id}
                     </a>
                 </td>
-                <td>${property.propertyID</td>
+                <td>${property.propertyID}</td>
                 <td>${property.address}</td>
                 <td>${property.houseType}</td>
-                <td>${property.yearOfConstruction?c}</td>
+                <td>${property.yearOfConstruction}</td>
                 <td>${property.user}</td>
                 <td>
-                    <a class="btn btn-link" href="/admin/properties/edit/${repair.id}">
+                    <a class="btn btn-link" href="/admin/properties/edit/${property.id}">
                         <span data-feather="tool"></span>
                     </a>
                 </td>
@@ -35,7 +35,7 @@
                             data-id="${property.id}">
                         <span  data-feather="trash-2"></span>
                     </button>
-                    <#include "delete-property-modal.ftlh">
+                    <#include "../partials/delete-propey-modal.ftlh">
                 </td>
             </tr>
         </#list>
@@ -77,11 +77,11 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">Year of construction</td>
-                <td>${property.yearOfConstruction?c} </td>
+                <td>${property.yearOfConstruction} </td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Owner</td>
-                <td>${repair.user}</td>
+                <td>${property.user}</td>
             </tr>
         </tbody>
     </table>
@@ -100,5 +100,5 @@
         </tr>
         </tbody>
     </table>
-    <#include "../partials/delete-property-modal.ftlh">
+    <#include "../partials/delete-propey-modal.ftlh">
 </#macro>

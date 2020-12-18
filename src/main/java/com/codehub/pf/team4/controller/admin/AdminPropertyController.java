@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/property")
+@RequestMapping("/admin")
 public class AdminPropertyController {
 
     private final String PROPERTY = "property";
@@ -53,9 +53,8 @@ public class AdminPropertyController {
         return "pages/admin-properties-view";
     }
 
-    @GetMapping(value = "properties/{id")
+    @GetMapping(value = "properties/{id}")
     public String getAdminPropertyPage(Model model, @PathVariable("id")Long id){
-
         Optional<PropertyModel> theProperty = propertyService.getPropertyById(id);
         if (theProperty.isEmpty()) return "redirect:/admin/properties";
 

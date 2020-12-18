@@ -32,7 +32,7 @@ public class Property {
 
     @JsonIgnore
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
     private User user;
 
     @Override

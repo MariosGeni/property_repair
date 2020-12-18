@@ -31,7 +31,7 @@ public class Property {
     private HouseType houseType;
 
     @JsonIgnore
-    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
     private User user;
 

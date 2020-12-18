@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <#include "../partials/html-header-partial.ftlh">
+        <link rel="stylesheet" href="css/snow.css">
         <title>Home</title>
     </head>
     <body>
@@ -40,5 +41,7 @@
         </div>
     </div>
     <!-- footer here -->
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
+    <script src="/js/lib/jquery/let_it_snow.js"></script>
     </body>
 </html>

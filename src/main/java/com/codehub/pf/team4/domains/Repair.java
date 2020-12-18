@@ -38,7 +38,7 @@ public class Repair {
     private String address;
 
     @JsonIgnore
-    @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
+    @ManyToOne(optional = false)
     @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
     private User user;
 

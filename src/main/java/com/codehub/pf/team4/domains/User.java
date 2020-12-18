@@ -1,4 +1,5 @@
 package com.codehub.pf.team4.domains;
+
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.Roles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,32 +23,32 @@ public class User {
     private Integer afm;
 
     @Column(name = "first_name", nullable = false)
-    private  String firstName;
+    private String firstName;
 
     @Column(name = "last_name", nullable = false)
-    private  String lastName;
+    private String lastName;
 
     @Column(name = "address", nullable = false)
-    private  String address;
+    private String address;
 
-    @Column(name = "phone_number", length=10, nullable = false)
-    private  Long phoneNumber;
+    @Column(name = "phone_number", length = 10, nullable = false)
+    private Long phoneNumber;
 
     @Column(name = "password", nullable = false)
-    private  String password;
+    private String password;
 
-    @OneToMany(mappedBy = "user", targetEntity = Property.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", targetEntity = Property.class, fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Property> properties;
 
-    @Column( name= "email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
 
     @Enumerated(EnumType.STRING)
-    @Column (name="roles", nullable = false)
+    @Column(name = "roles", nullable = false)
     private Roles roles;
 
-    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Repair> repairs;
 
@@ -62,7 +63,7 @@ public class User {
                 ", phoneNumber=" + phoneNumber +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", roles=' " + roles + '\''+
+                ", roles=' " + roles + '\'' +
                 '}';
     }
 
@@ -71,6 +72,6 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getId().equals(user.getId()) && getAfm().equals(user.getAfm()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getAddress(), user.getAddress()) && getPhoneNumber().equals(user.getPhoneNumber()) && getPassword().equals(user.getPassword())  && getEmail().equals(user.getEmail());
+        return getId().equals(user.getId()) && getAfm().equals(user.getAfm()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getAddress(), user.getAddress()) && getPhoneNumber().equals(user.getPhoneNumber()) && getPassword().equals(user.getPassword()) && getEmail().equals(user.getEmail());
     }
 }

@@ -1,7 +1,9 @@
 package com.codehub.pf.team4.utils.usersFaker;
 
+import com.codehub.pf.team4.domains.Property;
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
+import com.codehub.pf.team4.repository.PropertyRepository;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.utils.RandomnessProvider;
@@ -9,6 +11,7 @@ import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -66,5 +69,28 @@ public class DataGenerator {
             repairRepository.findAll().forEach(repair -> System.out.println(repair));
         };
 
+    }
+
+    @Bean
+    public CommandLineRunner run2(PropertyRepository propertyRepository) throws Exception{
+        return (String[] args) -> {
+            Faker faker = new Faker();
+
+            for (long a = 1; a < 25 ; a++){
+                for (long i = 0; i < RandomnessProvider.getRandomNumber(1,2); i++){
+                    Property property1 = new Property();
+                    property1.setUser(userRepository.getOne(a));
+                    property1.setPropertyId(Long.valueOf(RandomnessProvider.getRandomNumber(9)));
+                    property1.setAddress(faker.address().streetAddress());
+                    property1.setYearOfConstruction(String.valueOf(RandomnessProvider.getRandomNumber(1952,2020)));
+                    property1.setHouseType(RandomnessProvider.getRandomHouseType());
+
+                    propertyRepository.save(property1);
+                }
+            }
+
+            propertyRepository.findAll().forEach(property -> System.out.println(property));
+
+        };
     }
 }

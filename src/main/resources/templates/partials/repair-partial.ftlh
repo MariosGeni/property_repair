@@ -48,8 +48,7 @@
                     </a>
                 </td>
                 <td>
-                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#exampleModalCenter"
-                            data-id="${repair.id}">
+                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#repair-modal"  data-id="${repair.id}">
                         <span  data-feather="trash-2"></span>
                     </button>
                     <#include "delete-repair-modal.ftlh">
@@ -124,7 +123,7 @@
             </td>
             <td>
                 <form>
-                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#exampleModalCenter" data-id="${repair.id}" value="Delete"></input>
+                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#repair-modal" data-id="${repair.id}" value="Delete"></input>
                 </form>
             </td>
         </tr>

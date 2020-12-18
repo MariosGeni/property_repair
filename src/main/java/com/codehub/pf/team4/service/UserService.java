@@ -47,7 +47,7 @@ public interface UserService {
     // given an email, get all repairs related with the user
     List<RepairModel> getRepairsByUserEmail(String email);
 
-    Page<UserModel> findAllAsPage(int orElse);
+    Page<UserModel> findAllAsPage(int page);
 
     List<PropertyModel> getPropertiesByUserAfm(String afm);
 }

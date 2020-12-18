@@ -71,8 +71,11 @@ public class AdminOwnerController {
         // --- owners showcase here --- //
         Optional<UserModel> theUser = userService.findUserById(id);
 
-        if(theUser.isEmpty()) return "redirect:/admin/owners";
+        if(theUser.isEmpty()) return "redirect:/admin/owners"; // if the user with the given id does not exist we redirect him to all owners
+
         model.addAttribute(OWNER, theUser.get());
+        model.addAttribute(GlobalAttributes.REPAIRS, userService.getRepairsByUserId(theUser.get().getId())); // if cant find it returns empty list
+        model.addAttribute(GlobalAttributes.PROPERTIES, userService.getPropertiesByUserAfm(theUser.get().getAfm().toString())); // if cant find it returns empty list
         return "pages/admin-owner-view";
     }
 
@@ -157,8 +160,10 @@ public class AdminOwnerController {
     }
 
     @PostMapping("owners/delete/{id}")
-    public String deleteAdminOwner(@PathVariable("id") Long id) {
-        System.out.println(userService.deleteById(id));
+    public String deleteAdminOwner(@PathVariable("id") Long id, Model model) {
+        if(!userService.deleteById(id)) {
+            model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
+        }
         return "redirect:/admin/owners";
     }
 }

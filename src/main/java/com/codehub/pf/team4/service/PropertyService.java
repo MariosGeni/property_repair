@@ -2,6 +2,7 @@ package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.forms.PropertyForm;
 import com.codehub.pf.team4.models.PropertyModel;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +10,8 @@ import java.util.Optional;
 public interface PropertyService {
 
     List<PropertyModel>  getAllProperties();
+
+    Page<PropertyModel> getAllPropertiesAsPage(int page);
 
     Optional<PropertyModel> getPropertyByPropertyId(Long propertyID);
 

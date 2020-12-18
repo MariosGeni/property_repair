@@ -33,12 +33,9 @@ public class DataGenerator {
                 user1.setRoles(RandomnessProvider.getRoles());
 
                 userRepository.save(user1);
-
             }
             userRepository.findAll().forEach(user -> System.out.println(user));
         };
-
-
     }
 
     @Autowired

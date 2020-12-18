@@ -29,7 +29,7 @@
 
                     <li class="nav-item btn-outline-primary  <#if page == '/admin/properties'>bg-primary active</#if>">
                         <a class="nav-link text-white" href="/admin/properties">
-                            <span data-feather="users"></span>
+                            <span data-feather="home"></span>
                             Properties
                         </a>
                     </li>

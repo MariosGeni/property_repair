@@ -2,7 +2,7 @@ $(function() { // <-- is short for $(document).ready(function() {});
     $("#search-user-select").on("change", function(){ toggleUserSearch();} ); // same thing as doing directly from the element
     // its better to call in js so you can see all events at once without having to go in the html and check for events
     $("#search-repair-select").on("change", function(){ toggleRepairSearch();} );
-
+    $("#search-property-select").on("change", function(){ togglePropertySearch();} );
     $(".page-number-link").on("click", function(e) { if($(e.target).hasClass("active")) e.preventDefault(); });
 });
 
@@ -45,6 +45,24 @@ function toggleRepairSearch() {
         $afmFormRepair.addClass("display-none");
         $dateRangeForm.addClass("display-none");
         $dateForm.removeClass("display-none");
+    }
+}
+
+function togglePropertySearch() {
+    clearNoResultsFoundH3();
+    var selectedValue = $("#search-property-select").children("option:selected").val();
+    let $afmFormRepair = $("#afm-form");
+    let $propertyIdForm = $("#propertyID-form");
+
+    // toggle visibility
+    // can be written in less lines but kept it readable
+    if(selectedValue === "afm") {
+        $propertyIdForm.addClass("display-none");
+        $afmFormRepair.removeClass("display-none");
+    } else if (selectedValue === "propertyID") {
+        //alert("I'M IN DATE RANGE");
+        $propertyIdForm.removeClass("display-none");
+        $afmFormRepair.addClass("display-none");
     }
 }
 

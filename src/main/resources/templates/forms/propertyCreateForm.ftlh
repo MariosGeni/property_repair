@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label for="yearOfConstruction">Year of construction</label>
                     <@spring.bind "propertyForm.yearOfConstruction"/>
-                    <input type="text" class="form-control" id="yearOfConstruction" name="yearOfConstruction" placeholder="Insert year of construction" value="${spring.status.value!""}">
+                    <input type="number" class="form-control" id="yearOfConstruction" name="yearOfConstruction" placeholder="Insert year of construction" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

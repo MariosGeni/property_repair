@@ -20,7 +20,7 @@
                     <a href="/admin/properties/${property.id}">${property.id}
                     </a>
                 </td>
-                <td>${property.propertyID}</td>
+                <td>${property.propertyID?c}</td>
                 <td>${property.address}</td>
                 <td>${property.houseType}</td>
                 <td>${property.yearOfConstruction}</td>
@@ -64,7 +64,7 @@
             </tr>
             <tr>
                 <td class="font-weight-bold">Property ID</td>
-                <td>${property.propertyID}</td>
+                <td>${property.propertyID?c}</td>
             </tr>
             <tr>
                 <td class="font-weight-bold">Address</td>

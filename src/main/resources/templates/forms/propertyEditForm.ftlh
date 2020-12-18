@@ -61,7 +61,7 @@
                 <div class="form-group">
                     <label for="house_type">House Type</label>
                     <@spring.bind "propertyForm.houseType"/>
-                    <select id="house_type" name="houseType" class="custom-select d-block w-100">
+                    <select id="housetype" name="houseType" class="custom-select d-block w-100">
                         <option>Select a house type</option>
                         <#if HOUSE_TYPE??>
                             <#list HOUSE_TYPE as type>

@@ -8,14 +8,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto px-3">
-            <li class="nav-item text-nowrap">
-                <a href="/user" class="nav-link">Owner Home</a>
-            </li>
-            <li class="nav-item text-nowrap">
-                <a href="/admin" class="nav-link">Admin Home</a>
-            </li>
-        </ul>
+<#--        <ul class="navbar-nav mr-auto px-3">-->
+<#--            <li class="nav-item text-nowrap">-->
+<#--                <a href="/user" class="nav-link">Owner Home</a>-->
+<#--            </li>-->
+<#--            <li class="nav-item text-nowrap">-->
+<#--                <a href="/admin" class="nav-link">Admin Home</a>-->
+<#--            </li>-->
+<#--        </ul>-->
+        <ul class="nav-bar mr-auto"></ul>
         <a href="/logout">
             <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">
                 <span data-feather="log-out"></span> Logout

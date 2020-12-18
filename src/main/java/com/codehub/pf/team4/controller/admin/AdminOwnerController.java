@@ -129,6 +129,7 @@ public class AdminOwnerController {
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
+            model.addAttribute(ROLES, Roles.values());
             return "pages/admin-create-owners-view";
         }
 
@@ -146,6 +147,7 @@ public class AdminOwnerController {
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
+            model.addAttribute(ROLES, Roles.values());
             return "pages/admin-edit-owners-view";
         }
 

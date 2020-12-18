@@ -3,7 +3,6 @@
         <title>Login</title>
         <#include "../partials/head.ftlh" />
         <link rel="stylesheet" type="text/css" href="/css/login.css">
-
       </head>
 
       <body class="bg">

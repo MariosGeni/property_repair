@@ -75,7 +75,7 @@
     </table>
 </#macro>
 
-<#macro repairSingle repair>
+<#macro repairSingle repair isUser=false>
     <table class="table table-dark table-striped">
         <tbody>
 

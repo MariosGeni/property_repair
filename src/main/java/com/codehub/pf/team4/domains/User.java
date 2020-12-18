@@ -47,7 +47,7 @@ public class User {
     @Column (name="roles", nullable = false)
     private Roles roles;
 
-    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Repair> repairs;
 

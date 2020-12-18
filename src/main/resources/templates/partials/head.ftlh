@@ -4,3 +4,4 @@
 <link rel="stylesheet" type="text/css" href="/css/lib/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/docs/4.0/examples/dashboard/dashboard.css">
 <link rel="stylesheet" type="text/css" href="/css/main.css">
+<link rel="stylesheet" type="text/css" href="/css/snow.css">

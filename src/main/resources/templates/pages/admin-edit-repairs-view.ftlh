@@ -23,6 +23,8 @@
 <#include "../partials/endContainerWithSidebar.ftlh">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
 <script src="/js/lib/jquery/repair_validator.js"></script>
+<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
+<script src="/js/lib/jquery/let_it_snow.js"></script>
 </body>
 </html>
 

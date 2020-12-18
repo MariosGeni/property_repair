@@ -36,9 +36,9 @@ public class User {
     @Column(name = "password", nullable = false)
     private  String password;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "house_type", nullable = false)
-    private HouseType houseType;
+    @OneToMany(mappedBy = "user", targetEntity = Property.class, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Property> properties;
 
     @Column( name= "email", nullable = false)
     private String email;
@@ -47,7 +47,7 @@ public class User {
     @Column (name="roles", nullable = false)
     private Roles roles;
 
-    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", targetEntity = Repair.class, fetch = FetchType.LAZY)
     @JsonIgnore
     private List<Repair> repairs;
 
@@ -61,7 +61,6 @@ public class User {
                 ", address='" + address + '\'' +
                 ", phoneNumber=" + phoneNumber +
                 ", password='" + password + '\'' +
-                ", houseType=" + houseType +
                 ", email='" + email + '\'' +
                 ", roles=' " + roles + '\''+
                 '}';
@@ -72,6 +71,6 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return getId().equals(user.getId()) && getAfm().equals(user.getAfm()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getAddress(), user.getAddress()) && getPhoneNumber().equals(user.getPhoneNumber()) && getPassword().equals(user.getPassword()) && getHouseType() == user.getHouseType() && getEmail().equals(user.getEmail());
+        return getId().equals(user.getId()) && getAfm().equals(user.getAfm()) && Objects.equals(getFirstName(), user.getFirstName()) && Objects.equals(getLastName(), user.getLastName()) && Objects.equals(getAddress(), user.getAddress()) && getPhoneNumber().equals(user.getPhoneNumber()) && getPassword().equals(user.getPassword())  && getEmail().equals(user.getEmail());
     }
 }

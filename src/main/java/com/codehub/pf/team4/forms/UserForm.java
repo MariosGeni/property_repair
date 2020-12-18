@@ -37,9 +37,6 @@ public class UserForm {
     //Validation on UserValidator
     private String password;
     private String id;
-
-    private String houseType;
-
     private String address;
     private String firstName;
     private String lastName;

@@ -8,10 +8,6 @@ import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.utils.DateProvider;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-
 @Component
 public class RepairFormMapper {
 
@@ -26,7 +22,6 @@ public class RepairFormMapper {
         repair.setCost(Long.parseLong(repairForm.getCost()));
         repair.setDescription(repairForm.getDescription());
         repair.setUser((new User()));
-        repairForm.setUserId((repairForm.getUserId()));
 
         repair.getUser().setId(Long.parseLong(repairForm.getUserId()));
 

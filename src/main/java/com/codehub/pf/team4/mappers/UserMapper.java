@@ -22,8 +22,6 @@ public abstract class UserMapper {
         userModel.setAddress(user.getAddress());
         userModel.setPhoneNumber(user.getPhoneNumber());
         userModel.setPassword(user.getPassword());
-        userModel.setHouseType(user.getHouseType());
-//        userModel.setRoles(user.getRoles());
         return userModel;
     }
 

@@ -42,6 +42,7 @@ html, body{
 .trash-style:hover {
     color: #c61919 !important;
 }
+
 .error{
     color:red;
 }

@@ -2,6 +2,7 @@ package com.codehub.pf.team4.mappers;
 
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
+import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.forms.UserForm;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,7 @@ public class UserFormMapper {
         user.setLastName(userForm.getLastName());
         user.setAddress(userForm.getAddress());
         user.setPhoneNumber(Long.parseLong(userForm.getPhoneNumber()));
-        user.setRoles(userForm.getRoles());
+        user.setRoles(Roles.valueOf(userForm.getRoles()));
 
         if(userForm.getId() != null) {
             if(!userForm.getId().isEmpty()) {

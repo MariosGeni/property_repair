@@ -28,7 +28,6 @@ public class DataGenerator {
                 user1.setAfm(RandomnessProvider.getRandomNumber(9));
                 user1.setEmail(faker.pokemon().name() + RandomnessProvider.getRandomNumber(2,5) + "@gmail.com");
                 user1.setPassword(String.valueOf(RandomnessProvider.getRandomNumber(9)));
-                user1.setHouseType(RandomnessProvider.getRandomHouseType());
                 user1.setPhoneNumber(RandomnessProvider.getRandomNumber(10L));
                 user1.setRoles(RandomnessProvider.getRoles());
 

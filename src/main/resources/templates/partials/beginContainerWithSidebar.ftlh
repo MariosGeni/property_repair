@@ -41,6 +41,13 @@
                         </a>
                     </li>
 
+                    <li class="nav-item btn-outline-success  <#if page == '/admin/property/search'>bg-success active</#if>">
+                        <a class="nav-link text-white" href="/admin/property/search">
+                            <span data-feather="search"></span>
+                            Search Property
+                        </a>
+                    </li>
+
                     <li class="nav-item btn-outline-warning  <#if page == '/admin/owners/create'>bg-warning active</#if>">
                         <a class="nav-link text-white" href="/admin/owners/create">
                             <span data-feather="plus-circle"></span>
@@ -54,6 +61,14 @@
                             Create Repair
                         </a>
                     </li>
+
+                    <li class="nav-item btn-outline-warning <#if page == '/admin/property/create'> bg-warning active</#if>" >
+                        <a class="nav-link text-white" href="/admin/repairs/create">
+                            <span data-feather="plus-circle"></span>
+                            Create Property
+                        </a>
+                    </li>
+
                 </ul>
                 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                     <span>Admin</span>

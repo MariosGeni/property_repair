@@ -63,7 +63,7 @@
                     </li>
 
                     <li class="nav-item btn-outline-warning <#if page == '/admin/property/create'> bg-warning active</#if>" >
-                        <a class="nav-link text-white" href="/admin/repairs/create">
+                        <a class="nav-link text-white" href="/admin/property/create">
                             <span data-feather="plus-circle"></span>
                             Create Property
                         </a>

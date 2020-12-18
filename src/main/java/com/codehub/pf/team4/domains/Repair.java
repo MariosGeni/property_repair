@@ -34,7 +34,7 @@ public class Repair {
     @Column(name = "cost")
     private Long cost;
 
-    @Column(name = "address", columnDefinition = "NVARCHAR(255)")
+    @Column(name = "address")
     private String address;
 
     @JsonIgnore

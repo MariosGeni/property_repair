@@ -1,5 +1,6 @@
 package com.codehub.pf.team4.repository;
 
+import com.codehub.pf.team4.domains.Property;
 import com.codehub.pf.team4.domains.Repair;
 import com.codehub.pf.team4.domains.User;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,5 +27,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.email = (:email)")
     List<Repair> findRepairsByUserEmail(@Param("email") String email);
 
+    @Query(value ="SELECT p FROM Property p JOIN FETCH p.user u WHERE u.afm = (:afm)")
+    List<Property> findPropertiesByAfm(@Param("afm") Integer afm);
 
 }

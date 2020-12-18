@@ -2,9 +2,11 @@ package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.UserForm;
+import com.codehub.pf.team4.mappers.PropertyMapper;
 import com.codehub.pf.team4.mappers.RepairMapper;
 import com.codehub.pf.team4.mappers.UserFormMapper;
 import com.codehub.pf.team4.mappers.UserMapper;
+import com.codehub.pf.team4.models.PropertyModel;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.repository.RepairRepository;
@@ -40,6 +42,11 @@ public class UserServiceImpl implements UserService {
 
         List<UserModel> userModel = UserMapper.mapToUserModelList(usersPaged.getContent());
         return  new PageImpl(userModel, usersPaged.getPageable(), usersPaged.getTotalElements());
+    }
+
+    @Override
+    public List<PropertyModel> getPropertiesByUserAfm(String afm) {
+        return PropertyMapper.mapToPropertyModelList(userRepository.findPropertiesByAfm(Integer.parseInt(afm)));
     }
 
     @Override

@@ -2,9 +2,7 @@ package com.codehub.pf.team4.mappers;
 
 import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
-import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.forms.UserForm;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -20,8 +18,7 @@ public class UserFormMapper {
         user.setLastName(userForm.getLastName());
         user.setAddress(userForm.getAddress());
         user.setPhoneNumber(Long.parseLong(userForm.getPhoneNumber()));
-        user.setHouseType(HouseType.valueOf(userForm.getHouseType()));
-        user.setRoles(Roles.valueOf(userForm.getRoles()));
+        user.setRoles(userForm.getRoles());
 
         if(userForm.getId() != null) {
             if(!userForm.getId().isEmpty()) {
@@ -31,7 +28,7 @@ public class UserFormMapper {
 
         if(userForm.getPassword() != null) {
             if(!userForm.getPassword().isBlank()) {
-                user.setPassword(new BCryptPasswordEncoder().encode(userForm.getPassword()));
+                user.setPassword(userForm.getPassword());
             }
         }
 
@@ -48,9 +45,7 @@ public class UserFormMapper {
         userForm.setLastName(user.getLastName());
         userForm.setAddress(user.getAddress());
         userForm.setPhoneNumber(user.getPhoneNumber().toString());
-        userForm.setHouseType(user.getHouseType().toString());
         userForm.setId(user.getId().toString());
-        userForm.setRoles(user.getRoles().toString());
 
         return userForm;
     }

@@ -14,7 +14,7 @@ public class PropertyMapper {
 
         PropertyModel propertyModel = new PropertyModel();
         propertyModel.setId(property.getId());
-        propertyModel.setPropertyID(property.getPropertyID());
+        propertyModel.setPropertyID(property.getPropertyId());
         propertyModel.setAddress(property.getAddress());
         propertyModel.setYearOfConstruction(property.getYearOfConstruction());
         propertyModel.setHouseType(property.getHouseType());

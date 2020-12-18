@@ -29,7 +29,12 @@ public class PropertyServiceImpl implements PropertyService {
 
     @Override
     public Optional<PropertyModel> getPropertyByPropertyId(Long propertyID) {
-        return PropertyMapper.mapToPropertyModelOptional(propertyRepository.findById(propertyID).orElse(null));
+        return PropertyMapper.mapToPropertyModelOptional(propertyRepository.findByPropertyId(propertyID).orElse(null));
+    }
+
+    @Override
+    public Optional<PropertyModel> getPropertyById(Long id) {
+        return PropertyMapper.mapToPropertyModelOptional(propertyRepository.findById(id).orElse(null));
     }
 
     @Override

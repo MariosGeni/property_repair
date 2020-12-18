@@ -12,7 +12,7 @@ public class PropertyFormMapper {
     public static Property mapToProperty(PropertyForm propertyForm) {
         if (propertyForm == null) return null;
         Property property = new Property();
-        property.setPropertyID(property.getPropertyID());
+        property.setPropertyId(property.getPropertyId());
         property.setAddress(propertyForm.getAddress());
         property.setYearOfConstruction(propertyForm.getYearOfConstruction());
         property.setHouseType(HouseType.valueOf(propertyForm.getHouseType()));
@@ -30,7 +30,7 @@ public class PropertyFormMapper {
         if (property == null) return null;
 
         PropertyForm propertyForm = new PropertyForm();
-        propertyForm.setPropertyID(property.getPropertyID().toString());
+        propertyForm.setPropertyID(property.getPropertyId().toString());
         propertyForm.setAddress(property.getAddress());
         propertyForm.setYearOfConstruction(propertyForm.getYearOfConstruction());
         propertyForm.setHouseType(property.getHouseType().toString());

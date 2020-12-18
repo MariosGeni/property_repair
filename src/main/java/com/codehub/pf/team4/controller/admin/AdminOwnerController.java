@@ -30,7 +30,6 @@ public class AdminOwnerController {
     private final String OWNER = "owner";
     private final String OWNERS = "owners";
     private final String USER_FORM = "userForm";
-    private final String USER_HOUSE_TYPE = "HOUSE_TYPE";
 
     @Autowired
     private UserService userService;
@@ -104,7 +103,6 @@ public class AdminOwnerController {
     @GetMapping(value = "/owners/create")
     public String getAdminCreateOwnerPage(Model model){
         model.addAttribute(USER_FORM, new UserForm());
-        model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
         return "pages/admin-create-owners-view";
     }
 
@@ -118,7 +116,6 @@ public class AdminOwnerController {
         UserForm userForm = userService.findUserByIdAsUserForm(id).get();
         model.addAttribute(USER_FORM, userForm);
         //model.addAttribute(USER_FORM, userService.updateUserModel(theOwner));
-        model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
 
         return "pages/admin-edit-owners-view";
     }
@@ -130,7 +127,6 @@ public class AdminOwnerController {
 //            System.out.println(bindingResult.getModel());
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
-            model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
             return "pages/admin-create-owners-view";
         }
 
@@ -147,7 +143,6 @@ public class AdminOwnerController {
         if (bindingResult.hasErrors()) {
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
-            model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
             return "pages/admin-edit-owners-view";
         }
 

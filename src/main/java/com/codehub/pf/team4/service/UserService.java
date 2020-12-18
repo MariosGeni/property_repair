@@ -1,6 +1,7 @@
 package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.forms.UserForm;
+import com.codehub.pf.team4.models.PropertyModel;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.models.UserModel;
 import org.springframework.data.domain.Page;
@@ -47,4 +48,6 @@ public interface UserService {
     List<RepairModel> getRepairsByUserEmail(String email);
 
     Page<UserModel> findAllAsPage(int orElse);
+
+    List<PropertyModel> getPropertiesByUserAfm(String afm);
 }

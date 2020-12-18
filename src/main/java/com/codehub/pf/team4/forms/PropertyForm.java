@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Data
 public class PropertyForm {
@@ -22,6 +23,7 @@ public class PropertyForm {
     private String id;
 
     @NotEmpty
+    @Size(min=9,max=9,message = "Property ID should have 9 digits")
     @Pattern(regexp = PROPERTY_ID_PATTERN, message = "Property ID pattern doesn't match")
     private String propertyID;
 

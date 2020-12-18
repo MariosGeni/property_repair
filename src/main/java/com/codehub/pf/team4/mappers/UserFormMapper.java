@@ -18,7 +18,6 @@ public class UserFormMapper {
         user.setLastName(userForm.getLastName());
         user.setAddress(userForm.getAddress());
         user.setPhoneNumber(Long.parseLong(userForm.getPhoneNumber()));
-        user.setHouseType(HouseType.valueOf(userForm.getHouseType()));
         user.setRoles(userForm.getRoles());
 
         if(userForm.getId() != null) {
@@ -46,7 +45,6 @@ public class UserFormMapper {
         userForm.setLastName(user.getLastName());
         userForm.setAddress(user.getAddress());
         userForm.setPhoneNumber(user.getPhoneNumber().toString());
-        userForm.setHouseType(user.getHouseType().toString());
         userForm.setId(user.getId().toString());
 
         return userForm;

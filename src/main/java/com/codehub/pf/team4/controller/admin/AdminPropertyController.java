@@ -112,6 +112,7 @@ public class AdminPropertyController {
     public String putPropertyEditOwnersPage(Model model, @Valid @ModelAttribute(PROPERTY_FORM) PropertyForm propertyForm,
                                             BindingResult bindingResult, @PathVariable Long id) {
         if(bindingResult.hasErrors()){
+            model.addAttribute(HOUSE_TYPE, HouseType.values());
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE,"Invalid values caught during update");
             return  "pages/admin-edit-properties-view";
         }

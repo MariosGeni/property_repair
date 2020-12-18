@@ -18,7 +18,7 @@ public class Property {
     private Long id;
 
     @Column(name = "property_id", nullable = false)
-    private Long propertyID;
+    private Long propertyId;
 
     @Column(name ="address", nullable = false)
     private String address;
@@ -32,14 +32,14 @@ public class Property {
 
     @JsonIgnore
     @ManyToOne(optional = false, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
     private User user;
 
     @Override
     public String toString() {
         return "Property{" +
                 "id=" + id +
-                ", property_ID_E9" + propertyID +
+                ", property_ID_E9" + propertyId +
                 ", house_type ='" + houseType + '\'' +
                 ", year_of_construction ='" + yearOfConstruction + '\'' +
                 ", address =" + address +
@@ -52,6 +52,6 @@ public class Property {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Property property = (Property) o;
-        return getId().equals(property.getId()) && getPropertyID().equals(property.getPropertyID()) && getAddress().equals(property.getAddress()) && Objects.equals(getYearOfConstruction(), property.getYearOfConstruction()) && getHouseType() == property.getHouseType();
+        return getId().equals(property.getId()) && getPropertyId().equals(property.getPropertyId()) && getAddress().equals(property.getAddress()) && Objects.equals(getYearOfConstruction(), property.getYearOfConstruction()) && getHouseType() == property.getHouseType();
     }
 }

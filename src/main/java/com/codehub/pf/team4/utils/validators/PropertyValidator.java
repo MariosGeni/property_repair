@@ -9,11 +9,13 @@ import com.codehub.pf.team4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
+
 import java.util.Arrays;
 import java.util.Optional;
 
 @Component
-public class PropertyValidator {
+public class PropertyValidator implements Validator {
 
     @Autowired
     private PropertyService propertyService;
@@ -37,6 +39,11 @@ public class PropertyValidator {
                 errors.rejectValue("userId", "owner.id.not.exists");
             }
         }
+
+        if (doesExist("propertyId", propertyForm.getPropertyID()) && propertyForm.getId().isBlank()) {
+            errors.rejectValue("afm", "afm.exists");
+        }
+
         if(!propertyForm.getId().isBlank()){
             if(UserValidator.isNumeric(propertyForm.getId())){
                 Optional<PropertyModel> propertyWithGivenId = propertyService.getPropertyById(Long.parseLong(propertyForm.getId()));
@@ -47,4 +54,19 @@ public class PropertyValidator {
                 .findFirst();
         if(houseType.isEmpty()) errors.rejectValue("houseType", "houseType.not.match");
     }
+
+    private boolean doesExist( String field, String value ){
+        if (field.equalsIgnoreCase("propertyId")) {
+            if (value != null) {
+                if (!value.isBlank() && UserValidator.isNumeric(value)) {
+                    try{
+                        return propertyService.getPropertyByPropertyId(Long.parseLong(value)).isPresent();
+                    } catch(Exception exc){}
+                }
+            }
+        }
+        return false;
+    }
+
+
 }

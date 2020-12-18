@@ -15,6 +15,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+
 @Component
 public class DataGenerator {
     @Bean
@@ -42,6 +43,7 @@ public class DataGenerator {
 
     @Autowired
     UserRepository userRepository;
+
     @Bean
     public CommandLineRunner run(RepairRepository repairRepository) throws Exception {
         return (String[] args) -> {
@@ -68,17 +70,17 @@ public class DataGenerator {
             }
             repairRepository.findAll().forEach(repair -> System.out.println(repair));
         };
-
     }
 
     @Bean
     public CommandLineRunner run2(PropertyRepository propertyRepository) throws Exception{
         return (String[] args) -> {
             Faker faker = new Faker();
-
+            long id = 8;
             for (long a = 1; a < 25 ; a++){
                 for (long i = 0; i < RandomnessProvider.getRandomNumber(1,2); i++){
                     Property property1 = new Property();
+                    property1.setId(id);
                     property1.setUser(userRepository.getOne(a));
                     property1.setPropertyId(Long.valueOf(RandomnessProvider.getRandomNumber(9)));
                     property1.setAddress(faker.address().streetAddress());

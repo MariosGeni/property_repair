@@ -3,8 +3,8 @@
 <div class="form-group">
     <label for="search-property-select">Search by</label>
     <select id="search-property-select" class="form-control">
-        <option value="propertyID" selected> Αριθμός Ταυτότητας Ακινήτου </option>
-        <option value="afm">ΑΦΜ</option>
+        <option value="propertyID" selected>Property ID</option>
+        <option value="afm">AFM</option>
     </select>
 </div>
 <form id="propertyID-form" action="/admin/property/search" name="searchForm">

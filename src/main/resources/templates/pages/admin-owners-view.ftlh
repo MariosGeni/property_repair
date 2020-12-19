@@ -27,7 +27,8 @@
             </div>
 
         <!-- footer here -->
-        <#include "../partials/endContainerWithSidebar.ftlh" />
+        <#include "../partials/endContainerWithSidebar.ftlh" />z
+
             <#-- scrips -->
             <#include "../partials/scripts.ftlh">
             <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>

@@ -1,6 +1,6 @@
 <#assign page = springMacroRequestContext.requestUri>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
-    <a href="/admin" style="background-color:#343a40">
+    <a href="/<#if page?starts_with("/home")>home<#else>admin</#if>" style="background-color:#343a40">
         <img class="site-logo" src="/images/favicon.gif" width="200" height="100" style="filter:invert(0.02)">
     </a>
 

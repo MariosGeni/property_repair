@@ -20,7 +20,7 @@
                         </div>
                         <#if RequestParameters.error??>
                             <#if RequestParameters.error == "true">
-                                <label class="text-center h5" style="width: 100%; color: #be0f0f;">Wrong username or password.<br />Please Try again</label>
+                                <label class="text-center h5" style="width: 100%; color: #be0f0f;">Wrong username or password.<br />Please try again</label>
                             </#if>
                         </#if>
                         <button  type="submit" class="btn btn-block bg-dark text-white mt-2 mb-4">Sign in</button>

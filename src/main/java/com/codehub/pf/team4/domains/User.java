@@ -1,5 +1,4 @@
 package com.codehub.pf.team4.domains;
-import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.Roles;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -66,7 +65,7 @@ public class User {
                 '}';
     }
 
-    @Override //  auto created by intelliJ idea
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

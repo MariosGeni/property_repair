@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.controller.admin;
 
-
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +14,6 @@ import java.util.List;
 public class AdminController {
     @Autowired
     RepairService repairService;
-
-    // *************************************************** //
-    // ======================= ADMIN ===================== //
-    // *************************************************** //
 
     @GetMapping(value = {"", "home"})
     public String getAdminHome(Model model) throws Exception{

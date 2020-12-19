@@ -37,7 +37,7 @@ public class PropertyValidator implements Validator {
         if(!propertyForm.getUserId().isBlank() && UserValidator.isNumeric(propertyForm.getId())){
             Optional<UserModel> userWithGivenPropertyUserId = userService.findUserById(Long.parseLong(propertyForm.getUserId()));
             if(userWithGivenPropertyUserId.isEmpty()){
-                errors.rejectValue("userId", "owner.id.not.exists");
+                errors.rejectValue("id", "property.id.not.exists");
             }
         }
 
@@ -45,11 +45,6 @@ public class PropertyValidator implements Validator {
             errors.rejectValue("afm", "afm.exists");
         }
 
-        if(!propertyForm.getId().isBlank()){
-            if(UserValidator.isNumeric(propertyForm.getId())){
-                Optional<PropertyModel> propertyWithGivenId = propertyService.getPropertyById(Long.parseLong(propertyForm.getId()));
-            }
-        }
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())
                 .filter(type -> type.toString().equalsIgnoreCase(propertyForm.getHouseType()))
                 .findFirst();

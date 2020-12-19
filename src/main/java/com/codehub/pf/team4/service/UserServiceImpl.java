@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -38,7 +37,7 @@ public class UserServiceImpl implements UserService {
     public Page<UserModel> findAllAsPage(int page) {
        Page<User> usersPaged = userRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
 
-       if(usersPaged.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
+       if(usersPaged.isEmpty()) return Page.empty();
 
         List<UserModel> userModel = UserMapper.mapToUserModelList(usersPaged.getContent());
         return  new PageImpl(userModel, usersPaged.getPageable(), usersPaged.getTotalElements());
@@ -68,10 +67,10 @@ public class UserServiceImpl implements UserService {
     public Optional<UserModel> updateUser(UserForm toBeUpdatedUserForm) {
         User toBeUpdatedUser = UserFormMapper.mapToUser(toBeUpdatedUserForm);
         User originalUser = userRepository.findById(toBeUpdatedUser.getId()).orElse(null);
-        // get the original user and replace his password with the given user if no password is provided for update
-        if(originalUser == null) return Optional.empty(); // if user not found something went wrong in the validation
+
+        if(originalUser == null) return Optional.empty();
         if(toBeUpdatedUser.getPassword() == null) toBeUpdatedUser.setPassword(originalUser.getPassword());
-        if(toBeUpdatedUser.equals(originalUser)) return UserMapper.mapToUserModelOptional(toBeUpdatedUser); // if no changed were made dont update
+        if(toBeUpdatedUser.equals(originalUser)) return UserMapper.mapToUserModelOptional(toBeUpdatedUser);
 
         return UserMapper.mapToUserModelOptional(userRepository.save(toBeUpdatedUser));
     }
@@ -99,14 +98,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean deleteById(Long id) {
-        // if id is empty or user paired with this id doesn't exist
+
         Optional<User> toDeleteUser = userRepository.findById(id);
         if (id == null || toDeleteUser.isEmpty() ) {
-            return false; // deletion unsuccessful
+            return false;
         }
 
         repairRepository.deleteAll(toDeleteUser.get().getRepairs());
-
         userRepository.deleteById(id);
         return true;
     }

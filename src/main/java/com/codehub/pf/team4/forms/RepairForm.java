@@ -21,7 +21,6 @@ public class RepairForm {
     @NotEmpty(message = "Cost can't be empty")
     private String cost;
 
-    //Validated in RepairValidator
     @Pattern(regexp = ID_PATTERN, message = "Id pattern doesn't match")
     private String id;
 
@@ -30,8 +29,6 @@ public class RepairForm {
 
     private String state;
     private String repairType;
-
-    // no validations needed
     private String address;
     private String description;
     private Roles roles;

@@ -21,7 +21,6 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
 
 @Controller
 @RequestMapping("/admin")
@@ -48,23 +47,14 @@ public class AdminRepairController {
         binder.addValidators(repairValidator);
     }
 
-
-    // *************************************************** //
-    // ======================= REPAIRS =================== //
-    // *************************************************** //
-
     @GetMapping(value = "repairs")
     public String getAdminRepairsPage(Model model, @RequestParam Optional<Integer> page) {
-        // --- repairs showcase here --- //
-        // model.addAttribute(REPAIRS, repairService.getAllRepairs());
 
-        // Using pagination
         int realPage = 0;
         if(page.isPresent()) realPage = page.get() > 0? page.get() - 1 : 0;
         Page<RepairModel> repairModelsPaged = repairService.getAllAsPage(realPage);
 
-        if(repairModelsPaged.isEmpty()) return "redirect:/admin/repairs"; // if given page doesn't exist
-
+        if(repairModelsPaged.isEmpty()) return "redirect:/admin/repairs";
         model.addAttribute(REPAIRS, repairModelsPaged);
 
         return "pages/admin-repairs-view";
@@ -72,7 +62,7 @@ public class AdminRepairController {
 
     @GetMapping(value = "repairs/{id}")
     public String getAdminRepairPage(Model model, @PathVariable("id") Long id) {
-        // --- repairs showcase here --- //
+
         Optional<RepairModel> theRepair = repairService.getRepairById(id);
         if(theRepair.isEmpty()) return "redirect:/admin/repairs";
 
@@ -80,18 +70,17 @@ public class AdminRepairController {
         return "pages/admin-repair-view";
     }
 
-    @GetMapping(value = "repairs/search") // Search 'repairs/user' by 'date' queryString
-    public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm, //Search by afm variable
-                                                        @RequestParam(value = "date", defaultValue = "") String date, // Search by date variable
-                                                        @RequestParam(value = "fromDate", defaultValue = "") String fromDate, // search by date range variables
-                                                        @RequestParam(value = "toDate", defaultValue = "") String toDate) { //   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-        // if no queryString available give the default search page || queryString = @RequestParam
+    @GetMapping(value = "repairs/search")
+    public String getAdminSearchRepairPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
+                                                        @RequestParam(value = "date", defaultValue = "") String date,
+                                                        @RequestParam(value = "fromDate", defaultValue = "") String fromDate,
+                                                        @RequestParam(value = "toDate", defaultValue = "") String toDate) {
         if (afm.isBlank() && date.isBlank() && fromDate.isBlank() && toDate.isBlank()) {
             model.addAttribute(GlobalAttributes.IS_EMPTY,false);
             return "pages/admin-search-repairs-view";
         }
 
-        // --- search code here --- //
+
         List<RepairModel> repairs = new ArrayList();
         if (!afm.isBlank()) {
             if(UserValidator.isValidAfm(afm))  repairs = userService.getRepairsByUserAfm(afm);
@@ -116,10 +105,10 @@ public class AdminRepairController {
         return "pages/admin-create-repairs-view";
     }
 
-    @GetMapping(value = "repairs/edit/{id}") // Edit repair by its id
+    @GetMapping(value = "repairs/edit/{id}")
     public String getAdminEditRepairsPage(@PathVariable("id") Long id, Model model) {
         Optional<RepairForm> theRepair = repairService.getRepairByIdAsForm(id);
-        if (theRepair.isEmpty()) return "redirect:/admin/repairs"; // redirect to all repairs if repair with this id not found
+        if (theRepair.isEmpty()) return "redirect:/admin/repairs";
 
         model.addAttribute(REPAIR_FORM, theRepair.get());
         model.addAttribute(REPAIR_TYPE, RepairType.values());
@@ -144,7 +133,7 @@ public class AdminRepairController {
         return "redirect:/admin/repairs/" + newRepair.get().getId();
     }
 
-    @PostMapping(value = "repairs/edit/{id}") // Edit repair by its id
+    @PostMapping(value = "repairs/edit/{id}")
     public String putRepairEditOwnersPage(Model model, @Valid @ModelAttribute(REPAIR_FORM) RepairForm repairForm,
                                           BindingResult bindingResult, @PathVariable Long id) {
         if(bindingResult.hasErrors()) {
@@ -159,7 +148,7 @@ public class AdminRepairController {
 
     @PostMapping(value = "repairs/delete/{id}")
     public String deleteRepair(@PathVariable("id") Long id, Model model, @RequestParam Optional<Long> userId) {
-        long theId = userId.isPresent()? userId.get() : -1; // if present that means the delete comes from an owner page with its ID
+        long theId = userId.isPresent()? userId.get() : -1;
         if(!repairService.deleteRepairById(id)) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
         }

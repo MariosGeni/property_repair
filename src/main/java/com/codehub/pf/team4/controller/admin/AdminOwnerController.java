@@ -4,7 +4,6 @@ import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.models.UserModel;
-import com.codehub.pf.team4.service.RepairService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.UserValidator;
@@ -32,9 +31,6 @@ public class AdminOwnerController {
     private UserService userService;
 
     @Autowired
-    private RepairService repairService;
-
-    @Autowired
     private UserValidator userValidator;
 
     @InitBinder(USER_FORM)
@@ -42,25 +38,17 @@ public class AdminOwnerController {
         binder.addValidators(userValidator);
     }
 
-    // *************************************************** //
-    // ======================== OWNERS ================== //
-    // *************************************************** //
-
     @GetMapping(value = "/owners")
     public String getAdminOwnersPage(Model model, @RequestParam Optional<Integer> page) {
-        // --- owners showcase here --- //
-//        List<UserModel> owners = userService.getAllUsers();
-//        model.addAttribute(OWNERS, owners);
 
-        // in rel life it makes sense when page starts from ONE, so we send pages starting from 1 from front-end and we
+        // in real life it makes sense when page starts from ONE, so we send pages starting from 1 from front-end and we
         // then decrease that page number by 1 because in back-end it starts from ZERO
         int realPage = 0;
         if(page.isPresent()) realPage = page.get() > 0? page.get() -1 : 0;
         Page<UserModel> userModelPaged = userService.findAllAsPage(realPage);
 
-        if(userModelPaged.isEmpty()) return "redirect:/admin/owners"; // if given page doesn't exist
+        if(userModelPaged.isEmpty()) return "redirect:/admin/owners";
 
-        // Returned model
         model.addAttribute(OWNERS, userModelPaged);
 
         return "pages/admin-owners-view";
@@ -68,18 +56,16 @@ public class AdminOwnerController {
 
     @GetMapping(value = "/owners/{id}")
     public String getAdminOwnerPage(@PathVariable("id") Long id, Model model) {
-        // --- owners showcase here --- //
+
         Optional<UserModel> theUser = userService.findUserById(id);
-
-        if(theUser.isEmpty()) return "redirect:/admin/owners"; // if the user with the given id does not exist we redirect him to all owners
-
+        if(theUser.isEmpty()) return "redirect:/admin/owners";
         model.addAttribute(OWNER, theUser.get());
-        model.addAttribute(GlobalAttributes.REPAIRS, userService.getRepairsByUserId(theUser.get().getId())); // if cant find it returns empty list
-        model.addAttribute(GlobalAttributes.PROPERTIES, userService.getPropertiesByUserAfm(theUser.get().getAfm().toString())); // if cant find it returns empty list
+        model.addAttribute(GlobalAttributes.REPAIRS, userService.getRepairsByUserId(theUser.get().getId()));
+        model.addAttribute(GlobalAttributes.PROPERTIES, userService.getPropertiesByUserAfm(theUser.get().getAfm().toString()));
         return "pages/admin-owner-view";
     }
 
-    @GetMapping(value = "/owners/search") // Search 'owner-user' by 'afm/email' queryString
+    @GetMapping(value = "/owners/search")
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
         if (afm.isBlank() && email.isBlank()) {
@@ -87,7 +73,6 @@ public class AdminOwnerController {
             return "pages/admin-search-owners-view";
         }
 
-        // --- search code here --- //
         Optional<UserModel> owner = Optional.empty();
         if (!afm.isBlank()) {
             if(UserValidator.isValidAfm(afm))  owner = userService.findUserByAfm(afm);
@@ -108,16 +93,15 @@ public class AdminOwnerController {
         return "pages/admin-create-owners-view";
     }
 
-    @GetMapping(value = "/owners/edit/{id}") // Edit owner by its id
+    @GetMapping(value = "/owners/edit/{id}")
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<UserModel> theOwner = userService.findUserById(id);
 
         if(theOwner.isEmpty())
-            return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
+            return "redirect:/admin/owners";
 
         UserForm userForm = userService.findUserByIdAsUserForm(id).get();
         model.addAttribute(USER_FORM, userForm);
-        //model.addAttribute(USER_FORM, userService.updateUserModel(theOwner));
         model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
         model.addAttribute(ROLES, Roles.values());
 
@@ -128,7 +112,6 @@ public class AdminOwnerController {
     public String postAdminOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-//            System.out.println(bindingResult.getModel());
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
@@ -143,7 +126,7 @@ public class AdminOwnerController {
         return "redirect:/admin/owners/" + newUser.get().getId();
     }
 
-    @PostMapping("/owners/edit/{id}") // Edit owner by its id
+    @PostMapping("/owners/edit/{id}")
     public String putAdminEditOwnersPage(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                          BindingResult bindingResult, @PathVariable("id") Long id) {
         if (bindingResult.hasErrors()) {
@@ -156,7 +139,7 @@ public class AdminOwnerController {
 
         Optional<UserModel> theOwner = userService.updateUser(userForm);
         if (theOwner.isEmpty()) return "pages/admin-edit-owners-view";
-        return "redirect:/admin/owners/" + theOwner.get().getId(); // redirect to updated owner
+        return "redirect:/admin/owners/" + theOwner.get().getId();
     }
 
     @PostMapping("owners/delete/{id}")

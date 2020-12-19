@@ -34,7 +34,6 @@ public class PropertyForm {
     @NotEmpty
     private String houseType;
 
-    // no validations needed
     @NotEmpty
     private String address;
 

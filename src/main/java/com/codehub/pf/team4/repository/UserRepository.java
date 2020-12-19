@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @Repository
@@ -17,7 +16,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     Optional<User> findById(Long id);
     Optional<User> findByAfm(Integer afm);
     Optional<User> findByEmail(String email);
-//    User save(User user);
+
     @Query(value ="SELECT r FROM Repair r JOIN FETCH r.user u WHERE u.afm = (:afm)")
     List<Repair> findRepairsByAfm(@Param("afm") Integer afm);
 
@@ -29,5 +28,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query(value ="SELECT p FROM Property p JOIN FETCH p.user u WHERE u.afm = (:afm)")
     List<Property> findPropertiesByAfm(@Param("afm") Integer afm);
-
 }

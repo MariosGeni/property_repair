@@ -1,6 +1,5 @@
 package com.codehub.pf.team4.forms;
 
-import com.codehub.pf.team4.enums.Roles;
 import lombok.Data;
 
 import javax.validation.constraints.NotEmpty;
@@ -34,7 +33,6 @@ public class UserForm {
     @NotEmpty(message = "Phone Number can't be empty")
     private String phoneNumber;
 
-    //Validation on UserValidator
     private String password;
     private String id;
     private String address;

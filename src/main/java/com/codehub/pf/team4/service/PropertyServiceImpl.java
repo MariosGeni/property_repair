@@ -1,13 +1,10 @@
 package com.codehub.pf.team4.service;
 
 import com.codehub.pf.team4.domains.Property;
-import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.forms.PropertyForm;
 import com.codehub.pf.team4.mappers.PropertyFormMapper;
 import com.codehub.pf.team4.mappers.PropertyMapper;
-import com.codehub.pf.team4.mappers.UserMapper;
 import com.codehub.pf.team4.models.PropertyModel;
-import com.codehub.pf.team4.models.UserModel;
 import com.codehub.pf.team4.repository.PropertyRepository;
 import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.utils.GlobalAttributes;
@@ -18,7 +15,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
-
 
 @Service
 public class PropertyServiceImpl implements PropertyService {
@@ -38,7 +34,7 @@ public class PropertyServiceImpl implements PropertyService {
     public Page<PropertyModel> getAllPropertiesAsPage(int page) {
         Page<Property> propertiesAsPage = propertyRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
 
-        if(propertiesAsPage.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
+        if(propertiesAsPage.isEmpty()) return Page.empty();
 
         List<PropertyModel> propertiesModel = PropertyMapper.mapToPropertyModelList(propertiesAsPage.getContent());
         return  new PageImpl(propertiesModel, propertiesAsPage.getPageable(), propertiesAsPage.getTotalElements());
@@ -88,6 +84,4 @@ public class PropertyServiceImpl implements PropertyService {
         Optional<Property> property = propertyRepository.findById(id);
         return Optional.ofNullable(PropertyFormMapper.mapToPropertyForm(property.get()));
     }
-
-
 }

@@ -39,7 +39,7 @@ public class Repair {
 
     @JsonIgnore
     @ManyToOne(optional = false)
-    @JoinColumn(name = "user_id")//, referencedColumnName = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "description")
@@ -59,7 +59,7 @@ public class Repair {
                 '}';
     }
 
-    @Override // auto generated from intelliJ idea
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;

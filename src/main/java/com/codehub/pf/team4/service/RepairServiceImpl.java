@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -40,7 +39,7 @@ public class RepairServiceImpl implements RepairService {
     public Page<RepairModel> getAllAsPage(int page) {
         Page<Repair> repairsPaged = repairRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
 
-        if(repairsPaged.isEmpty())  return Page.empty(); // if given page returns empty return empty
+        if(repairsPaged.isEmpty())  return Page.empty();
 
         List<RepairModel> userModel = RepairMapper.mapToRepairModelList(repairsPaged.getContent());
         return  new PageImpl(userModel, repairsPaged.getPageable(), repairsPaged.getTotalElements());
@@ -60,18 +59,18 @@ public class RepairServiceImpl implements RepairService {
         }
     }
 
-    @Override // get the repairs that's populated for today
+    @Override
     public List<RepairModel> getOngoingRepairsOfTheDay() throws Exception {
         return RepairMapper.mapToRepairModelList(repairRepository.findByDateAndState(DateProvider.getToday(), State.ONGOING));
     }
 
-    @Override // get them by a single date
+    @Override
     public List<RepairModel> getRepairsByDate(String date) {
         LocalDate localDate = DateProvider.getLocalDate(date);
         return RepairMapper.mapToRepairModelList(repairRepository.findByDate(localDate));
     }
 
-    @Override // get the in a given date range
+    @Override
     public List<RepairModel> getRepairsByDate(String fromDate, String toDate) {
         LocalDate fromDateLD = DateProvider.getLocalDate(fromDate);
         LocalDate toDateLD = DateProvider.getLocalDate(toDate);
@@ -98,7 +97,7 @@ public class RepairServiceImpl implements RepairService {
         Repair toBeUpdateRepair = RepairFormMapper.mapToRepair(toBeUpdatedRepair);
         Repair originalRepair = repairRepository.findById(toBeUpdateRepair.getId()).get();
         if(toBeUpdateRepair.equals(originalRepair)) {
-            // if no changes made dont update
+
             return RepairMapper.mapToRepairModelOptional(toBeUpdateRepair);
         }
 

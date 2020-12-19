@@ -27,6 +27,7 @@
             </div>
 
         <!-- footer here -->
+        <#include "../partials/endContainerWithSidebar.ftlh" />z
 
             <#-- scrips -->
             <#include "../partials/scripts.ftlh">

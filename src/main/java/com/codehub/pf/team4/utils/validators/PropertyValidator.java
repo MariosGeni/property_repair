@@ -13,6 +13,7 @@ import org.springframework.validation.Validator;
 
 import java.util.Arrays;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 @Component
 public class PropertyValidator implements Validator {
@@ -66,6 +67,10 @@ public class PropertyValidator implements Validator {
             }
         }
         return false;
+    }
+
+    public static boolean isValidPropertyId(String propertyId) {
+        return Pattern.compile("^[0-9]*$").matcher(propertyId).matches();
     }
 
 }

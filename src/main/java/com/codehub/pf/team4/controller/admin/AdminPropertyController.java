@@ -4,10 +4,13 @@ import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.forms.PropertyForm;
 import com.codehub.pf.team4.forms.RepairForm;
 import com.codehub.pf.team4.models.PropertyModel;
+import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.service.PropertyService;
 import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.PropertyValidator;
+import com.codehub.pf.team4.utils.validators.RepairValidator;
+import com.codehub.pf.team4.utils.validators.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -72,13 +75,25 @@ public class AdminPropertyController {
     @GetMapping(value = "properties/search")
     public String getAdminSearchPropertyPAge(Model model, @RequestParam(value = "propertyId", defaultValue = "") String propertyId,
                                              @RequestParam(value = "afm",defaultValue = "") String afm){
+
+
+        if (afm.isBlank() && propertyId.isBlank()){
+            model.addAttribute(GlobalAttributes.IS_EMPTY,false);
+            return  "pages/admin-search-properties-view";
+        }
         // --- search code here --- //
         List<PropertyModel> properties = new ArrayList<>();
-        if(!afm.equals("")) properties = userService.getPropertiesByUserAfm(afm);
-        else if(!propertyId.equals("")) properties.add( propertyService.getPropertyByPropertyId(Long.parseLong(propertyId)).get());
+        if (!afm.isBlank()) {
+            if(UserValidator.isValidAfm(afm))  properties = userService.getPropertiesByUserAfm(afm);
+        } else if(!propertyId.isBlank()) {
+            if(PropertyValidator.isValidPropertyId(propertyId)) properties.add(propertyService.getPropertyByPropertyId(Long.parseLong(propertyId)).orElse(null));
+        }
 
-        model.addAttribute(PROPERTIES,properties);
+        model.addAttribute(PROPERTIES, properties);
+        model.addAttribute(GlobalAttributes.IS_EMPTY, properties.isEmpty());
+
         return "pages/admin-search-properties-view";
+
     }
 
     @GetMapping(value = "/properties/create")

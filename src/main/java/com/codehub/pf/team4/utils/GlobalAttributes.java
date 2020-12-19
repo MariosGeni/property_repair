@@ -11,4 +11,5 @@ public class GlobalAttributes {
     public static final String TIMESTAMP_COOKIE_NAME = "TIMESTAMP";
     public static final String PROPERTIES = "properties";
     public static final String REPAIRS = "repairs";
+    public static final String USERNAME = "username";
 }

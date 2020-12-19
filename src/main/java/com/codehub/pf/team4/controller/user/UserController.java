@@ -59,7 +59,7 @@ public class UserController {
         UserModel theUser = userService.findUserByEmail(StatusProvider.getLoggedInEmail()).orElse(null);
         if(theUser == null) return "redirect:/logout"; // if for some reason the user cant be located just redirect the logout
 
-        Optional<PropertyModel> theProperties = userService.getPropertiesByUserAfm(theUser.getAfm().toString())
+        Optional<PropertyModel> theProperties = userService.getPropertiesByUserAfm(theUser.getAfm())
                 .stream()
                 .filter(property -> property.getId() == id)
                 .findFirst();

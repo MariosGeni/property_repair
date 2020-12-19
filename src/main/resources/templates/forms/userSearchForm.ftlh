@@ -21,8 +21,7 @@
                 </div>
                 <label for="email"></label>
                 <!-- <div> -->
-                <input type="email" class="form-control" name="email" id="email" placeholder="email"
-                       aria-describedby="basic-addon1">
+                <input type="email" class="form-control" name="email" id="email" placeholder="email" aria-describedby="basic-addon1">
                 <!-- </div> -->
             </div>
         </div>
@@ -35,13 +34,12 @@
             <div class="col-12"><label for="date">AFM</label></div>
         </div>
         <div class="row">
-            <div class="input-group col-12">
+            <div class="input-group col-12" >
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">AFM</span>
                 </div>
                 <label for="afm"></label>
-                <input type="text" class="form-control" name="afm" id="afm" placeholder="afm"
-                       aria-describedby="basic-addon1">
+                <input type="text" class="form-control" name="afm" id="afm" placeholder="afm" aria-describedby="basic-addon1">
             </div>
         </div>
     </div>

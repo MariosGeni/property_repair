@@ -70,7 +70,7 @@
 <#-- Main Body -->
 
 <#-- Footer -->
-<footer class="footer">
+<footer class="sticky-bottom footer">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">

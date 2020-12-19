@@ -68,5 +68,4 @@ public class PropertyValidator implements Validator {
         return false;
     }
 
-
 }

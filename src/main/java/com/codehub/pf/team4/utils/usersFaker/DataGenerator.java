@@ -45,8 +45,6 @@ public class DataGenerator {
 
                 makePropertiesForUser(user1);
                 makeRepairsForUser(user1);
-
-
             }
             userRepository.findAll().forEach(user -> System.out.println(user));
         };
@@ -65,7 +63,6 @@ public class DataGenerator {
             repair1.setDescription(faker.lorem().sentence());
 
             repairRepository.save(repair1);
-
         }
 
     }
@@ -81,11 +78,8 @@ public class DataGenerator {
             property1.setHouseType(RandomnessProvider.getRandomHouseType());
 
             propertyRepository.save(property1);
-
         }
 
-
     }
-
 
 }

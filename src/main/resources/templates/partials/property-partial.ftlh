@@ -1,5 +1,5 @@
-<#macro propertyList properties totalPages=0 currentPage=0 totalElements=0 pageSize=0>
-    <table class="table table-dark table-striped">
+<#macro propertyList properties totalPages=0 currentPage=0 totalElements=0 pageSize=0 isUser=false>
+    <table class="table table-dark table-striped shadow">
         <thead>
             <tr>
                 <th>#</th>
@@ -8,34 +8,45 @@
                 <th>House Type</th>
                 <th>Year of construction</th>
                 <th>Owner</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <#if !isUser>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </#if>
             </tr>
         </thead>
 
         <tbody>
         <#list properties as property>
             <tr>
-                <td>
+                <#if isUser>
+                    <td>
+                    <a href="/home/properties/${property.id}">${property.id}
+                    </a>
+                </td>
+                <#else>
+                    <td>
                     <a href="/admin/properties/${property.id}">${property.id}
                     </a>
                 </td>
+                </#if>
                 <td>${property.propertyID?c}</td>
                 <td>${property.address}</td>
                 <td>${property.houseType}</td>
                 <td>${property.yearOfConstruction}</td>
                 <td>${property.user}</td>
-                <td>
-                    <a class="btn btn-link" href="/admin/properties/edit/${property.id}">
-                        <span data-feather="tool"></span>
-                    </a>
-                </td>
-                <td>
-                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#property-modal" data-id="${property.id}">
-                        <span  data-feather="trash-2"></span>
-                    </button>
-                    <#include "../partials/delete-propey-modal.ftlh">
-                </td>
+                <#if !isUser>
+                    <td>
+                        <a class="btn btn-link" href="/admin/properties/edit/${property.id}">
+                            <span data-feather="tool"></span>
+                        </a>
+                    </td>
+                    <td>
+                        <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#property-modal" data-id="${property.id}">
+                            <span  data-feather="trash-2"></span>
+                        </button>
+                        <#include "../partials/delete-propey-modal.ftlh">
+                    </td>
+                </#if>
             </tr>
         </#list>
             <#if (totalPages > 1)>
@@ -54,8 +65,8 @@
     </table>
 </#macro>
 
-<#macro propertySingle property>
-    <table class="table table-dark table-striped">
+<#macro propertySingle property isUser=false>
+    <table class="table table-dark table-striped shadow">
         <tbody>
             <tr>
                 <td class="font-weight-bold">#</td>
@@ -84,20 +95,22 @@
             </tr>
         </tbody>
     </table>
-    <table style="width: 100%">
-        <tr>
-            <td>
-                <form action="/admin/properties/edit/${property.id}">
-                    <input type="submit" class="btn-primary btn-block btn-lg" value="Edit"></input>
-                </form>
-            </td>
-            <td>
-                <form>
-                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#property-modal" data-id="${property.id}" value="Delete"></input>
-                </form>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <#if !isUser>
+        <table style="width: 100%">
+            <tr>
+                <td>
+                    <form action="/admin/properties/edit/${property.id}">
+                        <input type="submit" class="btn-primary btn-block btn-lg" value="Edit"></input>
+                    </form>
+                </td>
+                <td>
+                    <form>
+                        <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#property-modal" data-id="${property.id}" value="Delete"></input>
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </#if>
     <#include "../partials/delete-propey-modal.ftlh">
 </#macro>

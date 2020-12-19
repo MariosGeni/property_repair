@@ -1,5 +1,4 @@
-<#assign page = springMacroRequestContext.requestUri>
-
+<#assign page = springMacroRequestContext.requestUri>=
 <div class="container-fluid container-fluid-sidebar">
     <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-dark sidebar">

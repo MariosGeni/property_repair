@@ -1,5 +1,5 @@
 <#macro ownerList owners totalPages=0 currentPage=0 totalElements=0 pageSize=0>
-    <table class="table table-dark table-striped">
+    <table class="table table-dark table-striped shadow">
         <thead>
         <tr>
             <th>#</th>
@@ -55,7 +55,7 @@
 </#macro>
 
 <#macro ownerSingle owner>
-    <table class="table table-dark table-striped">
+    <table class="table table-dark table-striped shadow">
         <tbody>
         <tr>
             <td class="font-weight-bold">#</td>

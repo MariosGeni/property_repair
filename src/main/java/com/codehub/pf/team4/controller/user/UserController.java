@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/home")
@@ -42,10 +43,14 @@ public class UserController {
         UserModel theUser = userService.findUserByEmail(StatusProvider.getLoggedInEmail()).orElse(null);
         if(theUser == null) return "redirect:/logout"; // if for some reason the user cant be located just redirect the logout
 
-        List<RepairModel> theRepairs = userService.getRepairsByUserId(theUser.getId());
+        Optional<RepairModel> theRepairs = userService.getRepairsByUserId(theUser.getId())
+                .stream()
+                .filter(repair -> repair.getId() == id)
+                .findFirst();
+
         if(theRepairs.isEmpty()) return "redirect:/home";
 
-        model.addAttribute(GlobalAttributes.REPAIRS, theRepairs);
+        model.addAttribute(GlobalAttributes.REPAIRS, theRepairs.get());
         return "pages/user-repair-view";
     }
 
@@ -54,10 +59,14 @@ public class UserController {
         UserModel theUser = userService.findUserByEmail(StatusProvider.getLoggedInEmail()).orElse(null);
         if(theUser == null) return "redirect:/logout"; // if for some reason the user cant be located just redirect the logout
 
-        List<PropertyModel> theProperties = userService.getPropertiesByUserAfm(theUser.getAfm().toString());
+        Optional<PropertyModel> theProperties = userService.getPropertiesByUserAfm(theUser.getAfm().toString())
+                .stream()
+                .filter(property -> property.getId() == id)
+                .findFirst();
+
         if(theProperties.isEmpty()) return "redirect:/home";
 
-        model.addAttribute(GlobalAttributes.PROPERTIES, theProperties);
+        model.addAttribute(GlobalAttributes.PROPERTIES, theProperties.get());
         return "pages/user-property-view";
     }
 }

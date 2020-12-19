@@ -12,14 +12,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1>Welcome ${userName!"user"}, here are your repairs</h1>
+                    <h1>Repair</h1>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-12" style="overflow: auto;">
+                <div class="col-12">
                     <#if repairs?has_content>
-                        <@repairComponent.repairList repairs, 0, 0, 0, 0, true />
+                        <div class="table-responsive"><@repairComponent.repairSingle repairs true /></div>
                     </#if>
                 </div>
             </div>

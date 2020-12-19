@@ -1,3 +1,4 @@
+<#assign page = springMacroRequestContext.requestUri>
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
     <a href="/admin" style="background-color:#343a40">
         <img class="site-logo" src="/images/ChristmasWhiteLogo.png" width="200" height="100" style="filter:invert(0.02)">
@@ -8,14 +9,13 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<#--        <ul class="navbar-nav mr-auto px-3">-->
-<#--            <li class="nav-item text-nowrap">-->
-<#--                <a href="/user" class="nav-link">Owner Home</a>-->
-<#--            </li>-->
-<#--            <li class="nav-item text-nowrap">-->
-<#--                <a href="/admin" class="nav-link">Admin Home</a>-->
-<#--            </li>-->
-<#--        </ul>-->
+        <#if page?starts_with("/home")>
+            <ul class="navbar-nav mr-auto px-3">
+                <li class="nav-item text-nowrap">
+                    <a href="/home" class="nav-link">Home</a>
+                </li>
+            </ul>
+        </#if>
         <ul class="nav-bar mr-auto"></ul>
         <a href="/logout">
             <button type="submit"  style="font-size: 1.05em;" class="btn-nav btn btn-dark btn-lg">

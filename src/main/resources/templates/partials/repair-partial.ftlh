@@ -1,10 +1,8 @@
 <#macro repairList repairs totalPages=0 currentPage=0 totalElements=0 pageSize=0 isUser=false>
-    <table class="table table-dark table-striped">
+    <table class="table table-dark table-striped shadow">
         <thead>
             <tr>
-                <#if !isUser>
                 <th>#</th>
-                </#if>
                 <th>Date</th>
                 <th>Address</th>
                 <th>State</th>
@@ -22,16 +20,17 @@
         <tbody>
         <#list repairs as repair>
             <tr>
-
-
-                <#if !isUser>
-                <td>
-                    <a href="/admin/repairs/${repair.id}">${repair.id}
-                    </a>
-                </td>
+                <#if isUser>
+                    <td>
+                        <a href="/home/repairs/${repair.id}">${repair.id}
+                        </a>
+                    </td>
+                <#else>
+                    <td>
+                        <a href="/admin/repairs/${repair.id}">${repair.id}
+                        </a>
+                    </td>
                 </#if>
-
-
                 <td>${repair.date}</td>
                 <td>${repair.address}</td>
                 <td>${repair.state}</td>
@@ -75,7 +74,7 @@
 </#macro>
 
 <#macro repairSingle repair isUser=false>
-    <table class="table table-dark table-striped">
+    <table class="table table-dark table-striped shadow">
         <tbody>
 
             <#if !isUser>

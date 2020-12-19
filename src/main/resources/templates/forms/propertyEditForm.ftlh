@@ -18,7 +18,7 @@
         <div class="col-12">
             <form id="propertyForm" name="propertyForm" action="/admin/properties/edit/${propertyForm.id}" method="post">
                 <input type="hidden" id="id" name="id" value="${propertyForm.id}"/>
-                <input type="hidden" id="propertyID" name="propertyID" value="${propertyForm.propertyID}"/>
+                <input type="hidden" id="userId" name="userId" value="${propertyForm.userId}"/>
 
                 <div class="form-group">
                     <label for="propertyID">Property ID</label>

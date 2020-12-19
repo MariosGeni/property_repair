@@ -28,6 +28,4 @@
           </section>
           <#include "../partials/scripts.ftlh">
       </body>
-
-
 </html>

@@ -46,9 +46,9 @@ public class AdminPropertyController {
     @InitBinder(PROPERTY_FORM)
     protected  void initBinder(final WebDataBinder binder) { binder.addValidators(propertyValidator); }
 
-    // ****************************************************** //
+    // *************************************************** //
     // ======================= PROPERTIES =================== //
-    // ****************************************************** //
+    // *************************************************** //
 
     @GetMapping(value = "properties")
     public String getAdminPropertiesPage(Model model, @RequestParam Optional<Integer> page) {
@@ -86,7 +86,7 @@ public class AdminPropertyController {
         if (!afm.isBlank()) {
             if(UserValidator.isValidAfm(afm))  properties = userService.getPropertiesByUserAfm(afm);
         } else if(!propertyId.isBlank()) {
-            if(PropertyValidator.isValidPropertyId(propertyId)) properties.add(propertyService.getPropertyByPropertyId(Long.parseLong(propertyId)).orElse(null));
+            if(PropertyValidator.isValidPropertyId(propertyId)) properties.add(propertyService.getPropertyByPropertyId(propertyId).orElse(null));
         }
 
         model.addAttribute(PROPERTIES, properties);

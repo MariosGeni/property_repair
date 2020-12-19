@@ -13,7 +13,7 @@ public interface PropertyService {
 
     Page<PropertyModel> getAllPropertiesAsPage(int page);
 
-    Optional<PropertyModel> getPropertyByPropertyId(Long propertyID);
+    Optional<PropertyModel> getPropertyByPropertyId(String propertyID);
 
     Optional<PropertyModel> getPropertyById(Long id);
 

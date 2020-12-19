@@ -5,17 +5,17 @@
         <title>Admin - Search Properties</title>
     </head>
     <body>
-    <!-- header here -->
-    <#include "../partials/navbar.ftlh">
-    <#include "../partials/beginContainerWithSidebar.ftlh">
+        <!-- header here -->
+        <#include "../partials/navbar.ftlh">
+        <#include "../partials/beginContainerWithSidebar.ftlh">
         <div class="container-fluid">
-       <div class="row">
-     <div class="col-12">
-        <#include "../forms/propertySearchForm.ftlh">
-        </div>
+           <div class="row">
+             <div class="col-12">
+                <#include "../forms/propertySearchForm.ftlh">
+             </div>
+           </div>
 
-        </div>
-              <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <#if properties?has_content && properties?is_sequence>
                         <#if properties?size==1> <@propertyComponent.propertySingle properties[0]/>

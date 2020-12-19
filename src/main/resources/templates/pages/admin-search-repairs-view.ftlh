@@ -13,9 +13,9 @@
      <div class="col-12">
         <#include "../forms/repairSearchForm.ftlh">
         </div>
-
         </div>
-              <div class="row">
+
+          <div class="row">
                 <div class="col-12">
                     <#if repairs?has_content && repairs?is_sequence>
                         <#if repairs?size==1> <@repairComponent.repairSingle repairs[0]/>

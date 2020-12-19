@@ -66,7 +66,7 @@ function togglePropertySearch() {
     }
 }
 
-function clearNoResultsFoundH3() { $(".no-result-found-h3").remove(); } // if the search type changed clear the no results found message
+function clearNoResultsFoundH3() { /*$(".no-result-found-h3").remove();*/ return; } // if the search type changed clear the no results found message
 
 // vanilla js
 /*function toggleUserSearch() {

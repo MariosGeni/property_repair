@@ -33,15 +33,14 @@
         <div class="row">
             <div class="col-12"><label for="date">AFM</label></div>
         </div>
-            <div class="row">
-                <div class="input-group col-12" >
-             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">AFM</span>
+        <div class="row">
+            <div class="input-group col-12" >
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">AFM</span>
+                </div>
+                <label for="afm"></label>
+                <input type="text" class="form-control" name="afm" id="afm" placeholder="afm" aria-describedby="basic-addon1">
             </div>
-            <label for="afm"></label>
-            <!-- <div> -->
-            <input type="text" class="form-control" name="afm" id="afm" placeholder="afm" aria-describedby="basic-addon1">
-            <!-- </div> -->
         </div>
     </div>
     <button class="btn btn-primary btn-lg mt-4" type="submit">Search</button>

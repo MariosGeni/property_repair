@@ -13,7 +13,7 @@ public class UserFormMapper {
         if(userForm == null) return null;
 
         User user = new User();
-        user.setAfm(Integer.parseInt(userForm.getAfm()));
+        user.setAfm(userForm.getAfm());
         user.setEmail(userForm.getEmail());
         user.setFirstName(userForm.getFirstName());
         user.setLastName(userForm.getLastName());

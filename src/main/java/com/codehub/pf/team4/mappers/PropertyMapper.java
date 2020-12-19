@@ -22,11 +22,13 @@ public class PropertyMapper {
         propertyModel.setUser(property.getUser().getFirstName() +", " + property.getUser().getLastName());
         return propertyModel;
     }
+
     public static List<PropertyModel> mapToPropertyModelList( List<Property> properties){
         return  properties.stream()
                 .map(PropertyMapper::mapToPropertyModel)
                 .collect(Collectors.toList());
     }
+
     public static Optional<PropertyModel> mapToPropertyModelOptional(Property property){
         if(property == null) return Optional.empty();
         return  Optional.of(mapToPropertyModel(property));

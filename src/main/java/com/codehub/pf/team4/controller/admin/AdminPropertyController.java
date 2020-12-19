@@ -46,9 +46,9 @@ public class AdminPropertyController {
     @InitBinder(PROPERTY_FORM)
     protected  void initBinder(final WebDataBinder binder) { binder.addValidators(propertyValidator); }
 
-    // *************************************************** //
+    // ****************************************************** //
     // ======================= PROPERTIES =================== //
-    // *************************************************** //
+    // ****************************************************** //
 
     @GetMapping(value = "properties")
     public String getAdminPropertiesPage(Model model, @RequestParam Optional<Integer> page) {

@@ -18,7 +18,7 @@ public class Property {
     private Long id;
 
     @Column(name = "property_id", nullable = false)
-    private Long propertyId;
+    private String propertyId;
 
     @Column(name ="address", nullable = false)
     private String address;

@@ -7,10 +7,10 @@
         <option value="afm">AFM</option>
     </select>
 </div>
-<form id="propertyID-form" action="/admin/property/search" name="searchForm">
+<form id="propertyID-form" action="/admin/properties/search" name="searchForm">
     <div id="propertyID-div">
         <div class="row">
-            <div class="col-12"><label for="propertyID">ID</label></div>
+            <div class="col-12"><label for="propertyID">Property ID</label></div>
         </div>
 
         <div class="row">
@@ -27,9 +27,12 @@
 
 <form id="afm-form" action="/admin/properties/search" class="display-none">
     <div id="afm-div">
-        <div class="input-group mb-0 mt-3" >
+    <div class="row">
+                <div class="col-12"><label for="afm">AFM</label></div>
+            </div>
+        <div class="input-group" >
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">ΑΦΜ</span>
+                <span class="input-group-text" id="basic-addon1">AFM</span>
             </div>
             <label for="afm"></label>
             <input type="text" class="form-control" name="afm" id="afm" placeholder="afm" aria-describedby="basic-addon1">

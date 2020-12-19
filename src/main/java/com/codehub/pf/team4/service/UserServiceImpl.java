@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<PropertyModel> getPropertiesByUserAfm(String afm) {
-        return PropertyMapper.mapToPropertyModelList(userRepository.findPropertiesByAfm(Integer.parseInt(afm)));
+        return PropertyMapper.mapToPropertyModelList(userRepository.findPropertiesByAfm((afm)));
     }
 
     @Override
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Optional<UserModel> findUserByAfm(String afm) {
         Integer intAfm = Integer.parseInt(afm);
-        return UserMapper.mapToUserModelOptional(userRepository.findByAfm(intAfm).orElse(null));
+        return UserMapper.mapToUserModelOptional(userRepository.findByAfm(Afm).orElse(null));
     }
 
     @Override

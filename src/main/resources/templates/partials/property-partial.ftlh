@@ -31,8 +31,7 @@
                     </a>
                 </td>
                 <td>
-                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#exampleModalCenter"
-                            data-id="${property.id}">
+                    <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#property-modal" data-id="${property.id}">
                         <span  data-feather="trash-2"></span>
                     </button>
                     <#include "../partials/delete-propey-modal.ftlh">
@@ -44,7 +43,7 @@
                      <td colspan="3">
                         <i>Showing ${(currentPage * pageSize) - (pageSize - 1)} to <#if currentPage  < totalPages>${currentPage * pageSize}<#else>${totalElements}</#if> of ${totalElements}</i>
                      </td>
-                    <td colspan="7" class="text-right">
+                    <td colspan="5" class="text-right">
                         <#list 1..totalPages as i>
                             <a class="page-number-link ml-1 px-3 btn btn-outline-info<#if currentPage == i> active</#if>" href="/admin/properties?page=${i}" style="color: white;">${i}</a>
                         </#list>
@@ -94,7 +93,7 @@
             </td>
             <td>
                 <form>
-                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#exampleModalCenter" data-id="${property.id}" value="Delete"></input>
+                    <input type="button" class="btn-danger btn-block btn-lg" data-toggle="modal" data-target="#property-modal" data-id="${property.id}" value="Delete"></input>
                 </form>
             </td>
         </tr>

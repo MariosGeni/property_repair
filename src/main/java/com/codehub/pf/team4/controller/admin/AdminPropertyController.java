@@ -9,6 +9,7 @@ import com.codehub.pf.team4.service.UserService;
 import com.codehub.pf.team4.utils.GlobalAttributes;
 import com.codehub.pf.team4.utils.validators.PropertyValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -47,9 +48,15 @@ public class AdminPropertyController {
     // *************************************************** //
 
     @GetMapping(value = "properties")
-    public String getAdminPropertiesPage(Model model) {
+    public String getAdminPropertiesPage(Model model, @RequestParam Optional<Integer> page) {
         // --- properties showcase here --- //
-        model.addAttribute(PROPERTIES, propertyService.getAllProperties());
+        int realPage = 0;
+        if(page.isPresent()) realPage = page.get() > 0? page.get() -1 : 0;
+        Page<PropertyModel> propertiesPaged = propertyService.getAllPropertiesAsPage(realPage);
+
+        if(propertiesPaged.isEmpty()) return "redirect:/admin/properties"; // If given page does not return any properties redirect him to main properties (page 1)
+
+        model.addAttribute(PROPERTIES, propertiesPaged);
         return "pages/admin-properties-view";
     }
 
@@ -120,11 +127,14 @@ public class AdminPropertyController {
         if(theProperty.isEmpty()) return "pages/admin-edit-properties-view";
         return "redirect:/admin/properties/" + theProperty.get().getId();
     }
+
     @PostMapping(value = "properties/delete/{id}")
-    public String deleteProperty(@PathVariable("id") Long id,Model model){
-        if(propertyService.deletePropertyById(id)){
+    public String deleteProperty(@PathVariable("id") Long id,Model model, @RequestParam Optional<Long> userId){
+        long theId = userId.isPresent()? userId.get() : -1; // if present that means the delete comes from an owner page with its ID
+        if(!propertyService.deletePropertyById(id)){
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
         }
+        if(theId != -1) return "redirect:/admin/owners/" + theId;
         return "redirect:/admin/properties";
     }
 }

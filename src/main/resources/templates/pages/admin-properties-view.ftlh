@@ -21,8 +21,8 @@
 
             <div class="row">
                 <div class="col" style="overflow-x: auto;">
-                    <#if properties?has_content && properties?is_sequence>
-                        <@propertyComponent.propertyList properties /><#--properties.getContent(), properties.getTotalPages(), properties.getNumber() + 1, properties.getTotalElements()?number, properties.getSize()/>-->
+                    <#if properties?has_content && properties.getContent()?is_sequence>
+                        <@propertyComponent.propertyList properties.getContent(), properties.getTotalPages(), properties.getNumber() + 1, properties.getTotalElements()?number, properties.getSize()/>
                     </#if>
                 </div>
             </div>

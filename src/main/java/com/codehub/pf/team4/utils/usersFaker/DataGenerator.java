@@ -54,7 +54,7 @@ public class DataGenerator {
 
     private void makeRepairsForUser(User user1) {
 
-        for (long i = 0; i < RandomnessProvider.getRandomNumber(1, 2); i++) {
+        for (long i = 0; i < RandomnessProvider.getRandomNumberBetween(1, 2); i++) {
             Repair repair1 = new Repair();
             repair1.setUser(user1);
             repair1.setDate(LocalDate.of(2020, RandomnessProvider.getMonthGiver(), RandomnessProvider.getDayGiver()));
@@ -72,7 +72,7 @@ public class DataGenerator {
 
     private void makePropertiesForUser(User user1) {
 
-        for (long i = 0; i < RandomnessProvider.getRandomNumber(1, 2); i++) {
+        for (long i = 0; i < 1; i++) {
             Property property1 = new Property();
             property1.setUser(user1);
             property1.setPropertyId(Long.valueOf(RandomnessProvider.getRandomNumber(9)));

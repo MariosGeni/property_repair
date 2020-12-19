@@ -9,7 +9,7 @@
     <!-- header here -->
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
         <a href="/home" style="background-color:#343a40">
-            <img class="site-logo" src="/images/OBOBOMASTORAS.png" width="200" height="100" style="filter:invert(0.95)">
+            <img class="site-logo" src="/images/OBOBOMASTORAS2.png" width="200" height="100" style="filter:invert(0.95)">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

@@ -15,5 +15,5 @@ public class PropertyModel {
     private String yearOfConstruction;
     private HouseType houseType;
     private String user;
-    private  Long userId;
+    private Long userId;
 }

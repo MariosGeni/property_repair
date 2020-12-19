@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top bg-dark p-0">
     <a href="/admin" style="background-color:#343a40">
-        <img class="site-logo" src="/images/ChristmasWhiteLogo.png" width="200" height="100" style="filter:invert(0.02)">
+        <img class="site-logo" src="/images/ChristmasWhiteLogo7.png" width="200" height="100" style="filter:invert(0.02)">
     </a>
 
     <button class="navbar-toggler mr-2" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

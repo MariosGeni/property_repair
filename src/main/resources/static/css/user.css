@@ -27,12 +27,13 @@
 }
 
 .footer {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
     color: #F9F9F9;
     background-color: #1c1b1b;
+}
+
+.container-fluid {
+    width: 90%;
+    min-height: 79.77vh;
 }
 
 #h4 {

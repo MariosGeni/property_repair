@@ -44,10 +44,26 @@ public class DataGenerator {
                 userRepository.save(user1);
 
                 makePropertiesForUser(user1);
-                makeRepairsForUser(user1);
             }
             userRepository.findAll().forEach(user -> System.out.println(user));
         };
+    }
+
+    private void makePropertiesForUser(User user1) {
+
+        for (long i = 0; i < 1; i++) {
+            Property property1 = new Property();
+            property1.setUser(user1);
+            property1.setPropertyId(Long.valueOf(RandomnessProvider.getRandomNumber(9)));
+            property1.setAddress(user1.getAddress());
+            property1.setYearOfConstruction(String.valueOf(RandomnessProvider.getRandomNumberBetween(1952, 2020)));
+            property1.setHouseType(RandomnessProvider.getRandomHouseType());
+
+            propertyRepository.save(property1);
+
+            makeRepairsForUser(user1);
+        }
+
     }
 
     private void makeRepairsForUser(User user1) {
@@ -67,19 +83,6 @@ public class DataGenerator {
 
     }
 
-    private void makePropertiesForUser(User user1) {
 
-        for (long i = 0; i < 1; i++) {
-            Property property1 = new Property();
-            property1.setUser(user1);
-            property1.setPropertyId(Long.valueOf(RandomnessProvider.getRandomNumber(9)));
-            property1.setAddress(user1.getAddress());
-            property1.setYearOfConstruction(String.valueOf(RandomnessProvider.getRandomNumberBetween(1952, 2020)));
-            property1.setHouseType(RandomnessProvider.getRandomHouseType());
-
-            propertyRepository.save(property1);
-        }
-
-    }
 
 }

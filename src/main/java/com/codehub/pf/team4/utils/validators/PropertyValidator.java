@@ -41,8 +41,10 @@ public class PropertyValidator implements Validator {
             }
         }
 
-        if (doesExist("propertyId", propertyForm.getPropertyID()) && propertyForm.getId().isBlank()) {
-            errors.rejectValue("afm", "afm.exists");
+        if (doesExist("propertyId", propertyForm.getPropertyId())) {
+            if (propertyForm.getId().isBlank()) errors.rejectValue("propertyId", "propertyId.exists");
+            if (!propertyService.getPropertyById(Long.parseLong(propertyForm.getId())).get().getPropertyId().equals(propertyForm.getPropertyId()))
+            errors.rejectValue("propertyId", "propertyId.exists");
         }
 
         if(!propertyForm.getId().isBlank()){

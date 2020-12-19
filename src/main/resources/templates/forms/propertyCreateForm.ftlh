@@ -16,8 +16,8 @@
             <form id="propertyForm" name="propertyForm" action="/admin/properties/create" method="post">
                 <div class="form-group">
                     <label for="propertyID">Property ID</label>
-                    <@spring.bind "propertyForm.propertyID"/>
-                    <input type="text" class="form-control" id="propertyID" name="propertyID" placeholder="Insert property ID based on E9" value="${spring.status.value!""}">
+                    <@spring.bind "propertyForm.propertyId"/>
+                    <input type="text" class="form-control" id="propertyId" name="propertyId" placeholder="Insert property ID based on E9" value="${spring.status.value!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

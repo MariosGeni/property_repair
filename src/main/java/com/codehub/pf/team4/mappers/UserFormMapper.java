@@ -47,6 +47,7 @@ public class UserFormMapper {
         userForm.setAddress(user.getAddress());
         userForm.setPhoneNumber(user.getPhoneNumber().toString());
         userForm.setId(user.getId().toString());
+        userForm.setRoles(user.getRoles().toString());
 
         return userForm;
     }

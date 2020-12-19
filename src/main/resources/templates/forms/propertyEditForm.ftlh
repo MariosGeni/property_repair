@@ -19,11 +19,11 @@
             <form id="propertyForm" name="propertyForm" action="/admin/properties/edit/${propertyForm.id}" method="post">
                 <input type="hidden" id="id" name="id" value="${propertyForm.id}"/>
                 <input type="hidden" id="userId" name="userId" value="${propertyForm.userId}"/>
-
+<#--                !spring.status.value-->
                 <div class="form-group">
-                    <label for="propertyID">Property ID</label>
-                    <@spring.bind "propertyForm.propertyID"/>
-                    <input type="text" class="form-control" id="propertyID" name="propertyID" value="${propertyForm.propertyID!spring.status.value!""}">
+                    <label for="propertyId">Property ID</label>
+                    <@spring.bind "propertyForm.propertyId"/>
+                    <input type="text" class="form-control" id="propertyId" name="propertyId" value="${propertyForm.propertyId!""}">
                     <#if spring.status.error??>
                         <ul>
                             <#list spring.status.errorMessages as error>

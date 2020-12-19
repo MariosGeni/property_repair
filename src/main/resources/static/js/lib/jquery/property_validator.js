@@ -19,7 +19,7 @@ jQuery(function ($) {
                 required: true,
                 digits: true
             },
-            propertyID: {
+            propertyId: {
                 required: true,
                 digits: true
             }
@@ -34,13 +34,13 @@ jQuery(function ($) {
             },
             yearOfConstruction: {
                 required: "Please enter the date",
-                digits: "Please enter a valid date in the format 'MM/dd/YYYY'"
+                digits: "Please enter a valid year"
             },
             userId:{
                 required: "Please enter a user id",
                 digits: "User id must contain numbers only"
             },
-            propertyID:{
+            propertyId:{
                 required: "Please enter a property id",
                 digits: "Property id must contain numbers only"
             }

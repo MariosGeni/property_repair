@@ -25,7 +25,7 @@ public class PropertyForm {
     @NotEmpty
     @Size(min=9,max=9,message = "Property ID should have 9 digits")
     @Pattern(regexp = PROPERTY_ID_PATTERN, message = "Property ID pattern doesn't match")
-    private String propertyID;
+    private String propertyId;
 
     @NotEmpty
     @Pattern(regexp = USER_ID_PATTERN, message = "User ID pattern doesn't match")

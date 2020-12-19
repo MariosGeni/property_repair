@@ -73,7 +73,7 @@
                             <#list HOUSE_TYPE as type>
                                 <option value="${type}"
                                         <#if spring.status.value??>
-                                            <#if  type == spring.status.value>
+                                            <#if type == spring.status.value>
                                                 selected
                                             </#if>
                                         </#if>

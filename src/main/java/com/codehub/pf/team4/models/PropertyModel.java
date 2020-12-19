@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PropertyModel {
     private Long id;
-    private Long propertyID;
+    private String propertyID;
     private String address;
     private String yearOfConstruction;
     private HouseType houseType;

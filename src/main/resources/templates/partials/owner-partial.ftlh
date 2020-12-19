@@ -19,7 +19,7 @@
                 <td>
                     <a href="/admin/owners/${owner.id}">${owner.id}</a>
                 </td>
-                <td>${owner.afm?c}</td>
+                <td>${owner.afm}</td>
                 <td>${owner.email}</td>
                 <td>${owner.firstName}</td>
                 <td>${owner.lastName}</td>
@@ -63,7 +63,7 @@
         </tr>
         <tr>
             <td class="font-weight-bold">Afm</td>
-            <td>${owner.afm?c}</td>
+            <td>${owner.afm}</td>
         </tr>
         <tr>
             <td class="font-weight-bold">Email</td>

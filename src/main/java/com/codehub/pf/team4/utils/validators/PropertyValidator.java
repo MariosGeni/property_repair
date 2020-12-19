@@ -28,7 +28,7 @@ public class PropertyValidator implements Validator {
     public  boolean supports(Class<?> aClass){ return PropertyForm.class.isAssignableFrom(aClass);}
 
     @Override
-    public void validate(Object target, Errors errors){
+    public void validate(Object target, Errors errors) {
         PropertyForm propertyForm = (PropertyForm) target;
 
         if(propertyForm.getId() == null) propertyForm.setId("");
@@ -61,7 +61,7 @@ public class PropertyValidator implements Validator {
             if (value != null) {
                 if (!value.isBlank() && UserValidator.isNumeric(value)) {
                     try{
-                        return propertyService.getPropertyByPropertyId(Long.parseLong(value)).isPresent();
+                        return propertyService.getPropertyByPropertyId((value)).isPresent();
                     } catch(Exception exc){}
                 }
             }

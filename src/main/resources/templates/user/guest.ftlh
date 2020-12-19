@@ -3,9 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="/css/lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="css/user.css">
     <link rel="stylesheet" href="css/snow.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+    <link rel="stylesheet" type="text/css" href="/css/lib/bootstrap/bootstrap.min.css">
 </head>
 
 <body style="background-color:#2b2b2b;">
@@ -31,7 +32,7 @@
 <#-- Head of the Body -->
 
 <#-- Main Body -->
-<div class="container-fluid pt-4 mt-lg-4">
+<div class="container pt-4 mt-lg-4">
     <div class="row">
 
         <div class="col mr-3">
@@ -69,7 +70,7 @@
 <#-- Main Body -->
 
 <#-- Footer -->
-<footer class="footer text-center">
+<footer class="sticky-bottom footer">
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-md-6">

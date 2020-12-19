@@ -45,7 +45,7 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public Optional<PropertyModel> getPropertyByPropertyId(Long propertyID) {
+    public Optional<PropertyModel> getPropertyByPropertyId(String propertyID) {
         return PropertyMapper.mapToPropertyModelOptional(propertyRepository.findByPropertyId(propertyID).orElse(null));
     }
 

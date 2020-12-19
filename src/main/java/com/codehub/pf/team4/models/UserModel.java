@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UserModel {
     private Long id;
-    private Integer afm;
+    private String afm;
     private String firstName;
     private String lastName;
     private String address;
@@ -17,13 +17,13 @@ public class UserModel {
     private String password;
     private HouseType houseType;
 
-    public UserModel(Long id, String email, Integer afm) {
+    public UserModel(Long id, String email, String afm) {
         this.id = id;
         this.email = email;
         this.afm = afm;
     }
 
-    public UserModel(Long id, Integer afm, String firstName, String lastName, String address, Long phoneNumber, String email, String password, HouseType houseType) {
+    public UserModel(Long id, String afm, String firstName, String lastName, String address, Long phoneNumber, String email, String password, HouseType houseType) {
         this.id = id;
         this.afm = afm;
         this.email = email;

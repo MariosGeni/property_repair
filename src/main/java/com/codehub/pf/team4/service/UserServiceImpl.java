@@ -60,8 +60,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<UserModel> findUserByAfm(String afm) {
-        Integer intAfm = Integer.parseInt(afm);
-        return UserMapper.mapToUserModelOptional(userRepository.findByAfm(Afm).orElse(null));
+        return UserMapper.mapToUserModelOptional(userRepository.findByAfm(afm).orElse(null));
     }
 
     @Override
@@ -83,8 +82,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<RepairModel> getRepairsByUserAfm(String afm) {
-        Integer intAfm = Integer.parseInt(afm);
-        return RepairMapper.mapToRepairModelList(userRepository.findRepairsByAfm(intAfm));
+        return RepairMapper.mapToRepairModelList(userRepository.findRepairsByAfm(afm));
     }
 
     @Override

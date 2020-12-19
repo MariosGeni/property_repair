@@ -14,7 +14,7 @@
 <#-- Head of the Body -->
 <div>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color:#EE9600">
-       <a href="/"> <img src="/images/OBOBOMASTORAS2.png" class="navbar-brand" alt="logo"> </a>
+       <a href="/"> <img src="/images/favicon.gif" class="navbar-brand" alt="logo"> </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

@@ -18,7 +18,12 @@
                           <label for="exampleInputPassword1" class="form-label">Password</label>
                           <input type="password" class="form-control" id="exampleInputPassword1" name="password">
                         </div>
-                        <button  type="submit" class="btn btn-block bg-dark text-white mt-5 mb-4">Sign in</button>
+                        <#if RequestParameters.error??>
+                            <#if RequestParameters.error == "true">
+                                <label class="text-center h5" style="width: 100%; color: #be0f0f;">Wrong username or password.<br />Please Try again</label>
+                            </#if>
+                        </#if>
+                        <button  type="submit" class="btn btn-block bg-dark text-white mt-2 mb-4">Sign in</button>
                         <a class="back-button " href="/">
                            <span data-feather="arrow-left-circle" style="width: 35px; height: 35px; stroke-width: 1.4px"></span>
                         </a>

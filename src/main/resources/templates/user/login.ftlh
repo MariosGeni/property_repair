@@ -4,19 +4,18 @@
         <#include "../partials/head.ftlh" />
         <link rel="stylesheet" type="text/css" href="/css/login.css">
       </head>
-
       <body class="bg">
           <section class="container-fluid ">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
-                    <form class="form-login" action="/login" method="post">
+                    <form id="login-form" class="form-login" action="/login" method="post">
                         <div class="mb-4 mt-2 form-group">
                           <label for="exampleInputEmail1" class="form-label">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
+                          <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email">
                         </div>
                         <div class="mb-4 form-group">
                           <label for="exampleInputPassword1" class="form-label">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                          <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <#if RequestParameters.error??>
                             <#if RequestParameters.error == "true">
@@ -32,5 +31,6 @@
             </section>
           </section>
           <#include "../partials/scripts.ftlh">
+          <script src="/js/login.js"></script>
       </body>
 </html>

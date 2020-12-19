@@ -2,6 +2,7 @@ package com.codehub.pf.team4.controller.general;
 
 import com.codehub.pf.team4.forms.UserForm;
 import com.codehub.pf.team4.utils.GlobalAttributes;
+import com.codehub.pf.team4.utils.StatusProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ public class LoginController {
 
     @GetMapping(value = "")
     public String loginPage(){
+        if(StatusProvider.isLoggedIn()) return "redirect:";
         return "user/login";
     }
 

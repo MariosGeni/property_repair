@@ -52,14 +52,14 @@ function togglePropertySearch() {
     clearNoResultsFoundH3();
     var selectedValue = $("#search-property-select").children("option:selected").val();
     let $afmFormRepair = $("#afm-form");
-    let $propertyIdForm = $("#propertyID-form");
+    let $propertyIdForm = $("#propertyId-form");
 
     // toggle visibility
     // can be written in less lines but kept it readable
     if(selectedValue === "afm") {
         $propertyIdForm.addClass("display-none");
         $afmFormRepair.removeClass("display-none");
-    } else if (selectedValue === "propertyID") {
+    } else if (selectedValue === "propertyId") {
         //alert("I'M IN DATE RANGE");
         $propertyIdForm.removeClass("display-none");
         $afmFormRepair.addClass("display-none");

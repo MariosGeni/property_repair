@@ -20,12 +20,12 @@
             <tr>
                 <#if isUser>
                     <td>
-                    <a href="/home/properties/${property.id}">${property.id}
+                    <a <#if (property.id<10) >class="id-num"</#if> href="/home/properties/${property.id}">${property.id}
                     </a>
                 </td>
                 <#else>
                     <td>
-                    <a href="/admin/properties/${property.id}">${property.id}
+                    <a <#if (property.id<10) >class="id-num"</#if> href="/admin/properties/${property.id}">${property.id}
                     </a>
                 </td>
                 </#if>

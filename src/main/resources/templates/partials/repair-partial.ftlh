@@ -22,12 +22,12 @@
             <tr>
                 <#if isUser>
                     <td>
-                        <a href="/home/repairs/${repair.id}">${repair.id}
+                        <a <#if (repair.id<10) >class="id-num"</#if> href="/home/repairs/${repair.id}">${repair.id}
                         </a>
                     </td>
                 <#else>
                     <td>
-                        <a href="/admin/repairs/${repair.id}">${repair.id}
+                        <a <#if (repair.id<10) >class="id-num"</#if> href="/admin/repairs/${repair.id}">${repair.id}
                         </a>
                     </td>
                 </#if>

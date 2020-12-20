@@ -45,6 +45,9 @@ html, body {
 .error{
     color:red;
 }
+.id-num:before {
+   content: '0';
+}
 /*.fade-in:hover {*/
 /*    animation-name: fadeInOpacity;*/
 /*    animation-iteration-count: 1;*/

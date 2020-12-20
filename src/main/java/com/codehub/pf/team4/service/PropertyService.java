@@ -3,7 +3,6 @@ package com.codehub.pf.team4.service;
 import com.codehub.pf.team4.forms.PropertyForm;
 import com.codehub.pf.team4.models.PropertyModel;
 import org.springframework.data.domain.Page;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +20,7 @@ public interface PropertyService {
 
     Optional<PropertyModel> updateProperty(PropertyForm toBeUpdatedProperty);
 
-   boolean deletePropertyById(Long id);
+    boolean deletePropertyById(Long id);
 
-   Optional<PropertyForm> getPropertyByIdAsForm(Long id);
+    Optional<PropertyForm> getPropertyByIdAsForm(Long id);
 }

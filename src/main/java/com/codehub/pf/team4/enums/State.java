@@ -6,7 +6,6 @@ public enum State {
     ONGOING("Σε εξέλιξη"),
     DONE("Ολοκληρωμένη");
 
-
     private String state;
 
     State(String state) {

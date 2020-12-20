@@ -89,5 +89,4 @@ public class PropertyServiceImpl implements PropertyService {
         return Optional.ofNullable(PropertyFormMapper.mapToPropertyForm(property.get()));
     }
 
-
 }

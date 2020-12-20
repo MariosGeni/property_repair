@@ -1,11 +1,13 @@
 package com.codehub.pf.team4.models;
 
 import com.codehub.pf.team4.enums.HouseType;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class UserModel {
     private Long id;
     private String afm;
@@ -23,23 +25,4 @@ public class UserModel {
         this.afm = afm;
     }
 
-    public UserModel(Long id, String afm, String firstName, String lastName, String address, Long phoneNumber, String email, String password, HouseType houseType) {
-        this.id = id;
-        this.afm = afm;
-        this.email = email;
-        this.lastName = lastName;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-        this.password = password;
-        this.houseType = houseType;
-    }
-
-    public HouseType getHouseType() {
-        return houseType;
-    }
-
-    public void setCategory(HouseType category) {
-        this.houseType = houseType;
-    }
 }

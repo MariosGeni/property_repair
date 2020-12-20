@@ -17,7 +17,7 @@
         <#list owners as owner>
             <tr>
                 <td>
-                    <a href="/admin/owners/${owner.id}">${owner.id}</a>
+                    <a <#if (owner.id<10) >class="id-num"</#if> href="/admin/owners/${owner.id}">${owner.id}</a>
                 </td>
                 <td>${owner.afm}</td>
                 <td>${owner.email}</td>

@@ -7,7 +7,7 @@
 <body class="bg">
 <section class="container-fluid main-container">
     <section class="row justify-content-center align-items-center" style="height: 100%;">
-        <section class="col col-11 col-sm-6 col-md-3">
+        <section class="col col-11 col-sm-6 col-md-3 pt-3 pb-3">
             <form id="login-form" class="form-login" action="/login" method="post">
                 <div class="mb-4 mt-2 form-group">
                     <label for="exampleInputEmail1" class="form-label">Email address</label>

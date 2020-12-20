@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class GenericErrorController implements ErrorController {
 
-
     @RequestMapping("/error")
     public String handleError(HttpServletRequest request) {
         Object status = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
@@ -34,7 +33,6 @@ public class GenericErrorController implements ErrorController {
     public String getAccessDeniedPage(){
         return "errorPages/403";
     }
-
 
     @Override
     public String getErrorPath() {

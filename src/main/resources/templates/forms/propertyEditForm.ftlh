@@ -19,7 +19,7 @@
             <form id="propertyForm" name="propertyForm" action="/admin/properties/edit/${propertyForm.id}" method="post">
                 <input type="hidden" id="id" name="id" value="${propertyForm.id}"/>
                 <input type="hidden" id="userId" name="userId" value="${propertyForm.userId}"/>
-<#--                !spring.status.value-->
+
                 <div class="form-group">
                     <label for="propertyId">Property ID</label>
                     <@spring.bind "propertyForm.propertyId"/>

@@ -1,5 +1,4 @@
-
-.bg{
+.bg {
     background-image: url('/images/construction-index.jpg');
     width: 100vw;
     height: 100vh;
@@ -7,9 +6,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     overflow-x: hidden;
-    color:black;
+    color: black;
 }
-
 
 .form-login {
     position: relative;
@@ -24,13 +22,13 @@
 .back-button {
     position:absolute;
     top: 3%;
-    left:5%;
-    transition:0.4s;
+    left: 5%;
+    transition: 0.4s;
     color: #474545;
 }
 
 .back-button:hover {
-    color:black;
+    color: black;
 }
 
 

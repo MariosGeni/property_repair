@@ -54,7 +54,7 @@ public class AdminOwnerController {
 //        List<UserModel> owners = userService.getAllUsers();
 //        model.addAttribute(OWNERS, owners);
 
-        // in rel life it makes sense when page starts from ONE, so we send pages starting from 1 from front-end and we
+        // in real life it makes sense when page starts from ONE, so we send pages starting from 1 from front-end and we
         // then decrease that page number by 1 because in back-end it starts from ZERO
         int realPage = 0;
         if (page.isPresent()) realPage = page.get() > 0 ? page.get() - 1 : 0;
@@ -130,7 +130,6 @@ public class AdminOwnerController {
     public String postAdminOwner(Model model, @Valid @ModelAttribute(USER_FORM) UserForm userForm,
                                  BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-//            System.out.println(bindingResult.getModel());
             model.addAttribute(USER_FORM, userForm);
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "Invalid values caught during creation");
             model.addAttribute(USER_HOUSE_TYPE, HouseType.values());

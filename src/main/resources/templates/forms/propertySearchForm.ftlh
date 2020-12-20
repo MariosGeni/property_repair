@@ -27,9 +27,9 @@
 
 <form id="afm-form" action="/admin/properties/search" class="<#if RequestParameters.afm??>display-block<#else>display-none</#if>">
     <div id="afm-div">
-    <div class="row">
-                <div class="col-12"><label for="afm">AFM</label></div>
-            </div>
+        <div class="row">
+            <div class="col-12"><label for="afm">AFM</label></div>
+        </div>
         <div class="input-group" >
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">AFM</span>

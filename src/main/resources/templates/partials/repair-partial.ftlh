@@ -35,7 +35,7 @@
                 <td>${repair.address}</td>
                 <td>${repair.state}</td>
                 <td>${repair.repairType}</td>
-                <td>${repair.cost?c} &euro;</td>
+                <td style="min-width:80px;">${repair.cost?c} &euro;</td>
                 <td>${repair.user}</td>
                 <td>${repair.description}</td>
 

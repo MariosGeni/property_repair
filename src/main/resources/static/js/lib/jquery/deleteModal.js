@@ -7,7 +7,7 @@
 
         let deleteForm = $('.delete-form');
 
-        let baseActionUrl = deleteForm.attr('action');
+        let baseActionUrl = deleteForm.closest('[data-action]').data('action');
 
         deleteForm.attr('action', baseActionUrl + id);
     });

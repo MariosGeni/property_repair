@@ -1,5 +1,3 @@
-<#assign page = springMacroRequestContext.requestUri>
-<#assign theId = page?split("/admin/owners/")>
 <div class="modal fade remove-modal" id="property-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 <div class="modal-dialog" style="top:5rem" role="document">
     <div class="modal-content">
@@ -13,11 +11,9 @@
             <h5 style="color:grey" class="pl-4 font-weight-normal">Are you sure you want to delete it?</h5>
         </div>
             <div class="modal-footer border-top-0">
-                <form class="delete-form" action="/admin/properties/delete/" method="post">
-                    <input type="submit" class="btn-danger btn-block btn-lg" value="Delete" ></input>
-                </form>
-                <form method="post" id="deleteForm">
-                    <button type="button" class="btn btn-lg btn-block btn-secondary" data-dismiss="modal">Cancel</button>
+                <form class="delete-form form-inline" data-action="/admin/properties/delete/" method="post">
+                    <input type="submit" class="btn-danger mr-2 btn-lg" value="Delete" ></input>
+                    <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>
                 </form>
             </div>
         </div>

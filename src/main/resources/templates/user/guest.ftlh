@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto"></ul>
 
-        <form class="form-inline" id="guestForm"  name="guestForm" action="" method="post">
+        <form class="form-inline" id="guestForm"  name="guestForm" action="/login">
             <button type="submit" style="margin-right: auto" class="mt-2 btn btn-lg btn-dark">
                 Sign-In
             </button>

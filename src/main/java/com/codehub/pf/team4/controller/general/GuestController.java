@@ -22,10 +22,4 @@ public class GuestController {
         if(StatusProvider.getLoggedInRole().equals(Roles.USER.toString())) return "redirect:/home";
         return "user/guest";
     }
-
-    @PostMapping(value = "")
-    public String guestPageToLogin(){
-        return "/user/login";
-    }
-
 }

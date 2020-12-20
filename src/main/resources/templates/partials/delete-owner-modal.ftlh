@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer border-top-0">
                 <form class="delete-form form-inline" data-action="/admin/owners/delete/" method="post">
-                    <input type="submit" class="btn-danger mr-2 btn-lg" value="Delete" ></input>
+                    <input type="submit" class="btn-danger mr-2 btn-lg" value="Delete">
                     <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>
                 </form>
             </div>

@@ -5,10 +5,10 @@
         let modalButton = $(event.relatedTarget);
         let id = modalButton.closest('[data-id]').data('id');
 
-        let deleteForm = $('.delete-form');
-
-        let baseActionUrl = deleteForm.closest('[data-action]').data('action');
-
-        deleteForm.attr('action', baseActionUrl + id);
+        let deleteForm = $(event.target).find(".delete-form");
+        let baseActionUrl = deleteForm.data('action');
+        let redirectUrl = deleteForm.data("redirect-url");
+        console.log(redirectUrl);
+        deleteForm.attr('action', baseActionUrl + id + redirectUrl);
     });
 })();

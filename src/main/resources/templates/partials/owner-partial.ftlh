@@ -34,7 +34,7 @@
                     <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#owner-modal"  data-id="${owner.id}">
                         <span  data-feather="trash-2"></span>
                     </button>
-                    <#include "../partials/delete-owner-modal.ftlh">
+
                 </td>
             </tr>
         </#list>
@@ -52,6 +52,7 @@
             </#if>
         </tbody>
     </table>
+    <#include "../partials/delete-owner-modal.ftlh">
 </#macro>
 
 <#macro ownerSingle owner>

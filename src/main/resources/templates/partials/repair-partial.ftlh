@@ -50,7 +50,6 @@
                     <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#repair-modal"  data-id="${repair.id}">
                         <span  data-feather="trash-2"></span>
                     </button>
-                    <#include "delete-repair-modal.ftlh">
                 </td>
                 </#if>
 
@@ -71,6 +70,7 @@
             </#if>
         </tbody>
     </table>
+    <#include "delete-repair-modal.ftlh">
 </#macro>
 
 <#macro repairSingle repair isUser=false>

@@ -31,5 +31,6 @@
         <!-- footer here -->
             <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/130527/h5ab-snow-flurry.js"></script>
             <script src="/js/lib/jquery/let_it_snow.js"></script>
+            <script src="/js/lib/jquery/deleteModal.js"></script>
     </body>
 </html>

@@ -44,7 +44,6 @@
                         <button class="feather-hover btn btn-link trash-style" data-toggle="modal" data-target="#property-modal" data-id="${property.id}">
                             <span  data-feather="trash-2"></span>
                         </button>
-                        <#include "../partials/delete-propey-modal.ftlh">
                     </td>
                 </#if>
             </tr>
@@ -63,6 +62,7 @@
             </#if>
         </tbody>
     </table>
+    <#include "delete-property-modal.ftlh">
 </#macro>
 
 <#macro propertySingle property isUser=false>
@@ -112,5 +112,5 @@
             </tbody>
         </table>
     </#if>
-    <#include "../partials/delete-propey-modal.ftlh">
+    <#include "../partials/delete-property-modal.ftlh">
 </#macro>

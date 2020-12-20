@@ -9,6 +9,7 @@ import com.codehub.pf.team4.mappers.UserMapper;
 import com.codehub.pf.team4.models.PropertyModel;
 import com.codehub.pf.team4.models.RepairModel;
 import com.codehub.pf.team4.models.UserModel;
+import com.codehub.pf.team4.repository.PropertyRepository;
 import com.codehub.pf.team4.repository.RepairRepository;
 import com.codehub.pf.team4.repository.UserRepository;
 import com.codehub.pf.team4.utils.GlobalAttributes;
@@ -30,6 +31,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RepairRepository repairRepository;
+
+    @Autowired
+    private PropertyRepository propertyRepository;
 
     @Override
     public List<UserModel> getAllUsers() { return UserMapper.mapToUserModelList(userRepository.findAll()); }
@@ -104,6 +108,7 @@ public class UserServiceImpl implements UserService {
         }
 
         repairRepository.deleteAll(toDeleteUser.get().getRepairs());
+        propertyRepository.deleteAll(toDeleteUser.get().getProperties());
 
         userRepository.deleteById(id);
         return true;

@@ -1,4 +1,4 @@
-<div class="modal fade" id="owner-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade remove-modal" id="owner-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog" style="top:5rem" role="document">
         <div class="modal-content">
             <div class="modal-header border-bottom-0">
@@ -11,7 +11,7 @@
                 <h5 style="color:grey" class="pl-4 font-weight-normal">Are you sure you want to delete it?</h5>
             </div>
             <div class="modal-footer border-top-0">
-                <form action="/admin/owners/delete/${owner.id}" method="post">
+                <form class="delete-form" action="/admin/owners/delete/" method="post">
                     <input type="submit" class="btn-danger btn-block btn-lg" value="Delete" ></input>
                 </form>
                 <form method="post" id="deleteForm">

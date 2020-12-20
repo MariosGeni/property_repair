@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
 import javax.validation.Valid;
 import java.util.Optional;
 import java.util.OptionalLong;
@@ -56,10 +57,10 @@ public class AdminOwnerController {
         // in rel life it makes sense when page starts from ONE, so we send pages starting from 1 from front-end and we
         // then decrease that page number by 1 because in back-end it starts from ZERO
         int realPage = 0;
-        if(page.isPresent()) realPage = page.get() > 0? page.get() -1 : 0;
+        if (page.isPresent()) realPage = page.get() > 0 ? page.get() - 1 : 0;
         Page<UserModel> userModelPaged = userService.findAllAsPage(realPage);
 
-        if(userModelPaged.isEmpty()) return "redirect:/admin/owners"; // if given page doesn't exist
+        if (userModelPaged.isEmpty()) return "redirect:/admin/owners"; // if given page doesn't exist
 
         // Returned model
         model.addAttribute(OWNERS, userModelPaged);
@@ -72,7 +73,8 @@ public class AdminOwnerController {
         // --- owners showcase here --- //
         Optional<UserModel> theUser = userService.findUserById(id);
 
-        if(theUser.isEmpty()) return "redirect:/admin/owners"; // if the user with the given id does not exist we redirect him to all owners
+        if (theUser.isEmpty())
+            return "redirect:/admin/owners"; // if the user with the given id does not exist we redirect him to all owners
 
         model.addAttribute(OWNER, theUser.get());
         model.addAttribute(GlobalAttributes.REPAIRS, userService.getRepairsByUserId(theUser.get().getId())); // if cant find it returns empty list
@@ -84,25 +86,24 @@ public class AdminOwnerController {
     public String getAdminSearchOwnerPage(Model model, @RequestParam(value = "afm", defaultValue = "") String afm,
                                           @RequestParam(value = "email", defaultValue = "") String email) {
         if (afm.isBlank() && email.isBlank()) {
-            model.addAttribute(GlobalAttributes.IS_EMPTY,false);
+            model.addAttribute(GlobalAttributes.IS_EMPTY, false);
             return "pages/admin-search-owners-view";
         }
 
         // --- search code here --- //
         Optional<UserModel> owner = Optional.empty();
         if (!afm.isBlank()) {
-            if(UserValidator.isValidAfm(afm))  owner = userService.findUserByAfm(afm);
-        } else if (!email.isBlank())  {
-            if(UserValidator.isValidEmail(email)) owner = userService.findUserByEmail(email);
+            if (UserValidator.isValidAfm(afm)) owner = userService.findUserByAfm(afm);
+        } else if (!email.isBlank()) {
+            if (UserValidator.isValidEmail(email)) owner = userService.findUserByEmail(email);
         }
-
         model.addAttribute(OWNER, owner.orElse(null));
         model.addAttribute(GlobalAttributes.IS_EMPTY, owner.isEmpty());
         return "pages/admin-search-owners-view";
     }
 
     @GetMapping(value = "/owners/create")
-    public String getAdminCreateOwnerPage(Model model){
+    public String getAdminCreateOwnerPage(Model model) {
         model.addAttribute(USER_FORM, new UserForm());
         model.addAttribute(USER_HOUSE_TYPE, HouseType.values());
         model.addAttribute(ROLES, Roles.values());
@@ -113,7 +114,7 @@ public class AdminOwnerController {
     public String getAdminEditOwnersPage(@PathVariable("id") Long id, Model model) {
         Optional<UserModel> theOwner = userService.findUserById(id);
 
-        if(theOwner.isEmpty())
+        if (theOwner.isEmpty())
             return "redirect:/admin/owners"; //if user not found redirect him to admin owners page
 
         UserForm userForm = userService.findUserByIdAsUserForm(id).get();
@@ -162,7 +163,7 @@ public class AdminOwnerController {
 
     @PostMapping("owners/delete/{id}")
     public String deleteAdminOwner(@PathVariable("id") Long id, Model model) {
-        if(!userService.deleteById(id)) {
+        if (!userService.deleteById(id)) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
         }
         return "redirect:/admin/owners";

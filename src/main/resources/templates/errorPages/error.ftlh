@@ -3,7 +3,6 @@
 <title>Admin - Home</title>
 </head>
 <body>
-<!-- header here -->
 <#include "../partials/navbar.ftlh">
 <#include "../partials/beginContainerWithSidebar.ftlh">
 <img src="/images/john.gif">

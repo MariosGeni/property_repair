@@ -22,8 +22,8 @@ public class GenericErrorController implements ErrorController {
             if(statusCode == HttpStatus.NOT_FOUND.value()) {
                 return "errorPages/404";
             }
-            else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "error-500";
+            else if(statusCode == HttpStatus.FORBIDDEN.value()) {
+                return "errorPages/403";
             }
         }
         return "errorPages/error";

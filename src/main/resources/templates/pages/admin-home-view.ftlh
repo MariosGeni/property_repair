@@ -9,7 +9,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
-                    <h1>Today's Repairs</h1>
+                    <h1>Today's Repair(s)</h1>
                 </div>
             </div>
 
@@ -17,6 +17,8 @@
                 <div class="col-12" style="overflow-x: auto;">
                     <#if activeRepairs?has_content && activeRepairs?is_sequence>
                         <@repairComponent.repairList activeRepairs/>
+                    <#else>
+                        <h3 class="mt-1">There are no repair(s) for today.</h3>
                     </#if>
                 </div>
             </div>

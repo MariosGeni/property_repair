@@ -6,7 +6,7 @@
                 <ul class="nav flex-column">
                     <li class="nav-item btn-outline-info ">
 
-                        <a class="nav-link text-white <#if page == '/admin'>bg-info active</#if> " href="/admin">
+                        <a class="nav-link text-white <#if page == '/admin' || page == '/admin/home'>bg-info active</#if> " href="/admin">
                             <span data-feather="home"></span>
                             Home
                         </a>

@@ -26,5 +26,6 @@
             </div>
         </div>
         <#include "../partials/endContainerWithSidebar.ftlh">
+    <script src="/js/lib/jquery/deleteModal.js"></script>
     </body>
 </html>

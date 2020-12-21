@@ -4,6 +4,10 @@ import com.codehub.pf.team4.domains.User;
 import com.codehub.pf.team4.enums.HouseType;
 import com.codehub.pf.team4.enums.Roles;
 import com.codehub.pf.team4.forms.UserForm;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,7 +33,7 @@ public class UserFormMapper {
 
         if (userForm.getPassword() != null) {
             if (!userForm.getPassword().isBlank()) {
-                user.setPassword(userForm.getPassword());
+                user.setPassword(new BCryptPasswordEncoder().encode(userForm.getPassword()));
             }
         }
 

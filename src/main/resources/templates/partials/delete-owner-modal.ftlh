@@ -11,7 +11,7 @@
                 <h5 style="color:grey" class="pl-4 font-weight-normal">Are you sure you want to delete it?</h5>
             </div>
             <div class="modal-footer border-top-0">
-                <form class="delete-form form-inline" data-action="/admin/owners/delete/" method="post">
+                <form class="delete-form form-inline" data-redirect-url="" data-action="/admin/owners/delete/" method="post">
                     <input type="submit" class="btn-danger mr-2 btn-lg" value="Delete">
                     <button type="button" class="btn btn-lg btn-secondary" data-dismiss="modal">Cancel</button>
                 </form>

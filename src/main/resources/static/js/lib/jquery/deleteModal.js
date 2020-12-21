@@ -9,6 +9,9 @@
         let baseActionUrl = deleteForm.data('action');
         let redirectUrl = deleteForm.data("redirect-url");
         console.log(redirectUrl);
+        // if (baseActionUrl.equals("owners")) // fix for user deletion
+        //     deleteForm.attr('action', baseActionUrl + id);
+        // else
         if (baseActionUrl.includes("owners")) // fix for user deletion
             deleteForm.attr('action', baseActionUrl + id);
         else

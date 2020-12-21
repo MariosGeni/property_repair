@@ -74,7 +74,7 @@ jQuery(function ($) {
             },
             phoneNumber: {
                 required: "Please enter your phone number",
-                digits: "",
+                digits: "Phone number should contain only digits ",
                 minlength: "Only 10 characters",
                 maxlength: "Only 10 characters"
             },

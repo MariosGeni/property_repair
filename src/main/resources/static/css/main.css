@@ -42,11 +42,12 @@ html, body {
     color: #c61919 !important;
 }
 
-.error{
+.error {
     color:red;
 }
+
 .id-num:before {
-   content: '0';
+    content: '0';
 }
 /*.fade-in:hover {*/
 /*    animation-name: fadeInOpacity;*/

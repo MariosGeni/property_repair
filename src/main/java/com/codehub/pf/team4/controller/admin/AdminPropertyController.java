@@ -46,18 +46,18 @@ public class AdminPropertyController {
     @InitBinder(PROPERTY_FORM)
     protected  void initBinder(final WebDataBinder binder) { binder.addValidators(propertyValidator); }
 
-    // *************************************************** //
+    // ****************************************************** //
     // ======================= PROPERTIES =================== //
-    // *************************************************** //
+    // ****************************************************** //
 
     @GetMapping(value = "properties")
     public String getAdminPropertiesPage(Model model, @RequestParam Optional<Integer> page) {
         // --- properties showcase here --- //
         int realPage = 0;
-        if(page.isPresent()) realPage = page.get() > 0? page.get() -1 : 0;
+        if (page.isPresent()) realPage = page.get() > 0? page.get() -1 : 0;
         Page<PropertyModel> propertiesPaged = propertyService.getAllPropertiesAsPage(realPage);
 
-        if(propertiesPaged.isEmpty()) return "redirect:/admin/properties"; // If given page does not return any properties redirect him to main properties (page 1)
+        if (propertiesPaged.isEmpty()) return "redirect:/admin/properties"; // If given page does not return any properties redirect him to main properties (page 1)
 
         model.addAttribute(PROPERTIES, propertiesPaged);
         return "pages/admin-properties-view";
@@ -125,31 +125,31 @@ public class AdminPropertyController {
             return "pages/admin-create-properties-view";
         }
         Optional<PropertyModel> newProperty = propertyService.addProperty(propertyForm);
-        if(newProperty.isEmpty()) return "pages/admin-create-properties-view";
+        if (newProperty.isEmpty()) return "pages/admin-create-properties-view";
         return "redirect:/admin/properties/" + newProperty.get().getId();
     }
 
     @PostMapping(value = "properties/edit/{id}") //Edit property by id
     public String putPropertyEditOwnersPage(Model model, @Valid @ModelAttribute(PROPERTY_FORM) PropertyForm propertyForm,
                                             BindingResult bindingResult, @PathVariable Long id) {
-        if(bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()){
             model.addAttribute(HOUSE_TYPE, HouseType.values());
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE,"Invalid values caught during update");
             return  "pages/admin-edit-properties-view";
         }
 
         Optional<PropertyModel> theProperty = propertyService.updateProperty(propertyForm);
-        if(theProperty.isEmpty()) return "pages/admin-edit-properties-view";
+        if (theProperty.isEmpty()) return "pages/admin-edit-properties-view";
         return "redirect:/admin/properties/" + theProperty.get().getId();
     }
 
     @PostMapping(value = "properties/delete/{id}")
     public String deleteProperty(@PathVariable("id") Long id,Model model, @RequestParam Optional<Long> userId){
         long theId = userId.isPresent()? userId.get() : -1; // if present that means the delete comes from an owner page with its ID
-        if(!propertyService.deletePropertyById(id)){
+        if (!propertyService.deletePropertyById(id)){
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
         }
-        if(theId != -1) return "redirect:/admin/owners/" + theId;
+        if (theId != -1) return "redirect:/admin/owners/" + theId;
         return "redirect:/admin/properties";
     }
 }

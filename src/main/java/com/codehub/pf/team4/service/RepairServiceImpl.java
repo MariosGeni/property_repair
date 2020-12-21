@@ -40,7 +40,7 @@ public class RepairServiceImpl implements RepairService {
     public Page<RepairModel> getAllAsPage(int page) {
         Page<Repair> repairsPaged = repairRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
 
-        if(repairsPaged.isEmpty())  return Page.empty(); // if given page returns empty return empty
+        if (repairsPaged.isEmpty())  return Page.empty(); // if given page returns empty return empty
 
         List<RepairModel> userModel = RepairMapper.mapToRepairModelList(repairsPaged.getContent());
         return  new PageImpl(userModel, repairsPaged.getPageable(), repairsPaged.getTotalElements());
@@ -82,7 +82,7 @@ public class RepairServiceImpl implements RepairService {
     public Optional<RepairForm> getRepairByIdAsForm(Long id) {
         Repair theRepair = repairRepository.findById(id).orElse(null);
 
-        if(theRepair == null) return Optional.empty();
+        if (theRepair == null) return Optional.empty();
         return Optional.of(RepairFormMapper.mapToRepairForm(theRepair));
     }
 
@@ -97,7 +97,7 @@ public class RepairServiceImpl implements RepairService {
     public Optional<RepairModel> updateRepair(RepairForm toBeUpdatedRepair) {
         Repair toBeUpdateRepair = RepairFormMapper.mapToRepair(toBeUpdatedRepair);
         Repair originalRepair = repairRepository.findById(toBeUpdateRepair.getId()).get();
-        if(toBeUpdateRepair.equals(originalRepair)) {
+        if (toBeUpdateRepair.equals(originalRepair)) {
             // if no changes made dont update
             return RepairMapper.mapToRepairModelOptional(toBeUpdateRepair);
         }

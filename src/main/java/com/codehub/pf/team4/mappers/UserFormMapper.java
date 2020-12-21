@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserFormMapper {
 
-    public static User mapToUser(UserForm userForm){
-        if(userForm == null) return null;
+    public static User mapToUser(UserForm userForm) {
+        if (userForm == null) return null;
 
         User user = new User();
         user.setAfm(userForm.getAfm());
@@ -21,14 +21,14 @@ public class UserFormMapper {
         user.setPhoneNumber(Long.parseLong(userForm.getPhoneNumber()));
         user.setRoles(Roles.valueOf(userForm.getRoles()));
 
-        if(userForm.getId() != null) {
-            if(!userForm.getId().isEmpty()) {
+        if (userForm.getId() != null) {
+            if (!userForm.getId().isEmpty()) {
                 user.setId(Long.parseLong(userForm.getId()));
             }
         }
 
-        if(userForm.getPassword() != null) {
-            if(!userForm.getPassword().isBlank()) {
+        if (userForm.getPassword() != null) {
+            if (!userForm.getPassword().isBlank()) {
                 user.setPassword(userForm.getPassword());
             }
         }
@@ -36,8 +36,8 @@ public class UserFormMapper {
         return user;
     }
 
-    public static UserForm mapToUserForm(User user){
-        if(user == null) return null;
+    public static UserForm mapToUserForm(User user) {
+        if (user == null) return null;
 
         UserForm userForm = new UserForm();
         userForm.setAfm(user.getAfm().toString());

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class RepairFormMapper {
 
     public static Repair mapToRepair(RepairForm repairForm) {
-        if(repairForm == null) return null;
+        if (repairForm == null) return null;
 
         Repair repair = new Repair();
         repair.setDate(DateProvider.getLocalDate(repairForm.getDate()));
@@ -33,7 +33,7 @@ public class RepairFormMapper {
     }
 
     public static RepairForm mapToRepairForm(Repair repair) {
-        if(repair == null) return null;
+        if (repair == null) return null;
 
         RepairForm repairForm = new RepairForm();
         repairForm.setDate(repair.getDate().format(DateProvider.getFormat()));

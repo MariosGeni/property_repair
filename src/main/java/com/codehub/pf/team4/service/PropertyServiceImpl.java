@@ -38,7 +38,7 @@ public class PropertyServiceImpl implements PropertyService {
     public Page<PropertyModel> getAllPropertiesAsPage(int page) {
         Page<Property> propertiesAsPage = propertyRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
 
-        if(propertiesAsPage.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
+        if (propertiesAsPage.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
 
         List<PropertyModel> propertiesModel = PropertyMapper.mapToPropertyModelList(propertiesAsPage.getContent());
         return  new PageImpl(propertiesModel, propertiesAsPage.getPageable(), propertiesAsPage.getTotalElements());

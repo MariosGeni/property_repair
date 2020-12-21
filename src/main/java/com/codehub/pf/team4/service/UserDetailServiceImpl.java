@@ -20,8 +20,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        // here we would search into the repo for the user.
-        // for not we are just going to send always a successful response.
+        // search for the user in the repo.
+        // if user is found send a successful response.
         Optional<User> userOptional = userRepository.findByEmail(email);
 
         if (userOptional.isEmpty()) {
@@ -29,9 +29,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
         }
 
         User user = userOptional.get();
-
-        /*        List<SimpleGrantedAuthority> authorization = Collections.singletonList(new SimpleGrantedAuthority("ADMIN"));
-        CharSequence password = "password";*/
 
         return new LoginResponse(user.getEmail(), user.getPassword(), Arrays.asList(new SimpleGrantedAuthority(user.getRoles().name())));
     }

@@ -29,7 +29,6 @@ public class DataGenerator {
     @Bean
     public CommandLineRunner run(UserRepository userRepository) throws Exception {
         return (String[] args) -> {
-
             for (long i = 0; i < 17; i++) {
                 User user1 = new User();
                 user1.setFirstName(faker.name().firstName());
@@ -50,7 +49,6 @@ public class DataGenerator {
     }
 
     private void makeRepairsForUser(User user1) {
-
         for (long i = 0; i < RandomnessProvider.getRandomNumberBetween(1, 2); i++) {
             Repair repair1 = new Repair();
             repair1.setUser(user1);
@@ -63,11 +61,9 @@ public class DataGenerator {
 
             repairRepository.save(repair1);
         }
-
     }
 
     private void makePropertiesForUser(User user1) {
-
         for (long i = 0; i < RandomnessProvider.getRandomNumberBetween(1, 2); i++) {
             Property property1 = new Property();
             property1.setUser(user1);
@@ -78,7 +74,6 @@ public class DataGenerator {
 
             propertyRepository.save(property1);
         }
-
     }
 
 }

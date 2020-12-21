@@ -31,12 +31,12 @@ public class PropertyValidator implements Validator {
     public void validate(Object target, Errors errors) {
         PropertyForm propertyForm = (PropertyForm) target;
 
-        if(propertyForm.getId() == null) propertyForm.setId("");
-        if(propertyForm.getUserId() == null) propertyForm.setUserId("");
+        if (propertyForm.getId() == null) propertyForm.setId("");
+        if (propertyForm.getUserId() == null) propertyForm.setUserId("");
 
-        if(!propertyForm.getUserId().isBlank() && UserValidator.isNumeric(propertyForm.getId())){
+        if (!propertyForm.getUserId().isBlank() && UserValidator.isNumeric(propertyForm.getId())){
             Optional<UserModel> userWithGivenPropertyUserId = userService.findUserById(Long.parseLong(propertyForm.getUserId()));
-            if(userWithGivenPropertyUserId.isEmpty()){
+            if (userWithGivenPropertyUserId.isEmpty()){
                 errors.rejectValue("userId", "owner.id.not.exists");
             }
         }
@@ -47,22 +47,22 @@ public class PropertyValidator implements Validator {
             errors.rejectValue("propertyId", "propertyId.exists");
         }
 
-        if(!propertyForm.getId().isBlank()){
-            if(UserValidator.isNumeric(propertyForm.getId())){
+        if (!propertyForm.getId().isBlank()){
+            if (UserValidator.isNumeric(propertyForm.getId())){
                 Optional<PropertyModel> propertyWithGivenId = propertyService.getPropertyById(Long.parseLong(propertyForm.getId()));
             }
         }
         Optional<HouseType> houseType = Arrays.stream(HouseType.values())
                 .filter(type -> type.toString().equalsIgnoreCase(propertyForm.getHouseType()))
                 .findFirst();
-        if(houseType.isEmpty()) errors.rejectValue("houseType", "houseType.not.match");
+        if (houseType.isEmpty()) errors.rejectValue("houseType", "houseType.not.match");
     }
 
     private boolean doesExist( String field, String value ){
         if (field.equalsIgnoreCase("propertyId")) {
             if (value != null) {
                 if (!value.isBlank() && UserValidator.isNumeric(value)) {
-                    try{
+                    try {
                         return propertyService.getPropertyByPropertyId((value)).isPresent();
                     } catch(Exception exc){}
                 }

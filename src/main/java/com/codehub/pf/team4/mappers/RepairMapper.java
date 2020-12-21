@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public abstract class RepairMapper {
 
     public static RepairModel mapToRepairModel(Repair repair) {
-        if (repair == null) { return null; }
+        if (repair == null) return null;
 
         RepairModel repairModel = new RepairModel();
         repairModel.setId(repair.getId());
@@ -34,7 +34,7 @@ public abstract class RepairMapper {
     }
 
     public static Optional<RepairModel> mapToRepairModelOptional(Repair repair) {
-        if(repair == null) return Optional.empty();
+        if (repair == null) return Optional.empty();
         return Optional.of(mapToRepairModel(repair));
     }
 }

@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
     public Page<UserModel> findAllAsPage(int page) {
        Page<User> usersPaged = userRepository.findAll(PageRequest.of(page, GlobalAttributes.PAGE_CONTENT_SIZE));
 
-       if(usersPaged.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
+       if (usersPaged.isEmpty()) return Page.empty(); // if page object is empty with given page return empty page object
 
         List<UserModel> userModel = UserMapper.mapToUserModelList(usersPaged.getContent());
         return  new PageImpl(userModel, usersPaged.getPageable(), usersPaged.getTotalElements());

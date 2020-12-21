@@ -62,18 +62,3 @@ jQuery(function ($) {
         }
     })
 });
-
-// $.validator.addMethod("dateFormat",
-//     function(value, element) {
-//         return value.match(/^dd?-dd?-dd$/);
-//     },
-//     "Please enter a date in the format dd-mm-yyyy.");
-// And then on your form add:
-//     $('#myForm')
-//         .validate({
-//             rules : {
-//                 myDate : {
-//                     dateFormat: true
-//                 }
-//             }
-//         });

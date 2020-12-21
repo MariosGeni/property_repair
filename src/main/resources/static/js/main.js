@@ -6,7 +6,7 @@ $(function() { // <-- is short for $(document).ready(function() {});
     $(".page-number-link").on("click", function(e) { if($(e.target).hasClass("active")) e.preventDefault(); });
 });
 
-//jQuery - its good to make use of jQuery because we implemented it.
+// jQuery - toggle visibility for search menus.
 function toggleUserSearch() {
     clearNoResultsFoundH3();
     var selectedValue = $("#search-user-select").children("option:selected").val();
@@ -23,6 +23,7 @@ function toggleUserSearch() {
         $emailForm.removeClass("display-none");
     }
 }
+
 function toggleRepairSearch() {
     clearNoResultsFoundH3();
     var selectedValue = $("#search-repair-select").children("option:selected").val();
@@ -60,7 +61,6 @@ function togglePropertySearch() {
         $propertyIdForm.addClass("display-none");
         $afmFormRepair.removeClass("display-none");
     } else if (selectedValue === "propertyId") {
-        //alert("I'M IN DATE RANGE");
         $propertyIdForm.removeClass("display-none");
         $afmFormRepair.addClass("display-none");
     }

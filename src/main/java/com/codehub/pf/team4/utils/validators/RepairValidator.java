@@ -34,23 +34,23 @@ public class RepairValidator implements Validator {
     public void validate(Object target, Errors errors) {
         RepairForm repairForm = (RepairForm) target;
 
-        if(repairForm.getId() == null) repairForm.setId(""); // avoid null pointer exception
-        if(repairForm.getUserId() == null) repairForm.setUserId(""); // avoid null pointer exception
+        if (repairForm.getId() == null) repairForm.setId(""); // avoid null pointer exception
+        if (repairForm.getUserId() == null) repairForm.setUserId(""); // avoid null pointer exception
 
         // Here we add our custom validation logic
         // UPDATE OPERATION does repair with this id exist?
-        if(!repairForm.getUserId().isBlank() && UserValidator.isNumeric(repairForm.getId())) {
+        if (!repairForm.getUserId().isBlank() && UserValidator.isNumeric(repairForm.getId())) {
             Optional<UserModel> userWithGivenRepairUserId = userService.findUserById(Long.parseLong(repairForm.getUserId()));
             if (userWithGivenRepairUserId.isEmpty()) {
                 errors.rejectValue("userId", "owner.id.not.exists");
             }
         }
 
-        if(!repairForm.getId().isBlank()) {
+        if (!repairForm.getId().isBlank()) {
             // update repair validation
-            if(UserValidator.isNumeric(repairForm.getId())) {
+            if (UserValidator.isNumeric(repairForm.getId())) {
                 Optional<RepairModel> repairWithGivenId = repairService.getRepairById(Long.parseLong(repairForm.getId()));
-                if(repairWithGivenId.isEmpty()) errors.rejectValue("id", "repair.id.not.exists");
+                if (repairWithGivenId.isEmpty()) errors.rejectValue("id", "repair.id.not.exists");
             }
         }
 
@@ -62,8 +62,8 @@ public class RepairValidator implements Validator {
                 .filter(type -> type.toString().equalsIgnoreCase(repairForm.getRepairType()))
                 .findFirst();
 
-        if(state.isEmpty()) errors.rejectValue("state", "state.not.match");
-        if(repairType.isEmpty()) errors.rejectValue("repairType", "repairType.not.match");
+        if (state.isEmpty()) errors.rejectValue("state", "state.not.match");
+        if (repairType.isEmpty()) errors.rejectValue("repairType", "repairType.not.match");
     }
 
     public static boolean isValidDate(String date) {

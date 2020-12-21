@@ -60,10 +60,10 @@ public class AdminRepairController {
 
         // Using pagination
         int realPage = 0;
-        if(page.isPresent()) realPage = page.get() > 0? page.get() - 1 : 0;
+        if (page.isPresent()) realPage = page.get() > 0? page.get() - 1 : 0;
         Page<RepairModel> repairModelsPaged = repairService.getAllAsPage(realPage);
 
-        if(repairModelsPaged.isEmpty()) return "redirect:/admin/repairs"; // if given page doesn't exist
+        if (repairModelsPaged.isEmpty()) return "redirect:/admin/repairs"; // if given page doesn't exist
 
         model.addAttribute(REPAIRS, repairModelsPaged);
 
@@ -74,7 +74,7 @@ public class AdminRepairController {
     public String getAdminRepairPage(Model model, @PathVariable("id") Long id) {
         // --- repairs showcase here --- //
         Optional<RepairModel> theRepair = repairService.getRepairById(id);
-        if(theRepair.isEmpty()) return "redirect:/admin/repairs";
+        if (theRepair.isEmpty()) return "redirect:/admin/repairs";
 
         model.addAttribute(REPAIR, theRepair.get());
         return "pages/admin-repair-view";
@@ -95,7 +95,7 @@ public class AdminRepairController {
         List<RepairModel> repairs = new ArrayList();
         if (!afm.isBlank()) {
             if(UserValidator.isValidAfm(afm))  repairs = userService.getRepairsByUserAfm(afm);
-        } else if(!date.isBlank()) {
+        } else if (!date.isBlank()) {
             if(RepairValidator.isValidDate(date)) repairs = repairService.getRepairsByDate(date);
         } else if (!fromDate.isBlank() && !toDate.isBlank()) {
             if(RepairValidator.isValidDate(fromDate) && RepairValidator.isValidDate(toDate)) {
@@ -160,10 +160,10 @@ public class AdminRepairController {
     @PostMapping(value = "repairs/delete/{id}")
     public String deleteRepair(@PathVariable("id") Long id, Model model, @RequestParam Optional<Long> userId) {
         long theId = userId.isPresent()? userId.get() : -1; // if present that means the delete comes from an owner page with its ID
-        if(!repairService.deleteRepairById(id)) {
+        if (!repairService.deleteRepairById(id)) {
             model.addAttribute(GlobalAttributes.ERROR_MESSAGE, "The ID you submitted to delete does not exist");
         }
-        if(theId != -1) return "redirect:/admin/owners/" + theId;
+        if (theId != -1) return "redirect:/admin/owners/" + theId;
         return "redirect:/admin/repairs";
     }
 }

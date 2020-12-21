@@ -69,7 +69,7 @@ public abstract class RandomnessProvider {
     }
 
     //Provides a day
-    public static int getDayGiver(){
+    public static int getDayGiver() {
         int minDay = 1;
         int maxDay = 28;
         int value = getRandomNumberBetween(minDay,maxDay);
@@ -77,7 +77,7 @@ public abstract class RandomnessProvider {
     }
 
     //Provides a month
-    public static int getMonthGiver(){
+    public static int getMonthGiver() {
         int minMonth = 1;
         int maxMonth = 12;
         int value = getRandomNumberBetween(minMonth,maxMonth);
@@ -85,20 +85,19 @@ public abstract class RandomnessProvider {
     }
 
     //Provides Cost
-    public static Long getCost(){
+    public static Long getCost() {
         long value = getRandomNumberBetween(5,150);
         value *= 10;
         return value;
     }
 
     //Provides roles to the users
-    public static Roles getRoles(){
+    public static Roles getRoles() {
         int value = getRandomNumberBetween(1,100);
         if (value <= 79){
             return USER;
-        }else{
+        } else {
             return ADMIN;
         }
-
     }
 }

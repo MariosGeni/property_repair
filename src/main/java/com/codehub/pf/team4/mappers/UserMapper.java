@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 public abstract class UserMapper {
 
     public static UserModel mapToUserModel(User user) {
-        if (user == null) { return null; }
+        if (user == null) return null;
         UserModel userModel = new UserModel();
         userModel.setFirstName(user.getFirstName());
         userModel.setLastName(user.getLastName());
@@ -25,15 +25,15 @@ public abstract class UserMapper {
         return userModel;
     }
 
-    public static List<UserModel> mapToUserModelList(List<User> users){
-        if(users.isEmpty()) return new ArrayList();
+    public static List<UserModel> mapToUserModelList(List<User> users) {
+        if (users.isEmpty()) return new ArrayList();
         return users.stream()
                 .map(UserMapper::mapToUserModel)
                 .collect(Collectors.toList());
     }
 
     public static Optional<UserModel> mapToUserModelOptional(User user) {
-        if(user == null) return Optional.empty();
+        if (user == null) return Optional.empty();
         return Optional.of(mapToUserModel(user));
     }
 }
